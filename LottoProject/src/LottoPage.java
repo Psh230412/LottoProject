@@ -33,7 +33,7 @@ class LottoTicket extends JFrame {
 	private LinkedList myNum;
 	private JLabel[] guideLbl1;
 	private JLabel guideLbl2;
-	private JButton[] lottoNumBtn;
+	private JButton[] lottoNumBtn = new JButton[45];;
 
 	public void buttonCreate() {
 		for (int i = 0; i < lottoNumBtn.length; i++) {
@@ -115,8 +115,6 @@ class LottoTicket extends JFrame {
 				MyListener.reset();
 			}
 		});
-
-		lottoNumBtn = new JButton[45];
 
 		buttonCreate();
 
