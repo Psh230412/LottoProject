@@ -66,7 +66,7 @@ class LottoTicket extends JFrame {
 	    	guideLblCreate();
 	    	
 	    	
-	    	guideLbl2 = new JLabel("1000¿ø");
+	    	guideLbl2 = new JLabel("1000ï¿½ï¿½");
 	    	guideLbl1[0].setFont(font);
 	    	guideLbl2.setFont(font);
 	    	
@@ -85,9 +85,9 @@ class LottoTicket extends JFrame {
 	    	oneTicketPanel.setLayout(new BoxLayout(oneTicketPanel, BoxLayout.Y_AXIS));
 	    	
 	    	btnPanel.setLayout(new FlowLayout());
-	    	JButton autoBtn = new JButton("ÀÚµ¿");
+	    	JButton autoBtn = new JButton("ï¿½Úµï¿½");
 	    	autoBtn.setPreferredSize(new Dimension(250,30));
-	    	JButton resetBtn= new JButton("ÃÊ±âÈ­");
+	    	JButton resetBtn= new JButton("ï¿½Ê±ï¿½È­");
 	    	resetBtn.setPreferredSize(new Dimension(250,30));
 	    	btnPanel.add(autoBtn);
 	    	btnPanel.add(resetBtn);
