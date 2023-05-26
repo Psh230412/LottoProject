@@ -136,8 +136,13 @@ class MyListener implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		JButton source = (JButton) e.getSource();
 		if (changeCount < 6) {
-			source.setBackground(Color.RED);
-			changeCount++;
+			if (!source.getBackground().equals(Color.RED)) {
+				source.setBackground(Color.RED);
+				changeCount++;
+			} else {
+				source.setBackground(null);
+				changeCount--;
+			}
 		}
 	}
 
