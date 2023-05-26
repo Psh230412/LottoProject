@@ -16,6 +16,7 @@ import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 class LottoTicketManager {
@@ -95,13 +96,22 @@ class LottoTicket extends JFrame {
 		autoBtn.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				int clickCount = 0;
+				
+				
+				for (int i = 0; i < 45; i++) {
+					if (lottoNumBtn[i].getBackground().equals(Color.RED)) {
+						clickCount++;
+					}
+				}
+				
 				List<Integer> numbers = new ArrayList<>();
 				for (int i = 0; i < 45; i++) {
 					numbers.add(i);
 				}
 				Collections.shuffle(numbers);
 
-				for (int i = 0; i < 6; i++) {
+				for (int i = 0; i < 6-clickCount; i++) {
 					lottoNumBtn[numbers.get(i)].doClick();
 				}
 			}
@@ -142,15 +152,19 @@ class MyListener implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		JButton source = (JButton) e.getSource();
-		if (changeCount < 6) {
-			if (!source.getBackground().equals(Color.RED)) {
+			if (!source.getBackground().equals(Color.RED)&&changeCount < 6) {
 				source.setBackground(Color.RED);
-				changeCount++;
-			} else {
+				
+					changeCount++;
+				
+			} else if(!source.getBackground().equals(Color.RED)&&changeCount == 6) {
+				JOptionPane.showMessageDialog(null, "로또숫자는 6개까지 고를 수 있습니다.", "숫자초과", JOptionPane.WARNING_MESSAGE);
+				
+			}else if(changeCount <= 6){
 				source.setBackground(null);
 				changeCount--;
-			}
-		}
+			} 
+		
 	}
 
 	public static void reset() {
