@@ -35,7 +35,7 @@ class LottoDraw {
 //당첨번호와 내 번호 비교
 class LottoDrawView extends JPanel {
 	private Dimension dimension = new Dimension(100, 100);
-	private Font font = new Font("���� ���", Font.PLAIN, 50);
+	private Font font = new Font("맑은 고딕", Font.PLAIN, 50);
 
 	public LottoDrawView() {
 		BoxLayout layout = new BoxLayout(this, BoxLayout.Y_AXIS);
@@ -55,7 +55,7 @@ class LottoDrawView extends JPanel {
 			public List<JLabel> myNumLblList = new LinkedList<JLabel>();
 
 			public MyNumPnl() {
-				autoLbl = new JLabel("�ڵ�");
+				autoLbl = new JLabel("자동");
 				orderLbl = new JLabel("A");
 				myNumLbl1 = new JLabel("1");
 				myNumLbl2 = new JLabel("2");
@@ -63,7 +63,7 @@ class LottoDrawView extends JPanel {
 				myNumLbl4 = new JLabel("4");
 				myNumLbl5 = new JLabel("5");
 				myNumLbl6 = new JLabel("6");
-				gradeLbl = new JLabel("���");
+				gradeLbl = new JLabel("등수");
 
 				myNumLblList.add(autoLbl);
 				myNumLblList.add(orderLbl);
