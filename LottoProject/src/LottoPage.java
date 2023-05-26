@@ -4,6 +4,8 @@ import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
@@ -38,6 +40,7 @@ class LottoTicket extends JFrame {
 	    		String lottoNumBtnName = String.valueOf(i+1);
 	    		lottoNumBtn[i]=new JButton(lottoNumBtnName);
 	    		//lottoNumbtn[0]={1} lottoNumbtn[1]={2}.......lottoNumbtn[n]={n+1}
+	    		lottoNumBtn[i].addActionListener(new MyListener());
 	    	}
 	    }
 	    public void guideLblCreate() {
@@ -93,8 +96,7 @@ class LottoTicket extends JFrame {
 	    	btnPanel.add(resetBtn);
 	    	
 	    	
-	    	
-	    	
+
 	    	lottoNumBtn = new JButton[45];
 	    	
 	    	
@@ -111,6 +113,8 @@ class LottoTicket extends JFrame {
 	    	oneTicketPanel.add(btnPanel);
 	    	
 	    	
+	    	
+	    	
 	    	setSize(300, 500);
 	    	setVisible(true);
 			setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -118,11 +122,20 @@ class LottoTicket extends JFrame {
 
 	    }
 	    
-	    
-    
-   
 
 }
+
+class MyListener implements ActionListener {
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		JButton source =(JButton) e.getSource();
+		source.setBackground(Color.RED);
+	}
+
+}
+
+
+
 
 public class LottoPage extends JFrame{
 	public static void main(String[] args) {
