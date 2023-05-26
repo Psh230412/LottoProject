@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Random;
 
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
@@ -92,12 +93,23 @@ class LottoTicket extends JFrame {
 		resetBtn.setPreferredSize(new Dimension(250, 30));
 		btnPanel.add(autoBtn);
 		btnPanel.add(resetBtn);
+
 		autoBtn.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				List<Integer> numbers = new ArrayList<>();
+<<<<<<< HEAD
 				for(int i=0;i<45;i++) {
 					numbers.add(i);
+=======
+				for (int i = 0; i < 45; i++) {
+					numbers.add(i);
+				}
+				Collections.shuffle(numbers);
+
+				for (int i = 0; i < 6; i++) {
+					lottoNumBtn[numbers.get(i)].doClick();
+>>>>>>> branch 'master' of https://github.com/Psh230412/LottoProject.git
 				}
 				Collections.shuffle(numbers);
 				
