@@ -2,14 +2,29 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.GridLayout;
+import java.util.ArrayList;
 import java.util.LinkedList;
+import java.util.List;
 
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+
+class LottoTicketManager {
+	List<LottoTicket> lottoTicketList = new ArrayList<>();
+	LottoTicket lotto;
+	
+	public void createEachLottoTicket(int a) {
+		for(int i = 0; i < a; i++) {
+		lottoTicketList.add(lotto);
+		}
+	}
+}
 
 
 
@@ -40,12 +55,18 @@ class LottoTicket extends JFrame {
 	    	JPanel btnPanel = new JPanel();
 	    	
 	    	
-	    	
 	    	guideLbl1= new JLabel("A");
 	    	guideLbl2 = new JLabel("1000��");
 	    	
 	    	guideLbl1titlePanel.add(guideLbl1);
 	    	guideLbl2titlePanel.add(guideLbl2);
+	    	
+	    	guideLbl1titlePanel.setBackground(Color.white);
+	    	guideLbl2titlePanel.setBackground(Color.GREEN);
+	    	
+	    	guideLbl1titlePanel.setPreferredSize(new Dimension(50,50));
+	    	guideLbl2titlePanel.setPreferredSize(new Dimension(200,200));
+	    	
 	    	titlePanel.setLayout(new BoxLayout(titlePanel,BoxLayout.X_AXIS));
 			titlePanel.add(guideLbl1titlePanel);
 			titlePanel.add(guideLbl2titlePanel);
@@ -58,7 +79,7 @@ class LottoTicket extends JFrame {
 	    	
 	    	buttonCreate();
 	    	
-	    	lnbPanel.setLayout(new GridLayout(6,8));
+	    	lnbPanel.setLayout(new GridLayout(9,5));
 	    	for(int i=0;i<lottoNumBtn.length;i++) {
 	    		lnbPanel.add(lottoNumBtn[i]);
 	    	}
@@ -74,8 +95,6 @@ class LottoTicket extends JFrame {
 	  
 
 	    }
-    
-   
 
 }
 
