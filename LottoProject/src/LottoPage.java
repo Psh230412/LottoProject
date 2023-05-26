@@ -100,6 +100,72 @@ class LottoTicket extends JFrame {
 		for (int i = 0; i < lottoNumBtn.length; i++) {
 			lnbPanel.add(lottoNumBtn[i]);
 		}
+	public void guideLblCreate() {
+		guideLbl1 = new JLabel[5];
+		guideLbl1[0] = new JLabel("A");
+		guideLbl1[1] = new JLabel("B");
+		guideLbl1[2] = new JLabel("C");
+		guideLbl1[3] = new JLabel("D");
+		guideLbl1[4] = new JLabel("E");
+
+	}
+
+	public LottoTicket() {
+
+		JPanel oneTicketPanel = new JPanel();
+
+		JPanel titlePanel = new JPanel();
+		JPanel guideLbl1titlePanel = new JPanel();
+		JPanel guideLbl2titlePanel = new JPanel();
+		JPanel lnbPanel = new JPanel();
+		JPanel btnPanel = new JPanel();
+		Font font = new Font("SansSerif", Font.BOLD, 30);
+
+		guideLblCreate();
+
+		guideLbl2 = new JLabel("1000��");
+		guideLbl1[0].setFont(font);
+		guideLbl2.setFont(font);
+
+		guideLbl1titlePanel.setPreferredSize(new Dimension(20, 20));
+		guideLbl2titlePanel.setPreferredSize(new Dimension(45, 20));
+		guideLbl1titlePanel.add(guideLbl1[0]);
+		guideLbl2titlePanel.add(guideLbl2);
+		guideLbl1titlePanel.setBackground(Color.white);
+		guideLbl2titlePanel.setBackground(Color.PINK);
+
+		titlePanel.setLayout(new BoxLayout(titlePanel, BoxLayout.X_AXIS));
+		titlePanel.add(guideLbl1titlePanel);
+		titlePanel.add(guideLbl2titlePanel);
+
+		oneTicketPanel.setLayout(new BoxLayout(oneTicketPanel, BoxLayout.Y_AXIS));
+
+		btnPanel.setLayout(new FlowLayout());
+		JButton autoBtn = new JButton("자동");
+		JButton resetBtn = new JButton("초기화");
+		autoBtn.setPreferredSize(new Dimension(250, 30));
+		resetBtn.setPreferredSize(new Dimension(250, 30));
+		btnPanel.add(autoBtn);
+		btnPanel.add(resetBtn);
+		autoBtn.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				for (int i = 0; i < 6; i++) {
+					lottoNumBtn[i].doClick();
+				}
+			}
+		});
+		resetBtn.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				for (JButton button : lottoNumBtn) {
+					button.setBackground(null);
+				}
+				MyListener.reset();
+			}
+		});
+
+		lottoNumBtn = new JButton[45];
 
 		add(oneTicketPanel);
 		oneTicketPanel.add(titlePanel);
