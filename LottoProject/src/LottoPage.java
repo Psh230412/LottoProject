@@ -7,6 +7,7 @@ import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -15,6 +16,8 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+
+
 
 class LottoTicketManager {
 	List<LottoTicket> lottoTicketList = new ArrayList<>();
@@ -84,64 +87,6 @@ class LottoTicket extends JFrame {
 
 		btnPanel.setLayout(new FlowLayout());
 		JButton autoBtn = new JButton("자동");
-		autoBtn.setPreferredSize(new Dimension(250, 30));
-		JButton resetBtn = new JButton("초기화");
-		resetBtn.setPreferredSize(new Dimension(250, 30));
-		btnPanel.add(autoBtn);
-		btnPanel.add(resetBtn);
-		
-		
-		
-		lottoNumBtn = new JButton[45];
-
-		buttonCreate();
-
-		lnbPanel.setLayout(new GridLayout(9, 5));
-		for (int i = 0; i < lottoNumBtn.length; i++) {
-			lnbPanel.add(lottoNumBtn[i]);
-		}
-	public void guideLblCreate() {
-		guideLbl1 = new JLabel[5];
-		guideLbl1[0] = new JLabel("A");
-		guideLbl1[1] = new JLabel("B");
-		guideLbl1[2] = new JLabel("C");
-		guideLbl1[3] = new JLabel("D");
-		guideLbl1[4] = new JLabel("E");
-
-	}
-
-	public LottoTicket() {
-
-		JPanel oneTicketPanel = new JPanel();
-
-		JPanel titlePanel = new JPanel();
-		JPanel guideLbl1titlePanel = new JPanel();
-		JPanel guideLbl2titlePanel = new JPanel();
-		JPanel lnbPanel = new JPanel();
-		JPanel btnPanel = new JPanel();
-		Font font = new Font("SansSerif", Font.BOLD, 30);
-
-		guideLblCreate();
-
-		guideLbl2 = new JLabel("1000��");
-		guideLbl1[0].setFont(font);
-		guideLbl2.setFont(font);
-
-		guideLbl1titlePanel.setPreferredSize(new Dimension(20, 20));
-		guideLbl2titlePanel.setPreferredSize(new Dimension(45, 20));
-		guideLbl1titlePanel.add(guideLbl1[0]);
-		guideLbl2titlePanel.add(guideLbl2);
-		guideLbl1titlePanel.setBackground(Color.white);
-		guideLbl2titlePanel.setBackground(Color.PINK);
-
-		titlePanel.setLayout(new BoxLayout(titlePanel, BoxLayout.X_AXIS));
-		titlePanel.add(guideLbl1titlePanel);
-		titlePanel.add(guideLbl2titlePanel);
-
-		oneTicketPanel.setLayout(new BoxLayout(oneTicketPanel, BoxLayout.Y_AXIS));
-
-		btnPanel.setLayout(new FlowLayout());
-		JButton autoBtn = new JButton("자동");
 		JButton resetBtn = new JButton("초기화");
 		autoBtn.setPreferredSize(new Dimension(250, 30));
 		resetBtn.setPreferredSize(new Dimension(250, 30));
@@ -150,9 +95,16 @@ class LottoTicket extends JFrame {
 		autoBtn.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				for (int i = 0; i < 6; i++) {
-					lottoNumBtn[i].doClick();
+				List<Integer> numbers = new ArrayList<>();
+				for(int i=0;i<45;i++) {
+					numbers.add(i);
 				}
+				Collections.shuffle(numbers);
+				
+				for (int i = 0; i <6 ; i++) {
+					lottoNumBtn[numbers.get(i)].doClick();
+				}
+				
 			}
 		});
 		resetBtn.addActionListener(new ActionListener() {
@@ -166,6 +118,13 @@ class LottoTicket extends JFrame {
 		});
 
 		lottoNumBtn = new JButton[45];
+
+		buttonCreate();
+
+		lnbPanel.setLayout(new GridLayout(9, 5));
+		for (int i = 0; i < lottoNumBtn.length; i++) {
+			lnbPanel.add(lottoNumBtn[i]);
+		}
 
 		add(oneTicketPanel);
 		oneTicketPanel.add(titlePanel);
@@ -181,23 +140,29 @@ class LottoTicket extends JFrame {
 }
 
 class MyListener implements ActionListener {
-	
-   @Override
-   public void actionPerformed(ActionEvent e) {
-	   JButton source =(JButton) e.getSource();
-	      if(!source.getBackground().equals(Color.RED)) {
-	    	  source.setBackground(Color.RED);
-	      }else {
-	    	  source.setBackground(Color.WHITE);
-	      }
-   }
+	private static int changeCount = 0;
 
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		JButton source = (JButton) e.getSource();
+		if (changeCount < 6) {
+			if (!source.getBackground().equals(Color.RED)) {
+				source.setBackground(Color.RED);
+				changeCount++;
+			} else {
+				source.setBackground(null);
+				changeCount--;
+			}
+		}
+	}
+
+	public static void reset() {
+		changeCount = 0;
+	}
 }
 
-public class LottoPage extends JFrame {
-	
+class LottoPage {
 	public static void main(String[] args) {
 		new LottoTicket();
 	}
-
 }
