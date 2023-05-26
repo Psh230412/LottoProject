@@ -34,7 +34,7 @@ class LottoTicketManager {
 }
 
 class LottoTicket extends JFrame {
-	public LinkedList myNum;
+
 	private JLabel[] guideLbl1;
 	private JLabel guideLbl2;
 	private JButton[] lottoNumBtn = new JButton[45];;
@@ -127,7 +127,7 @@ class LottoTicket extends JFrame {
 					
 				}
 				Collections.shuffle(numbers);
-
+			
 				for (int i = 0; i < 6 - clickCount; i++) {
 					lottoNumBtn[numbers.get(i)].doClick();
 					
