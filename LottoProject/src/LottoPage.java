@@ -1,4 +1,7 @@
 import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.GridLayout;
 import java.util.LinkedList;
 
@@ -14,7 +17,7 @@ class LottoTicket extends JFrame {
 	 private LinkedList myNum;
 	    private JButton autoBtn;
 	    private JButton resetBtn;
-	    private JLabel guideLbl1;
+	    private JLabel[] guideLbl1;
 	    private JLabel guideLbl2;
 	    private JButton[] lottoNumBtn;
 	    
@@ -25,9 +28,19 @@ class LottoTicket extends JFrame {
 	    		//lottoNumbtn[0]={1} lottoNumbtn[1]={2}.......lottoNumbtn[n]={n+1}
 	    	}
 	    }
+	    public void guideLblCreate() {
+	    	guideLbl1 = new JLabel[5];
+	    	guideLbl1[0] = new JLabel("A");
+	    	guideLbl1[1] = new JLabel("B");
+	    	guideLbl1[2] = new JLabel("C");
+	    	guideLbl1[3] = new JLabel("D");
+	    	guideLbl1[4] = new JLabel("E");
+	    	
+	    }
 	    
 	    
 	    public LottoTicket() {
+	    	
 	    	JPanel oneTicketPanel = new JPanel();
 	    	
 	    	JPanel titlePanel = new JPanel();
@@ -35,15 +48,25 @@ class LottoTicket extends JFrame {
 	    	JPanel guideLbl2titlePanel = new JPanel();
 	    	JPanel lnbPanel = new JPanel();
 	    	JPanel btnPanel = new JPanel();
+	    	Font font = new Font("SansSerif",Font.BOLD,30);
 	    	
 	    	
+	    	guideLblCreate();
 	    	
-	    	guideLbl1= new JLabel("A");
+	    	
 	    	guideLbl2 = new JLabel("1000¿ø");
+	    	guideLbl1[0].setFont(font);
+	    	guideLbl2.setFont(font);
 	    	
-	    	guideLbl1titlePanel.add(guideLbl1);
+	    	guideLbl1titlePanel.setPreferredSize(new Dimension(20,20));
+	    	guideLbl2titlePanel.setPreferredSize(new Dimension(45,20));
+	    	guideLbl1titlePanel.add(guideLbl1[0]);
 	    	guideLbl2titlePanel.add(guideLbl2);
-	    	titlePanel.setLayout(new BoxLayout(titlePanel,BoxLayout.X_AXIS));
+	    	guideLbl1titlePanel.setBackground(Color.white);
+	    	guideLbl2titlePanel.setBackground(Color.PINK);
+
+	    	
+	    	titlePanel.setLayout(new BoxLayout(titlePanel, BoxLayout.X_AXIS));
 			titlePanel.add(guideLbl1titlePanel);
 			titlePanel.add(guideLbl2titlePanel);
 	    	
@@ -55,7 +78,7 @@ class LottoTicket extends JFrame {
 	    	
 	    	buttonCreate();
 	    	
-	    	lnbPanel.setLayout(new GridLayout(6,8));
+	    	lnbPanel.setLayout(new GridLayout(9,5));
 	    	for(int i=0;i<lottoNumBtn.length;i++) {
 	    		lnbPanel.add(lottoNumBtn[i]);
 	    	}
@@ -65,7 +88,8 @@ class LottoTicket extends JFrame {
 	    	oneTicketPanel.add(lnbPanel);
 	    	oneTicketPanel.add(btnPanel);
 	    	
-	    	setSize(600, 1000);
+	    	
+	    	setSize(300, 500);
 	    	setVisible(true);
 			setDefaultCloseOperation(EXIT_ON_CLOSE);
 	  
