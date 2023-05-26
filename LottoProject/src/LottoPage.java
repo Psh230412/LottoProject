@@ -8,6 +8,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Random;
@@ -32,7 +33,7 @@ class LottoTicketManager {
 }
 
 class LottoTicket extends JFrame {
-	private LinkedList myNum;
+	public LinkedList myNum;
 	private JLabel[] guideLbl1;
 	private JLabel guideLbl2;
 	private JButton[] lottoNumBtn;
@@ -98,10 +99,7 @@ class LottoTicket extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				List<Integer> numbers = new ArrayList<>();
-<<<<<<< HEAD
-				for(int i=0;i<45;i++) {
-					numbers.add(i);
-=======
+
 				for (int i = 0; i < 45; i++) {
 					numbers.add(i);
 				}
@@ -109,13 +107,8 @@ class LottoTicket extends JFrame {
 
 				for (int i = 0; i < 6; i++) {
 					lottoNumBtn[numbers.get(i)].doClick();
->>>>>>> branch 'master' of https://github.com/Psh230412/LottoProject.git
 				}
-				Collections.shuffle(numbers);
 				
-				for (int i = 0; i <6 ; i++) {
-					lottoNumBtn[numbers.get(i)].doClick();
-				}
 				
 			}
 		});
@@ -146,8 +139,16 @@ class LottoTicket extends JFrame {
 		setSize(300, 500);
 		setVisible(true);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
+		
+		
 
 	}
+	/*
+	 * public LinkedList getColorBtn() { myNum= new LinkedList<Integer>(); for (int
+	 * i = 0; i < lottoNumBtn.length; i++) {
+	 * if(lottoNumBtn[i].getBackground()==Color.RED) { myNum.add(i+1); } } return
+	 * myNum; }
+	 */
 
 }
 
@@ -171,10 +172,21 @@ class MyListener implements ActionListener {
 	public static void reset() {
 		changeCount = 0;
 	}
+	
 }
+
+
 
 class LottoPage {
 	public static void main(String[] args) {
-		new LottoTicket();
+		LottoTicket lt = new LottoTicket();
+		
+		/*
+		 * LinkedList<Integer> llist = lt.getColorBtn(); Iterator<Integer> iterator =
+		 * llist.iterator(); while(iterator.hasNext()) { int a =iterator.next();
+		 * System.out.println(a); }
+		 */
 	}
+
+	
 }
