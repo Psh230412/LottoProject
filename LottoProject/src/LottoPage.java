@@ -1,6 +1,7 @@
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.GridLayout;
 import java.util.ArrayList;
@@ -28,8 +29,6 @@ class LottoTicketManager {
 
 class LottoTicket extends JFrame {
 	 private LinkedList myNum;
-	    private JButton autoBtn;
-	    private JButton resetBtn;
 	    private JLabel[] guideLbl1;
 	    private JLabel guideLbl2;
 	    private JButton[] lottoNumBtn;
@@ -85,6 +84,16 @@ class LottoTicket extends JFrame {
 	    	
 	    	oneTicketPanel.setLayout(new BoxLayout(oneTicketPanel, BoxLayout.Y_AXIS));
 	    	
+	    	btnPanel.setLayout(new FlowLayout());
+	    	JButton autoBtn = new JButton("자동");
+	    	autoBtn.setPreferredSize(new Dimension(250,30));
+	    	JButton resetBtn= new JButton("초기화");
+	    	resetBtn.setPreferredSize(new Dimension(250,30));
+	    	btnPanel.add(autoBtn);
+	    	btnPanel.add(resetBtn);
+	    	
+	    	
+	    	
 	    	
 	    	lottoNumBtn = new JButton[45];
 	    	
@@ -108,6 +117,8 @@ class LottoTicket extends JFrame {
 	  
 
 	    }
+	    
+	    
     
    
 
