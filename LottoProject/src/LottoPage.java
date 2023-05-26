@@ -17,6 +17,7 @@ import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 
@@ -36,7 +37,7 @@ class LottoTicket extends JFrame {
 	public LinkedList myNum;
 	private JLabel[] guideLbl1;
 	private JLabel guideLbl2;
-	private JButton[] lottoNumBtn;
+	private JButton[] lottoNumBtn = new JButton[45];;
 
 	public void buttonCreate() {
 		for (int i = 0; i < lottoNumBtn.length; i++) {
@@ -55,6 +56,16 @@ class LottoTicket extends JFrame {
 		guideLbl1[3] = new JLabel("D");
 		guideLbl1[4] = new JLabel("E");
 
+	}
+
+	public List<Integer> getSelectedNumbers() {
+		List<Integer> selectedNumbers = new ArrayList<>();
+		for (int i = 0; i < lottoNumBtn.length; i++) {
+			if (lottoNumBtn[i].getBackground().equals(Color.RED)) {
+				selectedNumbers.add(i + 1); // lottoNumBtn의 인덱스는 0부터 시작하므로 1을 더해야 번호를 얻을 수 있습니다.
+			}
+		}
+		return selectedNumbers;
 	}
 
 	public LottoTicket() {
@@ -98,15 +109,28 @@ class LottoTicket extends JFrame {
 		autoBtn.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				int clickCount = 0;
+
+				for (int i = 0; i < 45; i++) {
+					if (lottoNumBtn[i].getBackground().equals(Color.RED)) {
+						
+						clickCount++;
+					}
+				}
+
 				List<Integer> numbers = new ArrayList<>();
 
 				for (int i = 0; i < 45; i++) {
-					numbers.add(i);
+					if (!lottoNumBtn[i].getBackground().equals(Color.RED)) {
+						numbers.add(i);
+					}
+					
 				}
 				Collections.shuffle(numbers);
 
-				for (int i = 0; i < 6; i++) {
+				for (int i = 0; i < 6 - clickCount; i++) {
 					lottoNumBtn[numbers.get(i)].doClick();
+					
 				}
 				
 				
@@ -121,8 +145,6 @@ class LottoTicket extends JFrame {
 				MyListener.reset();
 			}
 		});
-
-		lottoNumBtn = new JButton[45];
 
 		buttonCreate();
 
@@ -158,15 +180,19 @@ class MyListener implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		JButton source = (JButton) e.getSource();
-		if (changeCount < 6) {
-			if (!source.getBackground().equals(Color.RED)) {
-				source.setBackground(Color.RED);
-				changeCount++;
-			} else {
-				source.setBackground(null);
-				changeCount--;
-			}
+		if (!source.getBackground().equals(Color.RED) && changeCount < 6) {
+			source.setBackground(Color.RED);
+
+			changeCount++;
+
+		} else if (!source.getBackground().equals(Color.RED) && changeCount == 6) {
+			JOptionPane.showMessageDialog(null, "로또숫자는 6개까지 고를 수 있습니다.", "숫자초과", JOptionPane.WARNING_MESSAGE);
+
+		} else if (changeCount <= 6) {
+			source.setBackground(null);
+			changeCount--;
 		}
+
 	}
 
 	public static void reset() {
@@ -179,13 +205,9 @@ class MyListener implements ActionListener {
 
 class LottoPage {
 	public static void main(String[] args) {
-		LottoTicket lt = new LottoTicket();
-		
-		/*
-		 * LinkedList<Integer> llist = lt.getColorBtn(); Iterator<Integer> iterator =
-		 * llist.iterator(); while(iterator.hasNext()) { int a =iterator.next();
-		 * System.out.println(a); }
-		 */
+
+		LottoTicket lottoTicket = new LottoTicket();
+
 	}
 
 	

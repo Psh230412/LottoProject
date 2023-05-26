@@ -1,5 +1,7 @@
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
@@ -9,13 +11,41 @@ import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 
 
-class LottoQuantity {
-    private int count;
 
-}
 
-public class StartPage extends JFrame {
-    public StartPage() {
+class StartPage extends JFrame {
+	 public StartPage() { // 프로그램 실행 시 맨 처음에 뜰 창(로또하러가기 버튼)
+	        JPanel panel = new JPanel();
+	        setSize(1440, 648);
+	        setTitle("로또");
+
+	        JButton btn = new JButton("로또하러가기");
+	        setLayout(null);
+	        panel.setLayout(null);
+	        panel.add(btn);
+
+	        panel.setBounds(0, 0, getWidth(), getHeight());
+	        btn.setBounds(600, 500, 250, 100);
+
+	        class Run2 implements ActionListener {
+	            public void actionPerformed(ActionEvent e) {
+	                dispose();
+	                new LottoQuantity();
+	            }
+	        }
+
+	        btn.addActionListener(new Run2());
+
+	        add(panel);
+	        setVisible(true);
+	        setDefaultCloseOperation(EXIT_ON_CLOSE);
+	    }
+
+    }
+class LottoQuantity extends JFrame{
+	
+	private int count;
+    public LottoQuantity() {
     	//로또 구매 팝업창  
         setSize(300, 450);
         setTitle("구매하기");
@@ -68,9 +98,7 @@ public class StartPage extends JFrame {
         setLocationRelativeTo(null); 
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setVisible(true);
-    }
+    
 
-    public static void main(String[] args) {
-        StartPage s = new StartPage();
-    }
+}
 }
