@@ -13,7 +13,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-// ´çÃ·¹øÈ£ »Ì±â
+//ë‹¹ì²¨ë²ˆí˜¸ ë½‘ê¸°
 class LottoDraw {
 	private List<Integer> drawNum = new ArrayList<>();
 	
@@ -32,16 +32,16 @@ class LottoDraw {
 }
 
 
-// ´çÃ·¹øÈ£¿Í ³» ¹øÈ£ ºñ±³
+//ë‹¹ì²¨ë²ˆí˜¸ì™€ ë‚´ ë²ˆí˜¸ ë¹„êµ
 class LottoDrawView extends JPanel {
 	private Dimension dimension = new Dimension(100, 100);
-	private Font font = new Font("¸¼Àº °íµñ", Font.PLAIN, 50);
+	private Font font = new Font("ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½", Font.PLAIN, 50);
 
 	public LottoDrawView() {
 		BoxLayout layout = new BoxLayout(this, BoxLayout.Y_AXIS);
 		setLayout(layout);
 		
-		// ³» ¹øÈ£ º¸¿©ÁÖ´Â ÆĞ³Î¸¸µå´Â Å¬·¡½º
+		// ë‚´ ë²ˆí˜¸ ë³´ì—¬ì£¼ëŠ” íŒ¨ë„ë§Œë“œëŠ” í´ë˜ìŠ¤
 		class MyNumPnl extends JPanel {
 			private JLabel autoLbl;
 			private JLabel orderLbl;
@@ -55,7 +55,7 @@ class LottoDrawView extends JPanel {
 			public List<JLabel> myNumLblList = new LinkedList<JLabel>();
 
 			public MyNumPnl() {
-				autoLbl = new JLabel("ÀÚµ¿");
+				autoLbl = new JLabel("ï¿½Úµï¿½");
 				orderLbl = new JLabel("A");
 				myNumLbl1 = new JLabel("1");
 				myNumLbl2 = new JLabel("2");
@@ -63,7 +63,7 @@ class LottoDrawView extends JPanel {
 				myNumLbl4 = new JLabel("4");
 				myNumLbl5 = new JLabel("5");
 				myNumLbl6 = new JLabel("6");
-				gradeLbl = new JLabel("µî¼ö");
+				gradeLbl = new JLabel("ï¿½ï¿½ï¿½");
 
 				myNumLblList.add(autoLbl);
 				myNumLblList.add(orderLbl);
@@ -87,7 +87,7 @@ class LottoDrawView extends JPanel {
 			}
 		}
 
-		// ´çÃ·¹øÈ£ ÆĞ³Î
+		// ë‹¹ì²¨ë²ˆí˜¸ íŒ¨ë„
 		LottoDraw lottoDraw = new LottoDraw();
 		List<Integer> list = lottoDraw.getDrawNum();
 		
@@ -134,7 +134,7 @@ class LottoDrawView extends JPanel {
 		drawNumPnl.add(drawNumLbl7);
 		add(drawNumPnl);
 
-		// ³» ¹øÈ£ ÆĞ³Î
+		// ë‚´ ë²ˆí˜¸ íŒ¨ë„
 		MyNumPnl a = new MyNumPnl();
 		MyNumPnl b = new MyNumPnl();
 		MyNumPnl c = new MyNumPnl();
