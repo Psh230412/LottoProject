@@ -55,6 +55,16 @@ class LottoTicket extends JFrame {
 
 	}
 
+	public List<Integer> getSelectedNumbers() {
+		List<Integer> selectedNumbers = new ArrayList<>();
+		for (int i = 0; i < lottoNumBtn.length; i++) {
+			if (lottoNumBtn[i].getBackground().equals(Color.RED)) {
+				selectedNumbers.add(i + 1); // lottoNumBtn의 인덱스는 0부터 시작하므로 1을 더해야 번호를 얻을 수 있습니다.
+			}
+		}
+		return selectedNumbers;
+	}
+
 	public LottoTicket() {
 
 		JPanel oneTicketPanel = new JPanel();
@@ -97,21 +107,20 @@ class LottoTicket extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				int clickCount = 0;
-				
-				
+
 				for (int i = 0; i < 45; i++) {
 					if (lottoNumBtn[i].getBackground().equals(Color.RED)) {
 						clickCount++;
 					}
 				}
-				
+
 				List<Integer> numbers = new ArrayList<>();
 				for (int i = 0; i < 45; i++) {
 					numbers.add(i);
 				}
 				Collections.shuffle(numbers);
 
-				for (int i = 0; i < 6-clickCount; i++) {
+				for (int i = 0; i < 6 - clickCount; i++) {
 					lottoNumBtn[numbers.get(i)].doClick();
 				}
 			}
@@ -152,19 +161,19 @@ class MyListener implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		JButton source = (JButton) e.getSource();
-			if (!source.getBackground().equals(Color.RED)&&changeCount < 6) {
-				source.setBackground(Color.RED);
-				
-					changeCount++;
-				
-			} else if(!source.getBackground().equals(Color.RED)&&changeCount == 6) {
-				JOptionPane.showMessageDialog(null, "로또숫자는 6개까지 고를 수 있습니다.", "숫자초과", JOptionPane.WARNING_MESSAGE);
-				
-			}else if(changeCount <= 6){
-				source.setBackground(null);
-				changeCount--;
-			} 
-		
+		if (!source.getBackground().equals(Color.RED) && changeCount < 6) {
+			source.setBackground(Color.RED);
+
+			changeCount++;
+
+		} else if (!source.getBackground().equals(Color.RED) && changeCount == 6) {
+			JOptionPane.showMessageDialog(null, "로또숫자는 6개까지 고를 수 있습니다.", "숫자초과", JOptionPane.WARNING_MESSAGE);
+
+		} else if (changeCount <= 6) {
+			source.setBackground(null);
+			changeCount--;
+		}
+
 	}
 
 	public static void reset() {
@@ -174,6 +183,6 @@ class MyListener implements ActionListener {
 
 class LottoPage {
 	public static void main(String[] args) {
-		new LottoTicket();
+		LottoTicket lottoTicket = new LottoTicket();
 	}
 }
