@@ -20,20 +20,12 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
-
-
-
-
 class LottoTicket extends JFrame {
-
-	private JLabel guideLbl1A;
-	private JLabel guideLbl2;
+	private boolean isClick = false;
+	private boolean isAuto = false;
 	List<Integer> selectedNumbers = new ArrayList<>();
-	private JButton[] lottoNumBtn = new JButton[45];
-	private boolean isautoBtn =false;
-	public boolean isnumBtn =false;
-	private boolean isresetBtn =false;
-	MyListener myListener1 = new MyListener();
+	private JButton[] lottoNumBtn = new JButton[45];;
+	MyListener ml1 = new MyListener();
 
 	public void buttonCreate() {
 		for (int i = 0; i < lottoNumBtn.length; i++) {
@@ -43,8 +35,6 @@ class LottoTicket extends JFrame {
 			lottoNumBtn[i].addActionListener(new MyListener());
 		}
 	}
-
-
 
 	public List<Integer> getSelectedNumbers() {
 		for (int i = 0; i < lottoNumBtn.length; i++) {
@@ -66,19 +56,13 @@ class LottoTicket extends JFrame {
 		JPanel btnPanel = new JPanel();
 		Font font = new Font("SansSerif", Font.BOLD, 30);
 
-		
-		
-		
 		JLabel guideLbl1a = new JLabel("A");
 		JLabel guideLbl1b = new JLabel("1000원");
 		guideLbl1a.setFont(font);
 		guideLbl1b.setFont(font);
 
-		
-
 		guideLbl1titlePanel.setPreferredSize(new Dimension(20, 20));
 		guideLbl2titlePanel.setPreferredSize(new Dimension(45, 20));
-		
 		guideLbl1titlePanel.add(guideLbl1a);
 		guideLbl2titlePanel.add(guideLbl1b);
 		guideLbl1titlePanel.setBackground(Color.white);
@@ -101,19 +85,15 @@ class LottoTicket extends JFrame {
 		btnPanel.add(resetBtn);
 		btnPanel.add(returnBtn);
 		autoBtn.addActionListener(new ActionListener() {
-			
-		
-			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				
 				int clickCount = 0;
+				isClick = true;
+				System.out.println("자동버튼 클릭 유무" + isClick);
 
 				for (int i = 0; i < 45; i++) {
 					if (lottoNumBtn[i].getBackground().equals(Color.RED)) {
-						
 						clickCount++;
-						
 					}
 				}
 
@@ -123,32 +103,35 @@ class LottoTicket extends JFrame {
 					if (!lottoNumBtn[i].getBackground().equals(Color.RED)) {
 						numbers.add(i);
 					}
-					
+
 				}
 				Collections.shuffle(numbers);
 				int maxCount = 6;
 				int yesNo = maxCount - clickCount;
+				if (yesNo == 6) {
+					isAuto = true;
+					System.out.println("자동입니다");
+				}
+				if (yesNo >= 1 && yesNo <= 5) {
+					isAuto = false;
+					System.out.println("반자동입니다");
+				}
 
 				for (int i = 0; i < yesNo; i++) {
 					lottoNumBtn[numbers.get(i)].doClick();
 
 				}
-	
-				
+
 			}
 		});
 		resetBtn.addActionListener(new ActionListener() {
-			
-
-			// resetBtn을 누르면 자동 반자동 수동 을 담는 리스트의 모든 요소를 삭제한다.
-
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				
 				for (JButton button : lottoNumBtn) {
 					button.setBackground(null);
 				}
-				myListener1.reset();
+			
+				ml1.reset();
 			}
 		});
 
@@ -169,24 +152,19 @@ class LottoTicket extends JFrame {
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		
 		
+		System.out.println("자동(반자동) / 수동 구분 :" + isClick);
 
 	}
-	
-
 }
 
 class MyListener implements ActionListener {
-	
 	private static int changeCount = 0;
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		
-		
 		JButton source = (JButton) e.getSource();
 		if (!source.getBackground().equals(Color.RED) && changeCount < 6) {
 			source.setBackground(Color.RED);
-
 			changeCount++;
 
 		} else if (!source.getBackground().equals(Color.RED) && changeCount == 6) {
@@ -202,10 +180,8 @@ class MyListener implements ActionListener {
 	public void reset() {
 		changeCount = 0;
 	}
-	
+
 }
-
-
 
 class LottoPage {
 	public static void main(String[] args) {
