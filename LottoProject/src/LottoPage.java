@@ -22,8 +22,10 @@ import javax.swing.JPanel;
 
 class LottoTicket extends JFrame {
 	private boolean isClick = false;
+	private boolean isAuto = false;
 	List<Integer> selectedNumbers = new ArrayList<>();
 	private JButton[] lottoNumBtn = new JButton[45];;
+	MyListener ml1 = new MyListener();
 
 	public void buttonCreate() {
 		for (int i = 0; i < lottoNumBtn.length; i++) {
@@ -86,6 +88,8 @@ class LottoTicket extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				int clickCount = 0;
+				isClick = true;
+				System.out.println("자동버튼 클릭 유무" + isClick);
 
 				for (int i = 0; i < 45; i++) {
 					if (lottoNumBtn[i].getBackground().equals(Color.RED)) {
@@ -104,6 +108,14 @@ class LottoTicket extends JFrame {
 				Collections.shuffle(numbers);
 				int maxCount = 6;
 				int yesNo = maxCount - clickCount;
+				if (yesNo == 6) {
+					isAuto = true;
+					System.out.println("자동입니다");
+				}
+				if (yesNo >= 1 && yesNo <= 5) {
+					isAuto = false;
+					System.out.println("반자동입니다");
+				}
 
 				for (int i = 0; i < yesNo; i++) {
 					lottoNumBtn[numbers.get(i)].doClick();
@@ -118,7 +130,7 @@ class LottoTicket extends JFrame {
 				for (JButton button : lottoNumBtn) {
 					button.setBackground(null);
 				}
-				MyListener.reset();
+				ml1.reset();
 			}
 		});
 
@@ -137,6 +149,7 @@ class LottoTicket extends JFrame {
 		setSize(280, 550);
 		setVisible(true);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
+		System.out.println("자동(반자동) / 수동 구분 :" + isClick);
 
 	}
 }
@@ -149,7 +162,6 @@ class MyListener implements ActionListener {
 		JButton source = (JButton) e.getSource();
 		if (!source.getBackground().equals(Color.RED) && changeCount < 6) {
 			source.setBackground(Color.RED);
-
 			changeCount++;
 
 		} else if (!source.getBackground().equals(Color.RED) && changeCount == 6) {
@@ -162,7 +174,7 @@ class MyListener implements ActionListener {
 
 	}
 
-	public static void reset() {
+	public void reset() {
 		changeCount = 0;
 	}
 
