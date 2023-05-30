@@ -206,7 +206,7 @@ class LottoTicket1 extends JFrame {
 		});
 		buttonCreate();
 
-		lnbPanel.setLayout(new GridLayout(9, 5));
+		lnbPanel.setLayout(new GridLayout(0, 6));
 		for (int i = 0; i < lottoNumBtn.length; i++) {
 			lnbPanel.add(lottoNumBtn[i]);
 		}
@@ -216,7 +216,7 @@ class LottoTicket1 extends JFrame {
 		oneTicketPanel.add(lnbPanel);
 		oneTicketPanel.add(btnPanel);
 
-		setSize(280, 550);
+		setSize(320, 550);
 		setVisible(true);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setResizable(false);
