@@ -116,6 +116,7 @@ class LottoTicket1 extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				int clickCount = 0;
+				
 				isClick = true;
 				System.out.println("자동버튼 클릭 유무" + isClick);
 
@@ -149,7 +150,6 @@ class LottoTicket1 extends JFrame {
 					lottoNumBtn[numbers.get(i)].doClick();
 
 				}
-
 			}
 		});
 		resetBtn.addActionListener(new ActionListener() {
@@ -194,6 +194,7 @@ class MyListener implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		JButton source = (JButton) e.getSource();
+		if(lt1.getChangeCount() == 6) 
 		lt1.setAuto(false);
 		System.out.println("자동/반자동 유무" + lt1.isAuto());
 		if (!source.getBackground().equals(Color.RED) && lt1.getChangeCount() < 6) {
@@ -206,10 +207,7 @@ class MyListener implements ActionListener {
 		} else if (lt1.getChangeCount() <= 6) {
 			source.setBackground(null);
 			lt1.decreaseCount();
-		} else if(lt1.getChangeCount() == 0) {
-			lt1.setAuto(false);
 			lt1.setClick(false);
-			System.out.println("수동입니다");
 		}
 
 	}
