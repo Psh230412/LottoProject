@@ -349,12 +349,24 @@ public class LottoNumberPage extends JFrame {
 	public LottoNumberPage() {
 		BoxLayout layout = new BoxLayout(getContentPane(), BoxLayout.Y_AXIS);
 		setLayout(layout);
+		
+		// 프레임 수정 해야됨
+		JButton nextBtn = new JButton("다음");
+		nextBtn.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				new LottoRandomPage();
+				
+			}
+		});
 
 		add(new MyNumPnlA());
 		add(new MyNumPnlB());
 		add(new MyNumPnlC());
 		add(new MyNumPnlD());
 		add(new MyNumPnlE());
+		add(nextBtn);
+		
 
 		setSize(500, 800);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);

@@ -25,7 +25,6 @@ class LottoTicket1 extends JFrame {
 	static List<Integer> selectedNumbers = new ArrayList<>();
 	private JButton[] lottoNumBtn = new JButton[45];;
 	private static int changeCount = 0;
-	private MyNumPnlA pnlA;
 
 	public boolean isAuto() {
 		return isAuto;
@@ -197,18 +196,19 @@ class LottoTicket1 extends JFrame {
 							JOptionPane.YES_NO_OPTION);
 
 					if (result == JOptionPane.YES_OPTION) {
+						LottoTicket1.this.dispose();
 						getSelectedNumbers();
 						getSelectedMode();
 						System.out.println(selectedMode);
 						System.out.println(selectedNumbers);
 
-						pnlA.getMyNumLbl1A().setText(selectedNumbers.get(0).toString());
-						pnlA.getMyNumLbl2A().setText(selectedNumbers.get(1).toString());
-						pnlA.getMyNumLbl3A().setText(selectedNumbers.get(2).toString());
-						pnlA.getMyNumLbl4A().setText(selectedNumbers.get(3).toString());
-						pnlA.getMyNumLbl5A().setText(selectedNumbers.get(4).toString());
-						pnlA.getMyNumLbl6A().setText(selectedNumbers.get(5).toString());
-						pnlA.getAutoLblA().setText(selectedMode.get(0).toString());
+						MyNumPnlA.getMyNumLbl1A().setText(selectedNumbers.get(0).toString());
+						MyNumPnlA.getMyNumLbl2A().setText(selectedNumbers.get(1).toString());
+						MyNumPnlA.getMyNumLbl3A().setText(selectedNumbers.get(2).toString());
+						MyNumPnlA.getMyNumLbl4A().setText(selectedNumbers.get(3).toString());
+						MyNumPnlA.getMyNumLbl5A().setText(selectedNumbers.get(4).toString());
+						MyNumPnlA.getMyNumLbl6A().setText(selectedNumbers.get(5).toString());
+						MyNumPnlA.getAutoLblA().setText(selectedMode.get(0).toString());
 					}
 					
 					

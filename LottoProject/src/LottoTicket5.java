@@ -27,7 +27,6 @@ class LottoTicket5 extends JFrame {
 	List<Integer> selectedNumbers = new ArrayList<>();
 	private JButton[] lottoNumBtn = new JButton[45];
 	private static int changeCount = 0;
-	private MyNumPnlE pnlE;
 
 	public boolean isAuto() {
 		return isAuto;
@@ -200,13 +199,13 @@ class LottoTicket5 extends JFrame {
 						System.out.println(selectedMode);
 						System.out.println(selectedNumbers);
 						
-						pnlE.getMyNumLbl1E().setText(selectedNumbers.get(0).toString());
-						pnlE.getMyNumLbl2E().setText(selectedNumbers.get(1).toString());
-						pnlE.getMyNumLbl3E().setText(selectedNumbers.get(2).toString());
-						pnlE.getMyNumLbl4E().setText(selectedNumbers.get(3).toString());
-						pnlE.getMyNumLbl5E().setText(selectedNumbers.get(4).toString());
-						pnlE.getMyNumLbl6E().setText(selectedNumbers.get(5).toString());
-						pnlE.getAutoLblE().setText(selectedMode.get(0).toString());
+						MyNumPnlE.getMyNumLbl1E().setText(selectedNumbers.get(0).toString());
+						MyNumPnlE.getMyNumLbl2E().setText(selectedNumbers.get(1).toString());
+						MyNumPnlE.getMyNumLbl3E().setText(selectedNumbers.get(2).toString());
+						MyNumPnlE.getMyNumLbl4E().setText(selectedNumbers.get(3).toString());
+						MyNumPnlE.getMyNumLbl5E().setText(selectedNumbers.get(4).toString());
+						MyNumPnlE.getMyNumLbl6E().setText(selectedNumbers.get(5).toString());
+						MyNumPnlE.getAutoLblE().setText(selectedMode.get(0).toString());
 					}
 				}
 
