@@ -21,21 +21,42 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 
+/*
+boolean 타입 변수 2개 생성
+ex)boolean1 boolean2
+false로 초기화
 
-class LottoTicketManager {
-	List<LottoTicket> lottoTicketList = new ArrayList<>();
-	LottoTicket lotto;
+숫자 버튼을 눌렀으면 boolean1 
 
-	public void createEachLottoTicket(int a) {
-		for (int i = 0; i < a; i++) {
-			lottoTicketList.add(lotto);
-		}
-	}
-}
+
+
+마지막에 누른 버튼이 자동이면  자동 or 반자동
+마지막에 누른 버튼이 자동인데 그 직전에 누른 버튼이 숫자 버튼이면 반자동
+마지막에 누른 버튼이 자동인데 그 직전에 누른 버튼이 숫자 버튼이 아니면 자동
+
+
+
+마지막에 누른 버튼이 자동이 아니면 수동
+
+
+
+
+숫자 -> 초기화  -> 자동 : 자동
+숫자-> 자동 : 반자동
+자동 -> 초기화 -> 자동 : 자동
+숫자 : 수동
+
+
+
+
+
+
+*/
+
 
 class LottoTicket extends JFrame {
 
-	private JLabel[] guideLbl1;
+	private JLabel guideLbl1A;
 	private JLabel guideLbl2;
 	private JButton[] lottoNumBtn = new JButton[45];;
 
@@ -48,15 +69,7 @@ class LottoTicket extends JFrame {
 		}
 	}
 
-	public void guideLblCreate() {
-		guideLbl1 = new JLabel[5];
-		guideLbl1[0] = new JLabel("A");
-		guideLbl1[1] = new JLabel("B");
-		guideLbl1[2] = new JLabel("C");
-		guideLbl1[3] = new JLabel("D");
-		guideLbl1[4] = new JLabel("E");
 
-	}
 
 	public List<Integer> getSelectedNumbers() {
 		List<Integer> selectedNumbers = new ArrayList<>();
@@ -79,15 +92,16 @@ class LottoTicket extends JFrame {
 		JPanel btnPanel = new JPanel();
 		Font font = new Font("SansSerif", Font.BOLD, 30);
 
-		guideLblCreate();
-
+		
+		guideLbl1A = new JLabel("A");
+		
 		guideLbl2 = new JLabel("1000원");
-		guideLbl1[0].setFont(font);
+		guideLbl1A.setFont(font);
 		guideLbl2.setFont(font);
 
 		guideLbl1titlePanel.setPreferredSize(new Dimension(20, 20));
 		guideLbl2titlePanel.setPreferredSize(new Dimension(45, 20));
-		guideLbl1titlePanel.add(guideLbl1[0]);
+		guideLbl1titlePanel.add(guideLbl1A);
 		guideLbl2titlePanel.add(guideLbl2);
 		guideLbl1titlePanel.setBackground(Color.white);
 		guideLbl2titlePanel.setBackground(Color.PINK);
@@ -115,6 +129,7 @@ class LottoTicket extends JFrame {
 					if (lottoNumBtn[i].getBackground().equals(Color.RED)) {
 						
 						clickCount++;
+						
 					}
 				}
 
@@ -129,14 +144,27 @@ class LottoTicket extends JFrame {
 				Collections.shuffle(numbers);
 			
 				for (int i = 0; i < 6 - clickCount; i++) {
+					
 					lottoNumBtn[numbers.get(i)].doClick();
 					
+				}
+				
+				if(clickCount==0) {
+					//autoBtn을 눌렀는데 clickCount==0이면 자동
+					//
+					
+				}
+				if (clickCount != 0) {
+					//autoBtn을 눌렀는데 clickCount!=0이면 수동 
 				}
 				
 				
 			}
 		});
 		resetBtn.addActionListener(new ActionListener() {
+
+			// resetBtn을 누르면 자동 반자동 수동 을 담는 리스트의 모든 요소를 삭제한다.
+
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				for (JButton button : lottoNumBtn) {
@@ -165,12 +193,7 @@ class LottoTicket extends JFrame {
 		
 
 	}
-	/*
-	 * public LinkedList getColorBtn() { myNum= new LinkedList<Integer>(); for (int
-	 * i = 0; i < lottoNumBtn.length; i++) {
-	 * if(lottoNumBtn[i].getBackground()==Color.RED) { myNum.add(i+1); } } return
-	 * myNum; }
-	 */
+	
 
 }
 
