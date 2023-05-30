@@ -77,7 +77,8 @@ class LottoTicket1 extends JFrame {
 		}
 		return selectedNumbers;
 	}
-	public List<String> getSelectedMode(){
+
+	public List<String> getSelectedMode() {
 		if (isAuto == true && isClick == true) {
 			selectedMode.add("자동");
 		} else if (isAuto == false && isClick == true) {
@@ -87,6 +88,7 @@ class LottoTicket1 extends JFrame {
 		}
 		return selectedMode;
 	}
+
 	public LottoTicket1() {
 
 		JPanel oneTicketPanel = new JPanel();
@@ -186,12 +188,20 @@ class LottoTicket1 extends JFrame {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				getSelectedNumbers();
-				getSelectedMode();
-				
-				System.out.println(selectedMode);
-				System.out.println(selectedNumbers);
-				
+				if (!(changeCount == 6)) {
+					JOptionPane.showMessageDialog(null, "번호를 6개까지 정하셔야합니다", "입력미달", JOptionPane.WARNING_MESSAGE);
+				} else {
+					int result = JOptionPane.showConfirmDialog(LottoTicket1.this, "번호를 확정하시겠습니까?", "복권번호 확정",
+							JOptionPane.YES_NO_OPTION);
+
+					if (result == JOptionPane.YES_OPTION) {
+						getSelectedNumbers();
+						getSelectedMode();
+						System.out.println(selectedMode);
+						System.out.println(selectedNumbers);
+					}
+				}
+
 			}
 		});
 		buttonCreate();
@@ -209,6 +219,10 @@ class LottoTicket1 extends JFrame {
 		setSize(280, 550);
 		setVisible(true);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
+	}
+
+	public static void main(String[] args) {
+		new LottoTicket1();
 	}
 }
 
@@ -249,4 +263,3 @@ class MyListener implements ActionListener {
 		}
 	}
 }
-
