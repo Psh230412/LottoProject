@@ -1,4 +1,4 @@
-import java.awt.BorderLayout;
+
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
@@ -150,7 +150,8 @@ class LottoTicket2 extends JFrame {
 				int yesNo = maxCount - clickCount;
 
 				for (int i = 0; i < yesNo; i++) {
-					lottoNumBtn[numbers.get(i)].doClick();
+					lottoNumBtn[numbers.get(i)].setBackground(Color.RED);
+					increaseCount();
 					autoCount++;
 				}
 				if (yesNo == 6) {

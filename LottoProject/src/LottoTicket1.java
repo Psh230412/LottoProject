@@ -8,10 +8,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Iterator;
-import java.util.LinkedList;
+
 import java.util.List;
-import java.util.Random;
 
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
@@ -154,8 +152,10 @@ class LottoTicket1 extends JFrame {
 				for (int i = 0; i < yesNo; i++) {
 					lottoNumBtn[numbers.get(i)].setBackground(Color.red);
 					increaseCount();
+
 					autoCount++;
 				}
+
 				if (yesNo == 6) {
 					isAuto = true;
 
@@ -188,6 +188,7 @@ class LottoTicket1 extends JFrame {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
+
 				if (!(changeCount == 6)) {
 					JOptionPane.showMessageDialog(null, "번호를 6개까지 정하셔야합니다", "입력미달", JOptionPane.WARNING_MESSAGE);
 				} else {
@@ -225,6 +226,7 @@ class LottoTicket1 extends JFrame {
 	public static void main(String[] args) {
 		new LottoTicket1();
 	}
+
 }
 
 class MyListener implements ActionListener {
@@ -237,10 +239,12 @@ class MyListener implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		JButton source = (JButton) e.getSource();
+
 		if (lt1.getChangeCount() == 6)
 			lt1.setAuto(false);
 
 		if (!source.getBackground().equals(Color.RED) && lt1.getChangeCount() < 6) {
+
 			source.setBackground(Color.RED);
 
 			lt1.increaseCount();
@@ -249,6 +253,7 @@ class MyListener implements ActionListener {
 			JOptionPane.showMessageDialog(null, "로또숫자는 6개까지 고를 수 있습니다.", "숫자초과", JOptionPane.WARNING_MESSAGE);
 		} else if (source.getBackground().equals(Color.RED) && lt1.getChangeCount() == 1 && lt1.isClick() == true) {
 			source.setBackground(null);
+
 			lt1.decreaseCount();
 			lt1.setAuto(false);
 			lt1.setClick(false);
