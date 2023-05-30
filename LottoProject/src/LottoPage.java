@@ -8,10 +8,10 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Iterator;
-import java.util.LinkedList;
+
+
 import java.util.List;
-import java.util.Random;
+
 
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
@@ -26,6 +26,7 @@ class LottoTicket1 extends JFrame {
 	List<Integer> selectedNumbers = new ArrayList<>();
 	private JButton[] lottoNumBtn = new JButton[45];;
 	private static int changeCount = 0;
+	List<String> SelectedMode = new ArrayList<>(); // "자동" "반자동" "수동" 
 
 	public boolean isAuto() {
 		return isAuto;
@@ -76,7 +77,16 @@ class LottoTicket1 extends JFrame {
 		}
 		return selectedNumbers;
 	}
-
+	public List<String > getSelectedMode(){
+		if (isAuto == true && isClick == true) {
+			SelectedMode.add("자동");
+		} else if (isAuto == false && isClick == true) {
+			SelectedMode.add("반자동");
+		} else {
+			SelectedMode.add("수동");
+		}
+		return SelectedMode;
+	}
 	public LottoTicket1() {
 
 		JPanel oneTicketPanel = new JPanel();
@@ -120,10 +130,7 @@ class LottoTicket1 extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				int clickCount = 0;
-				//isClick = true;
-
-				// isClick = true;
-				// System.out.println("자동버튼 클릭 유무" + isClick);
+				
 
 				for (int i = 0; i < 45; i++) {
 					if (lottoNumBtn[i].getBackground().equals(Color.RED)) {
@@ -181,7 +188,8 @@ class LottoTicket1 extends JFrame {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-
+				getSelectedMode();
+				
 				if (isAuto == true && isClick == true) {
 					System.out.println("자동입니다");
 					System.out.println(isClick);
