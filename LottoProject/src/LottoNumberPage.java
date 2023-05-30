@@ -2,6 +2,8 @@ import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.AbstractSequentialList;
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -11,123 +13,182 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-//�궡 踰덊샇 蹂댁뿬二쇰뒗 �뙣�꼸留뚮뱶�뒗 �겢�옒�뒪
-class MyNumPnl extends JPanel {
-	private Dimension dimension = new Dimension(50, 50);
-	private Font font = new Font("留묒� 怨좊뵓", Font.PLAIN, 20);
+//내 번호 보여주는 패널만드는 클래스
+class MyNumPnlA extends JPanel {
+	private JLabel myNumLbl1A;
+	private JLabel myNumLbl2A;
+	private JLabel myNumLbl3A;
+	private JLabel myNumLbl4A;
+	private JLabel myNumLbl5A;
+	private JLabel myNumLbl6A;
+	private JLabel autoLblA;
 
-	private List<JLabel> myNumLblList;
-	
-	JButton orderBtn;
-	String btnName;
-	
-
-	public List<JLabel> getMyNumLblList() {
-		return myNumLblList;
-	}
-	
-	
-
-	public MyNumPnl() {
+	// A
+	public MyNumPnlA() {	
 		
-	}
-
-
-
-	public MyNumPnl(JButton orderBtn,String btnName) {
-		myNumLblList = new LinkedList<JLabel>();
-		this.orderBtn = orderBtn;
-		this.btnName = btnName;
+		JButton orderBtnA = new JButton("A");
+		myNumLbl1A = new JLabel("0");
+		myNumLbl2A = new JLabel("0");
+		myNumLbl3A = new JLabel("0");
+		myNumLbl4A = new JLabel("0");
+		myNumLbl5A = new JLabel("0");
+		myNumLbl6A = new JLabel("0");
+		autoLblA = new JLabel("자동");
 		
-		orderBtn=new JButton(btnName);
-		
-		//JButton orderBtn = new JButton("A");
-		JLabel myNumLbl1 = new JLabel("1");
-		JLabel myNumLbl2 = new JLabel("2");
-		JLabel myNumLbl3 = new JLabel("3");
-		JLabel myNumLbl4 = new JLabel("4");
-		JLabel myNumLbl5 = new JLabel("5");
-		JLabel myNumLbl6 = new JLabel("6");
-		JLabel autoLbl = new JLabel("�옄�룞");
+		orderBtnA.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				new LottoTicket1();
+			}
+		});
 
-		myNumLblList.add(myNumLbl1);
-		myNumLblList.add(myNumLbl2);
-		myNumLblList.add(myNumLbl3);
-		myNumLblList.add(myNumLbl4);
-		myNumLblList.add(myNumLbl5);
-		myNumLblList.add(myNumLbl6);
-		myNumLblList.add(autoLbl);
-
-		for (int i = 0; i < myNumLblList.size(); i++) {
-			JLabel lbl = myNumLblList.get(i);
-			lbl.setPreferredSize(dimension);
-			lbl.setFont(font);
-		}
-		orderBtn.setPreferredSize(dimension);
-		orderBtn.setFont(font);
-
-		add(orderBtn);
-		add(myNumLbl1);
-		add(myNumLbl2);
-		add(myNumLbl3);
-		add(myNumLbl4);
-		add(myNumLbl5);
-		add(myNumLbl6);
-		add(autoLbl);
+		add(orderBtnA);
+		add(myNumLbl1A);
+		add(myNumLbl2A);
+		add(myNumLbl3A);
+		add(myNumLbl4A);
+		add(myNumLbl5A);
+		add(myNumLbl6A);
+		add(autoLblA);
 	}
 }
 
-// �궡 踰덊샇 蹂댁뿬二쇰뒗 �봽�젅�엫
+// B
+class MyNumPnlB extends JPanel {
+	public MyNumPnlB() {
+		JButton orderBtnB = new JButton("B");
+		JLabel myNumLbl1B = new JLabel("0");
+		JLabel myNumLbl2B = new JLabel("0");
+		JLabel myNumLbl3B = new JLabel("0");
+		JLabel myNumLbl4B = new JLabel("0");
+		JLabel myNumLbl5B = new JLabel("0");
+		JLabel myNumLbl6B = new JLabel("0");
+		JLabel autoLblB = new JLabel("자동");
+
+		orderBtnB.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				new LottoTicket2();
+			}
+		});
+
+		add(orderBtnB);
+		add(myNumLbl1B);
+		add(myNumLbl2B);
+		add(myNumLbl3B);
+		add(myNumLbl4B);
+		add(myNumLbl5B);
+		add(myNumLbl6B);
+		add(autoLblB);
+	}
+}
+
+// C
+class MyNumPnlC extends JPanel {
+	public MyNumPnlC() {
+		JButton orderBtnC = new JButton("C");
+		JLabel myNumLbl1C = new JLabel("0");
+		JLabel myNumLbl2C = new JLabel("0");
+		JLabel myNumLbl3C = new JLabel("0");
+		JLabel myNumLbl4C = new JLabel("0");
+		JLabel myNumLbl5C = new JLabel("0");
+		JLabel myNumLbl6C = new JLabel("0");
+		JLabel autoLblC = new JLabel("자동");
+
+		orderBtnC.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				new LottoTicket3();
+			}
+		});
+
+		add(orderBtnC);
+		add(myNumLbl1C);
+		add(myNumLbl2C);
+		add(myNumLbl3C);
+		add(myNumLbl4C);
+		add(myNumLbl5C);
+		add(myNumLbl6C);
+		add(autoLblC);
+	}
+}
+
+// D
+class MyNumPnlD extends JPanel {
+	public MyNumPnlD() {
+		JButton orderBtnD = new JButton("D");
+		JLabel myNumLbl1D = new JLabel("0");
+		JLabel myNumLbl2D = new JLabel("0");
+		JLabel myNumLbl3D = new JLabel("0");
+		JLabel myNumLbl4D = new JLabel("0");
+		JLabel myNumLbl5D = new JLabel("0");
+		JLabel myNumLbl6D = new JLabel("0");
+		JLabel autoLblD = new JLabel("자동");
+
+		orderBtnD.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				new LottoTicket4();
+			}
+		});
+
+		add(orderBtnD);
+		add(myNumLbl1D);
+		add(myNumLbl2D);
+		add(myNumLbl3D);
+		add(myNumLbl4D);
+		add(myNumLbl5D);
+		add(myNumLbl6D);
+		add(autoLblD);
+	}
+}
+
+// E
+class MyNumPnlE extends JPanel {
+	public MyNumPnlE() {
+		JButton orderBtnE = new JButton("E");
+		JLabel myNumLbl1E = new JLabel("0");
+		JLabel myNumLbl2E = new JLabel("0");
+		JLabel myNumLbl3E = new JLabel("0");
+		JLabel myNumLbl4E = new JLabel("0");
+		JLabel myNumLbl5E = new JLabel("0");
+		JLabel myNumLbl6E = new JLabel("0");
+		JLabel autoLblE = new JLabel("자동");
+
+		orderBtnE.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				new LottoTicket5();
+			}
+		});
+
+		add(orderBtnE);
+		add(myNumLbl1E);
+		add(myNumLbl2E);
+		add(myNumLbl3E);
+		add(myNumLbl4E);
+		add(myNumLbl5E);
+		add(myNumLbl6E);
+		add(autoLblE);
+	}
+}
+
+//내 번호 보여주는 프레임
 public class LottoNumberPage extends JFrame {
-	
-	
 	public LottoNumberPage() {
 		BoxLayout layout = new BoxLayout(getContentPane(), BoxLayout.Y_AXIS);
 		setLayout(layout);
 
-		MyNumPnl mnp = new MyNumPnl();
-		
-		JButton orderBtn1 = new JButton();
-		
-		orderBtn1.addActionListener(new ActionListener() {
-			
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				new LottoTicket1();
-
-			}
-		});
-		
-		
-		
-		MyNumPnl a = new MyNumPnl(orderBtn1,"A");
-		MyNumPnl b = new MyNumPnl();
-		MyNumPnl c = new MyNumPnl();
-		MyNumPnl d = new MyNumPnl();
-		MyNumPnl e = new MyNumPnl();
-
-		//LottoTicket1 lottoTicket1 = new LottoTicket1();
-		
-		//List<Integer> lt1 = LottoTicket1.selectedNumbers;
-		
-		List<Integer> selectedNumbers = LottoTicket1.selectedNumbers;
-		for (int i = 0; i < selectedNumbers.size(); i++) {
-			String s = selectedNumbers.get(i).toString();
-			JLabel lbl = a.getMyNumLblList().get(i);
-			lbl.setText(s);
-		}
-
-		add(a);
-		add(b);
-		add(c);
-		add(d);
-		add(e);
+		add(new MyNumPnlA());
+		add(new MyNumPnlB());
+		add(new MyNumPnlC());
+		add(new MyNumPnlD());
+		add(new MyNumPnlE());
 
 		setSize(500, 800);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setVisible(true);
 	}
-	
 
 	public static void main(String[] args) {
 		new LottoNumberPage();
