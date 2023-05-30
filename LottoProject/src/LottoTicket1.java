@@ -23,8 +23,8 @@ import javax.swing.JPanel;
 class LottoTicket1 extends JFrame {
 	private boolean isClick = false;
 	private boolean isAuto = false;
-	List<String> selectedMode = new ArrayList<>();
-	List<Integer> selectedNumbers = new ArrayList<>();
+	static List<String> selectedMode = new ArrayList<>();
+	static List<Integer> selectedNumbers = new ArrayList<>();
 	private JButton[] lottoNumBtn = new JButton[45];;
 	private static int changeCount = 0;
 
@@ -152,7 +152,8 @@ class LottoTicket1 extends JFrame {
 				int yesNo = maxCount - clickCount;
 
 				for (int i = 0; i < yesNo; i++) {
-					lottoNumBtn[numbers.get(i)].doClick();
+					lottoNumBtn[numbers.get(i)].setBackground(Color.red);
+					increaseCount();
 					autoCount++;
 				}
 				if (yesNo == 6) {
@@ -165,7 +166,6 @@ class LottoTicket1 extends JFrame {
 				}
 
 				if (autoCount > 1 && autoCount < 7) {
-
 					isClick = true;
 				}
 
@@ -195,7 +195,6 @@ class LottoTicket1 extends JFrame {
 							JOptionPane.YES_NO_OPTION);
 
 					if (result == JOptionPane.YES_OPTION) {
-						LottoTicket1.this.dispose();
 						getSelectedNumbers();
 						getSelectedMode();
 						System.out.println(selectedMode);
@@ -220,6 +219,7 @@ class LottoTicket1 extends JFrame {
 		setSize(280, 550);
 		setVisible(true);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
+		setResizable(false);
 	}
 
 	public static void main(String[] args) {

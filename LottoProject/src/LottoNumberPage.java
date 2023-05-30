@@ -19,7 +19,7 @@ class MyNumPnl extends JPanel {
 	public List<JLabel> getMyNumLblList() {
 		return myNumLblList;
 	}
-
+	
 	public MyNumPnl() {
 		myNumLblList = new LinkedList<JLabel>();
 		JButton orderBtn = new JButton("A");
@@ -69,15 +69,9 @@ public class LottoNumberPage extends JFrame {
 		MyNumPnl c = new MyNumPnl();
 		MyNumPnl d = new MyNumPnl();
 		MyNumPnl e = new MyNumPnl();
-
-		LottoTicket1 lottoTicket1 = new LottoTicket1();
-		List<Integer> selectedNumbers = lottoTicket1.getSelectedNumbers();
-		for (int i = 0; i < selectedNumbers.size(); i++) {
-			String s = selectedNumbers.get(i).toString();
-			JLabel lbl = a.getMyNumLblList().get(i);
-			lbl.setText(s);
-		}
-
+		
+		List<Integer> lt1 = LottoTicket1.selectedNumbers;
+		
 		add(a);
 		add(b);
 		add(c);
