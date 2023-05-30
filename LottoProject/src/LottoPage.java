@@ -21,44 +21,19 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 
-/*
-boolean 타입 변수 2개 생성
-ex)boolean1 boolean2
-false로 초기화
 
-숫자 버튼을 눌렀으면 boolean1 
-
-
-
-마지막에 누른 버튼이 자동이면  자동 or 반자동
-마지막에 누른 버튼이 자동인데 그 직전에 누른 버튼이 숫자 버튼이면 반자동
-마지막에 누른 버튼이 자동인데 그 직전에 누른 버튼이 숫자 버튼이 아니면 자동
-
-
-
-마지막에 누른 버튼이 자동이 아니면 수동
-
-
-
-
-숫자 -> 초기화  -> 자동 : 자동
-숫자-> 자동 : 반자동
-자동 -> 초기화 -> 자동 : 자동
-숫자 : 수동
-
-
-
-
-
-
-*/
 
 
 class LottoTicket extends JFrame {
 
 	private JLabel guideLbl1A;
 	private JLabel guideLbl2;
-	private JButton[] lottoNumBtn = new JButton[45];;
+	List<Integer> selectedNumbers = new ArrayList<>();
+	private JButton[] lottoNumBtn = new JButton[45];
+	private boolean isautoBtn =false;
+	public boolean isnumBtn =false;
+	private boolean isresetBtn =false;
+	MyListener myListener1 = new MyListener();
 
 	public void buttonCreate() {
 		for (int i = 0; i < lottoNumBtn.length; i++) {
@@ -126,8 +101,12 @@ class LottoTicket extends JFrame {
 		btnPanel.add(resetBtn);
 		btnPanel.add(returnBtn);
 		autoBtn.addActionListener(new ActionListener() {
+			
+		
+			
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				
 				int clickCount = 0;
 
 				for (int i = 0; i < 45; i++) {
@@ -159,15 +138,17 @@ class LottoTicket extends JFrame {
 			}
 		});
 		resetBtn.addActionListener(new ActionListener() {
+			
 
 			// resetBtn을 누르면 자동 반자동 수동 을 담는 리스트의 모든 요소를 삭제한다.
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				
 				for (JButton button : lottoNumBtn) {
 					button.setBackground(null);
 				}
-				MyListener.reset();
+				myListener1.reset();
 			}
 		});
 
@@ -195,10 +176,13 @@ class LottoTicket extends JFrame {
 }
 
 class MyListener implements ActionListener {
+	
 	private static int changeCount = 0;
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
+		
+		
 		JButton source = (JButton) e.getSource();
 		if (!source.getBackground().equals(Color.RED) && changeCount < 6) {
 			source.setBackground(Color.RED);
@@ -215,7 +199,7 @@ class MyListener implements ActionListener {
 
 	}
 
-	public static void reset() {
+	public void reset() {
 		changeCount = 0;
 	}
 	
