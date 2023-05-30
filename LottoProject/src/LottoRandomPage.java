@@ -25,8 +25,11 @@ class LottoRandom {
 	}
 }
 
-class LottoRandomPnl extends JPanel {
-	public LottoRandomPnl() {
+// 당첨번호 보여주는 프레임
+public class LottoRandomPage extends JFrame {
+	public LottoRandomPage() {
+		JPanel lottoRandomPnl = new JPanel();
+		
 		LottoRandom lottoRandom = new LottoRandom();
 		List<Integer> list = lottoRandom.getRandomNum();
 
@@ -39,25 +42,17 @@ class LottoRandomPnl extends JPanel {
 		JLabel randomLbl7 = new JLabel(list.get(6).toString());
 		JLabel plus = new JLabel("+");
 
-		add(randomLbl1);
-		add(randomLbl1);
-		add(randomLbl2);
-		add(randomLbl3);
-		add(randomLbl4);
-		add(randomLbl5);
-		add(randomLbl6);
-		add(plus);
-		add(randomLbl7);
-
-	}
-
-}
-
-// 당첨번호 보여주는 프레임
-public class LottoRandomPage extends JFrame {
-	public LottoRandomPage() {
-		LottoRandomPnl pnl = new LottoRandomPnl();
-		add(pnl);
+		lottoRandomPnl.add(randomLbl1);
+		lottoRandomPnl.add(randomLbl1);
+		lottoRandomPnl.add(randomLbl2);
+		lottoRandomPnl.add(randomLbl3);
+		lottoRandomPnl.add(randomLbl4);
+		lottoRandomPnl.add(randomLbl5);
+		lottoRandomPnl.add(randomLbl6);
+		lottoRandomPnl.add(plus);
+		lottoRandomPnl.add(randomLbl7);
+		
+		add(lottoRandomPnl);
 	
 		setSize(500, 800);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -67,5 +62,4 @@ public class LottoRandomPage extends JFrame {
 	public static void main(String[] args) {
 		new LottoRandomPage();
 	}
-
 }
