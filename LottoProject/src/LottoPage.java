@@ -23,6 +23,7 @@ import javax.swing.JPanel;
 class LottoTicket1 extends JFrame {
 	private boolean isClick = false;
 	private boolean isAuto = false;
+	List<String> selectedMode = new ArrayList<>();
 	List<Integer> selectedNumbers = new ArrayList<>();
 	private JButton[] lottoNumBtn = new JButton[45];;
 	private static int changeCount = 0;
@@ -120,11 +121,6 @@ class LottoTicket1 extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				int clickCount = 0;
-				//isClick = true;
-
-				// isClick = true;
-				// System.out.println("자동버튼 클릭 유무" + isClick);
-
 				for (int i = 0; i < 45; i++) {
 					if (lottoNumBtn[i].getBackground().equals(Color.RED)) {
 						clickCount++;
@@ -213,8 +209,6 @@ class LottoTicket1 extends JFrame {
 		setSize(280, 550);
 		setVisible(true);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
-		System.out.println("자동(반자동) / 수동 구분 :" + isClick);
-
 	}
 }
 
@@ -228,15 +222,13 @@ class MyListener implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		JButton source = (JButton) e.getSource();
-		if(lt1.getChangeCount() == 6) 
-		lt1.setAuto(false);
-		
+		if (lt1.getChangeCount() == 6)
+			lt1.setAuto(false);
 
 		if (!source.getBackground().equals(Color.RED) && lt1.getChangeCount() < 6) {
 			source.setBackground(Color.RED);
 
 			lt1.increaseCount();
-			;
 
 		} else if (!source.getBackground().equals(Color.RED) && lt1.getChangeCount() == 6) {
 			JOptionPane.showMessageDialog(null, "로또숫자는 6개까지 고를 수 있습니다.", "숫자초과", JOptionPane.WARNING_MESSAGE);
@@ -253,7 +245,7 @@ class MyListener implements ActionListener {
 		} else if (lt1.getChangeCount() == 6) {
 			source.setBackground(null);
 			lt1.decreaseCount();
-		
+
 		}
 	}
 }
