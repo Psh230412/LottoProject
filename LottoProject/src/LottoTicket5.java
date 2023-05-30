@@ -98,7 +98,7 @@ class LottoTicket5 extends JFrame {
 		JPanel btnPanel = new JPanel();
 		Font font = new Font("SansSerif", Font.BOLD, 30);
 
-		JLabel guideLbl1a = new JLabel("A");
+		JLabel guideLbl1a = new JLabel("E");
 		JLabel guideLbl1b = new JLabel("1000원");
 		guideLbl1a.setFont(font);
 		guideLbl1b.setFont(font);
