@@ -30,12 +30,10 @@ class LottoTicket1 extends JFrame {
 	public boolean isAuto() {
 		return isAuto;
 	}
-	
-	
+
 	public boolean isClick() {
 		return isClick;
 	}
-
 
 	public void setClick(boolean isClick) {
 		this.isClick = isClick;
@@ -122,10 +120,10 @@ class LottoTicket1 extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				int clickCount = 0;
-				isClick = true;
-				
 				//isClick = true;
-				//System.out.println("자동버튼 클릭 유무" + isClick);
+
+				// isClick = true;
+				// System.out.println("자동버튼 클릭 유무" + isClick);
 
 				for (int i = 0; i < 45; i++) {
 					if (lottoNumBtn[i].getBackground().equals(Color.RED)) {
@@ -145,33 +143,28 @@ class LottoTicket1 extends JFrame {
 				int autoCount = 0;
 				int maxCount = 6;
 				int yesNo = maxCount - clickCount;
-				
+
 				for (int i = 0; i < yesNo; i++) {
 					lottoNumBtn[numbers.get(i)].doClick();
 					autoCount++;
 				}
 				if (yesNo == 6) {
 					isAuto = true;
-					
-				}
-				if (yesNo >= 1 && yesNo <= 5 ) {
-					isAuto = false;
-					
-				}
-				 
-				
 
-				if(autoCount>1 && autoCount<7) {
-					
+				}
+				if (yesNo >= 1 && yesNo <= 5) {
+					isAuto = false;
+
+				}
+
+				if (autoCount > 1 && autoCount < 7) {
+
 					isClick = true;
 				}
-				
-				
-				
+
 			}
 		});
-		
-		
+
 		resetBtn.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -184,28 +177,25 @@ class LottoTicket1 extends JFrame {
 			}
 		});
 
-		
 		returnBtn.addActionListener(new ActionListener() {
-			
+
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				
+
 				if (isAuto == true && isClick == true) {
 					System.out.println("자동입니다");
 					System.out.println(isClick);
 					System.out.println(isAuto);
-				}
-				else if (isAuto == false && isClick == true ) {
+				} else if (isAuto == false && isClick == true) {
 					System.out.println("반자동입니다");
 					System.out.println(isClick);
 					System.out.println(isAuto);
-				}else {
+				} else {
 					System.out.println("수동입니다");
 					System.out.println(isClick);
 					System.out.println(isAuto);
 				}
 
-				
 			}
 		});
 		buttonCreate();
@@ -239,24 +229,22 @@ class MyListener implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		JButton source = (JButton) e.getSource();
 		lt1.setAuto(false);
-		//System.out.println("자동/반자동 유무" + lt1.isAuto());
-	
 		
+
 		if (!source.getBackground().equals(Color.RED) && lt1.getChangeCount() < 6) {
 			source.setBackground(Color.RED);
-			
-			
-			lt1.increaseCount();;			
-		
+
+			lt1.increaseCount();
+			;
 
 		} else if (!source.getBackground().equals(Color.RED) && lt1.getChangeCount() == 6) {
 			JOptionPane.showMessageDialog(null, "로또숫자는 6개까지 고를 수 있습니다.", "숫자초과", JOptionPane.WARNING_MESSAGE);
-		} else if(source.getBackground().equals(Color.RED)&&lt1.getChangeCount() == 1 && lt1.isClick()==true) {
+		} else if (source.getBackground().equals(Color.RED) && lt1.getChangeCount() == 1 && lt1.isClick() == true) {
 			source.setBackground(null);
 			lt1.decreaseCount();
 			lt1.setAuto(false);
 			lt1.setClick(false);
-			
+
 			lt1.resetCount();
 		} else if (lt1.getChangeCount() <= 6) {
 			source.setBackground(null);
