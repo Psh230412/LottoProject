@@ -13,7 +13,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-//당첨번호 뽑기
+//�떦泥⑤쾲�샇 戮묎린
 class LottoDraw {
 	private List<Integer> drawNum = new ArrayList<>();
 	
@@ -32,16 +32,16 @@ class LottoDraw {
 }
 
 
-//당첨번호와 내 번호 비교
+//�떦泥⑤쾲�샇�� �궡 踰덊샇 鍮꾧탳
 class LottoDrawView extends JPanel {
 	private Dimension dimension = new Dimension(100, 100);
-	private Font font = new Font("맑은 고딕", Font.PLAIN, 50);
+	private Font font = new Font("留묒� 怨좊뵓", Font.PLAIN, 50);
 
 	public LottoDrawView() {
 		BoxLayout layout = new BoxLayout(this, BoxLayout.Y_AXIS);
 		setLayout(layout);
 		
-		// 내 번호 보여주는 패널만드는 클래스
+		// �궡 踰덊샇 蹂댁뿬二쇰뒗 �뙣�꼸留뚮뱶�뒗 �겢�옒�뒪
 		class MyNumPnl extends JPanel {
 			private JLabel autoLbl;
 			private JLabel orderLbl;
@@ -55,7 +55,7 @@ class LottoDrawView extends JPanel {
 			public List<JLabel> myNumLblList = new LinkedList<JLabel>();
 
 			public MyNumPnl() {
-				autoLbl = new JLabel("자동");
+				autoLbl = new JLabel("�옄�룞");
 				orderLbl = new JLabel("A");
 				myNumLbl1 = new JLabel("1");
 				myNumLbl2 = new JLabel("2");
@@ -63,7 +63,7 @@ class LottoDrawView extends JPanel {
 				myNumLbl4 = new JLabel("4");
 				myNumLbl5 = new JLabel("5");
 				myNumLbl6 = new JLabel("6");
-				gradeLbl = new JLabel("등수");
+				gradeLbl = new JLabel("�벑�닔");
 
 				myNumLblList.add(autoLbl);
 				myNumLblList.add(orderLbl);
@@ -87,7 +87,7 @@ class LottoDrawView extends JPanel {
 			}
 		}
 
-		// 당첨번호 패널
+		// �떦泥⑤쾲�샇 �뙣�꼸
 		LottoDraw lottoDraw = new LottoDraw();
 		List<Integer> list = lottoDraw.getDrawNum();
 		
@@ -134,14 +134,14 @@ class LottoDrawView extends JPanel {
 		drawNumPnl.add(drawNumLbl7);
 		add(drawNumPnl);
 
-		// 내 번호 패널
+		// �궡 踰덊샇 �뙣�꼸
 		MyNumPnl a = new MyNumPnl();
 		MyNumPnl b = new MyNumPnl();
 		MyNumPnl c = new MyNumPnl();
 		MyNumPnl d = new MyNumPnl();
 		MyNumPnl e = new MyNumPnl();
 
-		LottoTicket lottoTicket = new LottoTicket();
+		LottoTicket1 lottoTicket = new LottoTicket1();
 		List<Integer> selectedNumbers = lottoTicket.getSelectedNumbers();
 		for (int i = 0; i < selectedNumbers.size(); i++) {
 			String s = selectedNumbers.get(i).toString();
