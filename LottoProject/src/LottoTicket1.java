@@ -9,9 +9,7 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.Collections;
 
-
 import java.util.List;
-
 
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
@@ -26,7 +24,7 @@ class LottoTicket1 extends JFrame {
 	List<Integer> selectedNumbers = new ArrayList<>();
 	private JButton[] lottoNumBtn = new JButton[45];;
 	private static int changeCount = 0;
-	List<String> SelectedMode = new ArrayList<>(); // "자동" "반자동" "수동" 
+	List<String> selectedMode = new ArrayList<>(); // "자동" "반자동" "수동"
 
 	public boolean isAuto() {
 		return isAuto;
@@ -77,16 +75,18 @@ class LottoTicket1 extends JFrame {
 		}
 		return selectedNumbers;
 	}
-	public List<String > getSelectedMode(){
+
+	public List<String> getSelectedMode() {
 		if (isAuto == true && isClick == true) {
-			SelectedMode.add("자동");
+			selectedMode.add("자동");
 		} else if (isAuto == false && isClick == true) {
-			SelectedMode.add("반자동");
+			selectedMode.add("반자동");
 		} else {
-			SelectedMode.add("수동");
+			selectedMode.add("수동");
 		}
-		return SelectedMode;
+		return selectedMode;
 	}
+
 	public LottoTicket1() {
 
 		JPanel oneTicketPanel = new JPanel();
@@ -130,7 +130,6 @@ class LottoTicket1 extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				int clickCount = 0;
-				
 
 				for (int i = 0; i < 45; i++) {
 					if (lottoNumBtn[i].getBackground().equals(Color.RED)) {
@@ -188,21 +187,20 @@ class LottoTicket1 extends JFrame {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				getSelectedMode();
 				
-				if (isAuto == true && isClick == true) {
-					System.out.println("자동입니다");
-					System.out.println(isClick);
-					System.out.println(isAuto);
-				} else if (isAuto == false && isClick == true) {
-					System.out.println("반자동입니다");
-					System.out.println(isClick);
-					System.out.println(isAuto);
-				} else {
-					System.out.println("수동입니다");
-					System.out.println(isClick);
-					System.out.println(isAuto);
-				}
+				
+				System.out.println(getSelectedMode());
+				System.out.println(getSelectedNumbers());
+				
+				/*
+				 * if (isAuto == true && isClick == true) { System.out.println("자동입니다");
+				 * System.out.println(isClick); System.out.println(isAuto); } else if (isAuto ==
+				 * false && isClick == true) { System.out.println("반자동입니다");
+				 * System.out.println(isClick); System.out.println(isAuto); } else {
+				 * System.out.println("수동입니다"); System.out.println(isClick);
+				 * System.out.println(isAuto); }
+				 */
+				
 
 			}
 		});
@@ -237,7 +235,6 @@ class MyListener implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		JButton source = (JButton) e.getSource();
 		lt1.setAuto(false);
-		
 
 		if (!source.getBackground().equals(Color.RED) && lt1.getChangeCount() < 6) {
 			source.setBackground(Color.RED);
@@ -264,9 +261,3 @@ class MyListener implements ActionListener {
 	}
 }
 
-class LottoPage {
-	public static void main(String[] args) {
-		LottoTicket1 lottoTicket = new LottoTicket1();
-	}
-
-}
