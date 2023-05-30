@@ -191,12 +191,21 @@ class LottoTicket2 extends JFrame {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				getSelectedNumbers();
-				getSelectedMode();
-				
-				System.out.println(selectedMode);
-				System.out.println(selectedNumbers);
-				
+				if (!(changeCount == 6)) {
+					JOptionPane.showMessageDialog(null, "번호를 6개까지 정하셔야합니다", "입력미달", JOptionPane.WARNING_MESSAGE);
+				} else {
+					int result = JOptionPane.showConfirmDialog(LottoTicket2.this, "번호를 확정하시겠습니까?", "복권번호 확정",
+							JOptionPane.YES_NO_OPTION);
+
+					if (result == JOptionPane.YES_OPTION) {
+						LottoTicket2.this.dispose();
+						getSelectedNumbers();
+						getSelectedMode();
+						System.out.println(selectedMode);
+						System.out.println(selectedNumbers);
+					}
+				}
+
 			}
 		});
 		buttonCreate();
