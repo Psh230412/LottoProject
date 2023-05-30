@@ -1,4 +1,4 @@
-import java.awt.BorderLayout;
+
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
@@ -8,7 +8,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.Collections;
-<<<<<<< HEAD
+
 
 import java.util.List;
 
@@ -19,267 +19,11 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
-class LottoTicket2 extends JFrame {
-	private boolean isClick = false;
-	private boolean isAuto = false;
-	List<Integer> selectedNumbers = new ArrayList<>();
-	private JButton[] lottoNumBtn = new JButton[45];;
-	private static int changeCount = 0;
-	List<String> selectedMode = new ArrayList<>(); // "ÀÚµ¿" "¹ÝÀÚµ¿" "¼öµ¿"
-
-	public boolean isAuto() {
-		return isAuto;
-	}
-
-	public boolean isClick() {
-		return isClick;
-	}
-
-	public void setClick(boolean isClick) {
-		this.isClick = isClick;
-	}
-
-	public void setAuto(boolean isAuto) {
-		this.isAuto = isAuto;
-	}
-
-	public void resetCount() { // Ä«¿îÆ®¸¦ ¸®¼ÂÇÏ´Â ¸Þ¼­µå¸¦ Ãß°¡ÇÕ´Ï´Ù
-		this.changeCount = 0;
-	}
-
-	public void increaseCount() {
-		this.changeCount++;
-	}
-
-	public void decreaseCount() {
-		this.changeCount--;
-	}
-
-	public int getChangeCount() { // ÇöÀç Ä«¿îÆ®¸¦ °¡Á®¿À´Â ¸Þ¼­µå¸¦ Ãß°¡ÇÕ´Ï´Ù
-		return this.changeCount;
-	}
-
-	public void buttonCreate() {
-		for (int i = 0; i < lottoNumBtn.length; i++) {
-			String lottoNumBtnName = String.valueOf(i + 1);
-			lottoNumBtn[i] = new JButton(lottoNumBtnName);
-			// lottoNumbtn[0]={1} lottoNumbtn[1]={2}.......lottoNumbtn[n]={n+1}
-			lottoNumBtn[i].addActionListener(new MyListener2(this));
-		}
-	}
-
-	public List<Integer> getSelectedNumbers() {
-		for (int i = 0; i < lottoNumBtn.length; i++) {
-			if (lottoNumBtn[i].getBackground().equals(Color.RED)) {
-				selectedNumbers.add(i + 1); // lottoNumBtnÀÇ ÀÎµ¦½º´Â 0ºÎÅÍ ½ÃÀÛÇÏ¹Ç·Î 1À» ´õÇØ¾ß ¹øÈ£¸¦ ¾òÀ» ¼ö ÀÖ½À´Ï´Ù.
-			}
-		}
-		return selectedNumbers;
-	}
-
-	public List<String> getSelectedMode() {
-		if (isAuto == true && isClick == true) {
-			selectedMode.add("ÀÚµ¿");
-		} else if (isAuto == false && isClick == true) {
-			selectedMode.add("¹ÝÀÚµ¿");
-		} else {
-			selectedMode.add("¼öµ¿");
-		}
-		return selectedMode;
-	}
-
-	public LottoTicket2() {
-
-		JPanel oneTicketPanel = new JPanel();
-
-		JPanel titlePanel = new JPanel();
-		JPanel guideLbl1titlePanel = new JPanel();
-		JPanel guideLbl2titlePanel = new JPanel();
-		JPanel lnbPanel = new JPanel();
-		JPanel btnPanel = new JPanel();
-		Font font = new Font("SansSerif", Font.BOLD, 30);
-
-		JLabel guideLbl1a = new JLabel("A");
-		JLabel guideLbl1b = new JLabel("1000¿ø");
-		guideLbl1a.setFont(font);
-		guideLbl1b.setFont(font);
-
-		guideLbl1titlePanel.setPreferredSize(new Dimension(20, 20));
-		guideLbl2titlePanel.setPreferredSize(new Dimension(45, 20));
-		guideLbl1titlePanel.add(guideLbl1a);
-		guideLbl2titlePanel.add(guideLbl1b);
-		guideLbl1titlePanel.setBackground(Color.white);
-		guideLbl2titlePanel.setBackground(Color.PINK);
-
-		titlePanel.setLayout(new BoxLayout(titlePanel, BoxLayout.X_AXIS));
-		titlePanel.add(guideLbl1titlePanel);
-		titlePanel.add(guideLbl2titlePanel);
-
-		oneTicketPanel.setLayout(new BoxLayout(oneTicketPanel, BoxLayout.Y_AXIS));
-
-		btnPanel.setLayout(new FlowLayout());
-		JButton autoBtn = new JButton("ÀÚµ¿");
-		JButton resetBtn = new JButton("ÃÊ±âÈ­");
-		JButton returnBtn = new JButton("È®Á¤");
-		autoBtn.setPreferredSize(new Dimension(250, 30));
-		resetBtn.setPreferredSize(new Dimension(250, 30));
-		returnBtn.setPreferredSize(new Dimension(90, 30));
-		btnPanel.add(autoBtn);
-		btnPanel.add(resetBtn);
-		btnPanel.add(returnBtn);
-		autoBtn.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				int clickCount = 0;
-
-				for (int i = 0; i < 45; i++) {
-					if (lottoNumBtn[i].getBackground().equals(Color.RED)) {
-						clickCount++;
-					}
-				}
-
-				List<Integer> numbers = new ArrayList<>();
-
-				for (int i = 0; i < 45; i++) {
-					if (!lottoNumBtn[i].getBackground().equals(Color.RED)) {
-						numbers.add(i);
-					}
-
-				}
-				Collections.shuffle(numbers);
-				int autoCount = 0;
-				int maxCount = 6;
-				int yesNo = maxCount - clickCount;
-
-				for (int i = 0; i < yesNo; i++) {
-					lottoNumBtn[numbers.get(i)].doClick();
-					autoCount++;
-				}
-				if (yesNo == 6) {
-					isAuto = true;
-
-				}
-				if (yesNo >= 1 && yesNo <= 5) {
-					isAuto = false;
-
-				}
-
-				if (autoCount > 1 && autoCount < 7) {
-
-					isClick = true;
-				}
-
-			}
-		});
-
-		resetBtn.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				for (JButton button : lottoNumBtn) {
-					button.setBackground(null);
-				}
-				setAuto(false);
-				setClick(false);
-				resetCount();
-			}
-		});
-
-		returnBtn.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				
-				
-				System.out.println(getSelectedMode());
-				System.out.println(getSelectedNumbers());
-				
-				/*
-				 * if (isAuto == true && isClick == true) { System.out.println("ÀÚµ¿ÀÔ´Ï´Ù");
-				 * System.out.println(isClick); System.out.println(isAuto); } else if (isAuto ==
-				 * false && isClick == true) { System.out.println("¹ÝÀÚµ¿ÀÔ´Ï´Ù");
-				 * System.out.println(isClick); System.out.println(isAuto); } else {
-				 * System.out.println("¼öµ¿ÀÔ´Ï´Ù"); System.out.println(isClick);
-				 * System.out.println(isAuto); }
-				 */
-				
-
-			}
-		});
-		buttonCreate();
-
-		lnbPanel.setLayout(new GridLayout(9, 5));
-		for (int i = 0; i < lottoNumBtn.length; i++) {
-			lnbPanel.add(lottoNumBtn[i]);
-		}
-
-		add(oneTicketPanel);
-		oneTicketPanel.add(titlePanel);
-		oneTicketPanel.add(lnbPanel);
-		oneTicketPanel.add(btnPanel);
-
-		setSize(280, 550);
-		setVisible(true);
-		setDefaultCloseOperation(EXIT_ON_CLOSE);
-		System.out.println("ÀÚµ¿(¹ÝÀÚµ¿) / ¼öµ¿ ±¸ºÐ :" + isClick);
-
-	}
-	
-	/*
-	 * public static void main(String[] args) { new LottoTicket2(); }
-	 */
-}
-
-class MyListener2 implements ActionListener {
-	private LottoTicket2 lt1;
-
-	public MyListener2(LottoTicket2 lt1) {
-		this.lt1 = lt1;
-	}
-
-	@Override
-	public void actionPerformed(ActionEvent e) {
-		JButton source = (JButton) e.getSource();
-		lt1.setAuto(false);
-
-		if (!source.getBackground().equals(Color.RED) && lt1.getChangeCount() < 6) {
-			source.setBackground(Color.RED);
-
-			lt1.increaseCount();
-			;
-
-		} else if (!source.getBackground().equals(Color.RED) && lt1.getChangeCount() == 6) {
-			JOptionPane.showMessageDialog(null, "·Î¶Ç¼ýÀÚ´Â 6°³±îÁö °í¸¦ ¼ö ÀÖ½À´Ï´Ù.", "¼ýÀÚÃÊ°ú", JOptionPane.WARNING_MESSAGE);
-		} else if (source.getBackground().equals(Color.RED) && lt1.getChangeCount() == 1 && lt1.isClick() == true) {
-			source.setBackground(null);
-			lt1.decreaseCount();
-			lt1.setAuto(false);
-			lt1.setClick(false);
-
-			lt1.resetCount();
-		} else if (lt1.getChangeCount() <= 6) {
-			source.setBackground(null);
-			lt1.decreaseCount();
-		} else if (lt1.getChangeCount() == 6) {
-			source.setBackground(null);
-			lt1.decreaseCount();
-		}
-	}
-}
 
 
 
-=======
-import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Random;
 
-import javax.swing.BoxLayout;
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JOptionPane;
-import javax.swing.JPanel;
+
 
 class LottoTicket2 extends JFrame {
 	private boolean isClick = false;
@@ -305,7 +49,7 @@ class LottoTicket2 extends JFrame {
 		this.isAuto = isAuto;
 	}
 
-	public void resetCount() { // ì¹´ìš´íŠ¸ë¥¼ ë¦¬ì…‹í•˜ëŠ” ë©”ì„œë“œë¥¼ ì¶”ê°€í•©ë‹ˆë‹¤
+	public void resetCount() { // ç§»ëŒìŠ«ï¿½ë“ƒç‘œï¿½ ç”±ÑŠë€‘ï¿½ë¸¯ï¿½ë’— ï§Žë¶¿ê½Œï¿½ë±¶ç‘œï¿½ ç•°ë¶½ï¿½ï¿½ë¹€ï¿½ë•²ï¿½ë–Ž
 		this.changeCount = 0;
 	}
 
@@ -317,7 +61,7 @@ class LottoTicket2 extends JFrame {
 		this.changeCount--;
 	}
 
-	public int getChangeCount() { // í˜„ìž¬ ì¹´ìš´íŠ¸ë¥¼ ê°€ì ¸ì˜¤ëŠ” ë©”ì„œë“œë¥¼ ì¶”ê°€í•©ë‹ˆë‹¤
+	public int getChangeCount() { // ï¿½ì½ï¿½ì˜± ç§»ëŒìŠ«ï¿½ë“ƒç‘œï¿½ åª›ï¿½ï¿½ì¡‡ï¿½ì‚¤ï¿½ë’— ï§Žë¶¿ê½Œï¿½ë±¶ç‘œï¿½ ç•°ë¶½ï¿½ï¿½ë¹€ï¿½ë•²ï¿½ë–Ž
 		return this.changeCount;
 	}
 
@@ -333,18 +77,18 @@ class LottoTicket2 extends JFrame {
 	public List<Integer> getSelectedNumbers() {
 		for (int i = 0; i < lottoNumBtn.length; i++) {
 			if (lottoNumBtn[i].getBackground().equals(Color.RED)) {
-				selectedNumbers.add(i + 1); // lottoNumBtnì˜ ì¸ë±ìŠ¤ëŠ” 0ë¶€í„° ì‹œìž‘í•˜ë¯€ë¡œ 1ì„ ë”í•´ì•¼ ë²ˆí˜¸ë¥¼ ì–»ì„ ìˆ˜ ìžˆìŠµë‹ˆë‹¤.
+				selectedNumbers.add(i + 1); // lottoNumBtnï¿½ì“½ ï¿½ì”¤ï¿½ëœ³ï¿½ë’ªï¿½ë’— 0éºï¿½ï¿½ê½£ ï¿½ë–†ï¿½ì˜‰ï¿½ë¸¯èª˜ï¿½æ¿¡ï¿½ 1ï¿½ì“£ ï¿½ëœ‘ï¿½ë¹ï¿½ë¹ž è¸°ëŠìƒ‡ç‘œï¿½ ï¿½ë¼¸ï¿½ì“£ ï¿½ë‹” ï¿½ì—³ï¿½ë’¿ï¿½ë•²ï¿½ë–Ž.
 			}
 		}
 		return selectedNumbers;
 	}
 	public List<String> getSelectedMode(){
 		if (isAuto == true && isClick == true) {
-			selectedMode.add("ìžë™");
+			selectedMode.add("ï¿½ì˜„ï¿½ë£ž");
 		} else if (isAuto == false && isClick == true) {
-			selectedMode.add("ë°˜ìžë™");
+			selectedMode.add("è«›ì„ì˜„ï¿½ë£ž");
 		} else {
-			selectedMode.add("ìˆ˜ë™");
+			selectedMode.add("ï¿½ë‹”ï¿½ë£ž");
 		}
 		return selectedMode;
 	}
@@ -360,7 +104,7 @@ class LottoTicket2 extends JFrame {
 		Font font = new Font("SansSerif", Font.BOLD, 30);
 
 		JLabel guideLbl1a = new JLabel("A");
-		JLabel guideLbl1b = new JLabel("1000ì›");
+		JLabel guideLbl1b = new JLabel("1000ï¿½ì");
 		guideLbl1a.setFont(font);
 		guideLbl1b.setFont(font);
 
@@ -378,9 +122,9 @@ class LottoTicket2 extends JFrame {
 		oneTicketPanel.setLayout(new BoxLayout(oneTicketPanel, BoxLayout.Y_AXIS));
 
 		btnPanel.setLayout(new FlowLayout());
-		JButton autoBtn = new JButton("ìžë™");
-		JButton resetBtn = new JButton("ì´ˆê¸°í™”");
-		JButton returnBtn = new JButton("í™•ì •");
+		JButton autoBtn = new JButton("ï¿½ì˜„ï¿½ë£ž");
+		JButton resetBtn = new JButton("ç¥ë‡ë¦°ï¿½ì†•");
+		JButton returnBtn = new JButton("ï¿½ì†—ï¿½ì ™");
 		autoBtn.setPreferredSize(new Dimension(250, 30));
 		resetBtn.setPreferredSize(new Dimension(250, 30));
 		returnBtn.setPreferredSize(new Dimension(90, 30));
@@ -469,7 +213,9 @@ class LottoTicket2 extends JFrame {
 
 		setSize(280, 550);
 		setVisible(true);
-		setDefaultCloseOperation(EXIT_ON_CLOSE);
+		int a=0;
+		setDefaultCloseOperation(a);
+		
 	}
 }
 
@@ -492,7 +238,7 @@ class MyListener2 implements ActionListener {
 			lt1.increaseCount();
 
 		} else if (!source.getBackground().equals(Color.RED) && lt1.getChangeCount() == 6) {
-			JOptionPane.showMessageDialog(null, "ë¡œë˜ìˆ«ìžëŠ” 6ê°œê¹Œì§€ ê³ ë¥¼ ìˆ˜ ìžˆìŠµë‹ˆë‹¤.", "ìˆ«ìžì´ˆê³¼", JOptionPane.WARNING_MESSAGE);
+			JOptionPane.showMessageDialog(null, "æ¿¡ì’•ì‚‰ï¿½ë‹½ï¿½ì˜„ï¿½ë’— 6åª›ì’“í‰´ï§žï¿½ æ€¨ì¢Šï¿½ï¿½ ï¿½ë‹” ï¿½ì—³ï¿½ë’¿ï¿½ë•²ï¿½ë–Ž.", "ï¿½ë‹½ï¿½ì˜„ç¥ë‡ë‚µ", JOptionPane.WARNING_MESSAGE);
 		} else if (source.getBackground().equals(Color.RED) && lt1.getChangeCount() == 1 && lt1.isClick() == true) {
 			source.setBackground(null);
 			lt1.decreaseCount();
@@ -510,4 +256,4 @@ class MyListener2 implements ActionListener {
 		}
 	}
 }
->>>>>>> branch 'master' of https://github.com/Psh230412/LottoProject.git
+
