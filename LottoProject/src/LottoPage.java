@@ -72,7 +72,6 @@ class LottoTicket extends JFrame {
 
 
 	public List<Integer> getSelectedNumbers() {
-		List<Integer> selectedNumbers = new ArrayList<>();
 		for (int i = 0; i < lottoNumBtn.length; i++) {
 			if (lottoNumBtn[i].getBackground().equals(Color.RED)) {
 				selectedNumbers.add(i + 1); // lottoNumBtn의 인덱스는 0부터 시작하므로 1을 더해야 번호를 얻을 수 있습니다.
@@ -93,16 +92,20 @@ class LottoTicket extends JFrame {
 		Font font = new Font("SansSerif", Font.BOLD, 30);
 
 		
-		guideLbl1A = new JLabel("A");
 		
-		guideLbl2 = new JLabel("1000원");
-		guideLbl1A.setFont(font);
-		guideLbl2.setFont(font);
+		
+		JLabel guideLbl1a = new JLabel("A");
+		JLabel guideLbl1b = new JLabel("1000원");
+		guideLbl1a.setFont(font);
+		guideLbl1b.setFont(font);
+
+		
 
 		guideLbl1titlePanel.setPreferredSize(new Dimension(20, 20));
 		guideLbl2titlePanel.setPreferredSize(new Dimension(45, 20));
-		guideLbl1titlePanel.add(guideLbl1A);
-		guideLbl2titlePanel.add(guideLbl2);
+		
+		guideLbl1titlePanel.add(guideLbl1a);
+		guideLbl2titlePanel.add(guideLbl1b);
 		guideLbl1titlePanel.setBackground(Color.white);
 		guideLbl2titlePanel.setBackground(Color.PINK);
 
@@ -115,11 +118,13 @@ class LottoTicket extends JFrame {
 		btnPanel.setLayout(new FlowLayout());
 		JButton autoBtn = new JButton("자동");
 		JButton resetBtn = new JButton("초기화");
+		JButton returnBtn = new JButton("확정");
 		autoBtn.setPreferredSize(new Dimension(250, 30));
 		resetBtn.setPreferredSize(new Dimension(250, 30));
+		returnBtn.setPreferredSize(new Dimension(90, 30));
 		btnPanel.add(autoBtn);
 		btnPanel.add(resetBtn);
-
+		btnPanel.add(returnBtn);
 		autoBtn.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -142,22 +147,14 @@ class LottoTicket extends JFrame {
 					
 				}
 				Collections.shuffle(numbers);
-			
-				for (int i = 0; i < 6 - clickCount; i++) {
-					
+				int maxCount = 6;
+				int yesNo = maxCount - clickCount;
+
+				for (int i = 0; i < yesNo; i++) {
 					lottoNumBtn[numbers.get(i)].doClick();
-					
+
 				}
-				
-				if(clickCount==0) {
-					//autoBtn을 눌렀는데 clickCount==0이면 자동
-					//
-					
-				}
-				if (clickCount != 0) {
-					//autoBtn을 눌렀는데 clickCount!=0이면 수동 
-				}
-				
+	
 				
 			}
 		});
@@ -186,7 +183,7 @@ class LottoTicket extends JFrame {
 		oneTicketPanel.add(lnbPanel);
 		oneTicketPanel.add(btnPanel);
 
-		setSize(300, 500);
+		setSize(280, 550);
 		setVisible(true);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		
