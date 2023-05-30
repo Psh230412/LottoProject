@@ -121,7 +121,7 @@ class LottoTicket1 extends JFrame {
 		btnPanel.setLayout(new FlowLayout());
 		JButton autoBtn = new JButton("자동");
 		JButton resetBtn = new JButton("초기화");
-		JButton returnBtn = new JButton("확정");
+		JButton returnBtn = new JButton("번호 확정");
 		autoBtn.setPreferredSize(new Dimension(250, 30));
 		resetBtn.setPreferredSize(new Dimension(250, 30));
 		returnBtn.setPreferredSize(new Dimension(90, 30));
@@ -195,6 +195,7 @@ class LottoTicket1 extends JFrame {
 							JOptionPane.YES_NO_OPTION);
 
 					if (result == JOptionPane.YES_OPTION) {
+						LottoTicket1.this.dispose();
 						getSelectedNumbers();
 						getSelectedMode();
 						System.out.println(selectedMode);
