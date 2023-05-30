@@ -27,6 +27,7 @@ class LottoTicket2 extends JFrame {
 	List<Integer> selectedNumbers = new ArrayList<>();
 	private JButton[] lottoNumBtn = new JButton[45];;
 	private static int changeCount = 0;
+	private MyNumPnlB pnlB;
 
 	public boolean isAuto() {
 		return isAuto;
@@ -199,6 +200,14 @@ class LottoTicket2 extends JFrame {
 						getSelectedMode();
 						System.out.println(selectedMode);
 						System.out.println(selectedNumbers);
+						
+						pnlB.getMyNumLbl1B().setText(selectedNumbers.get(0).toString());
+						pnlB.getMyNumLbl2B().setText(selectedNumbers.get(1).toString());
+						pnlB.getMyNumLbl3B().setText(selectedNumbers.get(2).toString());
+						pnlB.getMyNumLbl4B().setText(selectedNumbers.get(3).toString());
+						pnlB.getMyNumLbl5B().setText(selectedNumbers.get(4).toString());
+						pnlB.getMyNumLbl6B().setText(selectedNumbers.get(5).toString());
+						pnlB.getAutoLblB().setText(selectedMode.get(0).toString());
 					}
 				}
 
