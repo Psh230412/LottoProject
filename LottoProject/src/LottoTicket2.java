@@ -9,7 +9,6 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.Collections;
 
-
 import java.util.List;
 
 import javax.swing.BoxLayout;
@@ -76,7 +75,8 @@ class LottoTicket2 extends JFrame {
 		}
 		return selectedNumbers;
 	}
-	public List<String> getSelectedMode(){
+
+	public List<String> getSelectedMode() {
 		if (isAuto == true && isClick == true) {
 			selectedMode.add("자동");
 		} else if (isAuto == false && isClick == true) {
@@ -86,6 +86,7 @@ class LottoTicket2 extends JFrame {
 		}
 		return selectedMode;
 	}
+
 	public LottoTicket2() {
 
 		JPanel oneTicketPanel = new JPanel();
@@ -149,7 +150,8 @@ class LottoTicket2 extends JFrame {
 				int yesNo = maxCount - clickCount;
 
 				for (int i = 0; i < yesNo; i++) {
-					lottoNumBtn[numbers.get(i)].doClick();
+					lottoNumBtn[numbers.get(i)].setBackground(Color.RED);
+					increaseCount();
 					autoCount++;
 				}
 				if (yesNo == 6) {
