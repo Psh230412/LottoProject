@@ -77,7 +77,16 @@ class LottoTicket1 extends JFrame {
 		}
 		return selectedNumbers;
 	}
-
+	public List<String> getSelectedMode(){
+		if (isAuto == true && isClick == true) {
+			selectedMode.add("자동");
+		} else if (isAuto == false && isClick == true) {
+			selectedMode.add("반자동");
+		} else {
+			selectedMode.add("수동");
+		}
+		return selectedMode;
+	}
 	public LottoTicket1() {
 
 		JPanel oneTicketPanel = new JPanel();
@@ -177,21 +186,12 @@ class LottoTicket1 extends JFrame {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-
-				if (isAuto == true && isClick == true) {
-					System.out.println("자동입니다");
-					System.out.println(isClick);
-					System.out.println(isAuto);
-				} else if (isAuto == false && isClick == true) {
-					System.out.println("반자동입니다");
-					System.out.println(isClick);
-					System.out.println(isAuto);
-				} else {
-					System.out.println("수동입니다");
-					System.out.println(isClick);
-					System.out.println(isAuto);
-				}
-
+				getSelectedNumbers();
+				getSelectedMode();
+				
+				System.out.println(selectedMode);
+				System.out.println(selectedNumbers);
+				
 			}
 		});
 		buttonCreate();
@@ -248,11 +248,4 @@ class MyListener implements ActionListener {
 
 		}
 	}
-}
-
-class LottoPage {
-	public static void main(String[] args) {
-		LottoTicket1 lottoTicket = new LottoTicket1();
-	}
-
 }
