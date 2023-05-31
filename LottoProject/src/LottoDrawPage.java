@@ -1,8 +1,6 @@
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Label;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -11,15 +9,16 @@ import java.util.List;
 import java.util.Random;
 
 import javax.swing.BoxLayout;
-import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+
 class RandomNumView extends JPanel {
 	public RandomNumView() {
-		List<Integer> list = LottoRandom.getRandomNum();
-
+		LottoRandom lottoRandom = new LottoRandom();
+		List<Integer> list = lottoRandom.getRandomNum();
+		
 		JLabel randomLbl1 = new JLabel(list.get(0).toString());
 		JLabel randomLbl2 = new JLabel(list.get(1).toString());
 		JLabel randomLbl3 = new JLabel(list.get(2).toString());
@@ -41,30 +40,9 @@ class RandomNumView extends JPanel {
 	}
 }
 
-class MyNumViewA extends JPanel {
-	public MyNumViewA() {
-		List<Integer> list = LottoTicket1.selectedNumbers;
-		JLabel autoLblA = new JLabel(LottoTicket1.selectedMode.get(0).toString());
-		JLabel orderLblA = new JLabel("A");
-		JLabel myNumLbl1A = new JLabel(list.get(0).toString());
-		JLabel myNumLbl2A = new JLabel(list.get(1).toString());
-		JLabel myNumLbl3A = new JLabel(list.get(2).toString());
-		JLabel myNumLbl4A = new JLabel(list.get(3).toString());
-		JLabel myNumLbl5A = new JLabel(list.get(4).toString());
-		JLabel myNumLbl6A = new JLabel(list.get(5).toString());
-		JLabel gradeLblA = new JLabel("등수");
-
+class MyNumView extends JPanel {
+	public MyNumView() {
 		
-
-		add(autoLblA);
-		add(orderLblA);
-		add(myNumLbl1A);
-		add(myNumLbl2A);
-		add(myNumLbl3A);
-		add(myNumLbl4A);
-		add(myNumLbl5A);
-		add(myNumLbl6A);
-		add(gradeLblA);
 	}
 }
 
@@ -72,11 +50,10 @@ public class LottoDrawPage extends JFrame {
 	public LottoDrawPage() {
 		BoxLayout layout = new BoxLayout(getContentPane(), BoxLayout.Y_AXIS);
 		setLayout(layout);
-
+		
 		add(new RandomNumView());
-		add(new MyNumViewA());
 
-		setSize(500, 800);
+		setSize(1000, 1000);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setVisible(true);
 	}
