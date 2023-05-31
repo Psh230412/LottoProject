@@ -14,9 +14,6 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 
-
-		
-
 class RandomNumView extends JPanel {
 	public RandomNumView() {
 		LottoRandom lottoRandom = new LottoRandom();
@@ -43,46 +40,9 @@ class RandomNumView extends JPanel {
 	}
 }
 
-
-
 class MyNumView extends JPanel {
 	public MyNumView() {
 		
-
-		drawNumPnl.add(drawNumLbl1);
-		drawNumPnl.add(drawNumLbl2);
-		drawNumPnl.add(drawNumLbl3);
-		drawNumPnl.add(drawNumLbl4);
-		drawNumPnl.add(drawNumLbl5);
-		drawNumPnl.add(drawNumLbl6);
-		drawNumPnl.add(plus);
-		drawNumPnl.add(drawNumLbl7);
-		add(drawNumPnl);
-
-		// �궡 踰덊샇 �뙣�꼸
-		MyNumPnl a = new MyNumPnl();
-		MyNumPnl b = new MyNumPnl();
-		MyNumPnl c = new MyNumPnl();
-		MyNumPnl d = new MyNumPnl();
-		MyNumPnl e = new MyNumPnl();
-
-		LottoTicket1 lottoTicket = new LottoTicket1();
-		List<Integer> selectedNumbers = lottoTicket.getSelectedNumbers();
-		for (int i = 0; i < selectedNumbers.size(); i++) {
-			String s = selectedNumbers.get(i).toString();
-			JLabel lbl = a.myNumLblList.get(i + 2);
-			lbl.setText(s);	
-		}
-
-		add(a);
-		add(b);
-		add(c);
-		add(d);
-		add(e);
-	}
-
-	public void compareNum() {
-
 	}
 }
 
@@ -90,8 +50,6 @@ public class LottoDrawPage extends JFrame {
 	public LottoDrawPage() {
 		BoxLayout layout = new BoxLayout(getContentPane(), BoxLayout.Y_AXIS);
 		setLayout(layout);
-		
-		
 		
 		add(new RandomNumView());
 

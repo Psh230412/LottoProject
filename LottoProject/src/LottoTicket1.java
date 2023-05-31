@@ -21,8 +21,8 @@ import javax.swing.JPanel;
 class LottoTicket1 extends JFrame {
 	private boolean isClick = false;
 	private boolean isAuto = false;
-	static List<String> selectedMode = new ArrayList<>();
-	static List<Integer> selectedNumbers = new ArrayList<>();
+	List<String> selectedMode = new ArrayList<>();
+	List<Integer> selectedNumbers = new ArrayList<>();
 	private JButton[] lottoNumBtn = new JButton[45];;
 	private static int changeCount = 0;
 
@@ -201,6 +201,9 @@ class LottoTicket1 extends JFrame {
 						getSelectedMode();
 						System.out.println(selectedMode);
 						System.out.println(selectedNumbers);
+						setAuto(false);
+						setClick(false);
+						resetCount();
 						new LottoNumberPage();
 						
 
