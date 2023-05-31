@@ -75,7 +75,7 @@ class LottoTicket1 extends JFrame {
 	
 	public Image[] CreateImage(){
 		for(int i=0;i<45;i++) {
-			imageArr[i]=new ImageIcon("C:\\Users\\GGG\\Documents\\카카오톡 받은 파일\\defaultNumber\\defaultNumber"+" "+"("+(i+1)+")"+".gif").getImage();
+			imageArr[i]=new ImageIcon("C:\\Users\\GGG\\Documents\\카카오톡 받은 파일\\리소스\\defaultNumber\\defaultNumber"+" "+"("+(i+1)+")"+".gif").getImage();
 		}
 		return imageArr;
 	}
@@ -116,46 +116,18 @@ class LottoTicket1 extends JFrame {
 
 	public LottoTicket1() {
 		
-		//Image icon = new ImageIcon("C:\\Users\\GGG\\Documents\\카카오톡 받은 파일\\KakaoTalk_20230531_105135929.png").getImage();
 		JPanel oneTicketPanel = new JPanel();
-		
-		
-
-		//JPanel titlePanel = new JPanel();
-		//JPanel guideLbl1titlePanel = new JPanel();
-		//JPanel guideLbl2titlePanel = new JPanel();
-		//JPanel lnbPanel = new JPanel();
-		//JPanel btnPanel = new JPanel();
 		Font font = new Font("SansSerif", Font.BOLD, 30);
-
-		//JLabel guideLbl1a = new JLabel("A");
-		//JLabel guideLbl1b = new JLabel("1000원");
-		//guideLbl1a.setFont(font);
-		//guideLbl1b.setFont(font);
-
-		//guideLbl1titlePanel.setPreferredSize(new Dimension(20, 20));
-		//guideLbl2titlePanel.setPreferredSize(new Dimension(45, 20));
-		//guideLbl1titlePanel.add(guideLbl1a);
-		//guideLbl2titlePanel.add(guideLbl1b);
-		//guideLbl1titlePanel.setBackground(Color.white);
-		//guideLbl2titlePanel.setBackground(Color.PINK);
-
-		//titlePanel.setLayout(new BoxLayout(titlePanel, BoxLayout.X_AXIS));
-		//titlePanel.add(guideLbl1titlePanel);
-		//titlePanel.add(guideLbl2titlePanel);
-
-		//oneTicketPanel.setLayout(new BoxLayout(oneTicketPanel, BoxLayout.Y_AXIS));
-		
 		oneTicketPanel.setLayout(null);
 		oneTicketPanel.setBackground(Color.BLACK);
 		
-		//btnPanel.setLayout(new FlowLayout());
 		JButton autoBtn = new JButton("자동");
 		JButton resetBtn = new JButton("초기화");
 		JButton returnBtn = new JButton("번호 확정");
-		autoBtn.setPreferredSize(new Dimension(250, 30));
-		resetBtn.setPreferredSize(new Dimension(250, 30));
-		returnBtn.setPreferredSize(new Dimension(90, 30));
+		
+		autoBtn.setSize(new Dimension(45, 30));
+		resetBtn.setSize(new Dimension(45, 30));
+		returnBtn.setSize(new Dimension(98, 30));
 		buttonCreate();
 		
 		for(int i=0;i<45;i++) {
@@ -164,24 +136,27 @@ class LottoTicket1 extends JFrame {
 			oneTicketPanel.add(lottoNumBtn[i]);
 		}
 		for(int i=0;i<9;i++) {
-			lottoNumBtn[5*i].setLocation(30+0, 100+42*i);
+			lottoNumBtn[5*i].setLocation(42+0, 100+42*i);
 		}
 		for(int i=0;i<9;i++) {
-			lottoNumBtn[5*i+1].setLocation(30+42, 100+42*i);
+			lottoNumBtn[5*i+1].setLocation(42+42, 100+42*i);
 		}
 		for(int i=0;i<9;i++) {
-			lottoNumBtn[5*i+2].setLocation(30+42*2, 100+42*i);
+			lottoNumBtn[5*i+2].setLocation(42+42*2, 100+42*i);
 		}
 		for(int i=0;i<9;i++) {
-			lottoNumBtn[5*i+3].setLocation(30+42*3, 100+42*i);
+			lottoNumBtn[5*i+3].setLocation(42+42*3, 100+42*i);
 		}
 		for(int i=0;i<9;i++) {
-			lottoNumBtn[5*i+4].setLocation(30+42*4, 100+42*i);
+			lottoNumBtn[5*i+4].setLocation(42+42*4, 100+42*i);
 		}
 		
-		//btnPanel.add(autoBtn);
-		//btnPanel.add(resetBtn);
-		//btnPanel.add(returnBtn);
+		oneTicketPanel.add(autoBtn);
+		oneTicketPanel.add(resetBtn);
+		oneTicketPanel.add(returnBtn);
+		autoBtn.setLocation(124,40);
+		resetBtn.setLocation(174,40);
+		returnBtn.setLocation(98,488);
 		
 		
 		
@@ -277,19 +252,9 @@ class LottoTicket1 extends JFrame {
 
 			}
 		});
-		
-
-		/*
-		 * lnbPanel.setLayout(new GridLayout(0, 5)); for (int i = 0; i <
-		 * lottoNumBtn.length; i++) { lnbPanel.add(lottoNumBtn[i]); }
-		 */
-
 		add(oneTicketPanel);
-		//oneTicketPanel.add(titlePanel);
-		//oneTicketPanel.add(lnbPanel);
-		//oneTicketPanel.add(btnPanel);
 
-		setSize(300, 800);
+		setSize(294, 578);
 		setVisible(true);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setResizable(false);
