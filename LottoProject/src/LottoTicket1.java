@@ -212,8 +212,6 @@ class LottoTicket1 extends JFrame {
 						MyNumPnlA.getMyNumLbl6A().setText(selectedNumbers.get(5).toString());
 						MyNumPnlA.getAutoLblA().setText(selectedMode.get(0).toString());
 					}
-					
-					
 				}
 
 			}

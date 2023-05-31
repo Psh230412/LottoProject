@@ -77,6 +77,8 @@ class MyNumPnlA extends JPanel {
 		add(myNumLbl5A);
 		add(myNumLbl6A);
 		add(autoLblA);
+		
+		
 	}
 }
 
@@ -333,6 +335,7 @@ class MyNumPnlE extends JPanel {
 				new LottoTicket5();
 			}
 		});
+
 
 		add(orderBtnE);
 		add(myNumLbl1E);

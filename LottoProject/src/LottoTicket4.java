@@ -199,6 +199,14 @@ class LottoTicket4 extends JFrame {
 						getSelectedMode();
 						System.out.println(selectedMode);
 						System.out.println(selectedNumbers);
+						
+						MyNumPnlD.getMyNumLbl1D().setText(selectedNumbers.get(0).toString());
+						MyNumPnlD.getMyNumLbl2D().setText(selectedNumbers.get(1).toString());
+						MyNumPnlD.getMyNumLbl3D().setText(selectedNumbers.get(2).toString());
+						MyNumPnlD.getMyNumLbl4D().setText(selectedNumbers.get(3).toString());
+						MyNumPnlD.getMyNumLbl5D().setText(selectedNumbers.get(4).toString());
+						MyNumPnlD.getMyNumLbl6D().setText(selectedNumbers.get(5).toString());
+						MyNumPnlD.getAutoLblD().setText(selectedMode.get(0).toString());
 					}
 				}
 
