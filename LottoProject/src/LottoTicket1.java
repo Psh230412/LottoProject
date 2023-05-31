@@ -70,17 +70,46 @@ class LottoTicket1 extends JFrame {
 
 	
 	
+	//defaultNumber 이미지를 담는 배열
+	Image[] imageArrBefore=new Image[45];
+	//selNumber 이미지를 담는 배열
+	Image[] imageArrAfter=new Image[45];
 	
 	Image[] imageArr=new Image[45];
 	
+	//defaultNumber 이미지,selNumber 이미지를 배열에 담는 메서드
 	public Image[] CreateImage(){
-		for(int i=0;i<45;i++) {
-			imageArr[i]=new ImageIcon("C:\\Users\\GGG\\Documents\\카카오톡 받은 파일\\리소스\\defaultNumber\\defaultNumber"+" "+"("+(i+1)+")"+".gif").getImage();
+		for(int i=0;i<lottoNumBtn.length;i++) {
+			imageArrBefore[i]=new ImageIcon("C:\\Users\\GGG\\Documents\\카카오톡 받은 파일\\리소스\\defaultNumber\\defaultNumber"+" "+"("+(i+1)+")"+".gif").getImage();
+			imageArrAfter[i]=new ImageIcon("C:\\Users\\GGG\\Documents\\카카오톡 받은 파일\\리소스\\selNumber\\selNumber"+" "+"("+(i+1)+")"+".gif").getImage(); 
 		}
-		return imageArr;
+		return imageArrBefore;
 	}
 	
 	
+	//버튼을 눌렀을때 이미지를 selNumber 이미지로 바꾸는 메서드
+	public void ChangeImage(JButton source) {
+		for(int i=0;i<lottoNumBtn.length;i++) {
+			if(source.equals(lottoNumBtn[i]) ) {
+				source.setIcon(new ImageIcon(imageArrAfter[i]));
+			}
+			
+		}
+		
+	}
+	//누른 버튼을 취소시켜주는 메서드
+	public void restoreImage(JButton source) {
+		for(int i=0;i<lottoNumBtn.length;i++) {
+			if(source.equals(lottoNumBtn[i]) ) {
+				source.setIcon(new ImageIcon(imageArrBefore[i]));
+			}
+			
+		}
+		
+	}
+	
+	
+
 	public void buttonCreate() {
 		for (int i = 0; i < lottoNumBtn.length; i++) {
 			lottoNumBtn[i] = new JButton();
@@ -115,11 +144,18 @@ class LottoTicket1 extends JFrame {
 
 
 	public LottoTicket1() {
+		buttonCreate();
+		
+
 		
 		JPanel oneTicketPanel = new JPanel();
 		Font font = new Font("SansSerif", Font.BOLD, 30);
+		
+
 		oneTicketPanel.setLayout(null);
 		oneTicketPanel.setBackground(Color.BLACK);
+		
+
 		
 		JButton autoBtn = new JButton("자동");
 		JButton resetBtn = new JButton("초기화");
@@ -131,7 +167,6 @@ class LottoTicket1 extends JFrame {
 		buttonCreate();
 		
 		for(int i=0;i<45;i++) {
-			
 			lottoNumBtn[i].setSize(42,42);
 			oneTicketPanel.add(lottoNumBtn[i]);
 		}
@@ -283,8 +318,10 @@ class MyListener implements ActionListener {
 		if (!source.getBackground().equals(Color.RED) && lt1.getChangeCount() < 6) {
 
 			source.setBackground(Color.RED);
+			
 
 			lt1.increaseCount();
+			lt1.ChangeImage(source);
 
 		} else if (!source.getBackground().equals(Color.RED) && lt1.getChangeCount() == 6) {
 			JOptionPane.showMessageDialog(null, "로또숫자는 6개까지 고를 수 있습니다.", "숫자초과", JOptionPane.WARNING_MESSAGE);
@@ -296,6 +333,9 @@ class MyListener implements ActionListener {
 			lt1.setClick(false);
 
 			lt1.resetCount();
+			
+			lt1.restoreImage(source);
+			
 		} else if (lt1.getChangeCount() <= 6) {
 			source.setBackground(null);
 			lt1.decreaseCount();

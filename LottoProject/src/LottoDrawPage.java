@@ -26,7 +26,7 @@ class CompareNum {
 					count++;
 				}
 			}
-		}
+		}		
 		
 		switch (count) {
 		case 3:
