@@ -2,10 +2,13 @@ import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.util.LinkedList;
 import java.util.List;
 
 import javax.swing.BoxLayout;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -52,35 +55,69 @@ class MyNumPnlA extends JPanel {
 	}
 
 	
-	public MyNumPnlA() {	
-		JButton orderBtnA = new JButton("A");
-
+	public MyNumPnlA() {
+		
 		myNumLbl1A = new JLabel("0");
 		myNumLbl2A = new JLabel("0");
 		myNumLbl3A = new JLabel("0");
 		myNumLbl4A = new JLabel("0");
 		myNumLbl5A = new JLabel("0");
 		myNumLbl6A = new JLabel("0");
-
 		autoLblA = new JLabel();
+		
+		ImageIcon orderBtnA = new ImageIcon(getClass().getResource("/image2/번호선택_01.gif"));
+	    JLabel orderLabelA = new JLabel(orderBtnA);
+	    orderLabelA.setBounds(0, 0, orderBtnA.getIconWidth(), orderBtnA.getIconHeight());
+	    
+	    ImageIcon orderBtnA2 = new ImageIcon(getClass().getResource("/image2/번호선택_04.gif"));
+	    JLabel orderLabelA2 = new JLabel(orderBtnA2);
+	    orderLabelA2.setBounds(0, 70, orderBtnA2.getIconWidth(), orderBtnA2.getIconHeight());
+	    
+	    ImageIcon orderBtnA3 = new ImageIcon(getClass().getResource("/image2/번호선택_05.gif"));
+	    JLabel orderLabelA3 = new JLabel(orderBtnA3);
+	    orderLabelA3.setBounds(10, 70, orderBtnA3.getIconWidth(), orderBtnA3.getIconHeight());
+	    
+	    ImageIcon orderBtnA4 = new ImageIcon(getClass().getResource("/image2/번호선택_08.gif"));
+	    JLabel orderLabelA4 = new JLabel(orderBtnA4);
+	    orderLabelA4.setBounds(10, 87, orderBtnA4.getIconWidth(), orderBtnA4.getIconHeight());
+	    
+	    ImageIcon orderBtnA5 = new ImageIcon(getClass().getResource("/image2/번호선택_06.gif"));
+	    JLabel orderLabelA5 = new JLabel(orderBtnA5);
+	    orderLabelA5.setBounds(282, 70, orderBtnA5.getIconWidth(), orderBtnA5.getIconHeight()); 
+	    
+	 
 
-		orderBtnA.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				new LottoTicket1();
-			}
-		});
-		
-		add(orderBtnA);
-		add(myNumLbl1A);
-		add(myNumLbl2A);
-		add(myNumLbl3A);
-		add(myNumLbl4A);
-		add(myNumLbl5A);
-		add(myNumLbl6A);
-		add(autoLblA);
-		
-		
+	    orderLabelA4.addMouseListener(new MouseAdapter() {
+	        @Override
+	        public void mouseClicked(MouseEvent e) {
+	            new LottoTicket1();
+	        }
+	    });
+	    
+	    
+	    orderLabelA5.addMouseListener(new MouseAdapter() {
+	        @Override
+	        public void mouseClicked(MouseEvent e) {
+	        	//번호 초기화 하는거  추가하기 (X버튼) 
+	        }
+	    });
+	    
+	    
+	    add(orderLabelA);
+	    add(orderLabelA2);
+	    add(orderLabelA3);
+	    add(orderLabelA4);
+	    add(orderLabelA5);
+	    add(myNumLbl1A);
+	    add(myNumLbl2A);
+	    add(myNumLbl3A);
+	    add(myNumLbl4A);
+	    add(myNumLbl5A);
+	    add(myNumLbl6A);
+	    add(autoLblA);
+	    
+	    setLayout(null);
+	    setVisible(true);
 	}
 }
 
@@ -346,9 +383,9 @@ class MyNumPnlE extends JPanel {
 		add(myNumLbl4E);
 		add(myNumLbl5E);
 		add(myNumLbl6E);
-		add(autoLblE);
+		add(autoLblE); 
 	}
-}
+} 
 
 //내 번호 보여주는 프레임
 public class LottoNumberPage extends JFrame {
@@ -367,14 +404,15 @@ public class LottoNumberPage extends JFrame {
 		});
 
 		add(new MyNumPnlA());
-		add(new MyNumPnlB());
-		add(new MyNumPnlC());
-		add(new MyNumPnlD());
-		add(new MyNumPnlE());
-		add(nextBtn);
+//		add(new MyNumPnlB());
+//		add(new MyNumPnlC());
+//		add(new MyNumPnlD());
+//		add(new MyNumPnlE());
+//		add(nextBtn);
 		
 
-		setSize(500, 800);
+		setSize(340, 583);
+		setResizable(false);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setVisible(true);
 	}

@@ -331,7 +331,7 @@ class LottoTicket1 extends JFrame {
 		setSize(340, 583);
 		pack();
 		setVisible(true);
-		setDefaultCloseOperation(EXIT_ON_CLOSE);
+		setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 		setResizable(false);
 	}
 
