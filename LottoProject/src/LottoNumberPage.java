@@ -13,6 +13,8 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import com.sun.javafx.scene.control.SelectedCellsMap;
+
 //내 번호 보여주는 패널만드는 클래스
 class MyNumPnlA extends JPanel {
 	private JLabel myNumLbl1A;
@@ -22,10 +24,9 @@ class MyNumPnlA extends JPanel {
 	private JLabel myNumLbl5A;
 	private JLabel myNumLbl6A;
 	private JLabel autoLblA;
-
+	
 	// A
 	public MyNumPnlA() {	
-		
 		JButton orderBtnA = new JButton("A");
 		myNumLbl1A = new JLabel("0");
 		myNumLbl2A = new JLabel("0");
@@ -34,7 +35,7 @@ class MyNumPnlA extends JPanel {
 		myNumLbl5A = new JLabel("0");
 		myNumLbl6A = new JLabel("0");
 		autoLblA = new JLabel("자동");
-		
+			
 		orderBtnA.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
