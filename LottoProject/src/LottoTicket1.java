@@ -196,6 +196,7 @@ class LottoTicket1 extends JFrame {
 							JOptionPane.YES_NO_OPTION);
 
 					if (result == JOptionPane.YES_OPTION) {
+						LottoTicket1.this.dispose();
 						getSelectedNumbers();
 						getSelectedMode();
 						System.out.println(selectedMode);

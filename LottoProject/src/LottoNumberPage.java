@@ -36,7 +36,22 @@ class MyNumPnlA extends JPanel {
 		orderBtnA.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				new LottoTicket1();
+				LottoTicket1 lottoTicket = new LottoTicket1();
+				
+				List<Integer> lt1 = lottoTicket.selectedNumbers;
+				String n1 = lt1.get(0).toString();
+				String n2 = lt1.get(1).toString();
+				String n3 = lt1.get(2).toString();
+				String n4 = lt1.get(3).toString();
+				String n5 = lt1.get(4).toString();
+				String n6 = lt1.get(5).toString();
+				
+				myNumLbl1A.setText(n1);
+				myNumLbl2A.setText(n2);
+				myNumLbl3A.setText(n3);
+				myNumLbl4A.setText(n4);
+				myNumLbl5A.setText(n5);
+				myNumLbl6A.setText(n6);
 			}
 		});
 		add(orderBtnA);
@@ -47,20 +62,7 @@ class MyNumPnlA extends JPanel {
 		add(myNumLbl5A);
 		add(myNumLbl6A);
 		add(autoLblA);
-		List<Integer> lt1 = LottoTicket1.selectedNumbers;
-		String n1 = lt1.get(0).toString();
-		String n2 = lt1.get(1).toString();
-		String n3 = lt1.get(2).toString();
-		String n4 = lt1.get(3).toString();
-		String n5 = lt1.get(4).toString();
-		String n6 = lt1.get(5).toString();
 		
-		myNumLbl1A.setName(n1);
-		myNumLbl2A.setName(n2);
-		myNumLbl3A.setName(n3);
-		myNumLbl4A.setName(n4);
-		myNumLbl5A.setName(n5);
-		myNumLbl6A.setName(n6);
 		
 	}
 }
@@ -173,10 +175,6 @@ class MyNumPnlE extends JPanel {
 				new LottoTicket5();
 			}
 		});
-		
-		List<Integer> lt5 = LottoTicket1.selectedNumbers;
-		
-
 		add(orderBtnE);
 		add(myNumLbl1E);
 		add(myNumLbl2E);
