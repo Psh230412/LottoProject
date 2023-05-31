@@ -33,8 +33,6 @@ class LottoTicket1 extends JFrame {
 	List<Integer> selectedNumbers = new ArrayList<>();
 	private JButton[] lottoNumBtn = new JButton[45];;
 	private static int changeCount = 0;
-	
-
 
 	public boolean isAuto() {
 		return isAuto;
@@ -68,46 +66,45 @@ class LottoTicket1 extends JFrame {
 		return this.changeCount;
 	}
 
-	
-	
-	//defaultNumber 이미지를 담는 배열
-	Image[] imageArrBefore=new Image[45];
-	//selNumber 이미지를 담는 배열
-	Image[] imageArrAfter=new Image[45];
-	
-	
-	//defaultNumber 이미지,selNumber 이미지를 배열에 담는 메서드
-	public Image[] CreateImage(){
-		for(int i=0;i<lottoNumBtn.length;i++) {
-			imageArrBefore[i]=new ImageIcon("\\\\GREEN-424\\Java\\Your code\\_로또 GUI\\5조\\2023-05-31 3차 제출\\defaultNumber\\defaultNumber"+" "+"("+(i+1)+")"+".gif").getImage();
-			imageArrAfter[i]=new ImageIcon("\\\\GREEN-424\\Java\\Your code\\_로또 GUI\\5조\\2023-05-31 3차 제출\\selNumber\\selNumber"+" "+"("+(i+1)+")"+".gif").getImage(); 
+	// defaultNumber 이미지를 담는 배열
+	Image[] imageArrBefore = new Image[45];
+	// selNumber 이미지를 담는 배열
+	Image[] imageArrAfter = new Image[45];
+
+	// defaultNumber 이미지,selNumber 이미지를 배열에 담는 메서드
+	public Image[] CreateImage() {
+		for (int i = 0; i < lottoNumBtn.length; i++) {
+			URL urlOfDN = LottoTicket1.class.getClassLoader()
+					.getResource("image/defaultNumber" + " " + "(" + (i + 1) + ")" + ".gif");
+			imageArrBefore[i] = new ImageIcon(urlOfDN).getImage();
+			URL urlOfSN = LottoTicket1.class.getClassLoader()
+					.getResource("image/selNumber" + " " + "(" + (i + 1) + ")" + ".gif");
+			imageArrAfter[i] = new ImageIcon(urlOfSN).getImage();
 		}
 		return imageArrBefore;
 	}
-	
-	
-	//버튼을 눌렀을때 이미지를 selNumber 이미지로 바꾸는 메서드
+
+	// 버튼을 눌렀을때 이미지를 selNumber 이미지로 바꾸는 메서드
 	public void ChangeImage(JButton source) {
-		for(int i=0;i<lottoNumBtn.length;i++) {
-			if(source.equals(lottoNumBtn[i]) ) {
+		for (int i = 0; i < lottoNumBtn.length; i++) {
+			if (source.equals(lottoNumBtn[i])) {
 				source.setIcon(new ImageIcon(imageArrAfter[i]));
 			}
-			
+
 		}
-		
+
 	}
-	//누른 버튼을 취소시켜주는 메서드
+
+	// 누른 버튼을 취소시켜주는 메서드
 	public void restoreImage(JButton source) {
-		for(int i=0;i<lottoNumBtn.length;i++) {
-			if(source.equals(lottoNumBtn[i]) ) {
+		for (int i = 0; i < lottoNumBtn.length; i++) {
+			if (source.equals(lottoNumBtn[i])) {
 				source.setIcon(new ImageIcon(imageArrBefore[i]));
 			}
-			
+
 		}
-		
+
 	}
-	
-	
 
 	public void buttonCreate() {
 		for (int i = 0; i < lottoNumBtn.length; i++) {
@@ -115,8 +112,7 @@ class LottoTicket1 extends JFrame {
 			lottoNumBtn[i].addActionListener(new MyListener(this));
 			lottoNumBtn[i].setIcon(new ImageIcon(CreateImage()[i]));
 			lottoNumBtn[i].setBorderPainted(false);
-			
-			
+
 			// lottoNumbtn[0]={1} lottoNumbtn[1]={2}.......lottoNumbtn[n]={n+1}
 		}
 	}
@@ -141,58 +137,53 @@ class LottoTicket1 extends JFrame {
 		return selectedMode;
 	}
 
-
 	public LottoTicket1() {
 		JPanel oneTicketPanel = new JPanel();
 		oneTicketPanel.setLayout(null);
 		oneTicketPanel.setBackground(Color.BLACK);
 		buttonCreate();
-		
-		
-		
-		
 
 		JButton autoBtn = new JButton();
 		JButton resetBtn = new JButton();
 		JButton returnBtn = new JButton();
-		
+
 		autoBtn.setSize(new Dimension(81, 35));
 		resetBtn.setSize(new Dimension(80, 35));
 		returnBtn.setSize(new Dimension(88, 29));
-		
+
 		autoBtn.setLocation(120, 46);
 		resetBtn.setLocation(201, 46);
 		returnBtn.setLocation(129, 509);
-		
+
 		autoBtn.setBorderPainted(false);
 		resetBtn.setBorderPainted(false);
-		
+
 		JLabel AlphaLable = new JLabel();
 		JLabel UpperLineLable = new JLabel();
 		JLabel RightLineLable = new JLabel();
 		JLabel UnderLineLable = new JLabel();
-		
-		AlphaLable.setSize(new Dimension(120,81));
+
+		AlphaLable.setSize(new Dimension(120, 81));
 		AlphaLable.setLocation(0, 0);
-		UpperLineLable.setSize(new Dimension(220,46));
+		UpperLineLable.setSize(new Dimension(220, 46));
 		UpperLineLable.setLocation(120, 0);
-		RightLineLable.setSize(new Dimension(63,455));
+		RightLineLable.setSize(new Dimension(63, 455));
 		RightLineLable.setLocation(281, 95);
-		UnderLineLable.setSize(new Dimension(67,509));
+		UnderLineLable.setSize(new Dimension(67, 509));
 		UnderLineLable.setLocation(120, 36);
-		
-		URL urlOfSamePackage = LottoTicket1.class.getResource("image/셀렉트_03.gif");
+
+		URL urlOfSamePackage = LottoTicket1.class.getClassLoader().getResource("image/셀렉트_03.gif");
 		URL urlOfresetBtn = LottoTicket1.class.getClassLoader().getResource("image/셀렉트_04.gif");
-		
-		
-		
+		URL urlOfAlphaLable = LottoTicket1.class.getClassLoader().getResource("image/셀렉트_01.gif");
+		URL urlOfUpperLineLable = LottoTicket1.class.getClassLoader().getResource("image/셀렉트_02.gif");
+
 		autoBtn.setIcon(new ImageIcon(urlOfSamePackage));
 		resetBtn.setIcon(new ImageIcon(urlOfresetBtn));
-		AlphaLable.setIcon(new ImageIcon("C:\\Users\\GGG\\Documents\\카카오톡 받은 파일\\select\\셀렉트_01.gif"));
-		UpperLineLable.setIcon(new ImageIcon("C:\\Users\\GGG\\Documents\\카카오톡 받은 파일\\select\\셀렉트_02.gif"));
+		AlphaLable.setIcon(new ImageIcon(urlOfAlphaLable));
+		UpperLineLable.setIcon(new ImageIcon(urlOfUpperLineLable));
 		RightLineLable.setIcon(new ImageIcon("C:\\Users\\GGG\\Documents\\카카오톡 받은 파일\\select\\셀렉트_13.gif"));
 		UnderLineLable.setIcon(new ImageIcon("C:\\Users\\GGG\\Documents\\카카오톡 받은 파일\\select\\셀렉트_54.gif"));
-		
+
 		oneTicketPanel.add(autoBtn);
 		oneTicketPanel.add(resetBtn);
 		oneTicketPanel.add(returnBtn);
@@ -200,30 +191,27 @@ class LottoTicket1 extends JFrame {
 		oneTicketPanel.add(UpperLineLable);
 		oneTicketPanel.add(RightLineLable);
 		oneTicketPanel.add(RightLineLable);
-		
-		for(int i=0;i<45;i++) {
-			lottoNumBtn[i].setSize(42,42);
+
+		for (int i = 0; i < 45; i++) {
+			lottoNumBtn[i].setSize(42, 42);
 			oneTicketPanel.add(lottoNumBtn[i]);
 		}
-		
-		
-		for(int i=0;i<9;i++) {
-			lottoNumBtn[5*i].setLocation(67+0, 95+42*i);
+
+		for (int i = 0; i < 9; i++) {
+			lottoNumBtn[5 * i].setLocation(67 + 0, 95 + 42 * i);
 		}
-		for(int i=0;i<9;i++) {
-			lottoNumBtn[5*i+1].setLocation(67+42, 95+42*i);
+		for (int i = 0; i < 9; i++) {
+			lottoNumBtn[5 * i + 1].setLocation(67 + 42, 95 + 42 * i);
 		}
-		for(int i=0;i<9;i++) {
-			lottoNumBtn[5*i+2].setLocation(67+42*2, 95+42*i);
+		for (int i = 0; i < 9; i++) {
+			lottoNumBtn[5 * i + 2].setLocation(67 + 42 * 2, 95 + 42 * i);
 		}
-		for(int i=0;i<9;i++) {
-			lottoNumBtn[5*i+3].setLocation(67+42*3, 95+42*i);
+		for (int i = 0; i < 9; i++) {
+			lottoNumBtn[5 * i + 3].setLocation(67 + 42 * 3, 95 + 42 * i);
 		}
-		for(int i=0;i<9;i++) {
-			lottoNumBtn[5*i+4].setLocation(67+42*4, 95+42*i);
+		for (int i = 0; i < 9; i++) {
+			lottoNumBtn[5 * i + 4].setLocation(67 + 42 * 4, 95 + 42 * i);
 		}
-		
-		
 
 		autoBtn.addActionListener(new ActionListener() {
 			@Override
@@ -253,7 +241,7 @@ class LottoTicket1 extends JFrame {
 					lottoNumBtn[numbers.get(i)].setIcon(new ImageIcon(imageArrAfter[numbers.get(i)]));
 					increaseCount();
 					autoCount++;
-					
+
 				}
 
 				if (yesNo == 6) {
@@ -278,14 +266,14 @@ class LottoTicket1 extends JFrame {
 				for (JButton button : lottoNumBtn) {
 					button.setBackground(null);
 				}
-				for(int i=0;i<lottoNumBtn.length;i++) {
+				for (int i = 0; i < lottoNumBtn.length; i++) {
 					lottoNumBtn[i].setIcon(new ImageIcon(imageArrBefore[i]));
-					
+
 				}
 				setAuto(false);
 				setClick(false);
 				resetCount();
-				
+
 			}
 		});
 
@@ -310,7 +298,6 @@ class LottoTicket1 extends JFrame {
 						setClick(false);
 						resetCount();
 						new LottoNumberPage();
-						
 
 						MyNumPnlA.getMyNumLbl1A().setText(selectedNumbers.get(0).toString());
 						MyNumPnlA.getMyNumLbl2A().setText(selectedNumbers.get(1).toString());
@@ -324,11 +311,9 @@ class LottoTicket1 extends JFrame {
 
 			}
 		});
-		oneTicketPanel.setPreferredSize(new Dimension(340,550));
+		oneTicketPanel.setPreferredSize(new Dimension(340, 550));
 		add(oneTicketPanel);
-		//getContentPane().
 
-		setSize(340, 583);
 		pack();
 		setVisible(true);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -358,7 +343,6 @@ class MyListener implements ActionListener {
 		if (!source.getBackground().equals(Color.RED) && lt1.getChangeCount() < 6) {
 
 			source.setBackground(Color.RED);
-			
 
 			lt1.increaseCount();
 			lt1.ChangeImage(source);
@@ -374,7 +358,7 @@ class MyListener implements ActionListener {
 
 			lt1.resetCount();
 			lt1.restoreImage(source);
-			
+
 		} else if (lt1.getChangeCount() <= 6) {
 			source.setBackground(null);
 			lt1.restoreImage(source);
