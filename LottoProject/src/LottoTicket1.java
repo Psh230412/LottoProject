@@ -204,8 +204,11 @@ class LottoTicket1 extends JFrame {
 						getSelectedMode();
 						System.out.println(selectedMode);
 						System.out.println(selectedNumbers);
+						new LottoNumberPage();
+						
 					}
 				}
+				
 
 			}
 		});

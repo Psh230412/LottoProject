@@ -27,20 +27,35 @@ class MyNumPnlA extends JPanel {
 	public MyNumPnlA() {	
 		
 		JButton orderBtnA = new JButton("A");
-		myNumLbl1A = new JLabel("0");
-		myNumLbl2A = new JLabel("0");
-		myNumLbl3A = new JLabel("0");
-		myNumLbl4A = new JLabel("0");
-		myNumLbl5A = new JLabel("0");
-		myNumLbl6A = new JLabel("0");
-		autoLblA = new JLabel("자동");
-		
 		orderBtnA.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				new LottoTicket1();
+				
 			}
 		});
+		
+		
+		  
+		List<Integer> listA = LottoTicket1.selectedNumbers;
+		List<String> listAMode = LottoTicket1.selectedMode;
+		
+		String A1 =String.valueOf(listA.get(0));
+		String A2 =String.valueOf(listA.get(1));
+		String A3 =String.valueOf(listA.get(2));
+		String A4 =String.valueOf(listA.get(3));
+		String A5 =String.valueOf(listA.get(4));
+		String A6 =String.valueOf(listA.get(5));
+		
+		
+		myNumLbl1A = new JLabel(A1);
+		myNumLbl2A = new JLabel(A2);
+		myNumLbl3A = new JLabel(A3);
+		myNumLbl4A = new JLabel(A4);
+		myNumLbl5A = new JLabel(A5);
+		myNumLbl6A = new JLabel(A6);
+		autoLblA = new JLabel(listAMode.get(0));
+		
 
 		add(orderBtnA);
 		add(myNumLbl1A);
@@ -57,6 +72,7 @@ class MyNumPnlA extends JPanel {
 class MyNumPnlB extends JPanel {
 	public MyNumPnlB() {
 		JButton orderBtnB = new JButton("B");
+		
 		JLabel myNumLbl1B = new JLabel("0");
 		JLabel myNumLbl2B = new JLabel("0");
 		JLabel myNumLbl3B = new JLabel("0");
@@ -190,8 +206,11 @@ public class LottoNumberPage extends JFrame {
 		setVisible(true);
 	}
 
+	
 	public static void main(String[] args) {
 		new LottoNumberPage();
+
 	}
+	 
 
 }
