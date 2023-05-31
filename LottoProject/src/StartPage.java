@@ -1,104 +1,112 @@
-import java.awt.GridBagConstraints;
-import java.awt.GridBagLayout;
+import java.awt.BorderLayout;
+import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
-import javax.swing.ButtonGroup;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JLayeredPane;
 import javax.swing.JPanel;
-import javax.swing.JRadioButton;
 
+class StartPage extends JFrame { // 프로그램 실행 시 맨 처음에 뜰 창(로또하러가기 버튼)
+	public StartPage() {
+		JPanel panel = new JPanel();
+		setSize(375, 685);
+		setTitle("로또");
 
+		JButton btn = new JButton("로또하러가기");
+		setLayout(null);
+		panel.setLayout(null);
+		panel.add(btn);
 
+		panel.setBounds(0, 0, getWidth(), getHeight());
+		btn.setBounds(80, 250, 200, 100);
 
-class StartPage extends JFrame {
-	 public StartPage() { // 프로그램 실행 시 맨 처음에 뜰 창(로또하러가기 버튼)
-	        JPanel panel = new JPanel();
-	        setSize(1440, 648);
-	        setTitle("로또");
+		class Run2 implements ActionListener {
+			public void actionPerformed(ActionEvent e) {
+				dispose();
+				new LottoSlot();
+			}
+		}
 
-	        JButton btn = new JButton("로또하러가기");
-	        setLayout(null);
-	        panel.setLayout(null);
-	        panel.add(btn);
+		btn.addActionListener(new Run2());
 
-	        panel.setBounds(0, 0, getWidth(), getHeight());
-	        btn.setBounds(600, 500, 250, 100);
+		add(panel);
+		setVisible(true);
+		setDefaultCloseOperation(EXIT_ON_CLOSE);
+	}
 
-	        class Run2 implements ActionListener {
-	            public void actionPerformed(ActionEvent e) {
-	                dispose();
-	                new LottoQuantity();
-	            }
-	        }
+	class LottoSlot extends JFrame { // 버튼 기능 구현 클래스
+		public LottoSlot() {
+			setSize(375, 685);
+			setTitle("로또");
 
-	        btn.addActionListener(new Run2());
+			JLayeredPane layeredPane = new JLayeredPane();
+			layeredPane.setLayout(null);
+			layeredPane.setPreferredSize(new Dimension(360, 648));
 
-	        add(panel);
-	        setVisible(true);
-	        setDefaultCloseOperation(EXIT_ON_CLOSE);
-	    }
+			// 배경 이미지 라벨
+			ImageIcon backgroundImage = new ImageIcon("번호선택2.jpg");
+			JLabel bg = new JLabel(backgroundImage);
+			bg.setBounds(0, 0, 360, 648);
 
-    }
-class LottoQuantity extends JFrame{
-	
-	private int count;
-    public LottoQuantity() {
-    	//로또 구매 팝업창  
-        setSize(300, 450);
-        setTitle("구매하기");
+			layeredPane.add(bg, new Integer(0));
+			add(layeredPane, BorderLayout.CENTER);
 
-        JPanel panel = new JPanel(new GridBagLayout()); 
-        GridBagConstraints gbc = new GridBagConstraints();
-        gbc.anchor = GridBagConstraints.CENTER; 
+			// 돌아가기 버튼
+			ImageIcon imageIcon = new ImageIcon("돌아가기.jpg");
+			JLabel imageButton = new JLabel(imageIcon);
+			imageButton.setBounds(7, 545, imageIcon.getIconWidth(), imageIcon.getIconHeight());
 
-        JLabel label = new JLabel("로또 구매 개수");
-        JRadioButton select1 = new JRadioButton("1개");
-        JRadioButton select2 = new JRadioButton("2개");
-        JRadioButton select3 = new JRadioButton("3개");
-        JRadioButton select4 = new JRadioButton("4개");
-        JRadioButton select5 = new JRadioButton("5개");
-        JButton btn = new JButton("확인");
+			imageButton.addMouseListener(new MouseAdapter() {
+				@Override
+				public void mouseClicked(MouseEvent e) {
+					dispose();
+					new StartPage();
 
-        ButtonGroup group = new ButtonGroup();
-        group.add(select1);
-        group.add(select2);
-        group.add(select3);
-        group.add(select4);
-        group.add(select5);
+				}
+			});
 
-        gbc.gridx = 0; 
-        gbc.gridy = 0; 
-        gbc.insets.bottom = 10; 
-        panel.add(label, gbc);
+			// 추첨하기 버튼
+			ImageIcon imageIcon2 = new ImageIcon("추첨하기.jpg");
+			JLabel imageButton2 = new JLabel(imageIcon2);
+			imageButton2.setBounds(175, 540, imageIcon2.getIconWidth(), imageIcon2.getIconHeight());
 
-        gbc.gridy = 1; 
-        panel.add(select1, gbc);
+			imageButton2.addMouseListener(new MouseAdapter() {
+				@Override
+				public void mouseClicked(MouseEvent e) {
+					dispose();
+					new LottoRandomPage();
 
-        gbc.gridy = 2; 
-        panel.add(select2, gbc);
+				}
+			});
 
-        gbc.gridy = 3; 
-        panel.add(select3, gbc);
+			// 도움말 버튼
+			ImageIcon imageIcon3 = new ImageIcon("도움말버튼.jpg");
+			JLabel imageButton3 = new JLabel(imageIcon3);
+			imageButton3.setBounds(277, 10, imageIcon3.getIconWidth(), imageIcon3.getIconHeight());
 
-        gbc.gridy = 4; 
-        panel.add(select4, gbc);
+			imageButton3.addMouseListener(new MouseAdapter() {
+				@Override
+				public void mouseClicked(MouseEvent e) {
+					new HelpMessage();
 
-        gbc.gridy = 5; 
-        panel.add(select5, gbc);
+				}
+			});
 
-        gbc.gridy = 6; 
-        gbc.insets.bottom = 0; 
-        panel.add(btn, gbc);
+			layeredPane.add(imageButton, new Integer(1));
+			layeredPane.add(imageButton2, new Integer(2));
+			layeredPane.add(imageButton3, new Integer(3));
+			setVisible(true);
+			setDefaultCloseOperation(EXIT_ON_CLOSE);
+		}
+	}
 
-        add(panel); 
-
-        setLocationRelativeTo(null); 
-        setDefaultCloseOperation(EXIT_ON_CLOSE);
-        setVisible(true);
-    
-
-}
+	public static void main(String[] args) {
+		new StartPage();
+	}
 }

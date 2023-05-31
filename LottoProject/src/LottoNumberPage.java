@@ -12,7 +12,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 
-//내 번호 보여주는 패널만드는 클래스
+//A
 class MyNumPnlA extends JPanel {
 
 	private static JLabel myNumLbl1A;
@@ -51,7 +51,7 @@ class MyNumPnlA extends JPanel {
 		return autoLblA;
 	}
 
-	// A
+	
 	public MyNumPnlA() {	
 		JButton orderBtnA = new JButton("A");
 
