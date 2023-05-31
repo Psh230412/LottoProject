@@ -44,6 +44,15 @@ public class LottoRandomPage extends JFrame {
 		JLabel randomLbl6 = new JLabel(list.get(5).toString());
 		JLabel randomLbl7 = new JLabel(list.get(6).toString());
 		JLabel plus = new JLabel("+");
+		JButton nextButton = new JButton("다음");
+		
+		nextButton.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				new LottoDrawPage();
+				
+			}
+		});
 
 		lottoRandomPnl.add(randomLbl1);
 		lottoRandomPnl.add(randomLbl1);

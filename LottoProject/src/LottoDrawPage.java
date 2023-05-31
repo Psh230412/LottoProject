@@ -16,8 +16,7 @@ import javax.swing.JPanel;
 
 class RandomNumView extends JPanel {
 	public RandomNumView() {
-		LottoRandom lottoRandom = new LottoRandom();
-		List<Integer> list = lottoRandom.getRandomNum();
+		List<Integer> list = LottoRandom.getRandomNum();
 		
 		JLabel randomLbl1 = new JLabel(list.get(0).toString());
 		JLabel randomLbl2 = new JLabel(list.get(1).toString());
@@ -40,9 +39,30 @@ class RandomNumView extends JPanel {
 	}
 }
 
-class MyNumView extends JPanel {
-	public MyNumView() {
-		
+class MyNumViewA extends JPanel {
+	public MyNumViewA() {
+		List<Integer> list = LottoTicket1.selectedNumbers;
+		JLabel autoLblA = new JLabel(LottoTicket1.selectedMode.get(0).toString());
+		JLabel orderLblA = new JLabel("A");
+		JLabel myNumLbl1A = new JLabel(list.get(0).toString());
+		JLabel myNumLbl2A = new JLabel(list.get(1).toString());
+		JLabel myNumLbl3A = new JLabel(list.get(2).toString());
+		JLabel myNumLbl4A = new JLabel(list.get(3).toString());
+		JLabel myNumLbl5A = new JLabel(list.get(4).toString());
+		JLabel myNumLbl6A = new JLabel(list.get(5).toString());
+		JLabel gradeLblA = new JLabel("등수");
+
+
+
+		add(autoLblA);
+		add(orderLblA);
+		add(myNumLbl1A);
+		add(myNumLbl2A);
+		add(myNumLbl3A);
+		add(myNumLbl4A);
+		add(myNumLbl5A);
+		add(myNumLbl6A);
+		add(gradeLblA);
 	}
 }
 
@@ -52,8 +72,9 @@ public class LottoDrawPage extends JFrame {
 		setLayout(layout);
 		
 		add(new RandomNumView());
+		add(new MyNumViewA());
 
-		setSize(1000, 1000);
+		setSize(500, 800);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setVisible(true);
 	}
