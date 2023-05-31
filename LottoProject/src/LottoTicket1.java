@@ -1,4 +1,5 @@
 import java.awt.BorderLayout;
+import java.awt.Button;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
@@ -68,6 +69,22 @@ class LottoTicket1 extends JFrame {
 	public int getChangeCount() { // 현재 카운트를 가져오는 메서드를 추가합니다
 		return this.changeCount;
 	}
+	
+	URL[] selectImageArr = new URL[13];
+	
+	public void setSelectImageArr() {
+		for(int i=0;i<selectImageArr.length;i++) {
+			URL value = LottoTicket1.class.getClassLoader()
+					.getResource("image/셀렉트_"+(i+1)+".gif");
+			selectImageArr[i] = value;
+		}
+	}
+	
+	
+	
+	
+	
+	
 
 
 	//defaultNumber 이미지를 담는 배열
@@ -91,7 +108,7 @@ class LottoTicket1 extends JFrame {
 	
 	public JLabel[] CreateScreen() {
 		for(int i = 0; i < look.length; i++) {
-			URL urlOfScreen = LottoTicket1.class.getClassLoader().getResource("image/셀렉트_0"+ (i+1)+".gif");
+			URL urlOfScreen = LottoTicket1.class.getClassLoader().getResource("image/셀렉트_"+ (i+1)+".gif");
 			ImageIcon imageIcon = new ImageIcon(urlOfScreen);
 			look[i] = new JLabel(imageIcon);
 		}
@@ -158,7 +175,11 @@ class LottoTicket1 extends JFrame {
 		oneTicketPanel.setLayout(null);
 		oneTicketPanel.setBackground(Color.BLACK);
 		buttonCreate();
+<<<<<<< HEAD
 		CreateScreen();
+=======
+		setSelectImageArr();
+>>>>>>> branch 'master' of https://github.com/Psh230412/LottoProject.git
 
 		JButton autoBtn = new JButton();
 		JButton resetBtn = new JButton();
@@ -188,12 +209,28 @@ class LottoTicket1 extends JFrame {
 		RightLineLable.setLocation(281, 95);
 		UnderLineLable.setSize(new Dimension(67, 509));
 		UnderLineLable.setLocation(120, 36);
+<<<<<<< HEAD
 		
 		URL urlOfSamePackage = LottoTicket1.class.getClassLoader().getResource("image/셀렉트_03.gif");
 		URL urlOfresetBtn = LottoTicket1.class.getClassLoader().getResource("image/셀렉트_04.gif");
 		URL urlOfAlphaLable = LottoTicket1.class.getClassLoader().getResource("image/셀렉트_01.gif");
 		URL urlOfUpperLineLable = LottoTicket1.class.getClassLoader().getResource("image/셀렉트_02.gif");
+=======
 
+		URL urlOfSamePackage = LottoTicket1.class.getClassLoader().getResource("image/셀렉트_3.gif");
+		URL urlOfresetBtn = LottoTicket1.class.getClassLoader().getResource("image/셀렉트_4.gif");
+		URL urlOfAlphaLable = LottoTicket1.class.getClassLoader().getResource("image/셀렉트_1.gif");
+		URL urlOfUpperLineLable = LottoTicket1.class.getClassLoader().getResource("image/셀렉트_2.gif");
+>>>>>>> branch 'master' of https://github.com/Psh230412/LottoProject.git
+
+		JButton[] selectArr = {returnBtn,autoBtn,resetBtn};
+		
+		JLabel[] selectJLArr = new JLabel[10];
+		
+		/*
+		 * for(int i=0;i<selectArr.length;i++) { selectArr[i] }
+		 */
+		
 		autoBtn.setIcon(new ImageIcon(urlOfSamePackage));
 		resetBtn.setIcon(new ImageIcon(urlOfresetBtn));
 		AlphaLable.setIcon(new ImageIcon(urlOfAlphaLable));
