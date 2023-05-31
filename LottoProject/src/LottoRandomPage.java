@@ -1,5 +1,8 @@
+import javax.swing.JButton;
 import javax.swing.JFrame;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -9,9 +12,9 @@ import javax.swing.JPanel;
 
 // 당첨번호 랜덤으로 만듦
 class LottoRandom {
-	private List<Integer> randomNum = new ArrayList<>();
+	private static List<Integer> randomNum = new ArrayList<>();
 
-	public List<Integer> getRandomNum() {
+	public static List<Integer> getRandomNum() {
 		return randomNum;
 	}
 
@@ -23,13 +26,14 @@ class LottoRandom {
 				randomNum.add(number);
 		}
 	}
+
+	
 }
 
 // 당첨번호 보여주는 프레임
 public class LottoRandomPage extends JFrame {
 	public LottoRandomPage() {
 		JPanel lottoRandomPnl = new JPanel();
-		
 		LottoRandom lottoRandom = new LottoRandom();
 		List<Integer> list = lottoRandom.getRandomNum();
 
@@ -41,6 +45,16 @@ public class LottoRandomPage extends JFrame {
 		JLabel randomLbl6 = new JLabel(list.get(5).toString());
 		JLabel randomLbl7 = new JLabel(list.get(6).toString());
 		JLabel plus = new JLabel("+");
+		
+		JButton nextButton = new JButton("다음");
+		
+		nextButton.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				new LottoDrawPage();
+			}
+		});
 
 		lottoRandomPnl.add(randomLbl1);
 		lottoRandomPnl.add(randomLbl1);
@@ -53,6 +67,8 @@ public class LottoRandomPage extends JFrame {
 		lottoRandomPnl.add(randomLbl7);
 		
 		add(lottoRandomPnl);
+		add(nextButton, "South");
+		
 	
 		setSize(500, 800);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);

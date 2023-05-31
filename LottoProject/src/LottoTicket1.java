@@ -150,9 +150,7 @@ class LottoTicket1 extends JFrame {
 				int yesNo = maxCount - clickCount;
 
 				for (int i = 0; i < yesNo; i++) {
-
-					// lottoNumBtn[numbers.get(i)].doClick();
-					lottoNumBtn[numbers.get(i)].setBackground(Color.RED);
+					lottoNumBtn[numbers.get(i)].setBackground(Color.red);
 					increaseCount();
 
 					autoCount++;
@@ -168,7 +166,6 @@ class LottoTicket1 extends JFrame {
 				}
 
 				if (autoCount > 1 && autoCount < 7) {
-
 					isClick = true;
 				}
 
@@ -204,14 +201,24 @@ class LottoTicket1 extends JFrame {
 						getSelectedMode();
 						System.out.println(selectedMode);
 						System.out.println(selectedNumbers);
+
+						MyNumPnlA.getMyNumLbl1A().setText(selectedNumbers.get(0).toString());
+						MyNumPnlA.getMyNumLbl2A().setText(selectedNumbers.get(1).toString());
+						MyNumPnlA.getMyNumLbl3A().setText(selectedNumbers.get(2).toString());
+						MyNumPnlA.getMyNumLbl4A().setText(selectedNumbers.get(3).toString());
+						MyNumPnlA.getMyNumLbl5A().setText(selectedNumbers.get(4).toString());
+						MyNumPnlA.getMyNumLbl6A().setText(selectedNumbers.get(5).toString());
+						MyNumPnlA.getAutoLblA().setText(selectedMode.get(0).toString());
 					}
+					
+					
 				}
 
 			}
 		});
 		buttonCreate();
 
-		lnbPanel.setLayout(new GridLayout(9, 5));
+		lnbPanel.setLayout(new GridLayout(0, 6));
 		for (int i = 0; i < lottoNumBtn.length; i++) {
 			lnbPanel.add(lottoNumBtn[i]);
 		}
@@ -221,9 +228,10 @@ class LottoTicket1 extends JFrame {
 		oneTicketPanel.add(lnbPanel);
 		oneTicketPanel.add(btnPanel);
 
-		setSize(280, 550);
+		setSize(320, 550);
 		setVisible(true);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
+		setResizable(false);
 	}
 
 	public static void main(String[] args) {
