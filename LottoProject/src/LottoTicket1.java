@@ -177,6 +177,7 @@ class LottoTicket1 extends JFrame {
 		resetBtn.setBorderPainted(false);
 
 		JLabel AlphaLable = new JLabel();
+		JLabel UpperRightLineLable = new JLabel();
 		JLabel UpperLineLable = new JLabel();
 		JLabel RightLineLable = new JLabel();
 		JLabel UnderLineLable = new JLabel();
@@ -195,9 +196,11 @@ class LottoTicket1 extends JFrame {
 		URL urlOfAlphaLable = LottoTicket1.class.getClassLoader().getResource("image/셀렉트_1.gif");
 		URL urlOfUpperLineLable = LottoTicket1.class.getClassLoader().getResource("image/셀렉트_2.gif");
 
+		//셀렉트_11,셀렉트_12,셀렉트_13
 		JButton[] selectArr = {returnBtn,autoBtn,resetBtn};
 		
-		JLabel[] selectJLArr = new JLabel[10];
+		JLabel[] selectJLArr = {AlphaLable,UpperLineLable,};
+		
 		
 		/*
 		 * for(int i=0;i<selectArr.length;i++) { selectArr[i] }
