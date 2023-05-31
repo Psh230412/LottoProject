@@ -2,8 +2,6 @@ import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.AbstractSequentialList;
-import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -15,48 +13,62 @@ import javax.swing.JPanel;
 
 //내 번호 보여주는 패널만드는 클래스
 class MyNumPnlA extends JPanel {
-	private JLabel myNumLbl1A;
-	private JLabel myNumLbl2A;
-	private JLabel myNumLbl3A;
-	private JLabel myNumLbl4A;
-	private JLabel myNumLbl5A;
-	private JLabel myNumLbl6A;
-	private JLabel autoLblA;
+	private static JLabel myNumLbl1A;
+	private static JLabel myNumLbl2A;
+	private static JLabel myNumLbl3A;
+	private static JLabel myNumLbl4A;
+	private static JLabel myNumLbl5A;
+	private static JLabel myNumLbl6A;
+	private static JLabel autoLblA;
+
+	public static JLabel getMyNumLbl1A() {
+		return myNumLbl1A;
+	}
+
+	public static JLabel getMyNumLbl2A() {
+		return myNumLbl2A;
+	}
+
+	public static JLabel getMyNumLbl3A() {
+		return myNumLbl3A;
+	}
+
+	public static JLabel getMyNumLbl4A() {
+		return myNumLbl4A;
+	}
+
+	public static JLabel getMyNumLbl5A() {
+		return myNumLbl5A;
+	}
+
+	public static JLabel getMyNumLbl6A() {
+		return myNumLbl6A;
+	}
+
+	public static JLabel getAutoLblA() {
+		return autoLblA;
+	}
 
 	// A
 	public MyNumPnlA() {	
 		
 		JButton orderBtnA = new JButton("A");
+
+		myNumLbl1A = new JLabel("0");
+		myNumLbl2A = new JLabel("0");
+		myNumLbl3A = new JLabel("0");
+		myNumLbl4A = new JLabel("0");
+		myNumLbl5A = new JLabel("0");
+		myNumLbl6A = new JLabel("0");
+		autoLblA = new JLabel();
+		
 		orderBtnA.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				new LottoTicket1();
-				
 			}
 		});
 		
-		
-		  
-		List<Integer> listA = LottoTicket1.selectedNumbers;
-		List<String> listAMode = LottoTicket1.selectedMode;
-		
-		String A1 =String.valueOf(listA.get(0));
-		String A2 =String.valueOf(listA.get(1));
-		String A3 =String.valueOf(listA.get(2));
-		String A4 =String.valueOf(listA.get(3));
-		String A5 =String.valueOf(listA.get(4));
-		String A6 =String.valueOf(listA.get(5));
-		
-		
-		myNumLbl1A = new JLabel(A1);
-		myNumLbl2A = new JLabel(A2);
-		myNumLbl3A = new JLabel(A3);
-		myNumLbl4A = new JLabel(A4);
-		myNumLbl5A = new JLabel(A5);
-		myNumLbl6A = new JLabel(A6);
-		autoLblA = new JLabel(listAMode.get(0));
-		
-
 		add(orderBtnA);
 		add(myNumLbl1A);
 		add(myNumLbl2A);
@@ -70,16 +82,51 @@ class MyNumPnlA extends JPanel {
 
 // B
 class MyNumPnlB extends JPanel {
+	private static JLabel myNumLbl1B;
+	private static JLabel myNumLbl2B;
+	private static JLabel myNumLbl3B;
+	private static JLabel myNumLbl4B;
+	private static JLabel myNumLbl5B;
+	private static JLabel myNumLbl6B;
+	private static JLabel autoLblB;
+	
+	public static JLabel getMyNumLbl1B() {
+		return myNumLbl1B;
+	}
+
+	public static JLabel getMyNumLbl2B() {
+		return myNumLbl2B;
+	}
+
+	public static JLabel getMyNumLbl3B() {
+		return myNumLbl3B;
+	}
+
+	public static JLabel getMyNumLbl4B() {
+		return myNumLbl4B;
+	}
+
+	public static JLabel getMyNumLbl5B() {
+		return myNumLbl5B;
+	}
+
+	public static JLabel getMyNumLbl6B() {
+		return myNumLbl6B;
+	}
+
+	public static JLabel getAutoLblB() {
+		return autoLblB;
+	}
+
 	public MyNumPnlB() {
 		JButton orderBtnB = new JButton("B");
-		
-		JLabel myNumLbl1B = new JLabel("0");
-		JLabel myNumLbl2B = new JLabel("0");
-		JLabel myNumLbl3B = new JLabel("0");
-		JLabel myNumLbl4B = new JLabel("0");
-		JLabel myNumLbl5B = new JLabel("0");
-		JLabel myNumLbl6B = new JLabel("0");
-		JLabel autoLblB = new JLabel("자동");
+		myNumLbl1B = new JLabel("0");
+		myNumLbl2B = new JLabel("0");
+		myNumLbl3B = new JLabel("0");
+		myNumLbl4B = new JLabel("0");
+		myNumLbl5B = new JLabel("0");
+		myNumLbl6B = new JLabel("0");
+		autoLblB = new JLabel();
 
 		orderBtnB.addActionListener(new ActionListener() {
 			@Override
@@ -101,15 +148,52 @@ class MyNumPnlB extends JPanel {
 
 // C
 class MyNumPnlC extends JPanel {
+	private static JLabel myNumLbl1C;
+	private static JLabel myNumLbl2C;
+	private static JLabel myNumLbl3C;
+	private static JLabel myNumLbl4C;
+	private static JLabel myNumLbl5C;
+	private static JLabel myNumLbl6C;
+	private static JLabel autoLblC;
+
+	public static JLabel getMyNumLbl1C() {
+		return myNumLbl1C;
+	}
+
+	public static JLabel getMyNumLbl2C() {
+		return myNumLbl2C;
+	}
+
+	public static JLabel getMyNumLbl3C() {
+		return myNumLbl3C;
+	}
+
+	public static JLabel getMyNumLbl4C() {
+		return myNumLbl4C;
+	}
+
+	public static JLabel getMyNumLbl5C() {
+		return myNumLbl5C;
+	}
+
+	public static JLabel getMyNumLbl6C() {
+		return myNumLbl6C;
+	}
+
+	public static JLabel getAutoLblC() {
+		return autoLblC;
+	}
+
+
 	public MyNumPnlC() {
 		JButton orderBtnC = new JButton("C");
-		JLabel myNumLbl1C = new JLabel("0");
-		JLabel myNumLbl2C = new JLabel("0");
-		JLabel myNumLbl3C = new JLabel("0");
-		JLabel myNumLbl4C = new JLabel("0");
-		JLabel myNumLbl5C = new JLabel("0");
-		JLabel myNumLbl6C = new JLabel("0");
-		JLabel autoLblC = new JLabel("자동");
+		myNumLbl1C = new JLabel("0");
+		myNumLbl2C = new JLabel("0");
+		myNumLbl3C = new JLabel("0");
+		myNumLbl4C = new JLabel("0");
+		myNumLbl5C = new JLabel("0");
+		myNumLbl6C = new JLabel("0");
+		autoLblC = new JLabel();
 
 		orderBtnC.addActionListener(new ActionListener() {
 			@Override
@@ -131,15 +215,51 @@ class MyNumPnlC extends JPanel {
 
 // D
 class MyNumPnlD extends JPanel {
+	private static JLabel myNumLbl1D;
+	private static JLabel myNumLbl2D;
+	private static JLabel myNumLbl3D;
+	private static JLabel myNumLbl4D;
+	private static JLabel myNumLbl5D;
+	private static JLabel myNumLbl6D;
+	private static JLabel autoLblD;
+
+	public static JLabel getMyNumLbl1D() {
+		return myNumLbl1D;
+	}
+
+	public static JLabel getMyNumLbl2D() {
+		return myNumLbl2D;
+	}
+
+	public static JLabel getMyNumLbl3D() {
+		return myNumLbl3D;
+	}
+
+	public static JLabel getMyNumLbl4D() {
+		return myNumLbl4D;
+	}
+	
+	public static JLabel getMyNumLbl5D() {
+		return myNumLbl5D;
+	}
+
+	public static JLabel getMyNumLbl6D() {
+		return myNumLbl6D;
+	}
+
+	public static JLabel getAutoLblD() {
+		return autoLblD;
+	}
+
 	public MyNumPnlD() {
 		JButton orderBtnD = new JButton("D");
-		JLabel myNumLbl1D = new JLabel("0");
-		JLabel myNumLbl2D = new JLabel("0");
-		JLabel myNumLbl3D = new JLabel("0");
-		JLabel myNumLbl4D = new JLabel("0");
-		JLabel myNumLbl5D = new JLabel("0");
-		JLabel myNumLbl6D = new JLabel("0");
-		JLabel autoLblD = new JLabel("자동");
+		myNumLbl1D = new JLabel("0");
+		myNumLbl2D = new JLabel("0");
+		myNumLbl3D = new JLabel("0");
+		myNumLbl4D = new JLabel("0");
+		myNumLbl5D = new JLabel("0");
+		myNumLbl6D = new JLabel("0");
+		autoLblD = new JLabel();
 
 		orderBtnD.addActionListener(new ActionListener() {
 			@Override
@@ -161,15 +281,51 @@ class MyNumPnlD extends JPanel {
 
 // E
 class MyNumPnlE extends JPanel {
+	private static JLabel myNumLbl1E;
+	private static JLabel myNumLbl2E;
+	private static JLabel myNumLbl3E;
+	private static JLabel myNumLbl4E;
+	private static JLabel myNumLbl5E;
+	private static JLabel myNumLbl6E;
+	private static JLabel autoLblE;
+	
+	public static JLabel getMyNumLbl1E() {
+		return myNumLbl1E;
+	}
+
+	public static JLabel getMyNumLbl2E() {
+		return myNumLbl2E;
+	}
+
+	public static JLabel getMyNumLbl3E() {
+		return myNumLbl3E;
+	}
+
+	public static JLabel getMyNumLbl4E() {
+		return myNumLbl4E;
+	}
+
+	public static JLabel getMyNumLbl5E() {
+		return myNumLbl5E;
+	}
+
+	public static JLabel getMyNumLbl6E() {
+		return myNumLbl6E;
+	}
+
+	public static JLabel getAutoLblE() {
+		return autoLblE;
+	}
+
 	public MyNumPnlE() {
 		JButton orderBtnE = new JButton("E");
-		JLabel myNumLbl1E = new JLabel("0");
-		JLabel myNumLbl2E = new JLabel("0");
-		JLabel myNumLbl3E = new JLabel("0");
-		JLabel myNumLbl4E = new JLabel("0");
-		JLabel myNumLbl5E = new JLabel("0");
-		JLabel myNumLbl6E = new JLabel("0");
-		JLabel autoLblE = new JLabel("자동");
+		myNumLbl1E = new JLabel("0");
+		myNumLbl2E = new JLabel("0");
+		myNumLbl3E = new JLabel("0");
+		myNumLbl4E = new JLabel("0");
+		myNumLbl5E = new JLabel("0");
+		myNumLbl6E = new JLabel("0");
+		autoLblE = new JLabel();
 
 		orderBtnE.addActionListener(new ActionListener() {
 			@Override
@@ -194,23 +350,32 @@ public class LottoNumberPage extends JFrame {
 	public LottoNumberPage() {
 		BoxLayout layout = new BoxLayout(getContentPane(), BoxLayout.Y_AXIS);
 		setLayout(layout);
+		
+		// 프레임 수정 해야됨
+		JButton nextBtn = new JButton("다음");
+		nextBtn.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				new LottoRandomPage();
+				
+			}
+		});
 
 		add(new MyNumPnlA());
 		add(new MyNumPnlB());
 		add(new MyNumPnlC());
 		add(new MyNumPnlD());
 		add(new MyNumPnlE());
+		add(nextBtn);
+		
 
 		setSize(500, 800);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setVisible(true);
 	}
 
-	
 	public static void main(String[] args) {
 		new LottoNumberPage();
-
 	}
-	 
 
 }

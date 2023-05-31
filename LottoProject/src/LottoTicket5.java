@@ -44,7 +44,7 @@ class LottoTicket5 extends JFrame {
 		this.isAuto = isAuto;
 	}
 
-	public void resetCount() { // 移댁슫�듃瑜� 由ъ뀑�븯�뒗 硫붿꽌�뱶瑜� 異붽��빀�땲�떎
+	public void resetCount() { // 카운트를 리셋하는 메서드를 추가합니다
 		this.changeCount = 0;
 	}
 
@@ -56,7 +56,7 @@ class LottoTicket5 extends JFrame {
 		this.changeCount--;
 	}
 
-	public int getChangeCount() { // �쁽�옱 移댁슫�듃瑜� 媛��졇�삤�뒗 硫붿꽌�뱶瑜� 異붽��빀�땲�떎
+	public int getChangeCount() { // 현재 카운트를 가져오는 메서드를 추가합니다
 		return this.changeCount;
 	}
 
@@ -72,24 +72,21 @@ class LottoTicket5 extends JFrame {
 	public List<Integer> getSelectedNumbers() {
 		for (int i = 0; i < lottoNumBtn.length; i++) {
 			if (lottoNumBtn[i].getBackground().equals(Color.RED)) {
-				selectedNumbers.add(i + 1); // lottoNumBtn�쓽 �씤�뜳�뒪�뒗 0遺��꽣 �떆�옉�븯誘�濡� 1�쓣 �뜑�빐�빞 踰덊샇瑜� �뼸�쓣 �닔
-											// �엳�뒿�땲�떎.
+				selectedNumbers.add(i + 1); // lottoNumBtn의 인덱스는 0부터 시작하므로 1을 더해야 번호를 얻을 수 있습니다.
 			}
 		}
 		return selectedNumbers;
 	}
-
-	public List<String> getSelectedMode() {
+	public List<String> getSelectedMode(){
 		if (isAuto == true && isClick == true) {
-			selectedMode.add("�옄�룞");
+			selectedMode.add("자동");
 		} else if (isAuto == false && isClick == true) {
-			selectedMode.add("諛섏옄�룞");
+			selectedMode.add("반자동");
 		} else {
-			selectedMode.add("�닔�룞");
+			selectedMode.add("수동");
 		}
 		return selectedMode;
 	}
-
 	public LottoTicket5() {
 
 		JPanel oneTicketPanel = new JPanel();
@@ -102,7 +99,7 @@ class LottoTicket5 extends JFrame {
 		Font font = new Font("SansSerif", Font.BOLD, 30);
 
 		JLabel guideLbl1a = new JLabel("E");
-		JLabel guideLbl1b = new JLabel("1000�썝");
+		JLabel guideLbl1b = new JLabel("1000원");
 		guideLbl1a.setFont(font);
 		guideLbl1b.setFont(font);
 
@@ -120,9 +117,9 @@ class LottoTicket5 extends JFrame {
 		oneTicketPanel.setLayout(new BoxLayout(oneTicketPanel, BoxLayout.Y_AXIS));
 
 		btnPanel.setLayout(new FlowLayout());
-		JButton autoBtn = new JButton("�옄�룞");
-		JButton resetBtn = new JButton("珥덇린�솕");
-		JButton returnBtn = new JButton("�솗�젙");
+		JButton autoBtn = new JButton("자동");
+		JButton resetBtn = new JButton("초기화");
+		JButton returnBtn = new JButton("확정");
 		autoBtn.setPreferredSize(new Dimension(250, 30));
 		resetBtn.setPreferredSize(new Dimension(250, 30));
 		returnBtn.setPreferredSize(new Dimension(90, 30));
@@ -191,11 +188,10 @@ class LottoTicket5 extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				if (!(changeCount == 6)) {
-					JOptionPane.showMessageDialog(null, "踰덊샇瑜� 6媛쒓퉴吏� �젙�븯�뀛�빞�빀�땲�떎", "�엯�젰誘몃떖",
-							JOptionPane.WARNING_MESSAGE);
+					JOptionPane.showMessageDialog(null, "번호를 6개까지 정하셔야합니다", "입력미달", JOptionPane.WARNING_MESSAGE);
 				} else {
-					int result = JOptionPane.showConfirmDialog(LottoTicket5.this, "踰덊샇瑜� �솗�젙�븯�떆寃좎뒿�땲源�?",
-							"蹂듦텒踰덊샇 �솗�젙", JOptionPane.YES_NO_OPTION);
+					int result = JOptionPane.showConfirmDialog(LottoTicket5.this, "번호를 확정하시겠습니까?", "복권번호 확정",
+							JOptionPane.YES_NO_OPTION);
 
 					if (result == JOptionPane.YES_OPTION) {
 						LottoTicket5.this.dispose();
@@ -245,8 +241,7 @@ class MyListener5 implements ActionListener {
 			lt1.increaseCount();
 
 		} else if (!source.getBackground().equals(Color.RED) && lt1.getChangeCount() == 6) {
-			JOptionPane.showMessageDialog(null, "濡쒕삉�닽�옄�뒗 6媛쒓퉴吏� 怨좊�� �닔 �엳�뒿�땲�떎.", "�닽�옄珥덇낵",
-					JOptionPane.WARNING_MESSAGE);
+			JOptionPane.showMessageDialog(null, "로또숫자는 6개까지 고를 수 있습니다.", "숫자초과", JOptionPane.WARNING_MESSAGE);
 		} else if (source.getBackground().equals(Color.RED) && lt1.getChangeCount() == 1 && lt1.isClick() == true) {
 			source.setBackground(null);
 			lt1.decreaseCount();
