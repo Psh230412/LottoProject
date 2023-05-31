@@ -87,6 +87,7 @@ class LottoTicket3 extends JFrame {
 		}
 		return selectedMode;
 	}
+
 	public LottoTicket3() {
 
 		JPanel oneTicketPanel = new JPanel();
@@ -197,12 +198,15 @@ class LottoTicket3 extends JFrame {
 						LottoTicket3.this.dispose();
 						getSelectedNumbers();
 						getSelectedMode();
-						setAuto(false);
-						setClick(false);
-						resetCount();
 						System.out.println(selectedMode);
 						System.out.println(selectedNumbers);
 						
+						setAuto(false);
+						setClick(false);
+						resetCount();
+						new LottoNumberPage();
+						
+
 						MyNumPnlC.getMyNumLbl1C().setText(selectedNumbers.get(0).toString());
 						MyNumPnlC.getMyNumLbl2C().setText(selectedNumbers.get(1).toString());
 						MyNumPnlC.getMyNumLbl3C().setText(selectedNumbers.get(2).toString());

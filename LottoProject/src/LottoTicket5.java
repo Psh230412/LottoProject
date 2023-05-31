@@ -25,7 +25,7 @@ class LottoTicket5 extends JFrame {
 	private boolean isAuto = false;
 	List<String> selectedMode = new ArrayList<>();
 	List<Integer> selectedNumbers = new ArrayList<>();
-	private JButton[] lottoNumBtn = new JButton[45];
+	private JButton[] lottoNumBtn = new JButton[45];;
 	private static int changeCount = 0;
 
 	public boolean isAuto() {
@@ -150,7 +150,7 @@ class LottoTicket5 extends JFrame {
 				int yesNo = maxCount - clickCount;
 
 				for (int i = 0; i < yesNo; i++) {
-					lottoNumBtn[numbers.get(i)].setBackground(Color.red);
+					lottoNumBtn[numbers.get(i)].setBackground(Color.RED);
 					increaseCount();
 					autoCount++;
 				}

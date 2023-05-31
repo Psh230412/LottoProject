@@ -13,9 +13,56 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+// 등수 클래스
+class CompareNum {
+	public String compareNum (List<Integer> selectedNumList) {
+		List<Integer> randomNumList = LottoRandom.getRandomNum();
+		int count = 0;
+		String grade = "";
+		
+		for (int i : selectedNumList) {
+			for (int j = 0; j < selectedNumList.size(); j++) {
+				if (i == randomNumList.get(j)) {
+					count++;
+				}
+			}
+		}
+		
+		switch (count) {
+		case 3:
+			grade = "5등";
+			break;
+		case 4:
+			grade = "4등";
+			break;
+		case 5:
+			int count2 = 0;
+			for (int i = 0; i < selectedNumList.size(); i++) {
+				if (selectedNumList.get(i) == randomNumList.get(6)) {
+					count2++;
+				}
+			}
+			if (count2 == 0) {
+				grade = "3등";
+				break;
+			} else {
+				grade = "2등";
+				break;
+			}
+		case 6:
+			grade = "1등";
+			break;
+		default:
+			grade = "낙첨";
+			break;
+		}
+		return grade;
+	}
+}
 
 class RandomNumView extends JPanel {
 	public RandomNumView() {
+		
 		LottoRandom lottoRandom = new LottoRandom();
 		List<Integer> randomNumList = lottoRandom.getRandomNum();
 
@@ -40,18 +87,32 @@ class RandomNumView extends JPanel {
 	}
 }
 
+// A
 class MyNumViewA extends JPanel {
 	public MyNumViewA() {
-		List<Integer> list = LottoTicket1.selectedNumbers;
-		JLabel autoLblA = new JLabel(LottoTicket1.selectedMode.get(0).toString());
+		/*List<Integer> list = LottoTicket1.selectedNumbers;
+		JLabel autoLblA = new JLabel(LottoTicket1.selectedMode.get(0).toString());*/
+		
+		//MyNumPnlA.getMyNumLbl1A().getT
+		int num1 = Integer.valueOf(MyNumPnlA.getMyNumLbl1A().getText());
+		int num2 = Integer.valueOf(MyNumPnlA.getMyNumLbl2A().getText());
+		int num3 = Integer.valueOf(MyNumPnlA.getMyNumLbl3A().getText());
+		int num4 = Integer.valueOf(MyNumPnlA.getMyNumLbl4A().getText());
+		int num5 = Integer.valueOf(MyNumPnlA.getMyNumLbl5A().getText());
+		int num6 = Integer.valueOf(MyNumPnlA.getMyNumLbl6A().getText());
+		String selectedMode = MyNumPnlA.getAutoLblA().getText();
+		
+		List<Integer> selectedNumList = new ArrayList<>(Arrays.asList(num1, num2, num3, num4, num5, num6));
+		
+		JLabel autoLblA = new JLabel(selectedMode);
 		JLabel orderLblA = new JLabel("A");
-		JLabel myNumLbl1A = new JLabel(list.get(0).toString());
-		JLabel myNumLbl2A = new JLabel(list.get(1).toString());
-		JLabel myNumLbl3A = new JLabel(list.get(2).toString());
-		JLabel myNumLbl4A = new JLabel(list.get(3).toString());
-		JLabel myNumLbl5A = new JLabel(list.get(4).toString());
-		JLabel myNumLbl6A = new JLabel(list.get(5).toString());
-		JLabel gradeLblA = new JLabel("등수");
+		JLabel myNumLbl1A = new JLabel(selectedNumList.get(0).toString());
+		JLabel myNumLbl2A = new JLabel(selectedNumList.get(1).toString());
+		JLabel myNumLbl3A = new JLabel(selectedNumList.get(2).toString());
+		JLabel myNumLbl4A = new JLabel(selectedNumList.get(3).toString());
+		JLabel myNumLbl5A = new JLabel(selectedNumList.get(4).toString());
+		JLabel myNumLbl6A = new JLabel(selectedNumList.get(5).toString());
+		JLabel gradeLblA = new JLabel();
 
 
 
