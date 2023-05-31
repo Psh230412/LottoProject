@@ -26,9 +26,17 @@ class CompareNum {
 					count++;
 				}
 			}
-		}
+		}		
 		
 		switch (count) {
+		case 0:
+			if (selectedNumList.contains(0)) {
+				grade = "";
+				break;
+			} else {
+				grade = "낙첨";
+				break;
+			}
 		case 3:
 			grade = "5등";
 			break;
@@ -62,7 +70,6 @@ class CompareNum {
 
 class RandomNumView extends JPanel {
 	public RandomNumView() {
-		
 		LottoRandom lottoRandom = new LottoRandom();
 		List<Integer> randomNumList = lottoRandom.getRandomNum();
 
@@ -90,10 +97,6 @@ class RandomNumView extends JPanel {
 // A
 class MyNumViewA extends JPanel {
 	public MyNumViewA() {
-		/*List<Integer> list = LottoTicket1.selectedNumbers;
-		JLabel autoLblA = new JLabel(LottoTicket1.selectedMode.get(0).toString());*/
-		
-		//MyNumPnlA.getMyNumLbl1A().getT
 		int num1 = Integer.valueOf(MyNumPnlA.getMyNumLbl1A().getText());
 		int num2 = Integer.valueOf(MyNumPnlA.getMyNumLbl2A().getText());
 		int num3 = Integer.valueOf(MyNumPnlA.getMyNumLbl3A().getText());
@@ -116,7 +119,6 @@ class MyNumViewA extends JPanel {
 
 		String grade = new CompareNum().compareNum(selectedNumList);
 		gradeLblA.setText(grade);
-
 
 		add(autoLblA);
 		add(orderLblA);
