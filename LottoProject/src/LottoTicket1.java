@@ -79,8 +79,8 @@ class LottoTicket1 extends JFrame {
 	//defaultNumber 이미지,selNumber 이미지를 배열에 담는 메서드
 	public Image[] CreateImage(){
 		for(int i=0;i<lottoNumBtn.length;i++) {
-			imageArrBefore[i]=new ImageIcon("\\\\GREEN-424\\Java\\Your code\\_로또 GUI\\5조\\2023-05-31 3차 제출\\defaultNumber\\defaultNumber"+" "+"("+(i+1)+")"+".gif").getImage();
-			imageArrAfter[i]=new ImageIcon("\\\\GREEN-424\\Java\\Your code\\_로또 GUI\\5조\\2023-05-31 3차 제출\\selNumber\\selNumber"+" "+"("+(i+1)+")"+".gif").getImage(); 
+			imageArrBefore[i]=new ImageIcon(""+" "+"("+(i+1)+")"+".gif").getImage();
+			imageArrAfter[i]=new ImageIcon(""+" "+"("+(i+1)+")"+".gif").getImage(); 
 		}
 		return imageArrBefore;
 	}
@@ -326,9 +326,6 @@ class LottoTicket1 extends JFrame {
 		});
 		oneTicketPanel.setPreferredSize(new Dimension(340,550));
 		add(oneTicketPanel);
-		//getContentPane().
-
-		setSize(340, 583);
 		pack();
 		setVisible(true);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
