@@ -42,10 +42,12 @@ class RandomNumView extends JPanel {
 
 class MyNumViewA extends JPanel {
 	public MyNumViewA() {
-		List<Integer> list = LottoTicket1.selectedNumbers;
-		JLabel autoLblA = new JLabel(LottoTicket1.selectedMode.get(0).toString());
+		/*List<Integer> list = LottoTicket1.selectedNumbers;
+		JLabel autoLblA = new JLabel(LottoTicket1.selectedMode.get(0).toString());*/
+		
+		//MyNumPnlA.getMyNumLbl1A().getT
 		JLabel orderLblA = new JLabel("A");
-		JLabel myNumLbl1A = new JLabel(list.get(0).toString());
+		JLabel myNumLbl1A = new JLabel(MyNumPnlA.getMyNumLbl1A().getText());
 		JLabel myNumLbl2A = new JLabel(list.get(1).toString());
 		JLabel myNumLbl3A = new JLabel(list.get(2).toString());
 		JLabel myNumLbl4A = new JLabel(list.get(3).toString());

@@ -3,7 +3,9 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Font;
+import java.awt.Graphics;
 import java.awt.GridLayout;
+import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
@@ -12,6 +14,7 @@ import java.util.Collections;
 import java.util.List;
 
 import javax.swing.BoxLayout;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -58,11 +61,27 @@ class LottoTicket1 extends JFrame {
 		return this.changeCount;
 	}
 
+	
+	
+	
+	Image[] imageArr=new Image[45];
+	
+	public Image[] CreateImage(){
+		for(int i=0;i<45;i++) {
+			imageArr[i]=new ImageIcon("C:\\Users\\GGG\\Documents\\카카오톡 받은 파일\\defaultNumber\\defaultNumber"+" "+"("+(i+1)+")"+".gif").getImage();
+		}
+		return imageArr;
+	}
+	
+	
 	public void buttonCreate() {
 		for (int i = 0; i < lottoNumBtn.length; i++) {
-			String lottoNumBtnName = String.valueOf(i + 1);
-			lottoNumBtn[i] = new JButton(lottoNumBtnName);
+			lottoNumBtn[i] = new JButton();
 			lottoNumBtn[i].addActionListener(new MyListener(this));
+			lottoNumBtn[i].setIcon(new ImageIcon(CreateImage()[i]));
+			lottoNumBtn[i].setBorderPainted(false);
+			
+			
 			// lottoNumbtn[0]={1} lottoNumbtn[1]={2}.......lottoNumbtn[n]={n+1}
 		}
 	}
@@ -87,45 +106,78 @@ class LottoTicket1 extends JFrame {
 		return selectedMode;
 	}
 
+
 	public LottoTicket1() {
-
+		
+		//Image icon = new ImageIcon("C:\\Users\\GGG\\Documents\\카카오톡 받은 파일\\KakaoTalk_20230531_105135929.png").getImage();
 		JPanel oneTicketPanel = new JPanel();
+		
+		
 
-		JPanel titlePanel = new JPanel();
-		JPanel guideLbl1titlePanel = new JPanel();
-		JPanel guideLbl2titlePanel = new JPanel();
-		JPanel lnbPanel = new JPanel();
-		JPanel btnPanel = new JPanel();
+		//JPanel titlePanel = new JPanel();
+		//JPanel guideLbl1titlePanel = new JPanel();
+		//JPanel guideLbl2titlePanel = new JPanel();
+		//JPanel lnbPanel = new JPanel();
+		//JPanel btnPanel = new JPanel();
 		Font font = new Font("SansSerif", Font.BOLD, 30);
 
-		JLabel guideLbl1a = new JLabel("A");
-		JLabel guideLbl1b = new JLabel("1000원");
-		guideLbl1a.setFont(font);
-		guideLbl1b.setFont(font);
+		//JLabel guideLbl1a = new JLabel("A");
+		//JLabel guideLbl1b = new JLabel("1000원");
+		//guideLbl1a.setFont(font);
+		//guideLbl1b.setFont(font);
 
-		guideLbl1titlePanel.setPreferredSize(new Dimension(20, 20));
-		guideLbl2titlePanel.setPreferredSize(new Dimension(45, 20));
-		guideLbl1titlePanel.add(guideLbl1a);
-		guideLbl2titlePanel.add(guideLbl1b);
-		guideLbl1titlePanel.setBackground(Color.white);
-		guideLbl2titlePanel.setBackground(Color.PINK);
+		//guideLbl1titlePanel.setPreferredSize(new Dimension(20, 20));
+		//guideLbl2titlePanel.setPreferredSize(new Dimension(45, 20));
+		//guideLbl1titlePanel.add(guideLbl1a);
+		//guideLbl2titlePanel.add(guideLbl1b);
+		//guideLbl1titlePanel.setBackground(Color.white);
+		//guideLbl2titlePanel.setBackground(Color.PINK);
 
-		titlePanel.setLayout(new BoxLayout(titlePanel, BoxLayout.X_AXIS));
-		titlePanel.add(guideLbl1titlePanel);
-		titlePanel.add(guideLbl2titlePanel);
+		//titlePanel.setLayout(new BoxLayout(titlePanel, BoxLayout.X_AXIS));
+		//titlePanel.add(guideLbl1titlePanel);
+		//titlePanel.add(guideLbl2titlePanel);
 
-		oneTicketPanel.setLayout(new BoxLayout(oneTicketPanel, BoxLayout.Y_AXIS));
-
-		btnPanel.setLayout(new FlowLayout());
+		//oneTicketPanel.setLayout(new BoxLayout(oneTicketPanel, BoxLayout.Y_AXIS));
+		
+		oneTicketPanel.setLayout(null);
+		oneTicketPanel.setBackground(Color.BLACK);
+		
+		//btnPanel.setLayout(new FlowLayout());
 		JButton autoBtn = new JButton("자동");
 		JButton resetBtn = new JButton("초기화");
 		JButton returnBtn = new JButton("번호 확정");
 		autoBtn.setPreferredSize(new Dimension(250, 30));
 		resetBtn.setPreferredSize(new Dimension(250, 30));
 		returnBtn.setPreferredSize(new Dimension(90, 30));
-		btnPanel.add(autoBtn);
-		btnPanel.add(resetBtn);
-		btnPanel.add(returnBtn);
+		buttonCreate();
+		
+		for(int i=0;i<45;i++) {
+			
+			lottoNumBtn[i].setSize(42,42);
+			oneTicketPanel.add(lottoNumBtn[i]);
+		}
+		for(int i=0;i<9;i++) {
+			lottoNumBtn[5*i].setLocation(30+0, 100+42*i);
+		}
+		for(int i=0;i<9;i++) {
+			lottoNumBtn[5*i+1].setLocation(30+42, 100+42*i);
+		}
+		for(int i=0;i<9;i++) {
+			lottoNumBtn[5*i+2].setLocation(30+42*2, 100+42*i);
+		}
+		for(int i=0;i<9;i++) {
+			lottoNumBtn[5*i+3].setLocation(30+42*3, 100+42*i);
+		}
+		for(int i=0;i<9;i++) {
+			lottoNumBtn[5*i+4].setLocation(30+42*4, 100+42*i);
+		}
+		
+		//btnPanel.add(autoBtn);
+		//btnPanel.add(resetBtn);
+		//btnPanel.add(returnBtn);
+		
+		
+		
 		autoBtn.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -218,19 +270,19 @@ class LottoTicket1 extends JFrame {
 
 			}
 		});
-		buttonCreate();
+		
 
-		lnbPanel.setLayout(new GridLayout(0, 6));
-		for (int i = 0; i < lottoNumBtn.length; i++) {
-			lnbPanel.add(lottoNumBtn[i]);
-		}
+		/*
+		 * lnbPanel.setLayout(new GridLayout(0, 5)); for (int i = 0; i <
+		 * lottoNumBtn.length; i++) { lnbPanel.add(lottoNumBtn[i]); }
+		 */
 
 		add(oneTicketPanel);
-		oneTicketPanel.add(titlePanel);
-		oneTicketPanel.add(lnbPanel);
-		oneTicketPanel.add(btnPanel);
+		//oneTicketPanel.add(titlePanel);
+		//oneTicketPanel.add(lnbPanel);
+		//oneTicketPanel.add(btnPanel);
 
-		setSize(320, 550);
+		setSize(300, 800);
 		setVisible(true);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setResizable(false);
@@ -259,6 +311,7 @@ class MyListener implements ActionListener {
 		if (!source.getBackground().equals(Color.RED) && lt1.getChangeCount() < 6) {
 
 			source.setBackground(Color.RED);
+			
 
 			lt1.increaseCount();
 
