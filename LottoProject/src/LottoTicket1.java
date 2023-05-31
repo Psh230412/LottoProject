@@ -12,6 +12,7 @@ import java.awt.HeadlessException;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.Collections;
 
@@ -32,6 +33,7 @@ class LottoTicket1 extends JFrame {
 	List<Integer> selectedNumbers = new ArrayList<>();
 	private JButton[] lottoNumBtn = new JButton[45];;
 	private static int changeCount = 0;
+	
 
 
 	public boolean isAuto() {
@@ -77,8 +79,8 @@ class LottoTicket1 extends JFrame {
 	//defaultNumber 이미지,selNumber 이미지를 배열에 담는 메서드
 	public Image[] CreateImage(){
 		for(int i=0;i<lottoNumBtn.length;i++) {
-			imageArrBefore[i]=new ImageIcon("C:\\Users\\GGG\\Documents\\카카오톡 받은 파일\\defaultNumber\\defaultNumber"+" "+"("+(i+1)+")"+".gif").getImage();
-			imageArrAfter[i]=new ImageIcon("C:\\Users\\GGG\\Documents\\카카오톡 받은 파일\\selNumber\\selNumber"+" "+"("+(i+1)+")"+".gif").getImage(); 
+			imageArrBefore[i]=new ImageIcon("\\\\GREEN-424\\Java\\Your code\\_로또 GUI\\5조\\2023-05-31 3차 제출\\defaultNumber\\defaultNumber"+" "+"("+(i+1)+")"+".gif").getImage();
+			imageArrAfter[i]=new ImageIcon("\\\\GREEN-424\\Java\\Your code\\_로또 GUI\\5조\\2023-05-31 3차 제출\\selNumber\\selNumber"+" "+"("+(i+1)+")"+".gif").getImage(); 
 		}
 		return imageArrBefore;
 	}
@@ -141,27 +143,63 @@ class LottoTicket1 extends JFrame {
 
 
 	public LottoTicket1() {
+		JPanel oneTicketPanel = new JPanel();
+		oneTicketPanel.setLayout(null);
+		oneTicketPanel.setBackground(Color.BLACK);
 		buttonCreate();
 		
 		
-		JPanel oneTicketPanel = new JPanel();
+		
 		
 
-		oneTicketPanel.setLayout(null);
-		oneTicketPanel.setBackground(Color.BLACK);
+		JButton autoBtn = new JButton();
+		JButton resetBtn = new JButton();
+		JButton returnBtn = new JButton();
+		
+		autoBtn.setSize(new Dimension(81, 35));
+		resetBtn.setSize(new Dimension(80, 35));
+		returnBtn.setSize(new Dimension(88, 29));
+		
+		autoBtn.setLocation(120, 46);
+		resetBtn.setLocation(201, 46);
+		returnBtn.setLocation(129, 509);
+		
+		autoBtn.setBorderPainted(false);
+		resetBtn.setBorderPainted(false);
+		
+		JLabel AlphaLable = new JLabel();
+		JLabel UpperLineLable = new JLabel();
+		JLabel RightLineLable = new JLabel();
+		JLabel UnderLineLable = new JLabel();
+		
+		AlphaLable.setSize(new Dimension(120,81));
+		AlphaLable.setLocation(0, 0);
+		UpperLineLable.setSize(new Dimension(220,46));
+		UpperLineLable.setLocation(120, 0);
+		RightLineLable.setSize(new Dimension(63,455));
+		RightLineLable.setLocation(281, 95);
+		UnderLineLable.setSize(new Dimension(67,509));
+		UnderLineLable.setLocation(120, 36);
+		
+		URL urlOfSamePackage = LottoTicket1.class.getResource("image/셀렉트_03.gif");
+		URL urlOfresetBtn = LottoTicket1.class.getClassLoader().getResource("image/셀렉트_04.gif");
 		
 		
-		JButton autoBtn = new JButton("자동");
-		JButton resetBtn = new JButton("초기화");
-		JButton returnBtn = new JButton("번호 확정");
 		
-		autoBtn.setSize(new Dimension(45, 30));
-		resetBtn.setSize(new Dimension(45, 30));
-		returnBtn.setSize(new Dimension(98, 30));
+		autoBtn.setIcon(new ImageIcon(urlOfSamePackage));
+		resetBtn.setIcon(new ImageIcon(urlOfresetBtn));
+		AlphaLable.setIcon(new ImageIcon("C:\\Users\\GGG\\Documents\\카카오톡 받은 파일\\select\\셀렉트_01.gif"));
+		UpperLineLable.setIcon(new ImageIcon("C:\\Users\\GGG\\Documents\\카카오톡 받은 파일\\select\\셀렉트_02.gif"));
+		RightLineLable.setIcon(new ImageIcon("C:\\Users\\GGG\\Documents\\카카오톡 받은 파일\\select\\셀렉트_13.gif"));
+		UnderLineLable.setIcon(new ImageIcon("C:\\Users\\GGG\\Documents\\카카오톡 받은 파일\\select\\셀렉트_54.gif"));
 		
-		autoBtn.setLocation(124, 40);
-		resetBtn.setLocation(174, 40);
-		returnBtn.setLocation(98, 488);
+		oneTicketPanel.add(autoBtn);
+		oneTicketPanel.add(resetBtn);
+		oneTicketPanel.add(returnBtn);
+		oneTicketPanel.add(AlphaLable);
+		oneTicketPanel.add(UpperLineLable);
+		oneTicketPanel.add(RightLineLable);
+		oneTicketPanel.add(RightLineLable);
 		
 		for(int i=0;i<45;i++) {
 			lottoNumBtn[i].setSize(42,42);
@@ -170,25 +208,22 @@ class LottoTicket1 extends JFrame {
 		
 		
 		for(int i=0;i<9;i++) {
-			lottoNumBtn[5*i].setLocation(42+0, 100+42*i);
+			lottoNumBtn[5*i].setLocation(67+0, 95+42*i);
 		}
 		for(int i=0;i<9;i++) {
-			lottoNumBtn[5*i+1].setLocation(42+42, 100+42*i);
+			lottoNumBtn[5*i+1].setLocation(67+42, 95+42*i);
 		}
 		for(int i=0;i<9;i++) {
-			lottoNumBtn[5*i+2].setLocation(42+42*2, 100+42*i);
+			lottoNumBtn[5*i+2].setLocation(67+42*2, 95+42*i);
 		}
 		for(int i=0;i<9;i++) {
-			lottoNumBtn[5*i+3].setLocation(42+42*3, 100+42*i);
+			lottoNumBtn[5*i+3].setLocation(67+42*3, 95+42*i);
 		}
 		for(int i=0;i<9;i++) {
-			lottoNumBtn[5*i+4].setLocation(42+42*4, 100+42*i);
+			lottoNumBtn[5*i+4].setLocation(67+42*4, 95+42*i);
 		}
 		
 		
-		oneTicketPanel.add(autoBtn);
-		oneTicketPanel.add(resetBtn);
-		oneTicketPanel.add(returnBtn);
 
 		autoBtn.addActionListener(new ActionListener() {
 			@Override
@@ -294,9 +329,9 @@ class LottoTicket1 extends JFrame {
 		
 
 		add(oneTicketPanel);
-	
+		//getContentPane().
 
-		setSize(340, 550);
+		setSize(340, 583);
 		setVisible(true);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setResizable(false);
