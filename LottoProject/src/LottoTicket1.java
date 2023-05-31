@@ -62,8 +62,8 @@ class LottoTicket1 extends JFrame {
 		for (int i = 0; i < lottoNumBtn.length; i++) {
 			String lottoNumBtnName = String.valueOf(i + 1);
 			lottoNumBtn[i] = new JButton(lottoNumBtnName);
-			// lottoNumbtn[0]={1} lottoNumbtn[1]={2}.......lottoNumbtn[n]={n+1}
 			lottoNumBtn[i].addActionListener(new MyListener(this));
+			// lottoNumbtn[0]={1} lottoNumbtn[1]={2}.......lottoNumbtn[n]={n+1}
 		}
 	}
 
@@ -152,7 +152,6 @@ class LottoTicket1 extends JFrame {
 				for (int i = 0; i < yesNo; i++) {
 					lottoNumBtn[numbers.get(i)].setBackground(Color.red);
 					increaseCount();
-
 					autoCount++;
 				}
 

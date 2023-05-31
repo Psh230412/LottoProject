@@ -10,7 +10,7 @@ import java.util.Random;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-// �떦泥⑤쾲�샇 �옖�뜡�쑝濡� 留뚮벀
+// 당첨번호 랜덤으로 만듦
 class LottoRandom {
 	private static List<Integer> randomNum = new ArrayList<>();
 
@@ -30,7 +30,7 @@ class LottoRandom {
 	
 }
 
-// �떦泥⑤쾲�샇 蹂댁뿬二쇰뒗 �봽�젅�엫
+// 당첨번호 보여주는 프레임
 public class LottoRandomPage extends JFrame {
 	public LottoRandomPage() {
 		JPanel lottoRandomPnl = new JPanel();
@@ -47,13 +47,14 @@ public class LottoRandomPage extends JFrame {
 		JLabel randomLbl7 = new JLabel(list.get(6).toString());
 		JLabel plus = new JLabel("+");
 		
-		JButton nextButton = new JButton("�떎�쓬");
+		
+		JButton nextButton = new JButton("다음");
 		
 		nextButton.addActionListener(new ActionListener() {
-			
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				new LottoDrawPage();
+				
 			}
 		});
 

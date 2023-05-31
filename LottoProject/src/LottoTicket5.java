@@ -197,6 +197,9 @@ class LottoTicket5 extends JFrame {
 						LottoTicket5.this.dispose();
 						getSelectedNumbers();
 						getSelectedMode();
+						setAuto(false);
+						setClick(false);
+						resetCount();
 						System.out.println(selectedMode);
 						System.out.println(selectedNumbers);
 						
