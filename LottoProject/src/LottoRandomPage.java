@@ -1,5 +1,8 @@
+import javax.swing.JButton;
 import javax.swing.JFrame;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -9,9 +12,9 @@ import javax.swing.JPanel;
 
 // 당첨번호 랜덤으로 만듦
 class LottoRandom {
-	private List<Integer> randomNum = new ArrayList<>();
+	private static List<Integer> randomNum = new ArrayList<>();
 
-	public List<Integer> getRandomNum() {
+	public static List<Integer> getRandomNum() {
 		return randomNum;
 	}
 
@@ -53,6 +56,8 @@ public class LottoRandomPage extends JFrame {
 		lottoRandomPnl.add(randomLbl7);
 		
 		add(lottoRandomPnl);
+		add(nextButton, "South");
+		
 	
 		setSize(500, 800);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);

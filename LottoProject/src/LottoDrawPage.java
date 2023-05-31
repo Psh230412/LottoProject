@@ -27,7 +27,7 @@ class RandomNumView extends JPanel {
 		JLabel randomLbl6 = new JLabel(list.get(5).toString());
 		JLabel randomLbl7 = new JLabel(list.get(6).toString());
 		JLabel plus = new JLabel("+");
-		
+
 		add(randomLbl1);
 		add(randomLbl1);
 		add(randomLbl2);
