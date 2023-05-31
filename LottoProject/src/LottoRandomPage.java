@@ -26,6 +26,8 @@ class LottoRandom {
 				randomNum.add(number);
 		}
 	}
+
+
 }
 
 // 당첨번호 보여주는 프레임
@@ -44,6 +46,28 @@ public class LottoRandomPage extends JFrame {
 		JLabel randomLbl6 = new JLabel(list.get(5).toString());
 		JLabel randomLbl7 = new JLabel(list.get(6).toString());
 		JLabel plus = new JLabel("+");
+		JLabel randomLbl = new JLabel();
+		Timer timer = new Timer(1000, new ActionListener() {
+
+			int i = 0;
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				if (i < list.size()) {
+					randomLbl.setText(list.get(i).toString());
+					i++;
+				}
+			}
+		});
+
+		JButton randomBtn = new JButton("번호 확인");
+		randomBtn.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				timer.start();
+			}
+		});
+
+
 		JButton nextButton = new JButton("다음");
 		
 		nextButton.addActionListener(new ActionListener() {
@@ -54,20 +78,12 @@ public class LottoRandomPage extends JFrame {
 			}
 		});
 
-		lottoRandomPnl.add(randomLbl1);
-		lottoRandomPnl.add(randomLbl1);
-		lottoRandomPnl.add(randomLbl2);
-		lottoRandomPnl.add(randomLbl3);
-		lottoRandomPnl.add(randomLbl4);
-		lottoRandomPnl.add(randomLbl5);
-		lottoRandomPnl.add(randomLbl6);
-		lottoRandomPnl.add(plus);
-		lottoRandomPnl.add(randomLbl7);
-		
+
+		lottoRandomPnl.add(randomLbl);
+		lottoRandomPnl.add(randomBtn);
+		lottoRandomPnl.add(nextButton);
 		add(lottoRandomPnl);
-		add(nextButton, "South");
-		
-	
+
 		setSize(500, 800);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setVisible(true);
