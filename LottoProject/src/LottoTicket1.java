@@ -4,6 +4,7 @@ import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.GridLayout;
+import java.awt.HeadlessException;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
@@ -21,10 +22,11 @@ import javax.swing.JPanel;
 class LottoTicket1 extends JFrame {
 	private boolean isClick = false;
 	private boolean isAuto = false;
-	static List<String> selectedMode = new ArrayList<>();
-	static List<Integer> selectedNumbers = new ArrayList<>();
+	List<String> selectedMode = new ArrayList<>();
+	List<Integer> selectedNumbers = new ArrayList<>();
 	private JButton[] lottoNumBtn = new JButton[45];;
 	private static int changeCount = 0;
+	
 
 	public boolean isAuto() {
 		return isAuto;
@@ -62,8 +64,8 @@ class LottoTicket1 extends JFrame {
 		for (int i = 0; i < lottoNumBtn.length; i++) {
 			String lottoNumBtnName = String.valueOf(i + 1);
 			lottoNumBtn[i] = new JButton(lottoNumBtnName);
-			// lottoNumbtn[0]={1} lottoNumbtn[1]={2}.......lottoNumbtn[n]={n+1}
 			lottoNumBtn[i].addActionListener(new MyListener(this));
+			// lottoNumbtn[0]={1} lottoNumbtn[1]={2}.......lottoNumbtn[n]={n+1}
 		}
 	}
 
@@ -152,7 +154,6 @@ class LottoTicket1 extends JFrame {
 				for (int i = 0; i < yesNo; i++) {
 					lottoNumBtn[numbers.get(i)].setBackground(Color.red);
 					increaseCount();
-
 					autoCount++;
 				}
 
@@ -199,6 +200,9 @@ class LottoTicket1 extends JFrame {
 						LottoTicket1.this.dispose();
 						getSelectedNumbers();
 						getSelectedMode();
+						setAuto(false);
+						setClick(false);
+						resetCount();
 						System.out.println(selectedMode);
 						System.out.println(selectedNumbers);
 
@@ -210,8 +214,6 @@ class LottoTicket1 extends JFrame {
 						MyNumPnlA.getMyNumLbl6A().setText(selectedNumbers.get(5).toString());
 						MyNumPnlA.getAutoLblA().setText(selectedMode.get(0).toString());
 					}
-					
-					
 				}
 
 			}

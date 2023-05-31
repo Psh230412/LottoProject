@@ -11,8 +11,10 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-//내 번호 보여주는 패널만드는 클래스
+
+//A
 class MyNumPnlA extends JPanel {
+
 	private static JLabel myNumLbl1A;
 	private static JLabel myNumLbl2A;
 	private static JLabel myNumLbl3A;
@@ -49,9 +51,8 @@ class MyNumPnlA extends JPanel {
 		return autoLblA;
 	}
 
-	// A
+	
 	public MyNumPnlA() {	
-		
 		JButton orderBtnA = new JButton("A");
 		myNumLbl1A = new JLabel("0");
 		myNumLbl2A = new JLabel("0");
@@ -59,8 +60,9 @@ class MyNumPnlA extends JPanel {
 		myNumLbl4A = new JLabel("0");
 		myNumLbl5A = new JLabel("0");
 		myNumLbl6A = new JLabel("0");
+
 		autoLblA = new JLabel();
-		
+
 		orderBtnA.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -76,6 +78,8 @@ class MyNumPnlA extends JPanel {
 		add(myNumLbl5A);
 		add(myNumLbl6A);
 		add(autoLblA);
+		
+		
 	}
 }
 
@@ -332,6 +336,7 @@ class MyNumPnlE extends JPanel {
 				new LottoTicket5();
 			}
 		});
+
 
 		add(orderBtnE);
 		add(myNumLbl1E);

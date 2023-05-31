@@ -150,7 +150,8 @@ class LottoTicket5 extends JFrame {
 				int yesNo = maxCount - clickCount;
 
 				for (int i = 0; i < yesNo; i++) {
-					lottoNumBtn[numbers.get(i)].doClick();
+					lottoNumBtn[numbers.get(i)].setBackground(Color.red);
+					increaseCount();
 					autoCount++;
 				}
 				if (yesNo == 6) {
@@ -196,6 +197,9 @@ class LottoTicket5 extends JFrame {
 						LottoTicket5.this.dispose();
 						getSelectedNumbers();
 						getSelectedMode();
+						setAuto(false);
+						setClick(false);
+						resetCount();
 						System.out.println(selectedMode);
 						System.out.println(selectedNumbers);
 						
