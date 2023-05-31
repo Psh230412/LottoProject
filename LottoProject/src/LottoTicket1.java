@@ -220,8 +220,10 @@ class LottoTicket1 extends JFrame {
 
 				for (int i = 0; i < yesNo; i++) {
 					lottoNumBtn[numbers.get(i)].setBackground(Color.red);
+					lottoNumBtn[numbers.get(i)].setIcon(new ImageIcon(imageArrAfter[numbers.get(i)]));
 					increaseCount();
 					autoCount++;
+					
 				}
 
 				if (yesNo == 6) {
@@ -246,9 +248,14 @@ class LottoTicket1 extends JFrame {
 				for (JButton button : lottoNumBtn) {
 					button.setBackground(null);
 				}
+				for(int i=0;i<lottoNumBtn.length;i++) {
+					lottoNumBtn[i].setIcon(new ImageIcon(imageArrBefore[i]));
+					
+				}
 				setAuto(false);
 				setClick(false);
 				resetCount();
+				
 			}
 		});
 
@@ -289,7 +296,7 @@ class LottoTicket1 extends JFrame {
 		});
 		add(oneTicketPanel);
 
-		setSize(294, 578);
+		setSize(340, 550);
 		setVisible(true);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setResizable(false);
@@ -333,11 +340,11 @@ class MyListener implements ActionListener {
 			lt1.setClick(false);
 
 			lt1.resetCount();
-			
 			lt1.restoreImage(source);
 			
 		} else if (lt1.getChangeCount() <= 6) {
 			source.setBackground(null);
+			lt1.restoreImage(source);
 			lt1.decreaseCount();
 		} else if (lt1.getChangeCount() == 6) {
 			source.setBackground(null);
