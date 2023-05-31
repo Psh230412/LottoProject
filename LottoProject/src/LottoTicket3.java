@@ -150,7 +150,8 @@ class LottoTicket3 extends JFrame {
 				int yesNo = maxCount - clickCount;
 
 				for (int i = 0; i < yesNo; i++) {
-					lottoNumBtn[numbers.get(i)].doClick();
+					lottoNumBtn[numbers.get(i)].setBackground(Color.red);
+					increaseCount();
 					autoCount++;
 				}
 				if (yesNo == 6) {

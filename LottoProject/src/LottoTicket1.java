@@ -152,7 +152,6 @@ class LottoTicket1 extends JFrame {
 				for (int i = 0; i < yesNo; i++) {
 					lottoNumBtn[numbers.get(i)].setBackground(Color.red);
 					increaseCount();
-
 					autoCount++;
 				}
 
