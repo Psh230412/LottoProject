@@ -120,6 +120,7 @@ class MyNumViewA extends JPanel {
 		String grade = new CompareNum().compareNum(selectedNumList);
 		gradeLblA.setText(grade);
 
+
 		add(autoLblA);
 		add(orderLblA);
 		add(myNumLbl1A);

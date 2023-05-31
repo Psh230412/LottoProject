@@ -8,8 +8,10 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.Collections;
-
+import java.util.Iterator;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.Random;
 
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
@@ -75,8 +77,7 @@ class LottoTicket2 extends JFrame {
 		}
 		return selectedNumbers;
 	}
-
-	public List<String> getSelectedMode() {
+	public List<String> getSelectedMode(){
 		if (isAuto == true && isClick == true) {
 			selectedMode.add("자동");
 		} else if (isAuto == false && isClick == true) {
@@ -86,7 +87,6 @@ class LottoTicket2 extends JFrame {
 		}
 		return selectedMode;
 	}
-
 	public LottoTicket2() {
 
 		JPanel oneTicketPanel = new JPanel();
@@ -197,15 +197,12 @@ class LottoTicket2 extends JFrame {
 						LottoTicket2.this.dispose();
 						getSelectedNumbers();
 						getSelectedMode();
-						System.out.println(selectedMode);
-						System.out.println(selectedNumbers);
-						
 						setAuto(false);
 						setClick(false);
 						resetCount();
-						new LottoNumberPage();
+						System.out.println(selectedMode);
+						System.out.println(selectedNumbers);
 						
-
 						MyNumPnlB.getMyNumLbl1B().setText(selectedNumbers.get(0).toString());
 						MyNumPnlB.getMyNumLbl2B().setText(selectedNumbers.get(1).toString());
 						MyNumPnlB.getMyNumLbl3B().setText(selectedNumbers.get(2).toString());

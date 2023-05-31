@@ -27,7 +27,7 @@ class LottoRandom {
 		}
 	}
 
-	
+
 }
 
 // 당첨번호 보여주는 프레임

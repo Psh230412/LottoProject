@@ -324,14 +324,12 @@ class LottoTicket1 extends JFrame {
 
 			}
 		});
-		
-
-		
-
+		oneTicketPanel.setPreferredSize(new Dimension(340,550));
 		add(oneTicketPanel);
 		//getContentPane().
 
 		setSize(340, 583);
+		pack();
 		setVisible(true);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setResizable(false);
