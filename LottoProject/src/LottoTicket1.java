@@ -3,19 +3,18 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Font;
-import java.awt.Graphics;
 import java.awt.GridLayout;
 import java.awt.Image;
+import java.awt.HeadlessException;
+import java.awt.HeadlessException;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.image.ImageProducer;
 import java.util.ArrayList;
 import java.util.Collections;
 
 import java.util.List;
 
 import javax.swing.BoxLayout;
-import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -29,7 +28,7 @@ class LottoTicket1 extends JFrame {
 	List<Integer> selectedNumbers = new ArrayList<>();
 	private JButton[] lottoNumBtn = new JButton[45];;
 	private static int changeCount = 0;
-	ImageIcon backgroun;
+	
 
 	public boolean isAuto() {
 		return isAuto;
@@ -62,8 +61,7 @@ class LottoTicket1 extends JFrame {
 	public int getChangeCount() { // 현재 카운트를 가져오는 메서드를 추가합니다
 		return this.changeCount;
 	}
-	
-	
+
 	public void buttonCreate() {
 		for (int i = 0; i < lottoNumBtn.length; i++) {
 			String lottoNumBtnName = String.valueOf(i + 1);
@@ -92,11 +90,11 @@ class LottoTicket1 extends JFrame {
 		}
 		return selectedMode;
 	}
-	JPanel oneTicketPanel = new JPanel();
 
 	public LottoTicket1() {
-		
-	
+
+		JPanel oneTicketPanel = new JPanel();
+
 		JPanel titlePanel = new JPanel();
 		JPanel guideLbl1titlePanel = new JPanel();
 		JPanel guideLbl2titlePanel = new JPanel();
@@ -108,7 +106,7 @@ class LottoTicket1 extends JFrame {
 		JLabel guideLbl1b = new JLabel("1000원");
 		guideLbl1a.setFont(font);
 		guideLbl1b.setFont(font);
-		
+
 		guideLbl1titlePanel.setPreferredSize(new Dimension(20, 20));
 		guideLbl2titlePanel.setPreferredSize(new Dimension(45, 20));
 		guideLbl1titlePanel.add(guideLbl1a);
@@ -234,9 +232,10 @@ class LottoTicket1 extends JFrame {
 		oneTicketPanel.add(lnbPanel);
 		oneTicketPanel.add(btnPanel);
 
-		setSize(500, 550);
+		setSize(320, 550);
 		setVisible(true);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
+		setResizable(false);
 	}
 
 	public static void main(String[] args) {
