@@ -1,3 +1,3 @@
-public class Management {
+public class NumberManagement {
 
 }
