@@ -84,9 +84,8 @@ class MyNumPnlA extends JPanel {
 	    ImageIcon orderBtnA5 = new ImageIcon(getClass().getResource("/image2/번호선택_06.gif"));
 	    JLabel orderLabelA5 = new JLabel(orderBtnA5);
 	    orderLabelA5.setBounds(282, 70, orderBtnA5.getIconWidth(), orderBtnA5.getIconHeight()); 
-	    
 	 
-
+	    
 	    orderLabelA4.addMouseListener(new MouseAdapter() {
 	        @Override
 	        public void mouseClicked(MouseEvent e) {
@@ -398,7 +397,6 @@ public class LottoNumberPage extends JPanel {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				Management.card.show(Management.all, "당첨 번호");
-				
 			}
 		});
 
@@ -411,8 +409,6 @@ public class LottoNumberPage extends JPanel {
 		
 
 		setSize(340, 583);
-//		setResizable(false);
-//		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setVisible(true);
 	}
 
