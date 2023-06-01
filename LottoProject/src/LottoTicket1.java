@@ -1,25 +1,13 @@
-import java.awt.BorderLayout;
 import java.awt.Button;
 import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.FlowLayout;
-import java.awt.Font;
-import java.awt.Graphics;
-import java.awt.GridLayout;
-
 import java.awt.Image;
-
-import java.awt.HeadlessException;
-
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Collections;
-
 import java.util.List;
-
-import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -66,15 +54,6 @@ class LottoTicket1 extends JFrame {
 
 	public int getChangeCount() { // 현재 카운트를 가져오는 메서드를 추가합니다
 		return this.changeCount;
-	}
-
-	URL[] selectImageArr = new URL[13];
-
-	public void setSelectImageArr() {
-		for (int i = 0; i < selectImageArr.length; i++) {
-			URL value = LottoTicket1.class.getClassLoader().getResource("image/셀렉트_" + (i + 1) + ".gif");
-			selectImageArr[i] = value;
-		}
 	}
 
 	// defaultNumber 이미지를 담는 배열
@@ -163,7 +142,6 @@ class LottoTicket1 extends JFrame {
 		oneTicketPanel.setBackground(Color.BLACK);
 		buttonCreate();
 		JLabel[] labels = CreateScreen();
-		setSelectImageArr();
 
 		for (int i = 0; i < look.length; i++) {
 			oneTicketPanel.add(labels[i]);
@@ -193,8 +171,7 @@ class LottoTicket1 extends JFrame {
 		JButton autoBtn = new JButton();
 		JButton resetBtn = new JButton();
 		JButton returnBtn = new JButton();
-		
-		
+
 		autoBtn.setSize(new Dimension(81, 35));
 		resetBtn.setSize(new Dimension(80, 35));
 		returnBtn.setSize(new Dimension(88, 29));
