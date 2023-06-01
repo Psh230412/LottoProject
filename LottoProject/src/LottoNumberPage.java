@@ -544,7 +544,7 @@ class MyNumPnlF extends JPanel {
 		orderLabelF1.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				
+				Management.card.show(Management.all, "공튀기기");
 			}
 		});
 		
