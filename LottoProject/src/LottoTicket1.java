@@ -26,7 +26,9 @@ class LottoTicket1 extends JFrame {
 	private JButton[] lottoNumBtn = new JButton[45];;
 	private static int changeCount = 0;
 	JLabel[] look = new JLabel[10];
-
+	private boolean[] isButtonClicked = new boolean[45];
+	
+	
 	public boolean isAuto() {
 		return isAuto;
 	}
@@ -108,6 +110,7 @@ class LottoTicket1 extends JFrame {
 		for (int i = 0; i < lottoNumBtn.length; i++) {
 			if (source.equals(lottoNumBtn[i])) {
 				source.setIcon(new ImageIcon(imageArrAfter[i]));
+				isButtonClicked[i] = true;
 			}
 
 		}
@@ -119,6 +122,7 @@ class LottoTicket1 extends JFrame {
 		for (int i = 0; i < lottoNumBtn.length; i++) {
 			if (source.equals(lottoNumBtn[i])) {
 				source.setIcon(new ImageIcon(imageArrBefore[i]));
+				isButtonClicked[i] = false;
 			}
 
 		}
@@ -127,10 +131,34 @@ class LottoTicket1 extends JFrame {
 
 	public void buttonCreate() {
 		for (int i = 0; i < lottoNumBtn.length; i++) {
+			final int index = i;
+			URL urlOfSN = LottoTicket1.class.getClassLoader()
+					.getResource("image/selNumber" + " " + "(" + (i + 1) + ")" + ".gif");
 			lottoNumBtn[i] = new JButton();
 			lottoNumBtn[i].addActionListener(new MyListener(this));
 			lottoNumBtn[i].setIcon(new ImageIcon(CreateImage()[i]));
 			lottoNumBtn[i].setBorderPainted(false);
+			lottoNumBtn[i].addMouseListener(new MouseAdapter() {
+				@Override
+				public void mouseExited(MouseEvent e) {
+					if(!isButtonClicked[index]) {
+					URL urlOfScreen = LottoTicket1.class.getClassLoader().getResource("image/defaultNumber"+" "+ "("+(index+1)+")"+".gif");
+					ImageIcon defaultIcon = new ImageIcon(urlOfScreen);
+					lottoNumBtn[index].setIcon(defaultIcon);	
+					}
+				}
+				
+				@Override
+				public void mouseEntered(MouseEvent e) {
+					if(!isButtonClicked[index]) {
+					URL urlOfScreen = LottoTicket1.class.getClassLoader().getResource("image/revNumber"+" "+ "("+(index+1)+")"+".gif");
+					ImageIcon changeIcon = new ImageIcon(urlOfScreen);
+					lottoNumBtn[index].setIcon(changeIcon);
+					}
+				}
+				
+				
+			});
 
 			// lottoNumbtn[0]={1} lottoNumbtn[1]={2}.......lottoNumbtn[n]={n+1}
 		}
@@ -260,20 +288,20 @@ class LottoTicket1 extends JFrame {
 			}
 		});
 		
-		buttons[3].addMouseListener(new MouseAdapter() {// 초기화
+		buttons[0].addMouseListener(new MouseAdapter() {// 초기화
 			
 			@Override
 			public void mouseReleased(MouseEvent e) {
 				URL urlOfScreen = LottoTicket1.class.getClassLoader().getResource("image/셀렉트_11.gif");
 				ImageIcon defaultIcon = new ImageIcon(urlOfScreen);
-				buttons[3].setIcon(defaultIcon);
+				buttons[0].setIcon(defaultIcon);
 			}
 			
 			@Override
 			public void mousePressed(MouseEvent e) {
 				URL urlOfScreen = LottoTicket1.class.getClassLoader().getResource("image/셀렉트_05second.gif");
 				ImageIcon changeIcon = new ImageIcon(urlOfScreen);
-				buttons[3].setIcon(changeIcon);
+				buttons[0].setIcon(changeIcon);
 			}
 		});
 	
@@ -306,9 +334,9 @@ class LottoTicket1 extends JFrame {
 				for (int i = 0; i < yesNo; i++) {
 					lottoNumBtn[numbers.get(i)].setBackground(Color.red);
 					lottoNumBtn[numbers.get(i)].setIcon(new ImageIcon(imageArrAfter[numbers.get(i)]));
+					isButtonClicked[numbers.get(i)] = true;
 					increaseCount();
 					autoCount++;
-
 				}
 
 				if (yesNo == 6) {
@@ -335,7 +363,7 @@ class LottoTicket1 extends JFrame {
 				}
 				for (int i = 0; i < lottoNumBtn.length; i++) {
 					lottoNumBtn[i].setIcon(new ImageIcon(imageArrBefore[i]));
-
+					isButtonClicked[i] = false;
 				}
 				setAuto(false);
 				setClick(false);
@@ -363,15 +391,14 @@ class LottoTicket1 extends JFrame {
 						setAuto(false);
 						setClick(false);
 						resetCount();
-						new LottoNumberPage();
 
-						MyNumPnlA.getMyNumLbl1A().setText(selectedNumbers.get(0).toString());
-						MyNumPnlA.getMyNumLbl2A().setText(selectedNumbers.get(1).toString());
-						MyNumPnlA.getMyNumLbl3A().setText(selectedNumbers.get(2).toString());
-						MyNumPnlA.getMyNumLbl4A().setText(selectedNumbers.get(3).toString());
-						MyNumPnlA.getMyNumLbl5A().setText(selectedNumbers.get(4).toString());
-						MyNumPnlA.getMyNumLbl6A().setText(selectedNumbers.get(5).toString());
-						MyNumPnlA.getAutoLblA().setText(selectedMode.get(0).toString());
+//						MyNumPnlA.getMyNumLbl1A().setText(selectedNumbers.get(0).toString());
+//						MyNumPnlA.getMyNumLbl2A().setText(selectedNumbers.get(1).toString());
+//						MyNumPnlA.getMyNumLbl3A().setText(selectedNumbers.get(2).toString());
+//						MyNumPnlA.getMyNumLbl4A().setText(selectedNumbers.get(3).toString());
+//						MyNumPnlA.getMyNumLbl5A().setText(selectedNumbers.get(4).toString());
+//						MyNumPnlA.getMyNumLbl6A().setText(selectedNumbers.get(5).toString());
+//						MyNumPnlA.getAutoLblA().setText(selectedMode.get(0).toString());
 					}
 				}
 
