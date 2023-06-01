@@ -28,8 +28,7 @@ class Ball {
 		y = (int) (Math.random() * (BouncingBall.HEIGHT - d) + 3);
 		xInc = (int) (Math.random() * 10 + 1);
 		yInc = (int) (Math.random() * 10 + 1);
-		color = new Color(r.nextInt(256), r.nextInt(256) , r.nextInt(256));
-		
+		color = new Color(255, 0, 255);
 	}
 
 	public void paint(Graphics g) {
@@ -41,20 +40,24 @@ class Ball {
 		y += yInc;
 		g.setColor(color);
 		g.fillOval(x, y, diameter, diameter);
-
 	}
 
 }
-public class BouncingBall extends JFrame implements ActionListener {
-	static final int WIDTH = 600;
-	static final int HEIGHT = 200;
+public class BouncingBall extends JPanel implements ActionListener {
+	static final int WIDTH = 279;
+	static final int HEIGHT = 280;
 	private static final int PERIOD = 6;
 	
 	class MyPanel extends JPanel {
-		public Ball basket[] = new Ball[45];
+		@Override
+		public void setBackground(Color color) {
+			// TODO Auto-generated method stub
+			super.setBackground(color);
+		}
+		public Ball basket[] = new Ball[25];
 		
 		public MyPanel() {
-			for(int i = 0; i < 45; i++) {
+			for(int i = 0; i < 25; i++) {
 				basket[i] = new Ball((int) (40));
 			}
 		}
@@ -68,16 +71,15 @@ public class BouncingBall extends JFrame implements ActionListener {
 	}
 	public BouncingBall() {
 		MyPanel panel = new MyPanel();
+		panel.setBackground(new Color(36, 33, 66));
 		panel.setPreferredSize(new Dimension(WIDTH,HEIGHT));
 		add(panel);
-		pack();
-		setTitle("Bouncing Ball");
+//		pack();
+//		setTitle("Bouncing Ball");
 		Timer timer = new Timer(PERIOD,this);
 		timer.start();
 		setVisible(true);
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		
-		
+//		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);	
 	}
 	@Override
 	public void actionPerformed(ActionEvent arg0) {

@@ -285,9 +285,9 @@ class MyNumViewE extends JPanel {
 	}
 }
 
-public class LottoDrawPage extends JFrame {
+public class LottoDrawPage extends JLabel {
 	public LottoDrawPage() {
-		BoxLayout layout = new BoxLayout(getContentPane(), BoxLayout.Y_AXIS);
+		BoxLayout layout = new BoxLayout(this, BoxLayout.Y_AXIS);
 		setLayout(layout);
 
 		add(new RandomNumView());
@@ -298,8 +298,8 @@ public class LottoDrawPage extends JFrame {
 		add(new MyNumViewE());
 
 
-		setSize(500, 800);
-		setDefaultCloseOperation(EXIT_ON_CLOSE);
+		setSize(340, 583);
+//		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setVisible(true);
 	}
 
