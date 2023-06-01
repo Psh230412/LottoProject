@@ -34,7 +34,7 @@ class LottoRandom {
 public class LottoRandomPage extends JFrame {
 	public LottoRandomPage() {
 		JPanel lottoRandomPnl = new JPanel();
-		
+
 		LottoRandom lottoRandom = new LottoRandom();
 		List<Integer> list = lottoRandom.getRandomNum();
 
@@ -49,12 +49,12 @@ public class LottoRandomPage extends JFrame {
 		
 		
 		JButton nextButton = new JButton("다음");
-		
+
 		nextButton.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				new LottoDrawPage();
-				
+
 			}
 		});
 
