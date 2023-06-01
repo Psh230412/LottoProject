@@ -55,8 +55,9 @@ class MyNumPnlA extends JPanel {
 	}
 
 	
-	public MyNumPnlA() {
-		
+	public MyNumPnlA() {	
+		JButton orderBtnA = new JButton("A");
+
 		myNumLbl1A = new JLabel("0");
 		myNumLbl2A = new JLabel("0");
 		myNumLbl3A = new JLabel("0");
@@ -383,9 +384,9 @@ class MyNumPnlE extends JPanel {
 		add(myNumLbl4E);
 		add(myNumLbl5E);
 		add(myNumLbl6E);
-		add(autoLblE); 
+		add(autoLblE);
 	}
-} 
+}
 
 //내 번호 보여주는 프레임
 public class LottoNumberPage extends JFrame {
