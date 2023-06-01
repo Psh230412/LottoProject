@@ -34,7 +34,7 @@ class LottoTicket1 extends JFrame {
 	List<Integer> selectedNumbers = new ArrayList<>();
 	private JButton[] lottoNumBtn = new JButton[45];;
 	private static int changeCount = 0;
-	JLabel[] look = new JLabel[13];
+	JLabel[] look = new JLabel[10];
 	
 	
 	
@@ -71,7 +71,7 @@ class LottoTicket1 extends JFrame {
 	}
 	
 	URL[] selectImageArr = new URL[13];
-	
+	//이미지들의 URL을 배열에 저장하는 메서드
 	public void setSelectImageArr() {
 		for(int i=0;i<selectImageArr.length;i++) {
 			URL value = LottoTicket1.class.getClassLoader()
@@ -81,11 +81,6 @@ class LottoTicket1 extends JFrame {
 	}
 	
 	
-	
-	
-	
-	
-
 
 	//defaultNumber 이미지를 담는 배열
 	Image[] imageArrBefore=new Image[45];
@@ -106,6 +101,7 @@ class LottoTicket1 extends JFrame {
 		return imageArrBefore;
 	}
 	
+	//라벨 생성 및 라벨에 셀렉트 이미지 URL 삽입하는 메서드
 	public JLabel[] CreateScreen() {
 		for(int i = 0; i < look.length; i++) {
 			URL urlOfScreen = LottoTicket1.class.getClassLoader().getResource("image/셀렉트_"+ (i+1)+".gif");
@@ -113,6 +109,17 @@ class LottoTicket1 extends JFrame {
 			look[i] = new JLabel(imageIcon);
 		}
 		return look;
+	}
+	
+	JButton autoBtn = new JButton();
+	JButton resetBtn = new JButton();
+	JButton returnBtn = new JButton();
+	
+	JButton[] BtnScreenArr = { returnBtn,autoBtn,resetBtn};
+	public JButton[] createBtnScreen() {
+		for(int i=0;i<BtnScreenArr.length;i++) {
+			URL urlOfScreen = LottoTicket1.class.getClassLoader().getResource("image/셀렉트_"+ (i+1)+".gif");
+		}
 	}
 	
 	
@@ -175,15 +182,10 @@ class LottoTicket1 extends JFrame {
 		oneTicketPanel.setLayout(null);
 		oneTicketPanel.setBackground(Color.BLACK);
 		buttonCreate();
-<<<<<<< HEAD
 		CreateScreen();
-=======
 		setSelectImageArr();
->>>>>>> branch 'master' of https://github.com/Psh230412/LottoProject.git
 
-		JButton autoBtn = new JButton();
-		JButton resetBtn = new JButton();
-		JButton returnBtn = new JButton();
+
 
 		autoBtn.setSize(new Dimension(81, 35));
 		resetBtn.setSize(new Dimension(80, 35));
@@ -196,59 +198,17 @@ class LottoTicket1 extends JFrame {
 		autoBtn.setBorderPainted(false);
 		resetBtn.setBorderPainted(false);
 		
-		JLabel AlphaLable = new JLabel();
-		JLabel UpperRightLineLable = new JLabel();
-		JLabel UpperLineLable = new JLabel();
-		JLabel RightLineLable = new JLabel();
-		JLabel UnderLineLable = new JLabel();
+		
 
-		AlphaLable.setSize(new Dimension(120, 81));
-		AlphaLable.setLocation(0, 0);
-		UpperLineLable.setSize(new Dimension(220, 46));
-		UpperLineLable.setLocation(120, 0);
-		RightLineLable.setSize(new Dimension(63, 455));
-		RightLineLable.setLocation(281, 95);
-		UnderLineLable.setSize(new Dimension(67, 509));
-		UnderLineLable.setLocation(120, 36);
-<<<<<<< HEAD
 		
-		URL urlOfSamePackage = LottoTicket1.class.getClassLoader().getResource("image/셀렉트_03.gif");
-		URL urlOfresetBtn = LottoTicket1.class.getClassLoader().getResource("image/셀렉트_04.gif");
-		URL urlOfAlphaLable = LottoTicket1.class.getClassLoader().getResource("image/셀렉트_01.gif");
-		URL urlOfUpperLineLable = LottoTicket1.class.getClassLoader().getResource("image/셀렉트_02.gif");
-=======
-
-		URL urlOfSamePackage = LottoTicket1.class.getClassLoader().getResource("image/셀렉트_3.gif");
-		URL urlOfresetBtn = LottoTicket1.class.getClassLoader().getResource("image/셀렉트_4.gif");
-		URL urlOfAlphaLable = LottoTicket1.class.getClassLoader().getResource("image/셀렉트_1.gif");
-		URL urlOfUpperLineLable = LottoTicket1.class.getClassLoader().getResource("image/셀렉트_2.gif");
->>>>>>> branch 'master' of https://github.com/Psh230412/LottoProject.git
-
-		//셀렉트_11,셀렉트_12,셀렉트_13
-		JButton[] selectArr = {returnBtn,autoBtn,resetBtn};
-		
-		JLabel[] selectJLArr = {AlphaLable,UpperLineLable,};
-		
-		
-		/*
-		 * for(int i=0;i<selectArr.length;i++) { selectArr[i] }
-		 */
-		
-		autoBtn.setIcon(new ImageIcon(urlOfSamePackage));
-		resetBtn.setIcon(new ImageIcon(urlOfresetBtn));
-		AlphaLable.setIcon(new ImageIcon(urlOfAlphaLable));
-		UpperLineLable.setIcon(new ImageIcon(urlOfUpperLineLable));
-		RightLineLable.setIcon(new ImageIcon("C:\\Users\\GGG\\Documents\\카카오톡 받은 파일\\select\\셀렉트_13.gif"));
-		UnderLineLable.setIcon(new ImageIcon("C:\\Users\\GGG\\Documents\\카카오톡 받은 파일\\select\\셀렉트_54.gif"));
-
 		oneTicketPanel.add(autoBtn);
 		oneTicketPanel.add(resetBtn);
 		oneTicketPanel.add(returnBtn);
-		oneTicketPanel.add(AlphaLable);
-		oneTicketPanel.add(UpperLineLable);
-		oneTicketPanel.add(RightLineLable);
-		oneTicketPanel.add(RightLineLable);
+		
 
+		
+		
+		
 		for (int i = 0; i < 45; i++) {
 			lottoNumBtn[i].setSize(42, 42);
 			oneTicketPanel.add(lottoNumBtn[i]);
