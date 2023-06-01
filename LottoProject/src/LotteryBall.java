@@ -57,6 +57,7 @@ public class LotteryBall extends JPanel implements ActionListener {
 	static final int WIDTH = 279;
 	static final int HEIGHT = 280;
 	private static final int PERIOD = 30;
+	
 	URL[] urlOfLotteryBall = new URL[45];
 	
 	public void creteUrlOfBall() {
@@ -97,7 +98,7 @@ public class LotteryBall extends JPanel implements ActionListener {
 		
 		
 		MyPanel panel = new MyPanel();
-		panel.setLayout(null);
+		//panel.setLayout(null);
 		panel.setBackground(Color.BLACK);
 		panel.setPreferredSize(new Dimension(WIDTH,HEIGHT));
 		//panel.setLocation(31, 142);
