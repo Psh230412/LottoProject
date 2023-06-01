@@ -13,15 +13,13 @@ import javax.swing.JLabel;
 import javax.swing.JLayeredPane;
 import javax.swing.JPanel;
 
-class StartPage extends JFrame { // 프로그램 실행 시 맨 처음에 뜰 창(로또하러가기 버튼)
+class StartPage extends JPanel { // 프로그램 실행 시 맨 처음에 뜰 창(로또하러가기 버튼)
 	public StartPage() {
 		JPanel panel = new JPanel();
-		setSize(375, 685);
-		setTitle("로또");
 
 		JButton btn = new JButton("로또하러가기");
-		setLayout(null);
-		panel.setLayout(null);
+//		setLayout(null);
+//		panel.setLayout(null);
 		panel.add(btn);
 
 		panel.setBounds(0, 0, getWidth(), getHeight());
@@ -29,16 +27,14 @@ class StartPage extends JFrame { // 프로그램 실행 시 맨 처음에 뜰 �
 
 		class Run2 implements ActionListener {
 			public void actionPerformed(ActionEvent e) {
-				dispose();
-				new LottoSlot();
+				Management.card.show(Management.all, "번호 선택");
 			}
 		}
 
 		btn.addActionListener(new Run2());
-
+		
 		add(panel);
-		setVisible(true);
-		setDefaultCloseOperation(EXIT_ON_CLOSE);
+		setSize(340, 550);
 	}
 
 	class LottoSlot extends JFrame { // 버튼 기능 구현 클래스

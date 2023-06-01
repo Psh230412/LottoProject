@@ -55,9 +55,8 @@ class MyNumPnlA extends JPanel {
 	}
 
 	
-	public MyNumPnlA() {	
-		JButton orderBtnA = new JButton("A");
-
+	public MyNumPnlA() {
+		
 		myNumLbl1A = new JLabel("0");
 		myNumLbl2A = new JLabel("0");
 		myNumLbl3A = new JLabel("0");
@@ -91,7 +90,7 @@ class MyNumPnlA extends JPanel {
 	    orderLabelA4.addMouseListener(new MouseAdapter() {
 	        @Override
 	        public void mouseClicked(MouseEvent e) {
-	            new LottoTicket1();
+	        	Management.card.show(Management.all, "티켓1");
 	        }
 	    });
 	    
@@ -384,22 +383,21 @@ class MyNumPnlE extends JPanel {
 		add(myNumLbl4E);
 		add(myNumLbl5E);
 		add(myNumLbl6E);
-		add(autoLblE);
+		add(autoLblE); 
 	}
-}
+} 
 
 //내 번호 보여주는 프레임
-public class LottoNumberPage extends JFrame {
+public class LottoNumberPage extends JPanel {
 	public LottoNumberPage() {
-		BoxLayout layout = new BoxLayout(getContentPane(), BoxLayout.Y_AXIS);
+		BoxLayout layout = new BoxLayout(this, BoxLayout.Y_AXIS);
 		setLayout(layout);
 		
-		// 프레임 수정 해야됨
 		JButton nextBtn = new JButton("다음");
 		nextBtn.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				new LottoRandomPage();
+				Management.card.show(Management.all, "당첨 번호");
 				
 			}
 		});
@@ -413,8 +411,8 @@ public class LottoNumberPage extends JFrame {
 		
 
 		setSize(340, 583);
-		setResizable(false);
-		setDefaultCloseOperation(EXIT_ON_CLOSE);
+//		setResizable(false);
+//		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setVisible(true);
 	}
 

@@ -1,3 +1,36 @@
-public class Management {
+import java.awt.CardLayout;
+import java.awt.Frame;
+import java.awt.LayoutManager;
 
-}	
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+
+public class Management extends JFrame {
+	static JPanel all = new JPanel();
+	static CardLayout card = new CardLayout();
+	
+	public Management() {
+		setTitle("로또");
+		all.setLayout(card);
+		
+		all.add(new StartPage(), "시작");
+		all.add(new LottoNumberPage(), "번호 선택");
+		all.add(new LottoTicket1(), "티켓1");
+//		all.add(new LottoDrawPage(), "당첨 번호");
+		
+		
+//		card.show(all, "시작");
+		add(all);
+		
+		setSize(340, 594);
+		setDefaultCloseOperation(EXIT_ON_CLOSE);
+		setVisible(true);
+		
+	}
+	
+	
+	
+	public static void main(String[] args) {
+		new Management();
+	}
+}
