@@ -258,20 +258,20 @@ class MyNumPnlC extends JPanel {
 
 		ImageIcon orderBtnC = new ImageIcon(getClass().getResource("/image2/번호선택_14.gif"));
 		JLabel orderLabelC = new JLabel(orderBtnC);
-		orderLabelC.setBounds(7, 20, orderBtnC.getIconWidth(), orderBtnC.getIconHeight());
+		orderLabelC.setBounds(7, 18, orderBtnC.getIconWidth(), orderBtnC.getIconHeight());
 		
 		//슬롯 
 		ImageIcon orderBtnC1 = new ImageIcon(getClass().getResource("/image2/번호선택_08.gif"));
 		JLabel orderLabelC1 = new JLabel(orderBtnC1);
-		orderLabelC1.setBounds(7, 70, orderBtnC1.getIconWidth(), orderBtnC1.getIconHeight());
+		orderLabelC1.setBounds(7, 69, orderBtnC1.getIconWidth(), orderBtnC1.getIconHeight());
 
 		ImageIcon orderBtnC2 = new ImageIcon(getClass().getResource("/image2/번호선택_15.gif"));
 		JLabel orderLabelC2 = new JLabel(orderBtnC2);
-		orderLabelC2.setBounds(7, 54, orderBtnC2.getIconWidth(), orderBtnC2.getIconHeight());
+		orderLabelC2.setBounds(7, 52, orderBtnC2.getIconWidth(), orderBtnC2.getIconHeight());
 
 		ImageIcon orderBtnC3 = new ImageIcon(getClass().getResource("/image2/번호선택_16.gif"));
 		JLabel orderLabelC3 = new JLabel(orderBtnC3);
-		orderLabelC3.setBounds(279, 54, orderBtnC3.getIconWidth(), orderBtnC3.getIconHeight());
+		orderLabelC3.setBounds(279, 52, orderBtnC3.getIconWidth(), orderBtnC3.getIconHeight());
 		
 		
 		// 슬롯 연결 이벤트
@@ -591,7 +591,7 @@ class MyNumPnlI extends JPanel {
 	public MyNumPnlI() {
 		ImageIcon orderBtnI = new ImageIcon(getClass().getResource("/image2/번호선택_07.gif"));
 		JLabel orderLabelI = new JLabel(orderBtnI);
-		orderLabelI.setBounds(200, 12, orderBtnI.getIconWidth(), orderBtnI.getIconHeight());
+		orderLabelI.setBounds(0, 65, orderBtnI.getIconWidth(), orderBtnI.getIconHeight());
 	
 		add(orderLabelI);
 		
@@ -599,6 +599,35 @@ class MyNumPnlI extends JPanel {
 		setVisible(true);
 	}
 }
+
+//도움말 버튼 
+class MyNumPnlJ extends JPanel { 
+	public MyNumPnlJ() {
+		ImageIcon orderBtnJ = new ImageIcon(getClass().getResource("/image2/번호선택_02.gif"));
+		JLabel orderLabelJ = new JLabel(orderBtnJ);
+		orderLabelJ.setBounds(0, 0, orderBtnJ.getIconWidth(), orderBtnJ.getIconHeight());
+		
+		ImageIcon orderBtnJ1 = new ImageIcon(getClass().getResource("/image2/번호선택_03.gif"));
+		JLabel orderLabelJ1 = new JLabel(orderBtnJ1);
+		orderLabelJ1.setBounds(0, 42, orderBtnJ1.getIconWidth(), orderBtnJ1.getIconHeight());
+	
+		// 도움말 연결 
+		orderLabelJ.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				new HelpMessage();
+			}
+		});
+		
+
+		add(orderLabelJ);
+		add(orderLabelJ1);
+		
+		setLayout(null);
+		setVisible(true);
+	}
+}
+
 
 
 //내 번호 보여주는 프레임
@@ -615,20 +644,23 @@ public class LottoNumberPage extends JFrame {
 		MyNumPnlG myNumPnlG = new MyNumPnlG();
 		MyNumPnlH myNumPnlH = new MyNumPnlH();
 		MyNumPnlI myNumPnlI = new MyNumPnlI();
+		MyNumPnlJ myNumPnlJ = new MyNumPnlJ();
 		
 		                  //x  y  길이   높이 
-		myNumPnlA.setBounds(0, 0, 337, 130);
+		myNumPnlA.setBounds(0, 0, 337, 129);
 		myNumPnlB.setBounds(13, 124, 310, 97);
-		myNumPnlC.setBounds(13, 202, 310, 112);
+		myNumPnlC.setBounds(13, 203, 310, 111);
 		myNumPnlD.setBounds(13, 314, 310, 92);
 		myNumPnlE.setBounds(13, 374, 310, 136);
 		myNumPnlF.setBounds(13, 425, 310, 295);
-		myNumPnlG.setBounds(0, 58, 23, 580); //좌측 
-		myNumPnlH.setBounds(0, 0, 310, 70); //상단 
-//		myNumPnlI.setBounds(200, 200, 23, 580); //상단 
+		myNumPnlG.setBounds(0, 58, 23, 580); //좌측 세로 
+		myNumPnlI.setBounds(315, 5, 23, 580); //우측 세로 
+		myNumPnlH.setBounds(0, 1, 291, 69); //상단 
+		myNumPnlJ.setBounds(291, 0, 45, 70); //도움말  
 		
 
 		add(myNumPnlH); //상단 A 
+		add(myNumPnlJ); //도움말
 		add(myNumPnlG); //좌측 세로 
 		add(myNumPnlI); //우측 세로 
 		add(myNumPnlA);
@@ -636,14 +668,14 @@ public class LottoNumberPage extends JFrame {
 		add(myNumPnlC);
 		add(myNumPnlD);
 		add(myNumPnlE);
-//		add(myNumPnlF);
+		add(myNumPnlF); 
 
-		setSize(340, 580);
+		setSize(350, 580);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setVisible(true);
 	}
 
 	public static void main(String[] args) {
 		new LottoNumberPage();
-	}
+}
 }
