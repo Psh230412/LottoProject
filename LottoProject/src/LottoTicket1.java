@@ -18,7 +18,7 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
-class LottoTicket1 extends JFrame {
+class LottoTicket1 extends JPanel {
 	private boolean isClick = false;
 	private boolean isAuto = false;
 	List<String> selectedMode = new ArrayList<>();
@@ -383,7 +383,6 @@ class LottoTicket1 extends JFrame {
 							JOptionPane.YES_NO_OPTION);
 
 					if (result == JOptionPane.YES_OPTION) {
-						LottoTicket1.this.dispose();
 						getSelectedNumbers();
 						getSelectedMode();
 						System.out.println(selectedMode);
@@ -391,7 +390,7 @@ class LottoTicket1 extends JFrame {
 						setAuto(false);
 						setClick(false);
 						resetCount();
-
+						
 //						MyNumPnlA.getMyNumLbl1A().setText(selectedNumbers.get(0).toString());
 //						MyNumPnlA.getMyNumLbl2A().setText(selectedNumbers.get(1).toString());
 //						MyNumPnlA.getMyNumLbl3A().setText(selectedNumbers.get(2).toString());
@@ -407,10 +406,6 @@ class LottoTicket1 extends JFrame {
 
 		oneTicketPanel.setPreferredSize(new Dimension(340, 550));
 		add(oneTicketPanel);
-		pack();
-		setVisible(true);
-		setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-		setResizable(false);
 	}
 
 	public static void main(String[] args) {
