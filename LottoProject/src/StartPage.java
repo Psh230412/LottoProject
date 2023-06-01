@@ -13,11 +13,11 @@ import javax.swing.JLabel;
 import javax.swing.JLayeredPane;
 import javax.swing.JPanel;
 
-class StartPage extends JPanel { // 프로그램 실행 시 맨 처음에 뜰 창(로또하러가기 버튼)
+class StartPage extends JPanel { // �봽濡쒓렇�옩 �떎�뻾 �떆 留� 泥섏쓬�뿉 �쑑 李�(濡쒕삉�븯�윭媛�湲� 踰꾪듉)
 	public StartPage() {
 		JPanel panel = new JPanel();
 
-		JButton btn = new JButton("로또하러가기");
+		JButton btn = new JButton("濡쒕삉�븯�윭媛�湲�");
 //		setLayout(null);
 //		panel.setLayout(null);
 		panel.add(btn);
@@ -27,7 +27,7 @@ class StartPage extends JPanel { // 프로그램 실행 시 맨 처음에 뜰 �
 
 		class Run2 implements ActionListener {
 			public void actionPerformed(ActionEvent e) {
-				Management.card.show(Management.all, "번호 선택");
+				Management.card.show(Management.all, "踰덊샇 �꽑�깮");
 			}
 		}
 
@@ -37,25 +37,25 @@ class StartPage extends JPanel { // 프로그램 실행 시 맨 처음에 뜰 �
 		setSize(340, 550);
 	}
 
-	class LottoSlot extends JFrame { // 버튼 기능 구현 클래스
+	class LottoSlot extends JFrame { // 踰꾪듉 湲곕뒫 援ы쁽 �겢�옒�뒪
 		public LottoSlot() {
 			setSize(375, 685);
-			setTitle("로또");
+			setTitle("濡쒕삉");
 
 			JLayeredPane layeredPane = new JLayeredPane();
 			layeredPane.setLayout(null);
 			layeredPane.setPreferredSize(new Dimension(360, 648));
 
-			// 배경 이미지 라벨
-			ImageIcon backgroundImage = new ImageIcon("번호선택2.jpg");
+			// 諛곌꼍 �씠誘몄� �씪踰�
+			ImageIcon backgroundImage = new ImageIcon("踰덊샇�꽑�깮2.jpg");
 			JLabel bg = new JLabel(backgroundImage);
 			bg.setBounds(0, 0, 360, 648);
 
 			layeredPane.add(bg, new Integer(0));
 			add(layeredPane, BorderLayout.CENTER);
 
-			// 돌아가기 버튼
-			ImageIcon imageIcon = new ImageIcon("돌아가기.jpg");
+			// �룎�븘媛�湲� 踰꾪듉
+			ImageIcon imageIcon = new ImageIcon("�룎�븘媛�湲�.jpg");
 			JLabel imageButton = new JLabel(imageIcon);
 			imageButton.setBounds(7, 545, imageIcon.getIconWidth(), imageIcon.getIconHeight());
 
@@ -68,8 +68,8 @@ class StartPage extends JPanel { // 프로그램 실행 시 맨 처음에 뜰 �
 				}
 			});
 
-			// 추첨하기 버튼
-			ImageIcon imageIcon2 = new ImageIcon("추첨하기.jpg");
+			// 異붿꺼�븯湲� 踰꾪듉
+			ImageIcon imageIcon2 = new ImageIcon("異붿꺼�븯湲�.jpg");
 			JLabel imageButton2 = new JLabel(imageIcon2);
 			imageButton2.setBounds(175, 540, imageIcon2.getIconWidth(), imageIcon2.getIconHeight());
 
@@ -82,8 +82,8 @@ class StartPage extends JPanel { // 프로그램 실행 시 맨 처음에 뜰 �
 				}
 			});
 
-			// 도움말 버튼
-			ImageIcon imageIcon3 = new ImageIcon("도움말버튼.jpg");
+			// �룄��留� 踰꾪듉
+			ImageIcon imageIcon3 = new ImageIcon("�룄��留먮쾭�듉.jpg");
 			JLabel imageButton3 = new JLabel(imageIcon3);
 			imageButton3.setBounds(277, 10, imageIcon3.getIconWidth(), imageIcon3.getIconHeight());
 
