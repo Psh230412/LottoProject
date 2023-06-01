@@ -332,7 +332,7 @@ class LottoTicket1 extends JFrame {
 		add(oneTicketPanel);
 		pack();
 		setVisible(true);
-		setDefaultCloseOperation(EXIT_ON_CLOSE);
+		setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 		setResizable(false);
 	}
 
