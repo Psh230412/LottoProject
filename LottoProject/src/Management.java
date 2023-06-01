@@ -17,9 +17,9 @@ public class Management extends JFrame {
 		all.add(new LottoNumberPage(), "번호 선택");
 		all.add(new LottoTicket1(), "티켓1");
 //		all.add(new LottoDrawPage(), "당첨 번호");
-		
-		
-//		card.show(all, "시작");
+
+
+		card.show(all, "공");
 		add(all);
 		
 		setSize(340, 594);
@@ -27,7 +27,6 @@ public class Management extends JFrame {
 		setVisible(true);
 		
 	}
-	
 	
 	
 	public static void main(String[] args) {

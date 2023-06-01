@@ -55,8 +55,9 @@ class MyNumPnlA extends JPanel {
 	}
 
 	
-	public MyNumPnlA() {
-		
+	public MyNumPnlA() {	
+//		JButton orderBtnA = new JButton("A");
+
 		myNumLbl1A = new JLabel("0");
 		myNumLbl2A = new JLabel("0");
 		myNumLbl3A = new JLabel("0");
@@ -64,6 +65,8 @@ class MyNumPnlA extends JPanel {
 		myNumLbl5A = new JLabel("0");
 		myNumLbl6A = new JLabel("0");
 		autoLblA = new JLabel();
+		
+	
 		
 		ImageIcon orderBtnA = new ImageIcon(getClass().getResource("/image2/번호선택_01.gif"));
 	    JLabel orderLabelA = new JLabel(orderBtnA);
@@ -98,6 +101,7 @@ class MyNumPnlA extends JPanel {
 	        @Override
 	        public void mouseClicked(MouseEvent e) {
 	        	//번호 초기화 하는거  추가하기 (X버튼) 
+	        	
 	        }
 	    });
 	    
@@ -382,9 +386,9 @@ class MyNumPnlE extends JPanel {
 		add(myNumLbl4E);
 		add(myNumLbl5E);
 		add(myNumLbl6E);
-		add(autoLblE); 
+		add(autoLblE);
 	}
-} 
+}
 
 //내 번호 보여주는 프레임
 public class LottoNumberPage extends JPanel {
@@ -392,11 +396,13 @@ public class LottoNumberPage extends JPanel {
 		BoxLayout layout = new BoxLayout(this, BoxLayout.Y_AXIS);
 		setLayout(layout);
 		
+		// 프레임 수정 해야됨
 		JButton nextBtn = new JButton("다음");
 		nextBtn.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				Management.card.show(Management.all, "당첨 번호");
+
+
 			}
 		});
 
@@ -409,7 +415,7 @@ public class LottoNumberPage extends JPanel {
 		
 
 		setSize(340, 583);
-		setVisible(true);
+
 	}
 
 	public static void main(String[] args) {
