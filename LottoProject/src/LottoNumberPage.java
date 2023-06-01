@@ -5,6 +5,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -13,6 +14,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 //A
@@ -92,6 +94,9 @@ class MyNumPnlA extends JPanel {
 		orderLabelA5.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
+				System.out.println("리셋");
+				LottoTicket1.setSelectedNumbers(new ArrayList<>());
+				LottoTicket1.setSelectedMode(new ArrayList<>());
 			}
 		});
 
@@ -188,6 +193,8 @@ class MyNumPnlB extends JPanel {
 		orderLabelB3.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
+				LottoTicket2.setSelectedNumbers(new ArrayList<>());
+				LottoTicket2.setSelectedMode(new ArrayList<>());
 			}
 		});
 
@@ -289,7 +296,8 @@ class MyNumPnlC extends JPanel {
 		orderLabelC3.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-
+				LottoTicket3.setSelectedNumbers(new ArrayList<>());
+				LottoTicket3.setSelectedMode(new ArrayList<>());
 			}
 		});
 		
@@ -387,7 +395,8 @@ class MyNumPnlD extends JPanel {
 		orderLabelD3.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				new LottoTicket3();
+				LottoTicket4.setSelectedNumbers(new ArrayList<>());
+				LottoTicket4.setSelectedMode(new ArrayList<>());
 			}
 		});
 		
@@ -492,7 +501,8 @@ class MyNumPnlE extends JPanel {
 		orderLabelE2.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				
+				LottoTicket5.setSelectedNumbers(new ArrayList<>());
+				LottoTicket5.setSelectedMode(new ArrayList<>());
 			}
 		});
 
@@ -540,7 +550,21 @@ class MyNumPnlF extends JPanel {
 		orderLabelF.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				
+				int result = JOptionPane.showConfirmDialog(null, "메인 화면으로 돌아가면 번호가 초기화됩니다.\n돌아가시겠습니까?", "경고",
+						JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE);
+				if (result == JOptionPane.YES_OPTION) {
+					Management.card.show(Management.all, "시작");
+					LottoTicket1.setSelectedNumbers(new ArrayList<>());
+					LottoTicket2.setSelectedNumbers(new ArrayList<>());
+					LottoTicket3.setSelectedNumbers(new ArrayList<>());
+					LottoTicket4.setSelectedNumbers(new ArrayList<>());
+					LottoTicket5.setSelectedNumbers(new ArrayList<>());
+					LottoTicket1.setSelectedMode(new ArrayList<>());
+					LottoTicket2.setSelectedMode(new ArrayList<>());
+					LottoTicket3.setSelectedMode(new ArrayList<>());
+					LottoTicket4.setSelectedMode(new ArrayList<>());
+					LottoTicket5.setSelectedMode(new ArrayList<>());
+				}
 			}
 		});
 		

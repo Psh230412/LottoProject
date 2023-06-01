@@ -23,12 +23,20 @@ import javax.swing.JPanel;
 class LottoTicket1 extends JPanel {
 	private boolean isClick = false;
 	private boolean isAuto = false;
-	List<String> selectedMode = new ArrayList<>();
-	List<Integer> selectedNumbers = new ArrayList<>();
+	static List<String> selectedMode = new ArrayList<>();
+	static List<Integer> selectedNumbers = new ArrayList<>();
 	private JButton[] lottoNumBtn = new JButton[45];;
 	private static int changeCount = 0;
 	JLabel[] look = new JLabel[10];
 	private boolean[] isButtonClicked = new boolean[45];
+
+	public static void setSelectedMode(List<String> selectedMode) {
+		LottoTicket1.selectedMode = selectedMode;
+	}
+
+	public static void setSelectedNumbers(List<Integer> selectedNumbers) {
+		LottoTicket1.selectedNumbers = selectedNumbers;
+	}
 
 	public boolean isAuto() {
 		return isAuto;
@@ -391,6 +399,7 @@ class LottoTicket1 extends JPanel {
 						getSelectedMode();
 						System.out.println(selectedMode);
 						System.out.println(selectedNumbers);
+						
 						for (JButton button : lottoNumBtn) {
 							button.setBackground(null);
 						}
