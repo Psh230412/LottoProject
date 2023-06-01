@@ -670,7 +670,7 @@ public class LottoNumberPage extends JPanel {
 		add(myNumPnlE);
 		add(myNumPnlF); 
 
-		setSize(350, 580);
+		setSize(340, 550);
 //		setDefaultCloseOperation(EXIT_ON_CLOSE);
 //		setVisible(true);
 	}
