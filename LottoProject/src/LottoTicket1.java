@@ -23,7 +23,8 @@ class LottoTicket1 extends JFrame {
 	private JButton[] lottoNumBtn = new JButton[45];;
 	private static int changeCount = 0;
 	JLabel[] look = new JLabel[10];
-
+	
+	
 	public boolean isAuto() {
 		return isAuto;
 	}
@@ -74,6 +75,7 @@ class LottoTicket1 extends JFrame {
 		return imageArrBefore;
 	}
 
+	// 라벨 생성 및 라벨에 셀렉트 이미지 URL 삽입하는 메서드
 	public JLabel[] CreateScreen() {
 		for (int i = 0; i < look.length; i++) {
 			URL urlOfScreen = LottoTicket1.class.getClassLoader().getResource("image/셀렉트_" + (i + 1) + ".gif");
@@ -81,6 +83,22 @@ class LottoTicket1 extends JFrame {
 			look[i] = new JLabel(imageIcon);
 		}
 		return look;
+	}
+
+	// JButton[] BtnScreenArr = { returnBtn,autoBtn,resetBtn};
+	// 버튼 생성 및 버튼에 셀렉트 이미지 URL 삽입하는 메서드
+	/*
+	 * BtnScreenArr[0] = 확정버튼 BtnScreenArr[1] = 자동버튼 BtnScreenArr[2] = 초기화 버튼
+	 */
+	JButton[] BtnScreenArr = new JButton[3];
+
+	public JButton[] createBtnScreen() {
+		for (int i = 0; i < BtnScreenArr.length; i++) {
+			URL urlOfScreen = LottoTicket1.class.getClassLoader().getResource("image/셀렉트_" + (i + 11) + ".gif");
+			ImageIcon imageIcon = new ImageIcon(urlOfScreen);
+			BtnScreenArr[i] = new JButton(imageIcon);
+		}
+		return BtnScreenArr;
 	}
 
 	// 버튼을 눌렀을때 이미지를 selNumber 이미지로 바꾸는 메서드
@@ -137,11 +155,17 @@ class LottoTicket1 extends JFrame {
 	}
 
 	public LottoTicket1() {
+		
 		JPanel oneTicketPanel = new JPanel();
 		oneTicketPanel.setLayout(null);
 		oneTicketPanel.setBackground(Color.BLACK);
 		buttonCreate();
 		JLabel[] labels = CreateScreen();
+		/*
+		 * BtnScreenArr[0] = 확정버튼// BtnScreenArr[1] = 자동버튼 BtnScreenArr[2] = 초기화 버튼
+		 * buttons[0] = 확정버튼 buttons[1] = 자동버튼 buttons[2] = 초기화버튼
+		 */
+		JButton[] buttons = createBtnScreen();
 
 		for (int i = 0; i < look.length; i++) {
 			oneTicketPanel.add(labels[i]);
@@ -155,10 +179,10 @@ class LottoTicket1 extends JFrame {
 		labels[2].setSize(59, 35);
 		labels[3].setLocation(0, 81); // 세로가낮은 가로긴 공간 (버튼밑)
 		labels[3].setSize(340, 14);
-		labels[4].setLocation(281, 95); // 우측 내려오는 긴줄
+		labels[4].setLocation(277, 95); // 우측 내려오는 긴줄
 		labels[4].setSize(63, 455);
 		labels[5].setLocation(67, 473); // 밑에줄
-		labels[5].setSize(120, 36);
+		labels[5].setSize(210, 36);
 		labels[6].setLocation(0, 95); // 좌측 내려오는줄
 		labels[6].setSize(67, 455);
 		labels[7].setLocation(67, 509); // 확정버튼 왼쪽공간
@@ -168,23 +192,17 @@ class LottoTicket1 extends JFrame {
 		labels[9].setLocation(67, 538); // 밑에 공간
 		labels[9].setSize(210, 12);
 
-		JButton autoBtn = new JButton();
-		JButton resetBtn = new JButton();
-		JButton returnBtn = new JButton();
+		for (int i = 0; i < buttons.length; i++) {
+			buttons[i].setBorderPainted(false);
+			oneTicketPanel.add(buttons[i]);
+		}
 
-		autoBtn.setSize(new Dimension(81, 35));
-		resetBtn.setSize(new Dimension(80, 35));
-		returnBtn.setSize(new Dimension(88, 29));
-
-		autoBtn.setLocation(120, 46);
-		resetBtn.setLocation(201, 46);
-		returnBtn.setLocation(129, 509);
-
-		autoBtn.setBorderPainted(false);
-		resetBtn.setBorderPainted(false);
-		oneTicketPanel.add(autoBtn);
-		oneTicketPanel.add(resetBtn);
-		oneTicketPanel.add(returnBtn);
+		buttons[0].setLocation(129, 509); // 확정
+		buttons[0].setSize(88,29);
+		buttons[1].setLocation(120, 46); // 자동
+		buttons[1].setSize(81,35);
+		buttons[2].setLocation(201, 45); // 초기화
+		buttons[2].setSize(80,35);
 
 		for (int i = 0; i < 45; i++) {
 			lottoNumBtn[i].setSize(42, 42);
@@ -207,7 +225,7 @@ class LottoTicket1 extends JFrame {
 			lottoNumBtn[5 * i + 4].setLocation(67 + 42 * 4, 95 + 42 * i);
 		}
 
-		autoBtn.addActionListener(new ActionListener() {
+		buttons[1].addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				int clickCount = 0;
@@ -254,7 +272,7 @@ class LottoTicket1 extends JFrame {
 			}
 		});
 
-		resetBtn.addActionListener(new ActionListener() {
+		buttons[2].addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				for (JButton button : lottoNumBtn) {
@@ -271,7 +289,7 @@ class LottoTicket1 extends JFrame {
 			}
 		});
 
-		returnBtn.addActionListener(new ActionListener() {
+		buttons[0].addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
