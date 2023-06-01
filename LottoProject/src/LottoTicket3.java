@@ -412,9 +412,9 @@ class LottoTicket3 extends JPanel {
 
 	}
 
-	/*
-	 * public static void main(String[] args) { new LottoTicket1(); }
-	 */
+	
+	  //public static void main(String[] args) { new LottoTicket3(); }
+	 
 
 }
 

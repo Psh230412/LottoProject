@@ -548,7 +548,7 @@ class MyNumPnlF extends JPanel {
 		orderLabelF1.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				
+				Management.card.show(Management.all, "공튀기기");
 			}
 		});
 		
@@ -675,8 +675,10 @@ public class LottoNumberPage extends JPanel {
 		add(myNumPnlE);
 		add(myNumPnlF); 
 
+
 		setSize(350, 580);
 		setBackground(new Color(10,4,52));
+
 //		setDefaultCloseOperation(EXIT_ON_CLOSE);
 //		setVisible(true);
 	}

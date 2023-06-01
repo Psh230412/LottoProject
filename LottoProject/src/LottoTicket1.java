@@ -385,11 +385,20 @@ class LottoTicket1 extends JPanel {
 							JOptionPane.YES_NO_OPTION);
 
 					if (result == JOptionPane.YES_OPTION) {
+						JButton source = (JButton) e.getSource();
 
 						getSelectedNumbers();
 						getSelectedMode();
 						System.out.println(selectedMode);
 						System.out.println(selectedNumbers);
+						for (JButton button : lottoNumBtn) {
+							button.setBackground(null);
+						}
+						for (int i = 0; i < lottoNumBtn.length; i++) {
+							lottoNumBtn[i].setIcon(new ImageIcon(imageArrBefore[i]));
+							isButtonClicked[i] = false;
+						}
+						
 						setAuto(false);
 						setClick(false);
 						resetCount();
@@ -412,7 +421,7 @@ class LottoTicket1 extends JPanel {
 		oneTicketPanel.setBounds(0, 0, 340, 550);
 		setLayout(null);
 		add(oneTicketPanel);
-
+		
 	}
 
 }
@@ -430,7 +439,7 @@ class MyListener implements ActionListener {
 
 		if (lt1.getChangeCount() == 6)
 			lt1.setAuto(false);
-
+		
 		if (!source.getBackground().equals(Color.RED) && lt1.getChangeCount() < 6) {
 
 			source.setBackground(Color.RED);
@@ -439,14 +448,12 @@ class MyListener implements ActionListener {
 			lt1.ChangeImage(source);
 
 		} else if (!source.getBackground().equals(Color.RED) && lt1.getChangeCount() == 6) {
-			JOptionPane.showMessageDialog(null, "로또숫자는 6개까지 고를 수 있습니다.", "숫자초과", JOptionPane.WARNING_MESSAGE);
 		} else if (source.getBackground().equals(Color.RED) && lt1.getChangeCount() == 1 && lt1.isClick() == true) {
 			source.setBackground(null);
 
 			lt1.decreaseCount();
 			lt1.setAuto(false);
 			lt1.setClick(false);
-
 			lt1.resetCount();
 			lt1.restoreImage(source);
 
