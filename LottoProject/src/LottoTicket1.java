@@ -4,6 +4,9 @@ import java.awt.Dimension;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -23,8 +26,7 @@ class LottoTicket1 extends JFrame {
 	private JButton[] lottoNumBtn = new JButton[45];;
 	private static int changeCount = 0;
 	JLabel[] look = new JLabel[10];
-	
-	
+
 	public boolean isAuto() {
 		return isAuto;
 	}
@@ -155,7 +157,7 @@ class LottoTicket1 extends JFrame {
 	}
 
 	public LottoTicket1() {
-		
+
 		JPanel oneTicketPanel = new JPanel();
 		oneTicketPanel.setLayout(null);
 		oneTicketPanel.setBackground(Color.BLACK);
@@ -170,7 +172,7 @@ class LottoTicket1 extends JFrame {
 		for (int i = 0; i < look.length; i++) {
 			oneTicketPanel.add(labels[i]);
 		}
-
+		// 각 라벨배열들의 위치,크기 설정
 		labels[0].setLocation(0, 0); // 대문자
 		labels[0].setSize(120, 81);
 		labels[1].setLocation(120, 0); // 위에줄
@@ -196,13 +198,13 @@ class LottoTicket1 extends JFrame {
 			buttons[i].setBorderPainted(false);
 			oneTicketPanel.add(buttons[i]);
 		}
-
+		// 각 버튼배열의 위치,크기
 		buttons[0].setLocation(129, 509); // 확정
-		buttons[0].setSize(88,29);
+		buttons[0].setSize(88, 29);
 		buttons[1].setLocation(120, 46); // 자동
-		buttons[1].setSize(81,35);
+		buttons[1].setSize(81, 35);
 		buttons[2].setLocation(201, 45); // 초기화
-		buttons[2].setSize(80,35);
+		buttons[2].setSize(80, 35);
 
 		for (int i = 0; i < 45; i++) {
 			lottoNumBtn[i].setSize(42, 42);
@@ -225,7 +227,60 @@ class LottoTicket1 extends JFrame {
 			lottoNumBtn[5 * i + 4].setLocation(67 + 42 * 4, 95 + 42 * i);
 		}
 
-		buttons[1].addActionListener(new ActionListener() {
+		buttons[1].addMouseListener(new MouseAdapter() {// 자동
+			@Override
+			public void mouseReleased(MouseEvent e) {
+				URL urlOfScreen = LottoTicket1.class.getClassLoader().getResource("image/셀렉트_12.gif");
+				ImageIcon defaultIcon = new ImageIcon(urlOfScreen);
+				buttons[1].setIcon(defaultIcon);
+			}
+			
+			@Override
+			public void mousePressed(MouseEvent e) {
+				URL urlOfScreen = LottoTicket1.class.getClassLoader().getResource("image/셀렉트_03second.gif");
+				ImageIcon changeIcon = new ImageIcon(urlOfScreen);
+				buttons[1].setIcon(changeIcon);
+			}
+		}); 
+
+		buttons[2].addMouseListener(new MouseAdapter() {// 초기화
+			
+			@Override
+			public void mouseReleased(MouseEvent e) {
+				URL urlOfScreen = LottoTicket1.class.getClassLoader().getResource("image/셀렉트_13.gif");
+				ImageIcon defaultIcon = new ImageIcon(urlOfScreen);
+				buttons[2].setIcon(defaultIcon);
+			}
+			
+			@Override
+			public void mousePressed(MouseEvent e) {
+				URL urlOfScreen = LottoTicket1.class.getClassLoader().getResource("image/셀렉트_04second.gif");
+				ImageIcon changeIcon = new ImageIcon(urlOfScreen);
+				buttons[2].setIcon(changeIcon);
+			}
+		});
+		
+		buttons[3].addMouseListener(new MouseAdapter() {// 초기화
+			
+			@Override
+			public void mouseReleased(MouseEvent e) {
+				URL urlOfScreen = LottoTicket1.class.getClassLoader().getResource("image/셀렉트_11.gif");
+				ImageIcon defaultIcon = new ImageIcon(urlOfScreen);
+				buttons[3].setIcon(defaultIcon);
+			}
+			
+			@Override
+			public void mousePressed(MouseEvent e) {
+				URL urlOfScreen = LottoTicket1.class.getClassLoader().getResource("image/셀렉트_05second.gif");
+				ImageIcon changeIcon = new ImageIcon(urlOfScreen);
+				buttons[3].setIcon(changeIcon);
+			}
+		});
+	
+
+		
+
+		buttons[1].addActionListener(new ActionListener() { // 자동버튼
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				int clickCount = 0;
@@ -272,7 +327,7 @@ class LottoTicket1 extends JFrame {
 			}
 		});
 
-		buttons[2].addActionListener(new ActionListener() {
+		buttons[2].addActionListener(new ActionListener() { // 초기화버튼
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				for (JButton button : lottoNumBtn) {
@@ -288,8 +343,7 @@ class LottoTicket1 extends JFrame {
 
 			}
 		});
-
-		buttons[0].addActionListener(new ActionListener() {
+		buttons[0].addActionListener(new ActionListener() { // 확정버튼
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -323,6 +377,7 @@ class LottoTicket1 extends JFrame {
 
 			}
 		});
+
 		oneTicketPanel.setPreferredSize(new Dimension(340, 550));
 		add(oneTicketPanel);
 		pack();
