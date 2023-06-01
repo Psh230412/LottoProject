@@ -396,6 +396,8 @@ class LottoTicket4 extends JPanel {
 //						MyNumPnlA.getMyNumLbl5A().setText(selectedNumbers.get(4).toString());
 //						MyNumPnlA.getMyNumLbl6A().setText(selectedNumbers.get(5).toString());
 //						MyNumPnlA.getAutoLblA().setText(selectedMode.get(0).toString());
+						
+						Management.card.show(Management.all, "번호 선택");
 					}
 				}
 

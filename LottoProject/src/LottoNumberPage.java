@@ -83,7 +83,7 @@ class MyNumPnlA extends JPanel {
 		orderLabelA4.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				new LottoTicket2();
+				Management.card.show(Management.all, "티켓1");
 			}
 		});
 
@@ -179,7 +179,7 @@ class MyNumPnlB extends JPanel {
 		orderLabelB3.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				new LottoTicket2();
+				Management.card.show(Management.all, "티켓2");
 			}
 		});
 
@@ -278,7 +278,7 @@ class MyNumPnlC extends JPanel {
 		orderLabelC1.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				new LottoTicket3();
+				Management.card.show(Management.all, "티켓3");
 			}
 		});
 		
@@ -376,7 +376,7 @@ class MyNumPnlD extends JPanel {
 		orderLabelD2.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				new LottoTicket3();
+				Management.card.show(Management.all, "티켓4");
 			}
 		});
 		
@@ -480,7 +480,7 @@ class MyNumPnlE extends JPanel {
 		orderLabelE3.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				new LottoTicket5();
+				Management.card.show(Management.all, "티켓5");
 			}
 		});
 		
@@ -631,7 +631,7 @@ class MyNumPnlJ extends JPanel {
 
 
 //내 번호 보여주는 프레임
-public class LottoNumberPage extends JFrame {
+public class LottoNumberPage extends JPanel {
 	public LottoNumberPage() {
 		setLayout(null);
 
@@ -671,8 +671,8 @@ public class LottoNumberPage extends JFrame {
 		add(myNumPnlF); 
 
 		setSize(350, 580);
-		setDefaultCloseOperation(EXIT_ON_CLOSE);
-		setVisible(true);
+//		setDefaultCloseOperation(EXIT_ON_CLOSE);
+//		setVisible(true);
 	}
 
 	public static void main(String[] args) {
