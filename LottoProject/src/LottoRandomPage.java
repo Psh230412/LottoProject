@@ -9,6 +9,9 @@ import java.util.Random;
 
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.Timer;
+
+import com.sun.prism.paint.Stop;
 
 // 당첨번호 랜덤으로 만듦
 class LottoRandom {
@@ -27,52 +30,54 @@ class LottoRandom {
 		}
 	}
 
-
 }
 
 // 당첨번호 보여주는 프레임
 public class LottoRandomPage extends JFrame {
 	public LottoRandomPage() {
 		JPanel lottoRandomPnl = new JPanel();
-		
+
 		LottoRandom lottoRandom = new LottoRandom();
 		List<Integer> list = lottoRandom.getRandomNum();
 
-		JLabel randomLbl1 = new JLabel(list.get(0).toString());
-		JLabel randomLbl2 = new JLabel(list.get(1).toString());
-		JLabel randomLbl3 = new JLabel(list.get(2).toString());
-		JLabel randomLbl4 = new JLabel(list.get(3).toString());
-		JLabel randomLbl5 = new JLabel(list.get(4).toString());
-		JLabel randomLbl6 = new JLabel(list.get(5).toString());
-		JLabel randomLbl7 = new JLabel(list.get(6).toString());
-		JLabel plus = new JLabel("+");
-		
-		
+		JLabel randomLbl = new JLabel();
+
+		Timer timer = new Timer(1000, new ActionListener() {
+			int i = 0;
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				if (i < list.size()) {
+				randomLbl.setText(list.get(i).toString());
+				i++;
+				}		
+			}
+			
+		});
+
+		JButton randomBtn = new JButton("추첨");
+		randomBtn.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				timer.start();
+			}
+		});
+
 		JButton nextButton = new JButton("다음");
-		
+
 		nextButton.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				new LottoDrawPage();
-				
+
 			}
 		});
 
-		lottoRandomPnl.add(randomLbl1);
-		lottoRandomPnl.add(randomLbl1);
-		lottoRandomPnl.add(randomLbl2);
-		lottoRandomPnl.add(randomLbl3);
-		lottoRandomPnl.add(randomLbl4);
-		lottoRandomPnl.add(randomLbl5);
-		lottoRandomPnl.add(randomLbl6);
-		lottoRandomPnl.add(plus);
-		lottoRandomPnl.add(randomLbl7);
-		
+		lottoRandomPnl.add(randomLbl);
+		lottoRandomPnl.add(randomBtn);
+		lottoRandomPnl.add(nextButton);
 		add(lottoRandomPnl);
-		add(nextButton, "South");
-		
-	
-		setSize(500, 800);
+
+		setSize(340, 583);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setVisible(true);
 	}
