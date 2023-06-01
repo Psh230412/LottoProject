@@ -1,15 +1,8 @@
-import java.awt.BorderLayout;
-import java.awt.Button;
+
 import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.FlowLayout;
-import java.awt.Font;
-import java.awt.Graphics;
-import java.awt.GridLayout;
 
 import java.awt.Image;
-
-import java.awt.HeadlessException;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -19,7 +12,6 @@ import java.util.Collections;
 
 import java.util.List;
 
-import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -68,16 +60,6 @@ class LottoTicket1 extends JFrame {
 		return this.changeCount;
 	}
 
-	URL[] selectImageArr = new URL[13];
-
-	// 이미지들의 URL을 배열에 저장하는 메서드
-	public void setSelectImageArr() {
-		for (int i = 0; i < selectImageArr.length; i++) {
-			URL value = LottoTicket1.class.getClassLoader().getResource("image/셀렉트_" + (i + 1) + ".gif");
-			selectImageArr[i] = value;
-		}
-	}
-
 	// defaultNumber 이미지를 담는 배열
 	Image[] imageArrBefore = new Image[45];
 	// selNumber 이미지를 담는 배열
@@ -98,11 +80,14 @@ class LottoTicket1 extends JFrame {
 
 	// 라벨 생성 및 라벨에 셀렉트 이미지 URL 삽입하는 메서드
 	public JLabel[] CreateScreen() {
-		for (int i = 0; i < look.length; i++) {
+		for (int i = 1; i < look.length; i++) {
 			URL urlOfScreen = LottoTicket1.class.getClassLoader().getResource("image/셀렉트_" + (i + 1) + ".gif");
 			ImageIcon imageIcon = new ImageIcon(urlOfScreen);
 			look[i] = new JLabel(imageIcon);
 		}
+		URL urlOfAlpha = LottoTicket1.class.getClassLoader().getResource("image/셀렉트_A.gif");
+		ImageIcon imageIconAlpha = new ImageIcon(urlOfAlpha);
+		look[0] = new JLabel(imageIconAlpha);
 		return look;
 	}
 
@@ -186,7 +171,6 @@ class LottoTicket1 extends JFrame {
 		 * buttons[0] = 확정버튼 buttons[1] = 자동버튼 buttons[2] = 초기화버튼
 		 */
 		JButton[] buttons = createBtnScreen();
-		setSelectImageArr();
 
 		for (int i = 0; i < look.length; i++) {
 			oneTicketPanel.add(labels[i]);
@@ -200,10 +184,10 @@ class LottoTicket1 extends JFrame {
 		labels[2].setSize(59, 35);
 		labels[3].setLocation(0, 81); // 세로가낮은 가로긴 공간 (버튼밑)
 		labels[3].setSize(340, 14);
-		labels[4].setLocation(281, 95); // 우측 내려오는 긴줄
+		labels[4].setLocation(277, 95); // 우측 내려오는 긴줄
 		labels[4].setSize(63, 455);
 		labels[5].setLocation(67, 473); // 밑에줄
-		labels[5].setSize(120, 36);
+		labels[5].setSize(210, 36);
 		labels[6].setLocation(0, 95); // 좌측 내려오는줄
 		labels[6].setSize(67, 455);
 		labels[7].setLocation(67, 509); // 확정버튼 왼쪽공간
@@ -214,15 +198,16 @@ class LottoTicket1 extends JFrame {
 		labels[9].setSize(210, 12);
 
 		for (int i = 0; i < buttons.length; i++) {
+			buttons[i].setBorderPainted(false);
 			oneTicketPanel.add(buttons[i]);
 		}
 
-		buttons[0].setLocation(x, y);
-		buttons[0].setSize(d);
-		buttons[1].setLocation(x, y);
-		buttons[1].setSize(d);
-		buttons[2].setLocation(x, y);
-		buttons[2].setSize(d);
+		buttons[0].setLocation(129, 509);
+		buttons[0].setSize(88, 29);
+		buttons[1].setLocation(120, 46);
+		buttons[1].setSize(81, 35);
+		buttons[2].setLocation(201, 46);
+		buttons[2].setSize(80, 35);
 
 		for (int i = 0; i < 45; i++) {
 			lottoNumBtn[i].setSize(42, 42);
@@ -329,7 +314,7 @@ class LottoTicket1 extends JFrame {
 						setAuto(false);
 						setClick(false);
 						resetCount();
-						new LottoNumberPage();
+						
 
 						MyNumPnlA.getMyNumLbl1A().setText(selectedNumbers.get(0).toString());
 						MyNumPnlA.getMyNumLbl2A().setText(selectedNumbers.get(1).toString());
@@ -351,9 +336,9 @@ class LottoTicket1 extends JFrame {
 		setResizable(false);
 	}
 
-	public static void main(String[] args) {
-		new LottoTicket1();
-	}
+	/*
+	 * public static void main(String[] args) { new LottoTicket1(); }
+	 */
 
 }
 
