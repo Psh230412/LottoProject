@@ -1,3 +1,4 @@
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
@@ -66,16 +67,16 @@ class MyNumPnlA extends JPanel {
 
 		ImageIcon orderBtnA3 = new ImageIcon(getClass().getResource("/image2/번호선택_05.gif"));
 		JLabel orderLabelA3 = new JLabel(orderBtnA3);
-		orderLabelA3.setBounds(20, 70, orderBtnA3.getIconWidth(), orderBtnA3.getIconHeight());
+		orderLabelA3.setBounds(0, 0, orderBtnA3.getIconWidth(), orderBtnA3.getIconHeight());
 		
-		//슬롯 
-		ImageIcon orderBtnA4 = new ImageIcon(getClass().getResource("/image2/번호선택_08.gif"));
-		JLabel orderLabelA4 = new JLabel(orderBtnA4);
-		orderLabelA4.setBounds(20, 87, orderBtnA4.getIconWidth(), orderBtnA4.getIconHeight());
-
 		ImageIcon orderBtnA5 = new ImageIcon(getClass().getResource("/image2/번호선택_06.gif"));
 		JLabel orderLabelA5 = new JLabel(orderBtnA5);
-		orderLabelA5.setBounds(292, 70, orderBtnA5.getIconWidth(), orderBtnA5.getIconHeight());
+		orderLabelA5.setBounds(272, 0, orderBtnA5.getIconWidth(), orderBtnA5.getIconHeight());
+		//슬롯 
+		ImageIcon orderBtnA4 = new ImageIcon(getClass().getResource("/image2/번호선택_27.gif"));
+		JLabel orderLabelA4 = new JLabel(orderBtnA4);
+		orderLabelA4.setBounds(0, 17, orderBtnA4.getIconWidth(), orderBtnA4.getIconHeight());
+
 
 		
 		
@@ -160,20 +161,20 @@ class MyNumPnlB extends JPanel {
 
 		ImageIcon orderBtnB = new ImageIcon(getClass().getResource("/image2/번호선택_09.gif"));
 		JLabel orderLabelB = new JLabel(orderBtnB);
-		orderLabelB.setBounds(7, 5, orderBtnB.getIconWidth(), orderBtnB.getIconHeight());
+		orderLabelB.setBounds(0, 0, orderBtnB.getIconWidth(), orderBtnB.getIconHeight());
 
 		ImageIcon orderBtnB1 = new ImageIcon(getClass().getResource("/image2/번호선택_10.gif"));
 		JLabel orderLabelB1 = new JLabel(orderBtnB1);
-		orderLabelB1.setBounds(7, 38, orderBtnB1.getIconWidth(), orderBtnB1.getIconHeight());
+		orderLabelB1.setBounds(0, 33, orderBtnB1.getIconWidth(), orderBtnB1.getIconHeight());
 
 		ImageIcon orderBtnB2 = new ImageIcon(getClass().getResource("/image2/번호선택_11.gif"));
 		JLabel orderLabelB2 = new JLabel(orderBtnB2);
-		orderLabelB2.setBounds(279, 38, orderBtnB2.getIconWidth(), orderBtnB2.getIconHeight());
+		orderLabelB2.setBounds(272, 33, orderBtnB2.getIconWidth(), orderBtnB2.getIconHeight());
 		
 		//슬롯
-		ImageIcon orderBtnB3 = new ImageIcon(getClass().getResource("/image2/번호선택_08.gif"));
+		ImageIcon orderBtnB3 = new ImageIcon(getClass().getResource("/image2/번호선택_27.gif"));
 		JLabel orderLabelB3 = new JLabel(orderBtnB3);
-		orderLabelB3.setBounds(7, 55, orderBtnB3.getIconWidth(), orderBtnB3.getIconHeight());
+		orderLabelB3.setBounds(0, 33+17, orderBtnB3.getIconWidth(), orderBtnB3.getIconHeight());
 
 		// 슬롯 연결 이벤트
 		orderLabelB3.addMouseListener(new MouseAdapter() {
@@ -258,20 +259,22 @@ class MyNumPnlC extends JPanel {
 
 		ImageIcon orderBtnC = new ImageIcon(getClass().getResource("/image2/번호선택_14.gif"));
 		JLabel orderLabelC = new JLabel(orderBtnC);
-		orderLabelC.setBounds(7, 18, orderBtnC.getIconWidth(), orderBtnC.getIconHeight());
+		orderLabelC.setBounds(0, 0, orderBtnC.getIconWidth(), orderBtnC.getIconHeight());
 		
-		//슬롯 
-		ImageIcon orderBtnC1 = new ImageIcon(getClass().getResource("/image2/번호선택_08.gif"));
-		JLabel orderLabelC1 = new JLabel(orderBtnC1);
-		orderLabelC1.setBounds(7, 69, orderBtnC1.getIconWidth(), orderBtnC1.getIconHeight());
-
 		ImageIcon orderBtnC2 = new ImageIcon(getClass().getResource("/image2/번호선택_15.gif"));
 		JLabel orderLabelC2 = new JLabel(orderBtnC2);
-		orderLabelC2.setBounds(7, 52, orderBtnC2.getIconWidth(), orderBtnC2.getIconHeight());
-
+		orderLabelC2.setBounds(0, 34, orderBtnC2.getIconWidth(), orderBtnC2.getIconHeight());
+		
 		ImageIcon orderBtnC3 = new ImageIcon(getClass().getResource("/image2/번호선택_16.gif"));
 		JLabel orderLabelC3 = new JLabel(orderBtnC3);
-		orderLabelC3.setBounds(279, 52, orderBtnC3.getIconWidth(), orderBtnC3.getIconHeight());
+		orderLabelC3.setBounds(272, 34, orderBtnC3.getIconWidth(), orderBtnC3.getIconHeight());
+		
+		//슬롯 
+		ImageIcon orderBtnC1 = new ImageIcon(getClass().getResource("/image2/번호선택_27.gif"));
+		JLabel orderLabelC1 = new JLabel(orderBtnC1);
+		orderLabelC1.setBounds(0,34+18, orderBtnC1.getIconWidth(), orderBtnC1.getIconHeight());
+
+
 		
 		
 		// 슬롯 연결 이벤트
@@ -279,7 +282,7 @@ class MyNumPnlC extends JPanel {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				Management.card.show(Management.all, "티켓3");
-			}
+			} 
 		});
 		
 		// 엑스 버튼 이벤트 추가 
@@ -301,7 +304,7 @@ class MyNumPnlC extends JPanel {
 		add(myNumLbl5C);
 		add(myNumLbl6C);
 		add(autoLblC); */
-
+		setBackground(new Color(10,4,52));
 		setLayout(null);
 		setVisible(true);
 	}
@@ -356,20 +359,20 @@ class MyNumPnlD extends JPanel {
 
 		ImageIcon orderBtnD = new ImageIcon(getClass().getResource("/image2/번호선택_19.gif"));
 		JLabel orderLabelD = new JLabel(orderBtnD);
-		orderLabelD.setBounds(7, 0, orderBtnD.getIconWidth(), orderBtnD.getIconHeight());
+		orderLabelD.setBounds(0, 0, orderBtnD.getIconWidth(), orderBtnD.getIconHeight());
 		
 		ImageIcon orderBtnD1 = new ImageIcon(getClass().getResource("/image2/번호선택_20.gif"));
 		JLabel orderLabelD1 = new JLabel(orderBtnD1);
-		orderLabelD1.setBounds(7, 33, orderBtnD1.getIconWidth(), orderBtnD1.getIconHeight());
+		orderLabelD1.setBounds(0, 33, orderBtnD1.getIconWidth(), orderBtnD1.getIconHeight());
 		
-		//슬롯
-		ImageIcon orderBtnD2 = new ImageIcon(getClass().getResource("/image2/번호선택_08.gif"));
-		JLabel orderLabelD2 = new JLabel(orderBtnD2);
-		orderLabelD2.setBounds(7, 50, orderBtnD2.getIconWidth(), orderBtnD2.getIconHeight());
 
 		ImageIcon orderBtnD3 = new ImageIcon(getClass().getResource("/image2/번호선택_21.gif"));
 		JLabel orderLabelD3 = new JLabel(orderBtnD3);
-		orderLabelD3.setBounds(279, 33, orderBtnD3.getIconWidth(), orderBtnD3.getIconHeight());
+		orderLabelD3.setBounds(272, 33, orderBtnD3.getIconWidth(), orderBtnD3.getIconHeight());
+		//슬롯
+		ImageIcon orderBtnD2 = new ImageIcon(getClass().getResource("/image2/번호선택_27.gif"));
+		JLabel orderLabelD2 = new JLabel(orderBtnD2);
+		orderLabelD2.setBounds(7, 50, orderBtnD2.getIconWidth(), orderBtnD2.getIconHeight());
 		
 		
 		// 슬롯 연결 이벤트 *티켓 4페이지로 고쳐야 됨 
@@ -400,7 +403,7 @@ class MyNumPnlD extends JPanel {
 		add(myNumLbl5D);
 		add(myNumLbl6D);
 		add(autoLblD); */
-		
+		setBackground(new Color(10,4,52));
 		setLayout(null);
 		setVisible(true);
 	}
@@ -455,24 +458,25 @@ class MyNumPnlE extends JPanel {
 		
 		ImageIcon orderBtnE = new ImageIcon(getClass().getResource("/image2/번호선택_24.gif"));
 		JLabel orderLabelE = new JLabel(orderBtnE);
-		orderLabelE.setBounds(7, 32, orderBtnE.getIconWidth(), orderBtnE.getIconHeight());
+		orderLabelE.setBounds(0, 0, orderBtnE.getIconWidth(), orderBtnE.getIconHeight());
 		
 		ImageIcon orderBtnE1 = new ImageIcon(getClass().getResource("/image2/번호선택_25.gif"));
 		JLabel orderLabelE1 = new JLabel(orderBtnE1);
-		orderLabelE1.setBounds(7, 64, orderBtnE1.getIconWidth(), orderBtnE1.getIconHeight());
+		orderLabelE1.setBounds(0, 32, orderBtnE1.getIconWidth(), orderBtnE1.getIconHeight());
 		
 		ImageIcon orderBtnE2 = new ImageIcon(getClass().getResource("/image2/번호선택_26.gif"));
 		JLabel orderLabelE2 = new JLabel(orderBtnE2);
-		orderLabelE2.setBounds(279, 64, orderBtnE2.getIconWidth(), orderBtnE2.getIconHeight());
+		orderLabelE2.setBounds(272, 32, orderBtnE2.getIconWidth(), orderBtnE2.getIconHeight());
 
+		ImageIcon orderBtnE4 = new ImageIcon(getClass().getResource("/image2/번호선택_28.gif"));
+		JLabel orderLabelE4 = new JLabel(orderBtnE4);
+		orderLabelE4.setBounds(0, 32+17+42, orderBtnE4.getIconWidth(), orderBtnE4.getIconHeight());
+		
 		//슬롯
 		ImageIcon orderBtnE3 = new ImageIcon(getClass().getResource("/image2/번호선택_27.gif"));
 		JLabel orderLabelE3 = new JLabel(orderBtnE3);
-		orderLabelE3.setBounds(7, 81, orderBtnE3.getIconWidth(), orderBtnE3.getIconHeight());
+		orderLabelE3.setBounds(0, 32+17, orderBtnE3.getIconWidth(), orderBtnE3.getIconHeight());
 	
-		ImageIcon orderBtnE4 = new ImageIcon(getClass().getResource("/image2/번호선택_28.gif"));
-		JLabel orderLabelE4 = new JLabel(orderBtnE4);
-		orderLabelE4.setBounds(7, 123, orderBtnE4.getIconWidth(), orderBtnE4.getIconHeight());
 
 		
 	
@@ -496,8 +500,8 @@ class MyNumPnlE extends JPanel {
 		add(orderLabelE);
 		add(orderLabelE1);
 		add(orderLabelE2);
-		add(orderLabelE3);
 		add(orderLabelE4);
+		add(orderLabelE3);
 /*		add(myNumLbl1E);
 		add(myNumLbl2E);
 		add(myNumLbl3E);
@@ -553,7 +557,7 @@ class MyNumPnlF extends JPanel {
 		add(orderLabelF1);
 		add(orderLabelF2);
 		add(orderLabelF3);
-		
+		setBackground(new Color(10,4,52));
 		setLayout(null);
 		setVisible(true);
 }
@@ -563,7 +567,7 @@ class MyNumPnlG extends JPanel {
 	public MyNumPnlG() {
 		ImageIcon orderBtnG = new ImageIcon(getClass().getResource("/image2/번호선택_04.gif"));
 		JLabel orderLabelG = new JLabel(orderBtnG);
-		orderLabelG.setBounds(0, 12, orderBtnG.getIconWidth(), orderBtnG.getIconHeight());
+		orderLabelG.setBounds(0, 0, orderBtnG.getIconWidth(), orderBtnG.getIconHeight());
 	
 		add(orderLabelG);
 		
@@ -586,15 +590,16 @@ class MyNumPnlH extends JPanel {
 		setVisible(true);
 	}
 }
+//우 가로
 
 class MyNumPnlI extends JPanel { 
 	public MyNumPnlI() {
 		ImageIcon orderBtnI = new ImageIcon(getClass().getResource("/image2/번호선택_07.gif"));
 		JLabel orderLabelI = new JLabel(orderBtnI);
-		orderLabelI.setBounds(0, 65, orderBtnI.getIconWidth(), orderBtnI.getIconHeight());
+		orderLabelI.setBounds(0,0, orderBtnI.getIconWidth(), orderBtnI.getIconHeight());
 	
 		add(orderLabelI);
-		
+		setBackground(new Color(10,4,52));
 		setLayout(null);
 		setVisible(true);
 	}
@@ -622,7 +627,7 @@ class MyNumPnlJ extends JPanel {
 
 		add(orderLabelJ);
 		add(orderLabelJ1);
-		
+		setBackground(new Color(10,4,52));
 		setLayout(null);
 		setVisible(true);
 	}
@@ -647,16 +652,16 @@ public class LottoNumberPage extends JPanel {
 		MyNumPnlJ myNumPnlJ = new MyNumPnlJ();
 		
 		                  //x  y  길이   높이 
-		myNumPnlA.setBounds(0, 0, 337, 129);
-		myNumPnlB.setBounds(13, 124, 310, 97);
-		myNumPnlC.setBounds(13, 203, 310, 111);
-		myNumPnlD.setBounds(13, 314, 310, 92);
-		myNumPnlE.setBounds(13, 374, 310, 136);
-		myNumPnlF.setBounds(13, 425, 310, 295);
-		myNumPnlG.setBounds(0, 58, 23, 580); //좌측 세로 
-		myNumPnlI.setBounds(315, 5, 23, 580); //우측 세로 
-		myNumPnlH.setBounds(0, 1, 291, 69); //상단 
-		myNumPnlJ.setBounds(291, 0, 45, 70); //도움말  
+		myNumPnlA.setBounds(17, 69, 295, 17+42);
+		myNumPnlB.setBounds(17, 69+17+42, 310, 33+17+42);
+		myNumPnlC.setBounds(17, 69+17+42+33+17+42, 295, 33+17+42);
+		myNumPnlD.setBounds(17, 1+69+17+42+33+17+42+33+17+42, 295, 33+17+42);
+		myNumPnlE.setBounds(17, 1+69+17+42+33+17+42+33+17+42+33+17+42, 295, 33+17+44);
+		myNumPnlF.setBounds(13, 425, 295, 295);
+		myNumPnlG.setBounds(0, 69, 23, 479); //좌측 세로 
+		myNumPnlI.setBounds(17+295, 69, 22, 479); //우측 세로 
+		myNumPnlH.setBounds(0, 0, 291, 69); //상단 
+		myNumPnlJ.setBounds(291, 0, 45, 69); //도움말  
 		
 
 		add(myNumPnlH); //상단 A 
@@ -671,6 +676,7 @@ public class LottoNumberPage extends JPanel {
 		add(myNumPnlF); 
 
 		setSize(350, 580);
+		setBackground(new Color(10,4,52));
 //		setDefaultCloseOperation(EXIT_ON_CLOSE);
 //		setVisible(true);
 	}
