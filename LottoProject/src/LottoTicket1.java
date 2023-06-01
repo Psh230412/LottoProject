@@ -27,8 +27,7 @@ class LottoTicket1 extends JPanel {
 	private static int changeCount = 0;
 	JLabel[] look = new JLabel[10];
 	private boolean[] isButtonClicked = new boolean[45];
-	
-	
+
 	public boolean isAuto() {
 		return isAuto;
 	}
@@ -144,23 +143,24 @@ class LottoTicket1 extends JPanel {
 			lottoNumBtn[i].addMouseListener(new MouseAdapter() {
 				@Override
 				public void mouseExited(MouseEvent e) {
-					if(!isButtonClicked[index]) {
-					URL urlOfScreen = LottoTicket1.class.getClassLoader().getResource("image/defaultNumber"+" "+ "("+(index+1)+")"+".gif");
-					ImageIcon defaultIcon = new ImageIcon(urlOfScreen);
-					lottoNumBtn[index].setIcon(defaultIcon);	
+					if (!isButtonClicked[index]) {
+						URL urlOfScreen = LottoTicket1.class.getClassLoader()
+								.getResource("image/defaultNumber" + " " + "(" + (index + 1) + ")" + ".gif");
+						ImageIcon defaultIcon = new ImageIcon(urlOfScreen);
+						lottoNumBtn[index].setIcon(defaultIcon);
 					}
 				}
-				
+
 				@Override
 				public void mouseEntered(MouseEvent e) {
-					if(!isButtonClicked[index]) {
-					URL urlOfScreen = LottoTicket1.class.getClassLoader().getResource("image/revNumber"+" "+ "("+(index+1)+")"+".gif");
-					ImageIcon changeIcon = new ImageIcon(urlOfScreen);
-					lottoNumBtn[index].setIcon(changeIcon);
+					if (!isButtonClicked[index]) {
+						URL urlOfScreen = LottoTicket1.class.getClassLoader()
+								.getResource("image/revNumber" + " " + "(" + (index + 1) + ")" + ".gif");
+						ImageIcon changeIcon = new ImageIcon(urlOfScreen);
+						lottoNumBtn[index].setIcon(changeIcon);
 					}
 				}
-				
-				
+
 			});
 
 			// lottoNumbtn[0]={1} lottoNumbtn[1]={2}.......lottoNumbtn[n]={n+1}
@@ -188,7 +188,6 @@ class LottoTicket1 extends JPanel {
 	}
 
 	public LottoTicket1() {
-
 
 		JPanel oneTicketPanel = new JPanel();
 		oneTicketPanel.setLayout(null);
@@ -266,24 +265,24 @@ class LottoTicket1 extends JPanel {
 				ImageIcon defaultIcon = new ImageIcon(urlOfScreen);
 				buttons[1].setIcon(defaultIcon);
 			}
-			
+
 			@Override
 			public void mousePressed(MouseEvent e) {
 				URL urlOfScreen = LottoTicket1.class.getClassLoader().getResource("image/셀렉트_03second.gif");
 				ImageIcon changeIcon = new ImageIcon(urlOfScreen);
 				buttons[1].setIcon(changeIcon);
 			}
-		}); 
+		});
 
 		buttons[2].addMouseListener(new MouseAdapter() {// 초기화
-			
+
 			@Override
 			public void mouseReleased(MouseEvent e) {
 				URL urlOfScreen = LottoTicket1.class.getClassLoader().getResource("image/셀렉트_13.gif");
 				ImageIcon defaultIcon = new ImageIcon(urlOfScreen);
 				buttons[2].setIcon(defaultIcon);
 			}
-			
+
 			@Override
 			public void mousePressed(MouseEvent e) {
 				URL urlOfScreen = LottoTicket1.class.getClassLoader().getResource("image/셀렉트_04second.gif");
@@ -291,16 +290,16 @@ class LottoTicket1 extends JPanel {
 				buttons[2].setIcon(changeIcon);
 			}
 		});
-		
+
 		buttons[0].addMouseListener(new MouseAdapter() {// 초기화
-			
+
 			@Override
 			public void mouseReleased(MouseEvent e) {
 				URL urlOfScreen = LottoTicket1.class.getClassLoader().getResource("image/셀렉트_11.gif");
 				ImageIcon defaultIcon = new ImageIcon(urlOfScreen);
 				buttons[0].setIcon(defaultIcon);
 			}
-			
+
 			@Override
 			public void mousePressed(MouseEvent e) {
 				URL urlOfScreen = LottoTicket1.class.getClassLoader().getResource("image/셀렉트_05second.gif");
@@ -308,15 +307,12 @@ class LottoTicket1 extends JPanel {
 				buttons[0].setIcon(changeIcon);
 			}
 		});
-	
-
-		
 
 		buttons[1].addActionListener(new ActionListener() { // 자동버튼
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				int clickCount = 0;
-				f.0or (int i = 0; i < 45; i++) {
+				for (int i = 0; i < 45; i++) {
 					if (lottoNumBtn[i].getBackground().equals(Color.RED)) {
 						clickCount++;
 					}
@@ -387,7 +383,7 @@ class LottoTicket1 extends JPanel {
 							JOptionPane.YES_NO_OPTION);
 
 					if (result == JOptionPane.YES_OPTION) {
-						
+
 						getSelectedNumbers();
 						getSelectedMode();
 						System.out.println(selectedMode);
@@ -395,10 +391,7 @@ class LottoTicket1 extends JPanel {
 						setAuto(false);
 						setClick(false);
 						resetCount();
-						
 
-
-						
 //						MyNumPnlA.getMyNumLbl1A().setText(selectedNumbers.get(0).toString());
 //						MyNumPnlA.getMyNumLbl2A().setText(selectedNumbers.get(1).toString());
 //						MyNumPnlA.getMyNumLbl3A().setText(selectedNumbers.get(2).toString());
@@ -414,7 +407,7 @@ class LottoTicket1 extends JPanel {
 
 		oneTicketPanel.setPreferredSize(new Dimension(340, 550));
 		add(oneTicketPanel);
-		
+
 	}
 
 	/*
