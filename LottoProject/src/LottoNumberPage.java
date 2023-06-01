@@ -625,7 +625,7 @@ public class LottoNumberPage extends JFrame {
 		myNumPnlF.setBounds(13, 425, 310, 295);
 		myNumPnlG.setBounds(0, 58, 23, 580); //좌측 
 		myNumPnlH.setBounds(0, 0, 310, 70); //상단 
-		myNumPnlI.setBounds(200, 200, 23, 580); //상단 
+//		myNumPnlI.setBounds(200, 200, 23, 580); //상단 
 		
 
 		add(myNumPnlH); //상단 A 
@@ -636,7 +636,7 @@ public class LottoNumberPage extends JFrame {
 		add(myNumPnlC);
 		add(myNumPnlD);
 		add(myNumPnlE);
-		add(myNumPnlF);
+//		add(myNumPnlF);
 
 		setSize(340, 580);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
