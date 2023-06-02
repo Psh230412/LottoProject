@@ -6,8 +6,6 @@ import java.awt.LayoutManager;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
-
-
 public class Management extends JFrame {
 	static JPanel all = new JPanel();
 	static CardLayout card = new CardLayout();
