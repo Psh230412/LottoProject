@@ -30,7 +30,6 @@ public class Management extends JFrame {
 		add(all);
 		
 		setSize(350, 585);
-		//setSize(340, 550);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setVisible(true);
 		
