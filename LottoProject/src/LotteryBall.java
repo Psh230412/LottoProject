@@ -37,10 +37,7 @@ class LotteryBallView extends JPanel{
 		
 		ball = new ImageIcon(urlOfBall).getImage();
 		
-		
-		
-		
-		
+
 	}
 
 	public void paint(Graphics g) {

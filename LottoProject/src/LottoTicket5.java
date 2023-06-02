@@ -33,10 +33,10 @@ class LottoTicket5 extends JPanel {
 
 	private boolean isSixSelected = false;
 	public static void setSelectedMode(List<String> selectedMode) {
-		LottoTicket1.selectedMode = selectedMode;
+		LottoTicket5.selectedMode = selectedMode;
 	}
 	public static void setSelectedNumbers(List<Integer> selectedNumbers) {
-		LottoTicket1.selectedNumbers = selectedNumbers;
+		LottoTicket5.selectedNumbers = selectedNumbers;
 	}
 
 	public boolean getIsSixSelected() {
