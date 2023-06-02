@@ -29,7 +29,7 @@ public class Management extends JFrame {
 //		card.show(all, "시작");
 		add(all);
 		
-		setSize(340, 594);
+		setSize(350, 585);
 		//setSize(340, 550);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setVisible(true);

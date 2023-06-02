@@ -21,12 +21,20 @@ import javax.swing.JPanel;
 class LottoTicket2 extends JPanel {
 	private boolean isClick = false;
 	private boolean isAuto = false;
-	List<String> selectedMode = new ArrayList<>();
-	List<Integer> selectedNumbers = new ArrayList<>();
+	static List<String> selectedMode = new ArrayList<>();
+	static List<Integer> selectedNumbers = new ArrayList<>();
 	private JButton[] lottoNumBtn = new JButton[45];;
 	private static int changeCount = 0;
 	JLabel[] look = new JLabel[10];
 	private boolean[] isButtonClicked = new boolean[45];
+	
+	public static void setSelectedMode(List<String> selectedMode) {
+		LottoTicket1.selectedMode = selectedMode;
+	}
+
+	public static void setSelectedNumbers(List<Integer> selectedNumbers) {
+		LottoTicket1.selectedNumbers = selectedNumbers;
+	}
 
 	public boolean isAuto() {
 		return isAuto;
@@ -388,17 +396,26 @@ class LottoTicket2 extends JPanel {
 						getSelectedMode();
 						System.out.println(selectedMode);
 						System.out.println(selectedNumbers);
+						
+						for (JButton button : lottoNumBtn) {
+							button.setBackground(null);
+						}
+						for (int i = 0; i < lottoNumBtn.length; i++) {
+							lottoNumBtn[i].setIcon(new ImageIcon(imageArrBefore[i]));
+							isButtonClicked[i] = false;
+						}
+						
 						setAuto(false);
 						setClick(false);
 						resetCount();
 
-//						MyNumPnlA.getMyNumLbl1A().setText(selectedNumbers.get(0).toString());
-//						MyNumPnlA.getMyNumLbl2A().setText(selectedNumbers.get(1).toString());
-//						MyNumPnlA.getMyNumLbl3A().setText(selectedNumbers.get(2).toString());
-//						MyNumPnlA.getMyNumLbl4A().setText(selectedNumbers.get(3).toString());
-//						MyNumPnlA.getMyNumLbl5A().setText(selectedNumbers.get(4).toString());
-//						MyNumPnlA.getMyNumLbl6A().setText(selectedNumbers.get(5).toString());
-//						MyNumPnlA.getAutoLblA().setText(selectedMode.get(0).toString());
+						MyNumPnlA.getMyNumLbl1A().setText(selectedNumbers.get(0).toString());
+						MyNumPnlA.getMyNumLbl2A().setText(selectedNumbers.get(1).toString());
+						MyNumPnlA.getMyNumLbl3A().setText(selectedNumbers.get(2).toString());
+						MyNumPnlA.getMyNumLbl4A().setText(selectedNumbers.get(3).toString());
+						MyNumPnlA.getMyNumLbl5A().setText(selectedNumbers.get(4).toString());
+						MyNumPnlA.getMyNumLbl6A().setText(selectedNumbers.get(5).toString());
+						MyNumPnlA.getAutoLblA().setText(selectedMode.get(0).toString());
 						
 						Management.card.show(Management.all, "번호 선택");
 					}

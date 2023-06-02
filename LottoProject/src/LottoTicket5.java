@@ -388,6 +388,15 @@ class LottoTicket5 extends JPanel {
 						getSelectedMode();
 						System.out.println(selectedMode);
 						System.out.println(selectedNumbers);
+						
+						for (JButton button : lottoNumBtn) {
+							button.setBackground(null);
+						}
+						for (int i = 0; i < lottoNumBtn.length; i++) {
+							lottoNumBtn[i].setIcon(new ImageIcon(imageArrBefore[i]));
+							isButtonClicked[i] = false;
+						}
+						
 						setAuto(false);
 						setClick(false);
 						resetCount();
