@@ -26,8 +26,8 @@ public class Management extends JFrame {
 
 //		card.show(all, "공튀기기");
 		add(all);
-		
-		setSize(340, 550);
+	
+		setSize(350, 585);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setVisible(true);
 		

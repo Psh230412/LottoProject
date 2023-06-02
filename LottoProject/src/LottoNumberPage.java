@@ -1,3 +1,4 @@
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
@@ -66,7 +67,7 @@ class MyNumPnlA extends JPanel {
 
 		ImageIcon orderBtnA3 = new ImageIcon(getClass().getResource("/image2/번호선택_05.gif"));
 		JLabel orderLabelA3 = new JLabel(orderBtnA3);
-		orderLabelA3.setBounds(20, 70, orderBtnA3.getIconWidth(), orderBtnA3.getIconHeight());
+		orderLabelA3.setBounds(0, 0, orderBtnA3.getIconWidth(), orderBtnA3.getIconHeight());
 		
 		//슬롯 
 		ImageIcon orderBtnA4 = new ImageIcon(getClass().getResource("/image2/번호선택_08.gif"));
