@@ -528,7 +528,6 @@ class MyNumPnlE extends JPanel {
 
 class MyNumPnlF extends JPanel { 
 	public MyNumPnlF() {
-		
 		ImageIcon orderBtnF = new ImageIcon(getClass().getResource("/image2/번호선택_29.gif"));
 		JLabel orderLabelF = new JLabel(orderBtnF);
 		orderLabelF.setBounds(7, 85, orderBtnF.getIconWidth(), orderBtnF.getIconHeight());
@@ -573,6 +572,7 @@ class MyNumPnlF extends JPanel {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				Management.card.show(Management.all, "공튀기기");
+				Management.b1.startAnimation();
 			}
 		});
 		
