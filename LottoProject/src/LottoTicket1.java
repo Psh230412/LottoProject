@@ -416,7 +416,7 @@ class LottoTicket1 extends JPanel {
 			}
 		});
 
-		oneTicketPanel.setPreferredSize(new Dimension(340, 550));
+		oneTicketPanel.setBounds(0, 0, 340, 550);
 		add(oneTicketPanel);
 		
 	}
