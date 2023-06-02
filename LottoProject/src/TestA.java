@@ -177,6 +177,7 @@ class TestA extends JFrame {
 		});
 		
 		//번호 가져오기
+		
 	
 	
 		
