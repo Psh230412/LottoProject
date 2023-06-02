@@ -21,22 +21,21 @@ import javax.swing.Timer;
  * 
  */
 
-class LotteryBallView extends JPanel{
+class LotteryBallView extends JPanel {
 	Image ball;
-	
+
 	int x, y, xInc, yInc, diameter;
 	final Random r = new Random();
-	
 
-	public LotteryBallView(int d,URL urlOfBall) {
+	public LotteryBallView(int d, URL urlOfBall) {
 		this.diameter = d;
 		x = (int) (Math.random() * (LotteryBall.WIDTH - d) + 3);
 		y = (int) (Math.random() * (LotteryBall.HEIGHT - d) + 3);
 		xInc = (int) (Math.random() * 5 + 5);
 		yInc = (int) (Math.random() * 5 + 5);
-		
+
 		ball = new ImageIcon(urlOfBall).getImage();
-		
+
 	}
 
 	public void paint(Graphics g) {
@@ -46,24 +45,24 @@ class LotteryBallView extends JPanel{
 			yInc = -yInc;
 		x += xInc;
 		y += yInc;
-		
+
 		g.drawImage(ball, x, y, 42, 42, this);
-		
-		
+
 	}
 
 }
+
 public class LotteryBall extends JPanel implements ActionListener {
 	static final int WIDTH = 279;
 	static final int HEIGHT = 280;
 	private static final int PERIOD = 30;
 	URL[] urlOfLotteryBall = new URL[45];
-	
+
 	public void creteUrlOfBall() {
-		for(int i=0;i<urlOfLotteryBall.length;i++) {
+		for (int i = 0; i < urlOfLotteryBall.length; i++) {
 			URL urlOfSN = LotteryBall.class.getClassLoader()
 					.getResource("image/selNumber" + " " + "(" + (i + 1) + ")" + ".gif");
-			urlOfLotteryBall[i]=urlOfSN;
+			urlOfLotteryBall[i] = urlOfSN;
 		}
 	}
 
@@ -73,49 +72,43 @@ public class LotteryBall extends JPanel implements ActionListener {
 
 			super.setBackground(color);
 		}
+
 		public LotteryBallView[] basket = new LotteryBallView[45];
-		
-		
+
 		public MyPanel() {
 			creteUrlOfBall();
-			for(int i = 0; i < basket.length; i++) {
-				basket[i] = new LotteryBallView((int) (42),urlOfLotteryBall[i]);
+			for (int i = 0; i < basket.length; i++) {
+				basket[i] = new LotteryBallView((int) (42), urlOfLotteryBall[i]);
 			}
-			
-			
+
 		}
+
 		public void paintComponent(Graphics g) {
 			super.paintComponent(g);
 			for (LotteryBallView b : basket) {
 				b.paint(g);
 			}
 		}
-		
+
 	}
-	
+
 	public LotteryBall() {
-		
-		
+
 		MyPanel panel = new MyPanel();
-		panel.setLayout(null);
-		panel.setBackground(Color.BLACK);
-		panel.setPreferredSize(new Dimension(WIDTH,HEIGHT));
-		//panel.setLocation(31, 142);
-		//panel.setBounds(31, 142, 340, 340);
-		
-		
-		
+		panel.setSize(new Dimension(WIDTH, HEIGHT));
+
 		add(panel);
-		Timer timer = new Timer(PERIOD,this);
+		Timer timer = new Timer(PERIOD, this);
 		timer.start();
-		
+
 	}
+
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
 		repaint();
 	}
+
+	public static void main(String[] args) {
+		new LotteryBall();
+	}
 }
-
-
-
-
