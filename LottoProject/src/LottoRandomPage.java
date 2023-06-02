@@ -4,6 +4,7 @@ import javax.swing.JFrame;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 
@@ -27,57 +28,49 @@ class LottoRandom {
 		}
 	}
 
-
-}
-
 // 당첨번호 보여주는 프레임
-public class LottoRandomPage extends JFrame {
-	public LottoRandomPage() {
-		JPanel lottoRandomPnl = new JPanel();
-		
-		LottoRandom lottoRandom = new LottoRandom();
-		List<Integer> list = lottoRandom.getRandomNum();
+	public class LottoRandomPage extends JFrame {
+		public LottoRandomPage() {
+			JPanel lottoRandomPnl = new JPanel();
 
-		JLabel randomLbl1 = new JLabel(list.get(0).toString());
-		JLabel randomLbl2 = new JLabel(list.get(1).toString());
-		JLabel randomLbl3 = new JLabel(list.get(2).toString());
-		JLabel randomLbl4 = new JLabel(list.get(3).toString());
-		JLabel randomLbl5 = new JLabel(list.get(4).toString());
-		JLabel randomLbl6 = new JLabel(list.get(5).toString());
-		JLabel randomLbl7 = new JLabel(list.get(6).toString());
-		JLabel plus = new JLabel("+");
-		
-		
-		JButton nextButton = new JButton("다음");
-		
-		nextButton.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				new LottoDrawPage();
-				
-			}
-		});
+			LottoRandom lottoRandom = new LottoRandom();
+			List<Integer> list = lottoRandom.getRandomNum();
 
-		lottoRandomPnl.add(randomLbl1);
-		lottoRandomPnl.add(randomLbl1);
-		lottoRandomPnl.add(randomLbl2);
-		lottoRandomPnl.add(randomLbl3);
-		lottoRandomPnl.add(randomLbl4);
-		lottoRandomPnl.add(randomLbl5);
-		lottoRandomPnl.add(randomLbl6);
-		lottoRandomPnl.add(plus);
-		lottoRandomPnl.add(randomLbl7);
-		
-		add(lottoRandomPnl);
-		add(nextButton, "South");
-		
-	
-		setSize(500, 800);
-		setDefaultCloseOperation(EXIT_ON_CLOSE);
-		setVisible(true);
-	}
+			JLabel randomLbl1 = new JLabel(list.get(0).toString());
+			JLabel randomLbl2 = new JLabel(list.get(1).toString());
+			JLabel randomLbl3 = new JLabel(list.get(2).toString());
+			JLabel randomLbl4 = new JLabel(list.get(3).toString());
+			JLabel randomLbl5 = new JLabel(list.get(4).toString());
+			JLabel randomLbl6 = new JLabel(list.get(5).toString());
+			JLabel randomLbl7 = new JLabel(list.get(6).toString());
+			JLabel plus = new JLabel("+");
 
-	public static void main(String[] args) {
-		new LottoRandomPage();
+			JButton nextButton = new JButton("다음");
+
+			nextButton.addActionListener(new ActionListener() {
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					new LottoDrawPage();
+
+				}
+			});
+
+			lottoRandomPnl.add(randomLbl1);
+			lottoRandomPnl.add(randomLbl1);
+			lottoRandomPnl.add(randomLbl2);
+			lottoRandomPnl.add(randomLbl3);
+			lottoRandomPnl.add(randomLbl4);
+			lottoRandomPnl.add(randomLbl5);
+			lottoRandomPnl.add(randomLbl6);
+			lottoRandomPnl.add(plus);
+			lottoRandomPnl.add(randomLbl7);
+
+			add(lottoRandomPnl);
+			add(nextButton, "South");
+
+			setSize(500, 800);
+			setDefaultCloseOperation(EXIT_ON_CLOSE);
+			setVisible(true);
+		}
 	}
 }
