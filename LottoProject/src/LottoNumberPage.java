@@ -66,7 +66,6 @@ class MyNumPnlA extends JPanel {
 		autoLblA = new JLabel();
 
 
-
 		ImageIcon orderBtnA3 = new ImageIcon(getClass().getResource("/image2/번호선택_05.gif"));
 		JLabel orderLabelA3 = new JLabel(orderBtnA3);
 		orderLabelA3.setBounds(0, 0, orderBtnA3.getIconWidth(), orderBtnA3.getIconHeight());
