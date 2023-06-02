@@ -12,7 +12,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-class TestA extends JFrame {
+class TestA extends JPanel {
 	private JLabel[] mainImage;
 	private JLabel[] shownum;
 	JLabel[] MainImage = new JLabel[32];
@@ -55,7 +55,6 @@ class TestA extends JFrame {
 
 	public TestA() {
 		JPanel main1 = new JPanel();
-		main1.setLayout(null);
 		main1.setBackground(Color.BLACK);
 		JLabel[] labels = CreateMain();
 		JLabel[] labels2 = CreateMain2();
@@ -172,7 +171,6 @@ class TestA extends JFrame {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				Management.card.show(Management.all, "티켓2");
-				dispose();
 			}
 		});
 		
@@ -183,11 +181,11 @@ class TestA extends JFrame {
 		
 		
 		
+		main1.setBounds(0, 0, 340, 550);
+		main1.setLayout(null);
+		setLayout(null);
 		add(main1);
-		setSize(340, 550);
-		main1.setBounds(0, 0, 370, 550);
 		setVisible(true);
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
 	
 	public static void main(String[] args) {
