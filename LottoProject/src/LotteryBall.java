@@ -1,15 +1,15 @@
 
 import java.awt.Color;
-import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.net.URL;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Random;
 
 import javax.swing.ImageIcon;
-import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.Timer;
@@ -37,6 +37,7 @@ class LotteryBallView extends JPanel{
 		
 		ball = new ImageIcon(urlOfBall).getImage();
 		
+
 	}
 
 	public void paint(Graphics g) {
@@ -59,6 +60,8 @@ public class LotteryBall extends JPanel implements ActionListener {
 	private static final int PERIOD = 30;
 	URL[] urlOfLotteryBall = new URL[45];
 	
+	Map<Integer,URL> ballMap = new HashMap<>();
+	
 	public void creteUrlOfBall() {
 		for(int i=0;i<urlOfLotteryBall.length;i++) {
 			URL urlOfSN = LotteryBall.class.getClassLoader()
@@ -68,21 +71,23 @@ public class LotteryBall extends JPanel implements ActionListener {
 	}
 
 	class MyPanel extends JPanel {
-		@Override
-		public void setBackground(Color color) {
 
-			super.setBackground(color);
-		}
+
 		public LotteryBallView[] basket = new LotteryBallView[45];
 		
 		
 		public MyPanel() {
 			creteUrlOfBall();
 			for(int i = 0; i < basket.length; i++) {
+				
 				basket[i] = new LotteryBallView((int) (42),urlOfLotteryBall[i]);
+				
+				if(basket[i].x<=220 && basket[i].x>=120 && basket[i].y<=300 ) {
+					ballMap.put(i+1,urlOfLotteryBall[i]);
+				}
+
 			}
-			
-			
+
 		}
 		public void paintComponent(Graphics g) {
 			super.paintComponent(g);
@@ -95,21 +100,57 @@ public class LotteryBall extends JPanel implements ActionListener {
 	
 	public LotteryBall() {
 		
+		setLayout(null);
+		
+		setBackground(new Color(255, 0, 0));//여기 색을 바꾸시면 됩니다.
 		
 		MyPanel panel = new MyPanel();
-		panel.setLayout(null);
 		panel.setBackground(Color.BLACK);
-		panel.setPreferredSize(new Dimension(WIDTH,HEIGHT));
-		//panel.setLocation(31, 142);
-		//panel.setBounds(31, 142, 340, 340);
-		
-		
+		panel.setOpaque(true);
+		panel.setBounds(31, 142, 279, 280);
 		
 		add(panel);
-		Timer timer = new Timer(PERIOD,this);
+
+		JLabel[] ani = new JLabel[9];
+		
+		for(int i=0;i<ani.length;i++) {
+			URL urlOfAni = LotteryBall.class.getClassLoader().getResource("image/애니메이션_" + (i + 2) + ".gif");
+			ImageIcon imageIcon = new ImageIcon(urlOfAni);
+			ani[i] = new JLabel(imageIcon);
+		}
+		
+		ani[0].setBounds(0, 0, 340, 142);
+		ani[1].setBounds(0,142,31,280);
+		ani[2].setBounds(310, 142, 30, 280);
+		ani[3].setBounds(0,422,340,97); // 공 나오는 곳
+		ani[4].setBounds(0, 519, 24, 36);
+		//ani[5].setBounds(24,519,15,18); // 삭제 애니메이션 7
+		//ani[6].setBounds(39, 519, 265, 36);// 삭제 애니메이션 8
+		ani[5].setBounds(304,519,15,18);
+		ani[6].setBounds(319, 519, 21, 36);
+		ani[7].setBounds(24,537,15,18);
+		ani[8].setBounds(304, 537, 15, 18);
+		
+		for(int i=0;i<ani.length;i++) {
+			add(ani[i]);
+		}
+		
+		for (URL key : ballMap.values()) {
+			ImageIcon imageOfBall = new ImageIcon(key);
+			JLabel LabelOfBall = new JLabel(imageOfBall);
+			LabelOfBall.setBounds(149, 512, 42, 42);
+			add(LabelOfBall);
+			
+		}
+		
+		Timer timer = new Timer(PERIOD, this);
 		timer.start();
 		
+		
 	}
+
+
+
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
 		repaint();

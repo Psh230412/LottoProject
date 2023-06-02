@@ -30,12 +30,13 @@ class LottoTicket5 extends JPanel {
 	private static int changeCount = 0;
 	JLabel[] look = new JLabel[10];
 	private boolean[] isButtonClicked = new boolean[45];
+
 	private boolean isSixSelected = false;
 	public static void setSelectedMode(List<String> selectedMode) {
-		LottoTicket1.selectedMode = selectedMode;
+		LottoTicket5.selectedMode = selectedMode;
 	}
 	public static void setSelectedNumbers(List<Integer> selectedNumbers) {
-		LottoTicket1.selectedNumbers = selectedNumbers;
+		LottoTicket5.selectedNumbers = selectedNumbers;
 	}
 
 	public boolean getIsSixSelected() {
@@ -389,18 +390,21 @@ class LottoTicket5 extends JPanel {
 						setAuto(false);
 						setClick(false);
 						resetCount();
-						MyNumPnlA.getMyNumLbl1A().setText(selectedNumbers.get(0).toString());
-						MyNumPnlA.getMyNumLbl2A().setText(selectedNumbers.get(1).toString());
-						MyNumPnlA.getMyNumLbl3A().setText(selectedNumbers.get(2).toString());
-						MyNumPnlA.getMyNumLbl4A().setText(selectedNumbers.get(3).toString());
-						MyNumPnlA.getMyNumLbl5A().setText(selectedNumbers.get(4).toString());
-						MyNumPnlA.getMyNumLbl6A().setText(selectedNumbers.get(5).toString());
-						MyNumPnlA.getAutoLblA().setText(selectedMode.get(0).toString());
+
+						MyNumPnlE.getMyNumLbl1E().setText(selectedNumbers.get(0).toString());
+						MyNumPnlE.getMyNumLbl2E().setText(selectedNumbers.get(1).toString());
+						MyNumPnlE.getMyNumLbl3E().setText(selectedNumbers.get(2).toString());
+						MyNumPnlE.getMyNumLbl4E().setText(selectedNumbers.get(3).toString());
+						MyNumPnlE.getMyNumLbl5E().setText(selectedNumbers.get(4).toString());
+						MyNumPnlE.getMyNumLbl6E().setText(selectedNumbers.get(5).toString());
+						MyNumPnlE.getAutoLblE().setText(selectedMode.get(0).toString());
+						
 						Management.card.show(Management.all, "번호 선택");
 					}
 				}
 			}
 		});
+
 		oneTicketPanel.setBounds(0, 0, 340, 550);
 		setLayout(null);
 		add(oneTicketPanel);
