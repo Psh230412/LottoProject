@@ -16,7 +16,7 @@ public class Management extends JFrame {
 		all.setLayout(card);
 		
 		all.add(new StartPage(), "시작");
-		all.add(new LottoNumberPage(), "번호 선택");
+		all.add(new TestA(), "번호 선택");
 		all.add(new LottoTicket1(), "티켓1");
 		all.add(new LottoTicket2(), "티켓2");
 		all.add(new LottoTicket3(), "티켓3");
