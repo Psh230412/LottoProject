@@ -1,4 +1,3 @@
-
 import java.awt.Button;
 import java.awt.Color;
 import java.awt.Dimension;
@@ -28,11 +27,13 @@ class LottoTicket1 extends JPanel {
 	static List<String> selectedMode = new ArrayList<>();
 	static List<Integer> selectedNumbers = new ArrayList<>();
 	public JButton[] lottoNumBtn = new JButton[45];;
-
 	private static int changeCount = 0;
 	JLabel[] look = new JLabel[10];
 	private boolean[] isButtonClicked = new boolean[45];
+	
 	private boolean isSixSelected = false;
+
+	
 	
 	public static List<String> getSelectedMode() {
 		return selectedMode;

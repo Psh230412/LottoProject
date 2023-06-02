@@ -12,8 +12,11 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+<<<<<<< HEAD
 import com.sun.xml.internal.bind.v2.runtime.unmarshaller.XsiNilLoader.Array;
 
+=======
+>>>>>>> branch 'master' of https://github.com/Psh230412/LottoProject.git
 class TestA extends JPanel {
 	private JLabel[] mainImage;
 	private JLabel[] shownum;
@@ -51,7 +54,6 @@ class TestA extends JPanel {
 
 	public TestA() {
 		JPanel main1 = new JPanel();
-		main1.setLayout(null);
 		main1.setBackground(Color.BLACK);
 		JLabel[] labels = CreateMain();
 		JLabel[] labels2 = CreateMain2();
@@ -162,14 +164,25 @@ class TestA extends JPanel {
 		labels2[3].addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
+<<<<<<< HEAD
 				Management.card.show(Management.all, "티켓1");
 				
+=======
+				Management.card.show(Management.all, "티켓2");
+>>>>>>> branch 'master' of https://github.com/Psh230412/LottoProject.git
 			}
 		});
 		
 	
+<<<<<<< HEAD
 
     
+=======
+	
+		
+		
+		
+>>>>>>> branch 'master' of https://github.com/Psh230412/LottoProject.git
 		main1.setBounds(0, 0, 340, 550);
 		main1.setLayout(null);
 		setLayout(null);

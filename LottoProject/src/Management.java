@@ -12,6 +12,7 @@ public class Management extends JFrame {
 	
 	public Management() {
 		setTitle("로또");
+
 		
 		all.setLayout(card);
 		

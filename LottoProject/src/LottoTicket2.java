@@ -38,6 +38,8 @@ class LottoTicket2 extends JPanel {
 		return selectedNumbers;
 	}
 
+	
+	
 	private boolean isSixSelected = false;
 	public static void setSelectedMode(List<String> selectedMode) {
 		LottoTicket2.selectedMode = selectedMode;
