@@ -12,19 +12,17 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+<<<<<<< HEAD
+import com.sun.xml.internal.bind.v2.runtime.unmarshaller.XsiNilLoader.Array;
+
+=======
+>>>>>>> branch 'master' of https://github.com/Psh230412/LottoProject.git
 class TestA extends JPanel {
 	private JLabel[] mainImage;
 	private JLabel[] shownum;
 	JLabel[] MainImage = new JLabel[32];
 	JLabel[] SelectedNum = new JLabel[7];
-	JLabel[] SelNum = new JLabel[45];
-	private static JLabel myNumLbl1A;
-	private static JLabel myNumLbl2A;
-	private static JLabel myNumLbl3A;
-	private static JLabel myNumLbl4A;
-	private static JLabel myNumLbl5A;
-	private static JLabel myNumLbl6A;
-	private static JLabel autoLblA;
+	JLabel[] SelNum = new JLabel[7];
 
 	public JLabel[] CreateMain() {
 		for (int i = 0; i < MainImage.length; i++) {
@@ -37,16 +35,17 @@ class TestA extends JPanel {
 
 	public JLabel[] CreateMain2() {
 		for (int i = 0; i < SelectedNum.length; i++) {
-			URL urlofNm = TestA.class.getClassLoader().getResource("image2/빈슬롯_"+ (i + 1) + ".gif");
+			URL urlofNm = TestA.class.getClassLoader().getResource("image2/빈슬롯_" + (i + 1) + ".gif");
 			ImageIcon imageicon2 = new ImageIcon(urlofNm);
 			SelectedNum[i] = new JLabel(imageicon2);
 		}
 		return SelectedNum;
 	}
-	
+
 	public JLabel[] CreateMain3() {
 		for (int i = 0; i < SelNum.length; i++) {
-			URL urlofSn = TestA.class.getClassLoader().getResource("image/selNumber" + " " + "(" + (i + 1) + ")" + ".gif");
+			URL urlofSn = TestA.class.getClassLoader()
+					.getResource("image/selNumber" + " " + "(" + (i + 1) + ")" + ".gif");
 			ImageIcon imageicon3 = new ImageIcon(urlofSn);
 			SelNum[i] = new JLabel(imageicon3);
 		}
@@ -58,8 +57,7 @@ class TestA extends JPanel {
 		main1.setBackground(Color.BLACK);
 		JLabel[] labels = CreateMain();
 		JLabel[] labels2 = CreateMain2();
-		JLabel[] labels3 = CreateMain3(); 
-		
+		JLabel[] labels3 = CreateMain3();
 
 		for (int i = 0; i < labels.length; i++) {
 			main1.add(labels[i]);
@@ -83,7 +81,6 @@ class TestA extends JPanel {
 		labels[5].setSize(23, 17);
 		labels[7].setLocation(0, 0); // A자리 빈슬롯
 		labels[7].setSize(295, 45);
-		
 
 		// B
 		labels[8].setLocation(20, 72 + 45 + 8); // B상단
@@ -142,9 +139,6 @@ class TestA extends JPanel {
 		labels[30].setSize(15, 18);
 		labels[31].setLocation(20, 72 + 45 + 45 + 45 + 45 + 45 + 45 + 45 + 45 + 45 + 22 + 15 + 17); // 맨 밑에
 		labels[31].setSize(295, 17);
-		
-
-		
 
 		for (int i = 0; i < labels2.length; i++) {
 			main1.add(labels2[i]);
@@ -153,41 +147,49 @@ class TestA extends JPanel {
 		// A 빈슬롯
 		labels2[0].setLocation(15, 90);
 		labels2[0].setSize(43, 42);
-		labels2[1].setLocation(15+42, 90);
+		labels2[1].setLocation(15 + 42, 90);
 		labels2[1].setSize(43, 42);
-		labels2[2].setLocation(15+40+43, 90);
+		labels2[2].setLocation(15 + 40 + 43, 90);
 		labels2[2].setSize(43, 42);
-		labels2[3].setLocation(15+40+43+42, 90);
+		labels2[3].setLocation(15 + 40 + 43 + 42, 90);
 		labels2[3].setSize(43, 42);
-		labels2[4].setLocation(15+40+43+43+41, 90);
+		labels2[4].setLocation(15 + 40 + 43 + 43  + 41, 90);
 		labels2[4].setSize(43, 42);
-		labels2[5].setLocation(15+40+43+43+43+40, 90);
+		labels2[5].setLocation(15 + 40 + 43 + 43 + 43 + 40, 90);
 		labels2[5].setSize(43, 42);
-		labels2[6].setLocation(15+40+43+43+43+43+39, 90);
-		labels2[6].setSize(43, 42); 
-		
-		//로또 하러가기 
-		labels2[4].addMouseListener(new MouseAdapter() {
+		labels2[6].setLocation(15 + 40 + 43 + 43 + 43 + 43 + 39, 90);
+		labels2[6].setSize(43, 42);
+
+		// 로또 하러가기
+		labels2[3].addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
+<<<<<<< HEAD
+				Management.card.show(Management.all, "티켓1");
+				
+=======
 				Management.card.show(Management.all, "티켓2");
+>>>>>>> branch 'master' of https://github.com/Psh230412/LottoProject.git
 			}
 		});
 		
-		//번호 가져오기
-		
 	
+<<<<<<< HEAD
+
+    
+=======
 	
 		
 		
 		
+>>>>>>> branch 'master' of https://github.com/Psh230412/LottoProject.git
 		main1.setBounds(0, 0, 340, 550);
 		main1.setLayout(null);
 		setLayout(null);
 		add(main1);
 		setVisible(true);
 	}
-	
+
 	public static void main(String[] args) {
 		new TestA();
 
