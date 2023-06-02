@@ -93,7 +93,7 @@ class LottoTicket5 extends JPanel {
 			ImageIcon imageIcon = new ImageIcon(urlOfScreen);
 			look[i] = new JLabel(imageIcon);
 		}
-		URL urlOfAlpha = LottoTicket1.class.getClassLoader().getResource("image/셀렉트_A.gif");
+		URL urlOfAlpha = LottoTicket1.class.getClassLoader().getResource("image/셀렉트_E.gif");
 		ImageIcon imageIconAlpha = new ImageIcon(urlOfAlpha);
 		look[0] = new JLabel(imageIconAlpha);
 		return look;
