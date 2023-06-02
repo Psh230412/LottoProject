@@ -703,8 +703,7 @@ public class LottoNumberPage extends JPanel {
 		setSize(350, 580);
 		setBackground(new Color(10,4,52));
 
-//		setDefaultCloseOperation(EXIT_ON_CLOSE);
-//		setVisible(true);
+
 	}
 
 	public static void main(String[] args) {
