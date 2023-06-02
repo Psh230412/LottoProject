@@ -34,6 +34,7 @@ public class Management extends JFrame {
 		pack();
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setVisible(true);
+		setResizable(false);
 		
 	}
 	
