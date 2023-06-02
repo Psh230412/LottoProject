@@ -409,13 +409,13 @@ class LottoTicket3 extends JPanel {
 						setClick(false);
 						resetCount();
 
-//						MyNumPnlA.getMyNumLbl1A().setText(selectedNumbers.get(0).toString());
-//						MyNumPnlA.getMyNumLbl2A().setText(selectedNumbers.get(1).toString());
-//						MyNumPnlA.getMyNumLbl3A().setText(selectedNumbers.get(2).toString());
-//						MyNumPnlA.getMyNumLbl4A().setText(selectedNumbers.get(3).toString());
-//						MyNumPnlA.getMyNumLbl5A().setText(selectedNumbers.get(4).toString());
-//						MyNumPnlA.getMyNumLbl6A().setText(selectedNumbers.get(5).toString());
-//						MyNumPnlA.getAutoLblA().setText(selectedMode.get(0).toString());
+						MyNumPnlC.getMyNumLbl1C().setText(selectedNumbers.get(0).toString());
+						MyNumPnlC.getMyNumLbl2C().setText(selectedNumbers.get(1).toString());
+						MyNumPnlC.getMyNumLbl3C().setText(selectedNumbers.get(2).toString());
+						MyNumPnlC.getMyNumLbl4C().setText(selectedNumbers.get(3).toString());
+						MyNumPnlC.getMyNumLbl5C().setText(selectedNumbers.get(4).toString());
+						MyNumPnlC.getMyNumLbl6C().setText(selectedNumbers.get(5).toString());
+						MyNumPnlC.getAutoLblC().setText(selectedMode.get(0).toString());
 						
 						Management.card.show(Management.all, "번호 선택");
 					}

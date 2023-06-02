@@ -21,12 +21,19 @@ import javax.swing.JPanel;
 class LottoTicket4 extends JPanel {
 	private boolean isClick = false;
 	private boolean isAuto = false;
-	List<String> selectedMode = new ArrayList<>();
-	List<Integer> selectedNumbers = new ArrayList<>();
+	static List<String> selectedMode = new ArrayList<>();
+	static List<Integer> selectedNumbers = new ArrayList<>();
 	private JButton[] lottoNumBtn = new JButton[45];;
 	private static int changeCount = 0;
 	JLabel[] look = new JLabel[10];
 	private boolean[] isButtonClicked = new boolean[45];
+	public static void setSelectedMode(List<String> selectedMode) {
+		LottoTicket4.selectedMode = selectedMode;
+	}
+
+	public static void setSelectedNumbers(List<Integer> selectedNumbers) {
+		LottoTicket4.selectedNumbers = selectedNumbers;
+	}
 
 	public boolean isAuto() {
 		return isAuto;
@@ -398,13 +405,13 @@ class LottoTicket4 extends JPanel {
 						setClick(false);
 						resetCount();
 
-//						MyNumPnlA.getMyNumLbl1A().setText(selectedNumbers.get(0).toString());
-//						MyNumPnlA.getMyNumLbl2A().setText(selectedNumbers.get(1).toString());
-//						MyNumPnlA.getMyNumLbl3A().setText(selectedNumbers.get(2).toString());
-//						MyNumPnlA.getMyNumLbl4A().setText(selectedNumbers.get(3).toString());
-//						MyNumPnlA.getMyNumLbl5A().setText(selectedNumbers.get(4).toString());
-//						MyNumPnlA.getMyNumLbl6A().setText(selectedNumbers.get(5).toString());
-//						MyNumPnlA.getAutoLblA().setText(selectedMode.get(0).toString());
+						MyNumPnlD.getMyNumLbl1D().setText(selectedNumbers.get(0).toString());
+						MyNumPnlD.getMyNumLbl2D().setText(selectedNumbers.get(1).toString());
+						MyNumPnlD.getMyNumLbl3D().setText(selectedNumbers.get(2).toString());
+						MyNumPnlD.getMyNumLbl4D().setText(selectedNumbers.get(3).toString());
+						MyNumPnlD.getMyNumLbl5D().setText(selectedNumbers.get(4).toString());
+						MyNumPnlD.getMyNumLbl6D().setText(selectedNumbers.get(5).toString());
+						MyNumPnlD.getAutoLblD().setText(selectedMode.get(0).toString());
 						
 						Management.card.show(Management.all, "번호 선택");
 					}

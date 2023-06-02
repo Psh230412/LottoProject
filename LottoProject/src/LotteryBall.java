@@ -95,19 +95,16 @@ public class LotteryBall extends JPanel implements ActionListener {
 
 	public LotteryBall() {
 		
-//		JPanel outSidePanel = new JPanel();
-//		outSidePanel.setLayout(null);
+
 		setLayout(null);
 		MyPanel panel = new MyPanel();
 		panel.setBackground(Color.BLACK);
 		panel.setOpaque(true);
 		
-//		panel.setBackground(Color.BLACK);
-//		panel.setPreferredSize(new Dimension(WIDTH, HEIGHT));
+
 		panel.setBounds(31, 142, 279, 280);
 		
-//		outSidePanel.add(panel);
-		//add(panel);
+
 		add(panel);
 		
 		Timer timer = new Timer(PERIOD, this);
