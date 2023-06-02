@@ -31,10 +31,10 @@ public class Management extends JFrame {
 	
 	
 		all.setPreferredSize(new Dimension(340, 550));
+		setResizable(false);
 		pack();
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setVisible(true);
-		setResizable(false);
 		
 	}
 	
