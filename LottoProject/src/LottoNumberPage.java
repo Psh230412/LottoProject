@@ -67,11 +67,11 @@ class MyNumPnlA extends JPanel {
 
 
 
-		ImageIcon orderBtnA3 = new ImageIcon(getClass().getResource("/image2/번호선택_05.gif"));
+		ImageIcon orderBtnA3 = new ImageIcon(getClass().getResource("/image2/번호선택_5.gif"));
 		JLabel orderLabelA3 = new JLabel(orderBtnA3);
 		orderLabelA3.setBounds(0, 0, orderBtnA3.getIconWidth(), orderBtnA3.getIconHeight());
 		
-		ImageIcon orderBtnA5 = new ImageIcon(getClass().getResource("/image2/번호선택_06.gif"));
+		ImageIcon orderBtnA5 = new ImageIcon(getClass().getResource("/image2/번호선택_6.gif"));
 		JLabel orderLabelA5 = new JLabel(orderBtnA5);
 		orderLabelA5.setBounds(272, 0, orderBtnA5.getIconWidth(), orderBtnA5.getIconHeight());
 		//슬롯 
@@ -164,7 +164,7 @@ class MyNumPnlB extends JPanel {
 		myNumLbl6B = new JLabel("0");
 		autoLblB = new JLabel();
 
-		ImageIcon orderBtnB = new ImageIcon(getClass().getResource("/image2/번호선택_09.gif"));
+		ImageIcon orderBtnB = new ImageIcon(getClass().getResource("/image2/번호선택_9.gif"));
 		JLabel orderLabelB = new JLabel(orderBtnB);
 		orderLabelB.setBounds(0, 0, orderBtnB.getIconWidth(), orderBtnB.getIconHeight());
 
@@ -589,7 +589,7 @@ class MyNumPnlF extends JPanel {
 
 class MyNumPnlG extends JPanel { 
 	public MyNumPnlG() {
-		ImageIcon orderBtnG = new ImageIcon(getClass().getResource("/image2/번호선택_04.gif"));
+		ImageIcon orderBtnG = new ImageIcon(getClass().getResource("/image2/번호선택_4.gif"));
 		JLabel orderLabelG = new JLabel(orderBtnG);
 		orderLabelG.setBounds(0, 0, orderBtnG.getIconWidth(), orderBtnG.getIconHeight());
 	
@@ -604,7 +604,7 @@ class MyNumPnlG extends JPanel {
 
 class MyNumPnlH extends JPanel { 
 	public MyNumPnlH() {
-		ImageIcon orderBtnH = new ImageIcon(getClass().getResource("/image2/번호선택_01.gif"));
+		ImageIcon orderBtnH = new ImageIcon(getClass().getResource("/image2/번호선택_1.gif"));
 		JLabel orderLabelH = new JLabel(orderBtnH);
 		orderLabelH.setBounds(0, 0, orderBtnH.getIconWidth(), orderBtnH.getIconHeight());
 	
@@ -618,7 +618,7 @@ class MyNumPnlH extends JPanel {
 
 class MyNumPnlI extends JPanel { 
 	public MyNumPnlI() {
-		ImageIcon orderBtnI = new ImageIcon(getClass().getResource("/image2/번호선택_07.gif"));
+		ImageIcon orderBtnI = new ImageIcon(getClass().getResource("/image2/번호선택_7.gif"));
 		JLabel orderLabelI = new JLabel(orderBtnI);
 		orderLabelI.setBounds(0,0, orderBtnI.getIconWidth(), orderBtnI.getIconHeight());
 	
@@ -632,11 +632,11 @@ class MyNumPnlI extends JPanel {
 //도움말 버튼 
 class MyNumPnlJ extends JPanel { 
 	public MyNumPnlJ() {
-		ImageIcon orderBtnJ = new ImageIcon(getClass().getResource("/image2/번호선택_02.gif"));
+		ImageIcon orderBtnJ = new ImageIcon(getClass().getResource("/image2/번호선택_2.gif"));
 		JLabel orderLabelJ = new JLabel(orderBtnJ);
 		orderLabelJ.setBounds(0, 0, orderBtnJ.getIconWidth(), orderBtnJ.getIconHeight());
 		
-		ImageIcon orderBtnJ1 = new ImageIcon(getClass().getResource("/image2/번호선택_03.gif"));
+		ImageIcon orderBtnJ1 = new ImageIcon(getClass().getResource("/image2/번호선택_3.gif"));
 		JLabel orderLabelJ1 = new JLabel(orderBtnJ1);
 		orderLabelJ1.setBounds(0, 42, orderBtnJ1.getIconWidth(), orderBtnJ1.getIconHeight());
 	
