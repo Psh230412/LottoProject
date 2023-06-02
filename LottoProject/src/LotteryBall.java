@@ -21,22 +21,20 @@ import javax.swing.Timer;
  * 
  */
 
-class LotteryBallView extends JPanel{
+class LotteryBallView extends JPanel {
 	Image ball;
-	
+
 	int x, y, xInc, yInc, diameter;
 	final Random r = new Random();
-	
 
-	public LotteryBallView(int d,URL urlOfBall) {
+	public LotteryBallView(int d, URL urlOfBall) {
 		this.diameter = d;
 		x = (int) (Math.random() * (LotteryBall.WIDTH - d) + 3);
 		y = (int) (Math.random() * (LotteryBall.HEIGHT - d) + 3);
 		xInc = (int) (Math.random() * 5 + 5);
 		yInc = (int) (Math.random() * 5 + 5);
-		
+
 		ball = new ImageIcon(urlOfBall).getImage();
-		
 
 	}
 
@@ -47,116 +45,104 @@ class LotteryBallView extends JPanel{
 			yInc = -yInc;
 		x += xInc;
 		y += yInc;
-		
+
 		g.drawImage(ball, x, y, 42, 42, this);
-		
-		
+
 	}
 
 }
+
 public class LotteryBall extends JPanel implements ActionListener {
 	static final int WIDTH = 279;
 	static final int HEIGHT = 280;
 	private static final int PERIOD = 30;
 	URL[] urlOfLotteryBall = new URL[45];
+
 	
-	Map<Integer,URL> ballMap = new HashMap<>();
-	
+
+
+
+	// private Timer timer;
+
 	public void creteUrlOfBall() {
-		for(int i=0;i<urlOfLotteryBall.length;i++) {
+		for (int i = 0; i < urlOfLotteryBall.length; i++) {
 			URL urlOfSN = LotteryBall.class.getClassLoader()
 					.getResource("image/selNumber" + " " + "(" + (i + 1) + ")" + ".gif");
-			urlOfLotteryBall[i]=urlOfSN;
+			urlOfLotteryBall[i] = urlOfSN;
 		}
 	}
 
 	class MyPanel extends JPanel {
 
-
 		public LotteryBallView[] basket = new LotteryBallView[45];
-		
-		
+
 		public MyPanel() {
 			creteUrlOfBall();
-			for(int i = 0; i < basket.length; i++) {
-				
-				basket[i] = new LotteryBallView((int) (42),urlOfLotteryBall[i]);
-				
-				if(basket[i].x<=220 && basket[i].x>=120 && basket[i].y<=300 ) {
-					ballMap.put(i+1,urlOfLotteryBall[i]);
-				}
+			for (int i = 0; i < basket.length; i++) {
+
+				basket[i] = new LotteryBallView((int) (42), urlOfLotteryBall[i]);
 
 			}
 
 		}
+
 		public void paintComponent(Graphics g) {
 			super.paintComponent(g);
 			for (LotteryBallView b : basket) {
 				b.paint(g);
 			}
 		}
-		
+
 	}
-	
+
 	public LotteryBall() {
-		
+
 		setLayout(null);
-		
-		setBackground(new Color(255, 0, 0));//여기 색을 바꾸시면 됩니다.
-		
+
+		setBackground(new Color(255, 0, 0));// 여기 색을 바꾸시면 됩니다.
+
 		MyPanel panel = new MyPanel();
 		panel.setBackground(Color.BLACK);
 		panel.setOpaque(true);
 		panel.setBounds(31, 142, 279, 280);
-		
+
 		add(panel);
 
 		JLabel[] ani = new JLabel[9];
-		
-		for(int i=0;i<ani.length;i++) {
+
+		for (int i = 0; i < ani.length; i++) {
 			URL urlOfAni = LotteryBall.class.getClassLoader().getResource("image/애니메이션_" + (i + 2) + ".gif");
 			ImageIcon imageIcon = new ImageIcon(urlOfAni);
 			ani[i] = new JLabel(imageIcon);
 		}
-		
+
 		ani[0].setBounds(0, 0, 340, 142);
-		ani[1].setBounds(0,142,31,280);
+		ani[1].setBounds(0, 142, 31, 280);
 		ani[2].setBounds(310, 142, 30, 280);
-		ani[3].setBounds(0,422,340,97); // 공 나오는 곳
+		ani[3].setBounds(0, 422, 340, 97); // 공 나오는 곳
 		ani[4].setBounds(0, 519, 24, 36);
-		//ani[5].setBounds(24,519,15,18); // 삭제 애니메이션 7
-		//ani[6].setBounds(39, 519, 265, 36);// 삭제 애니메이션 8
-		ani[5].setBounds(304,519,15,18);
+		// ani[5].setBounds(24,519,15,18); // 삭제 애니메이션 7
+		// ani[6].setBounds(39, 519, 265, 36);// 삭제 애니메이션 8
+		ani[5].setBounds(304, 519, 15, 18);
 		ani[6].setBounds(319, 519, 21, 36);
-		ani[7].setBounds(24,537,15,18);
+		ani[7].setBounds(24, 537, 15, 18);
 		ani[8].setBounds(304, 537, 15, 18);
-		
-		for(int i=0;i<ani.length;i++) {
+
+		for (int i = 0; i < ani.length; i++) {
 			add(ani[i]);
 		}
-		
-		for (URL key : ballMap.values()) {
-			ImageIcon imageOfBall = new ImageIcon(key);
-			JLabel LabelOfBall = new JLabel(imageOfBall);
-			LabelOfBall.setBounds(149, 512, 42, 42);
-			add(LabelOfBall);
-			
-		}
-		
+
 		Timer timer = new Timer(PERIOD, this);
 		timer.start();
+
 		
 		
+		
+
 	}
-
-
 
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
 		repaint();
 	}
 }
-
-
-
-

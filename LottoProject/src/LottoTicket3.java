@@ -391,6 +391,9 @@ class LottoTicket3 extends JPanel {
 						setClick(false);
 						resetCount();
 
+						
+						
+						
 						MyNumPnlC.getMyNumLbl1C().setText(selectedNumbers.get(0).toString());
 						MyNumPnlC.getMyNumLbl2C().setText(selectedNumbers.get(1).toString());
 						MyNumPnlC.getMyNumLbl3C().setText(selectedNumbers.get(2).toString());
