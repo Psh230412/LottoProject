@@ -167,7 +167,7 @@ class LottoTicket1 extends JPanel {
 		}
 	}
 	// 선택된 번호 배열에 저장하는 메소드
-	public List<Integer> getSelectedNumbers() {
+	public List<Integer> inputSelectedNumbers() {
 		for (int i = 0; i < lottoNumBtn.length; i++) {
 			if (lottoNumBtn[i].getBackground().equals(Color.RED)) {
 				selectedNumbers.add(i + 1); 			
@@ -176,7 +176,7 @@ class LottoTicket1 extends JPanel {
 		return selectedNumbers;
 	}
 	// 선택된 모드(자동,반자동,수동)을 저장하는 메소드
-	public List<String> getSelectedMode() {
+	public List<String> inputSelectedMode() {
 		if (isAuto == true && isClick == true) {
 			selectedMode.add("자동");
 		} else if (isAuto == false && isClick == true) {
@@ -376,8 +376,8 @@ class LottoTicket1 extends JPanel {
 							JOptionPane.YES_NO_OPTION);
 					if (result == JOptionPane.YES_OPTION) {
 						JButton source = (JButton) e.getSource();
-						getSelectedNumbers();
-						getSelectedMode();
+						inputSelectedNumbers();
+						inputSelectedMode();
 						System.out.println(selectedMode);
 						System.out.println(selectedNumbers);
 						for (JButton button : lottoNumBtn) {
@@ -390,13 +390,7 @@ class LottoTicket1 extends JPanel {
 						setAuto(false);
 						setClick(false);
 						resetCount();
-						MyNumPnlA.getMyNumLbl1A().setText(selectedNumbers.get(0).toString());
-						MyNumPnlA.getMyNumLbl2A().setText(selectedNumbers.get(1).toString());
-						MyNumPnlA.getMyNumLbl3A().setText(selectedNumbers.get(2).toString());
-						MyNumPnlA.getMyNumLbl4A().setText(selectedNumbers.get(3).toString());
-						MyNumPnlA.getMyNumLbl5A().setText(selectedNumbers.get(4).toString());
-						MyNumPnlA.getMyNumLbl6A().setText(selectedNumbers.get(5).toString());
-						MyNumPnlA.getAutoLblA().setText(selectedMode.get(0).toString());
+						
 						Management.card.show(Management.all, "번호 선택");
 					}
 				}

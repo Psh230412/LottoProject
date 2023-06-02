@@ -167,7 +167,7 @@ class LottoTicket2 extends JPanel {
 		}
 	}
 	// 선택된 번호 배열에 저장하는 메소드
-	public List<Integer> getSelectedNumbers() {
+	public List<Integer> inputSelectedNumbers() {
 		for (int i = 0; i < lottoNumBtn.length; i++) {
 			if (lottoNumBtn[i].getBackground().equals(Color.RED)) {
 				selectedNumbers.add(i + 1); 			
@@ -176,7 +176,7 @@ class LottoTicket2 extends JPanel {
 		return selectedNumbers;
 	}
 	// 선택된 모드(자동,반자동,수동)을 저장하는 메소드
-	public List<String> getSelectedMode() {
+	public List<String> inputSelectedMode() {
 		if (isAuto == true && isClick == true) {
 			selectedMode.add("자동");
 		} else if (isAuto == false && isClick == true) {
@@ -376,8 +376,8 @@ class LottoTicket2 extends JPanel {
 							JOptionPane.YES_NO_OPTION);
 					if (result == JOptionPane.YES_OPTION) {
 						JButton source = (JButton) e.getSource();
-						getSelectedNumbers();
-						getSelectedMode();
+						inputSelectedNumbers();
+						inputSelectedMode();
 						System.out.println(selectedMode);
 						System.out.println(selectedNumbers);
 						for (JButton button : lottoNumBtn) {
