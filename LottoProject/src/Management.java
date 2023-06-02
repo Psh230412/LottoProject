@@ -9,12 +9,10 @@ import javax.swing.JPanel;
 public class Management extends JFrame {
 	static JPanel all = new JPanel();
 	static CardLayout card = new CardLayout();
-	//LotteryBall lb = new LotteryBall();
+	
 	public Management() {
 		setTitle("로또");
-		
-		//lb.panel.setBounds(31, 142, 279, 280);
-		
+
 		
 		all.setLayout(card);
 		
@@ -32,6 +30,7 @@ public class Management extends JFrame {
 		add(all);
 		
 		setSize(340, 594);
+		//setSize(340, 550);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setVisible(true);
 		
