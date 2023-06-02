@@ -31,6 +31,15 @@ class LottoTicket2 extends JPanel {
 	JLabel[] look = new JLabel[10];
 	private boolean[] isButtonClicked = new boolean[45];
 	
+	public static List<String> getSelectedMode() {
+		return selectedMode;
+	}
+	public static List<Integer> getSelectedNumbers() {
+		return selectedNumbers;
+	}
+
+	
+	
 	private boolean isSixSelected = false;
 	public static void setSelectedMode(List<String> selectedMode) {
 		LottoTicket2.selectedMode = selectedMode;
