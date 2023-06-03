@@ -230,7 +230,6 @@ class MyNumLbl extends JLabel {
 
 public class LottoDrawPage extends JLabel {
 	public LottoDrawPage() {
-		new LottoRandom();
 		
 		MakeList makeList = new MakeList();
 		// 기본 배경
@@ -246,7 +245,8 @@ public class LottoDrawPage extends JLabel {
 		}
 
 		// 당첨 번호
-
+		
+		new LottoRandom();
 		List<Integer> randomNumList = LottoRandom.getRandomNum();
 
 		JLabel[] randomLbl = makeList.createSelNumScreen();
@@ -267,6 +267,7 @@ public class LottoDrawPage extends JLabel {
 			}
 		});
 		
+		// 내 번호 라벨
 		MyNumLbl a = new MyNumLbl();
 		a.makeMyNumLbl(LottoTicket1.selectedMode, LottoTicket1.selectedNumbers);
 		a.setBounds(0, 285, 340, 42);
@@ -321,6 +322,6 @@ public class LottoDrawPage extends JLabel {
 		
 		setPreferredSize(new Dimension(340, 550));
 		setOpaque(true);
-		setBackground(Color.BLACK);
+		setBackground(new Color(10, 4, 52));
 	}
 }
