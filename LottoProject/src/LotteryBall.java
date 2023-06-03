@@ -133,6 +133,9 @@ public class LotteryBall extends JPanel implements ActionListener {
 		}
 
 		Timer timer = new Timer(PERIOD, this);
+		
+		
+		
 		timer.start();
 
 		

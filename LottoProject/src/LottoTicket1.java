@@ -401,6 +401,9 @@ class LottoTicket1 extends JPanel {
 						setClick(false);
 						resetCount();
 						
+						
+						
+						
 						Management.card.show(Management.all, "번호 선택");
 					}
 				}
