@@ -416,12 +416,10 @@ class LottoTicket2 extends JPanel {
 					if (result == JOptionPane.YES_OPTION) {
 						JButton source = (JButton) e.getSource();
 						
-						if(selectedNumbers.size() !=0) {
-							selectedNumbers.clear();
-						}
-						if(selectedMode.size() !=0) {
-							selectedMode.clear();
-						}
+						
+						
+						
+						 
 						
 						
 						inputSelectedNumbers();

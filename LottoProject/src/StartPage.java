@@ -50,6 +50,7 @@ class StartPage extends JPanel {
 		});
 		add(panel);
 
+		
 		/*
 		 * class Run2 implements ActionListener { public void
 		 * actionPerformed(ActionEvent e) { Management.card.show(Management.all,

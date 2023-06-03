@@ -72,6 +72,14 @@ class TestA extends JPanel {
 		labels[5].addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
+				if(LottoTicket1.selectedNumbers.size() !=0) {
+					LottoTicket1.selectedNumbers.clear();
+				}
+				
+				if (LottoTicket1.selectedMode.size() != 0) {
+					LottoTicket1.selectedMode.clear();
+					
+				}
 				for (int i = 0; i < selectA.length; i++) {
 					URL urlofNm = TestA.class.getClassLoader().getResource("image2/빈슬롯_" + (i + 1) + ".gif");
 					ImageIcon imageicon2 = new ImageIcon(urlofNm);
@@ -93,6 +101,13 @@ class TestA extends JPanel {
 		labels[10].addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
+				if(LottoTicket2.selectedNumbers.size() !=0) {
+					LottoTicket2.selectedNumbers.clear();
+				}
+				
+				if (LottoTicket2.selectedMode.size() != 0) {
+					LottoTicket2.selectedMode.clear();
+				}
 				for (int i = 0; i < selectB.length; i++) {
 					URL urlofNm = TestA.class.getClassLoader().getResource("image2/빈슬롯_" + (i + 1) + ".gif");
 					ImageIcon imageicon2 = new ImageIcon(urlofNm);
@@ -117,6 +132,14 @@ class TestA extends JPanel {
 		labels[15].addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
+				if(LottoTicket3.selectedNumbers.size() !=0) {
+					LottoTicket3.selectedNumbers.clear();
+				}
+				
+				if (LottoTicket3.selectedMode.size() != 0) {
+					LottoTicket3.selectedMode.clear();
+					
+				}
 				for (int i = 0; i < selectC.length; i++) {
 					URL urlofNm = TestA.class.getClassLoader().getResource("image2/빈슬롯_" + (i + 1) + ".gif");
 					ImageIcon imageicon2 = new ImageIcon(urlofNm);
@@ -136,6 +159,14 @@ class TestA extends JPanel {
 		labels[20].addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
+				if(LottoTicket4.selectedNumbers.size() !=0) {
+					LottoTicket4.selectedNumbers.clear();
+				}
+				
+				if (LottoTicket4.selectedMode.size() != 0) {
+					LottoTicket4.selectedMode.clear();
+					
+				}
 				for (int i = 0; i < selectD.length; i++) {
 					URL urlofNm = TestA.class.getClassLoader().getResource("image2/빈슬롯_" + (i + 1) + ".gif");
 					ImageIcon imageicon2 = new ImageIcon(urlofNm);
@@ -160,6 +191,14 @@ class TestA extends JPanel {
 		labels[25].addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
+				if(LottoTicket5.selectedNumbers.size() !=0) {
+					LottoTicket5.selectedNumbers.clear();
+				}
+				
+				if (LottoTicket5.selectedMode.size() != 0) {
+					LottoTicket5.selectedMode.clear();
+					
+				}
 				for (int i = 0; i < selectE.length; i++) {
 					URL urlofNm = TestA.class.getClassLoader().getResource("image2/빈슬롯_" + (i + 1) + ".gif");
 					ImageIcon imageicon2 = new ImageIcon(urlofNm);
@@ -295,16 +334,21 @@ class TestA extends JPanel {
 			selectA[i].addMouseListener(new MouseAdapter() {
 				@Override
 				public void mouseClicked(MouseEvent e) {
-					Management.card.show(Management.all, "티켓1");
+					if (LottoTicket1.selectedNumbers.size() == 0) {
+						Management.card.show(Management.all, "티켓1");
+					}
 				}
-
 			});
+
 		}
+
 		for (int i = 0; i < selectB.length; i++) {
 			selectB[i].addMouseListener(new MouseAdapter() {
 				@Override
 				public void mouseClicked(MouseEvent e) {
+					if (LottoTicket2.selectedNumbers.size() == 0) {
 					Management.card.show(Management.all, "티켓2");
+					}
 				}
 
 			});
@@ -313,7 +357,9 @@ class TestA extends JPanel {
 			selectC[i].addMouseListener(new MouseAdapter() {
 				@Override
 				public void mouseClicked(MouseEvent e) {
+					if (LottoTicket3.selectedNumbers.size() == 0) {
 					Management.card.show(Management.all, "티켓3");
+					}
 				}
 
 			});
@@ -322,7 +368,9 @@ class TestA extends JPanel {
 			selectD[i].addMouseListener(new MouseAdapter() {
 				@Override
 				public void mouseClicked(MouseEvent e) {
+					if (LottoTicket4.selectedNumbers.size() == 0) {
 					Management.card.show(Management.all, "티켓4");
+					}
 				}
 
 			});
@@ -331,7 +379,9 @@ class TestA extends JPanel {
 			selectE[i].addMouseListener(new MouseAdapter() {
 				@Override
 				public void mouseClicked(MouseEvent e) {
+					if (LottoTicket5.selectedNumbers.size() == 0) {
 					Management.card.show(Management.all, "티켓5");
+					}
 				}
 
 			});
