@@ -161,7 +161,7 @@ class TestA extends JPanel {
 		selectA[4].setSize(42, 42);
 		selectA[5].setLocation(23 + 42 + 43 + 42 + 42 + 42, 88);
 		selectA[5].setSize(42, 42);
-		selectA[6].setLocation( + 42 + 43 + 42 + 42 + 42 + 42, 88);
+		selectA[6].setLocation(23 + 42 + 43 + 42 + 42 + 42 + 42, 88);
 		selectA[6].setSize(42, 42);
 
 		// B 빈슬롯

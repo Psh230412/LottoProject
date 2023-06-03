@@ -19,11 +19,11 @@ public class Management extends JFrame {
 		
 		all.add(new StartPage(), "시작");
 		all.add(testA, "번호 선택");
-		all.add(new LottoTicket1(), "티켓1");
+		all.add(new LottoTicket1(testA), "티켓1");
 		all.add(new LottoTicket2(testA), "티켓2");
-		all.add(new LottoTicket3(), "티켓3");
-		all.add(new LottoTicket4(), "티켓4");
-		all.add(new LottoTicket5(), "티켓5");
+		all.add(new LottoTicket3(testA), "티켓3");
+		all.add(new LottoTicket4(testA), "티켓4");
+		all.add(new LottoTicket5(testA), "티켓5");
 		all.add(new LotteryBall(),"공튀기기");
 		all.add(new LottoDrawPage(), "당첨 번호");
 		
