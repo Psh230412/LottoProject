@@ -383,6 +383,12 @@ class LottoTicket5 extends JPanel {
 							JOptionPane.YES_NO_OPTION);
 					if (result == JOptionPane.YES_OPTION) {
 						JButton source = (JButton) e.getSource();
+						if(selectedNumbers.size()!=0) {
+							selectedNumbers.clear();
+						}
+						if(selectedMode.size() !=0) {
+							selectedMode.clear();
+						}
 						inputSelectedNumbers();
 						inputSelectedMode();
 						System.out.println(selectedMode);
@@ -398,13 +404,7 @@ class LottoTicket5 extends JPanel {
 						setClick(false);
 						resetCount();
 
-						MyNumPnlE.getMyNumLbl1E().setText(selectedNumbers.get(0).toString());
-						MyNumPnlE.getMyNumLbl2E().setText(selectedNumbers.get(1).toString());
-						MyNumPnlE.getMyNumLbl3E().setText(selectedNumbers.get(2).toString());
-						MyNumPnlE.getMyNumLbl4E().setText(selectedNumbers.get(3).toString());
-						MyNumPnlE.getMyNumLbl5E().setText(selectedNumbers.get(4).toString());
-						MyNumPnlE.getMyNumLbl6E().setText(selectedNumbers.get(5).toString());
-						MyNumPnlE.getAutoLblE().setText(selectedMode.get(0).toString());
+						
 						
 						Management.card.show(Management.all, "번호 선택");
 					}

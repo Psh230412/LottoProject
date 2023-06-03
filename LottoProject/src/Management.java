@@ -1,7 +1,6 @@
 import java.awt.CardLayout;
 import java.awt.Dimension;
-import java.awt.Frame;
-import java.awt.LayoutManager;
+
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -9,7 +8,7 @@ import javax.swing.JPanel;
 public class Management extends JFrame {
 	static JPanel all = new JPanel();
 	static CardLayout card = new CardLayout();
-	
+
 	public Management() {
 		setTitle("로또");
 
@@ -18,6 +17,7 @@ public class Management extends JFrame {
 		
 		all.add(new StartPage(), "시작");
 		all.add(new TestA(), "번호 선택");
+		//all.add(new HelpMessage(), "도움말");
 		all.add(new LottoTicket1(), "티켓1");
 		all.add(new LottoTicket2(), "티켓2");
 		all.add(new LottoTicket3(), "티켓3");

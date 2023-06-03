@@ -1,22 +1,19 @@
-import java.awt.Button;
+
 import java.awt.Color;
-import java.awt.Dimension;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
+
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
-import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
-import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -386,6 +383,15 @@ class LottoTicket1 extends JPanel {
 							JOptionPane.YES_NO_OPTION);
 					if (result == JOptionPane.YES_OPTION) {
 						JButton source = (JButton) e.getSource();
+						
+						if(selectedNumbers.size()!=0) {
+							selectedNumbers.clear();
+						}
+						if(selectedMode.size() !=0) {
+							selectedMode.clear();
+						}
+						
+						
 						inputSelectedNumbers();
 						inputSelectedMode();
 						System.out.println(selectedMode);
@@ -401,7 +407,15 @@ class LottoTicket1 extends JPanel {
 						setClick(false);
 						resetCount();
 						
+						/*
+						테스트 A 가 new다 
+						로도티켓 위에 테스트 A 참조 만들고
+						label 
+						
+						
+						*/
 						Management.card.show(Management.all, "번호 선택");
+						
 					}
 				}
 			}

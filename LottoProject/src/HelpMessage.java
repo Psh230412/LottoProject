@@ -1,4 +1,6 @@
 import java.awt.BorderLayout;
+import java.net.URL;
+
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -11,6 +13,9 @@ class HelpMessage extends JFrame {
 		JPanel panel = new JPanel();
 		panel.setLayout(null);
 
+		
+		//URL urlOfScreen = LottoTicket1.class.getClassLoader().getResource("image/셀렉트_" + (i + 1) + ".gif");
+		ImageIcon imageIcon = new ImageIcon(urlOfScreen);
 		ImageIcon backgroundImage = new ImageIcon("도움말2.jpg");
 		JLabel bg = new JLabel(backgroundImage);
 		bg.setBounds(0, 0, 360, 648);
@@ -22,7 +27,5 @@ class HelpMessage extends JFrame {
 		setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 	}
 
-	public static void main(String[] args) {
-		new HelpMessage();
-	}
+	
 }
