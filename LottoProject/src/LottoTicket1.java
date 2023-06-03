@@ -229,6 +229,7 @@ class LottoTicket1 extends JPanel {
 		oneTicketPanel.setBackground(Color.BLACK);
 		buttonCreate();
 		JLabel[] labels = CreateScreen();
+		CreateMode();
 		/*
 		 * BtnScreenArr[0] = 확정버튼// BtnScreenArr[1] = 자동버튼 BtnScreenArr[2] = 초기화 버튼
 		 * buttons[0] = 확정버튼 buttons[1] = 자동버튼 buttons[2] = 초기화버튼
