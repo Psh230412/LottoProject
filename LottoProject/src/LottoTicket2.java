@@ -32,7 +32,6 @@ class LottoTicket2 extends JPanel {
 	private boolean[] isButtonClicked = new boolean[45];
 	private boolean isSixSelected = false;
 	TestA testA;
-	LottoDrawPage testDraw;
 
 	public static List<String> getSelectedMode() {
 		return selectedMode;
@@ -89,7 +88,17 @@ class LottoTicket2 extends JPanel {
 	public int getChangeCount() { // 현재 카운트를 가져오는 메서드를 추가합니다
 		return this.changeCount;
 	}
-
+	Image[] ModeImage = new Image[3];
+	
+	public Image[] CreateMode() {
+		for (int i = 0; i < ModeImage.length; i++) {
+			URL urlOfDN = LottoTicket1.class.getClassLoader()
+					.getResource("image4/auto" + (i + 1) + ".gif");
+			ModeImage[i] = new ImageIcon(urlOfDN).getImage();
+		}
+		return ModeImage;
+	}
+	
 	// defaultNumber 이미지를 담는 배열
 	Image[] imageArrBefore = new Image[45];
 	// selNumber 이미지를 담는 배열
@@ -213,9 +222,8 @@ class LottoTicket2 extends JPanel {
 		return selectedMode;
 	}
 
-	public LottoTicket2(TestA testA,LottoDrawPage testDraw) {
+	public LottoTicket2(TestA testA) {
 		this.testA = testA;
-		this.testDraw=testDraw;
 		
 		JPanel oneTicketPanel = new JPanel();
 		oneTicketPanel.setLayout(null);
@@ -430,20 +438,21 @@ class LottoTicket2 extends JPanel {
 						setAuto(false);
 						setClick(false);
 						resetCount();
-
-					
 						
 						for (int i = 0; i < selectedNumbers.size(); i++) {
 							int selectedNumber = selectedNumbers.get(i);
 							testA.selectB[i + 1].setIcon(new ImageIcon(imageArrAfter[selectedNumber - 1]));
 						}
-						
-						
-						testA.selectB[0].setIcon(new ImageIcon());
-
-						setAuto(false);
-						setClick(false);
-						resetCount();
+						for (int i = 0; i < selectedMode.size(); i++) {
+							String selectMode = selectedMode.get(i);
+							if(selectMode.equals("자동")) {
+								testA.selectB[0].setIcon(new ImageIcon(ModeImage[0]));
+							} else if(selectMode.equals("반자동")) {
+								testA.selectB[0].setIcon(new ImageIcon(ModeImage[1]));
+							} else {
+								testA.selectB[0].setIcon(new ImageIcon(ModeImage[2]));
+							}
+						}
 						Management.card.show(Management.all, "번호 선택");
 
 					}

@@ -32,6 +32,8 @@ class LottoTicket3 extends JPanel {
 	JLabel[] look = new JLabel[10];
 	private boolean[] isButtonClicked = new boolean[45];
 	private boolean isSixSelected = false;
+	TestA testA;
+	
 	public static List<String> getSelectedMode() {
 		return selectedMode;
 	}
@@ -76,7 +78,19 @@ class LottoTicket3 extends JPanel {
 	public int getChangeCount() { // 현재 카운트를 가져오는 메서드를 추가합니다
 		return this.changeCount;
 	}
-
+	
+	Image[] ModeImage = new Image[3];
+	
+	public Image[] CreateMode() {
+		for (int i = 0; i < ModeImage.length; i++) {
+			URL urlOfDN = LottoTicket1.class.getClassLoader()
+					.getResource("image4/auto" + (i + 1) + ".gif");
+			ModeImage[i] = new ImageIcon(urlOfDN).getImage();
+		}
+		return ModeImage;
+	}
+	
+	
 	// defaultNumber 이미지를 담는 배열
 	Image[] imageArrBefore = new Image[45];
 	// selNumber 이미지를 담는 배열
@@ -201,6 +215,7 @@ class LottoTicket3 extends JPanel {
 		oneTicketPanel.setBackground(Color.BLACK);
 		buttonCreate();
 		JLabel[] labels = CreateScreen();
+		CreateMode();
 		/*
 		 * BtnScreenArr[0] = 확정버튼// BtnScreenArr[1] = 자동버튼 BtnScreenArr[2] = 초기화 버튼
 		 * buttons[0] = 확정버튼 buttons[1] = 자동버튼 buttons[2] = 초기화버튼
@@ -403,17 +418,27 @@ class LottoTicket3 extends JPanel {
 						setAuto(false);
 						setClick(false);
 						resetCount();
+
 						
 						for (int i = 0; i < selectedNumbers.size(); i++) {
 							int selectedNumber = selectedNumbers.get(i);
 							testA.selectC[i + 1].setIcon(new ImageIcon(imageArrAfter[selectedNumber - 1]));
 						}
-
+						
+						for (int i = 0; i < selectedMode.size(); i++) {
+							String selectMode = selectedMode.get(i);
+							if(selectMode.equals("자동")) {
+								testA.selectC[0].setIcon(new ImageIcon(ModeImage[0]));
+							} else if(selectMode.equals("반자동")) {
+								testA.selectC[0].setIcon(new ImageIcon(ModeImage[1]));
+							} else {
+								testA.selectC[0].setIcon(new ImageIcon(ModeImage[2]));
+							}
+						}
+						
 						setAuto(false);
 						setClick(false);
 						resetCount();
-						
-						
 					
 						
 						

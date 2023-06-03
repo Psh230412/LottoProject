@@ -32,17 +32,20 @@ class LottoTicket4 extends JPanel {
 	JLabel[] look = new JLabel[10];
 	private boolean[] isButtonClicked = new boolean[45];
 	private boolean isSixSelected = false;
+	TestA testA;
 
-	
 	public static List<String> getSelectedMode() {
 		return selectedMode;
 	}
+
 	public static List<Integer> getSelectedNumbers() {
 		return selectedNumbers;
 	}
+
 	public static void setSelectedMode(List<String> selectedMode) {
 		LottoTicket4.selectedMode = selectedMode;
 	}
+
 	public static void setSelectedNumbers(List<Integer> selectedNumbers) {
 		LottoTicket4.selectedNumbers = selectedNumbers;
 	}
@@ -50,32 +53,51 @@ class LottoTicket4 extends JPanel {
 	public boolean getIsSixSelected() {
 		return this.isSixSelected;
 	}
+
 	public void setSixSelected(boolean isSixSelected) {
 		this.isSixSelected = isSixSelected;
 	}
+
 	public boolean isAuto() {
 		return isAuto;
 	}
+
 	public boolean isClick() {
 		return isClick;
 	}
+
 	public void setClick(boolean isClick) {
 		this.isClick = isClick;
 	}
+
 	public void setAuto(boolean isAuto) {
 		this.isAuto = isAuto;
 	}
+
 	public void resetCount() { // 카운트를 리셋하는 메서드를 추가합니다
 		this.changeCount = 0;
 	}
+
 	public void increaseCount() {
 		this.changeCount++;
 	}
+
 	public void decreaseCount() {
 		this.changeCount--;
 	}
+
 	public int getChangeCount() { // 현재 카운트를 가져오는 메서드를 추가합니다
 		return this.changeCount;
+	}
+
+	Image[] ModeImage = new Image[3];
+
+	public Image[] CreateMode() {
+		for (int i = 0; i < ModeImage.length; i++) {
+			URL urlOfDN = LottoTicket1.class.getClassLoader().getResource("image4/auto" + (i + 1) + ".gif");
+			ModeImage[i] = new ImageIcon(urlOfDN).getImage();
+		}
+		return ModeImage;
 	}
 
 	// defaultNumber 이미지를 담는 배열
@@ -95,6 +117,7 @@ class LottoTicket4 extends JPanel {
 		}
 		return imageArrBefore;
 	}
+
 	// 라벨 생성 및 라벨에 셀렉트 이미지 URL 삽입하는 메서드
 	public JLabel[] CreateScreen() {
 		for (int i = 0; i < look.length; i++) {
@@ -104,6 +127,7 @@ class LottoTicket4 extends JPanel {
 		}
 		return look;
 	}
+
 	// JButton[] BtnScreenArr = { returnBtn,autoBtn,resetBtn};
 	// 버튼 생성 및 버튼에 셀렉트 이미지 URL 삽입하는 메서드
 	/*
@@ -139,6 +163,7 @@ class LottoTicket4 extends JPanel {
 			}
 		}
 	}
+
 	// 버튼 생성 메소드 (액션리스너 추가 , 이미지 추가 , 마우스리스너 추가 )
 	public void buttonCreate() {
 		for (int i = 0; i < lottoNumBtn.length; i++) {
@@ -159,6 +184,7 @@ class LottoTicket4 extends JPanel {
 						lottoNumBtn[index].setIcon(defaultIcon);
 					}
 				}
+
 				@Override
 				public void mouseEntered(MouseEvent e) {
 					if (!isButtonClicked[index] && !getIsSixSelected()) {
@@ -171,15 +197,17 @@ class LottoTicket4 extends JPanel {
 			});
 		}
 	}
+
 	// 선택된 번호 배열에 저장하는 메소드
 	public List<Integer> inputSelectedNumbers() {
 		for (int i = 0; i < lottoNumBtn.length; i++) {
 			if (lottoNumBtn[i].getBackground().equals(Color.RED)) {
-				selectedNumbers.add(i + 1); 			
-				}
+				selectedNumbers.add(i + 1);
+			}
 		}
 		return selectedNumbers;
 	}
+
 	// 선택된 모드(자동,반자동,수동)을 저장하는 메소드
 	public List<String> inputSelectedMode() {
 		if (isAuto == true && isClick == true) {
@@ -270,6 +298,7 @@ class LottoTicket4 extends JPanel {
 				ImageIcon defaultIcon = new ImageIcon(urlOfScreen);
 				buttons[1].setIcon(defaultIcon);
 			}
+
 			@Override
 			public void mousePressed(MouseEvent e) {
 				URL urlOfScreen = LottoTicket1.class.getClassLoader().getResource("image/셀렉트_03second.gif");
@@ -299,6 +328,7 @@ class LottoTicket4 extends JPanel {
 				ImageIcon defaultIcon = new ImageIcon(urlOfScreen);
 				buttons[0].setIcon(defaultIcon);
 			}
+
 			@Override
 			public void mousePressed(MouseEvent e) {
 				URL urlOfScreen = LottoTicket1.class.getClassLoader().getResource("image/셀렉트_05second.gif");
@@ -312,14 +342,14 @@ class LottoTicket4 extends JPanel {
 			public void actionPerformed(ActionEvent e) {
 				int clickCount = 0;
 				isSixSelected = true;
-				for(JButton button : lottoNumBtn) {
-                    if(!button.getBackground().equals(Color.RED)) {
-                    	int index = Arrays.asList(lottoNumBtn).indexOf(button);
-                        URL urlOfScreen = LottoTicket1.class.getClassLoader()
-                                .getResource("image/unNumber" + " " + "(" + (index + 1) + ")" + ".gif");
-                        ImageIcon blackWhiteIcon = new ImageIcon(urlOfScreen);
-                        button.setIcon(blackWhiteIcon);
-                    }
+				for (JButton button : lottoNumBtn) {
+					if (!button.getBackground().equals(Color.RED)) {
+						int index = Arrays.asList(lottoNumBtn).indexOf(button);
+						URL urlOfScreen = LottoTicket1.class.getClassLoader()
+								.getResource("image/unNumber" + " " + "(" + (index + 1) + ")" + ".gif");
+						ImageIcon blackWhiteIcon = new ImageIcon(urlOfScreen);
+						button.setIcon(blackWhiteIcon);
+					}
 				}
 				for (int i = 0; i < 45; i++) {
 					if (lottoNumBtn[i].getBackground().equals(Color.RED)) {
@@ -407,11 +437,18 @@ class LottoTicket4 extends JPanel {
 							testA.selectD[i + 1].setIcon(new ImageIcon(imageArrAfter[selectedNumber - 1]));
 						}
 
-						setAuto(false);
-						setClick(false);
-						resetCount();
+						for (int i = 0; i < selectedMode.size(); i++) {
+							String selectMode = selectedMode.get(i);
+							if (selectMode.equals("자동")) {
+								testA.selectD[0].setIcon(new ImageIcon(ModeImage[0]));
+							} else if (selectMode.equals("반자동")) {
+								testA.selectD[0].setIcon(new ImageIcon(ModeImage[1]));
+							} else {
+								testA.selectD[0].setIcon(new ImageIcon(ModeImage[2]));
+							}
+						}
 						
-					
+
 						Management.card.show(Management.all, "번호 선택");
 					}
 				}
@@ -421,10 +458,11 @@ class LottoTicket4 extends JPanel {
 		oneTicketPanel.setBounds(0, 0, 340, 550);
 		setLayout(null);
 		add(oneTicketPanel);
-		
+
 	}
 
 }
+
 // 액션 리스너
 class MyListener4 implements ActionListener {
 	private LottoTicket4 lt1;
@@ -442,18 +480,18 @@ class MyListener4 implements ActionListener {
 			source.setBackground(Color.RED);
 			lt1.increaseCount();
 			lt1.ChangeImage(source);
-			 if(lt1.getChangeCount() == 6) {
-				 lt1.setSixSelected(true);
-	                for(JButton button : lt1.lottoNumBtn) {
-	                    if(!button.getBackground().equals(Color.RED)) {
-	                    	int index = Arrays.asList(lt1.lottoNumBtn).indexOf(button);
-	                        URL urlOfScreen = LottoTicket1.class.getClassLoader()
-	                                .getResource("image/unNumber" + " " + "(" + (index + 1) + ")" + ".gif");
-	                        ImageIcon blackWhiteIcon = new ImageIcon(urlOfScreen);
-	                        button.setIcon(blackWhiteIcon);
-	                    }
-	                }
-	            }
+			if (lt1.getChangeCount() == 6) {
+				lt1.setSixSelected(true);
+				for (JButton button : lt1.lottoNumBtn) {
+					if (!button.getBackground().equals(Color.RED)) {
+						int index = Arrays.asList(lt1.lottoNumBtn).indexOf(button);
+						URL urlOfScreen = LottoTicket1.class.getClassLoader()
+								.getResource("image/unNumber" + " " + "(" + (index + 1) + ")" + ".gif");
+						ImageIcon blackWhiteIcon = new ImageIcon(urlOfScreen);
+						button.setIcon(blackWhiteIcon);
+					}
+				}
+			}
 		} else if (!source.getBackground().equals(Color.RED) && lt1.getChangeCount() == 6) {
 		} else if (source.getBackground().equals(Color.RED) && lt1.getChangeCount() == 1 && lt1.isClick() == true) {
 			source.setBackground(null);
@@ -470,17 +508,17 @@ class MyListener4 implements ActionListener {
 			source.setBackground(null);
 			lt1.decreaseCount();
 		}
-		if(lt1.getChangeCount() < 6) {
+		if (lt1.getChangeCount() < 6) {
 			lt1.setSixSelected(false);
-            for(JButton button : lt1.lottoNumBtn) {
-                if(!button.getBackground().equals(Color.RED)) {
-                	int index = Arrays.asList(lt1.lottoNumBtn).indexOf(button);
-                    URL urlOfScreen = LottoTicket1.class.getClassLoader()
-                            .getResource("image/defaultNumber" + " " + "(" + (index + 1) + ")" + ".gif");
-                    ImageIcon defaultIcon = new ImageIcon(urlOfScreen);
-                    button.setIcon(defaultIcon);
-                }
-            }
-        }
+			for (JButton button : lt1.lottoNumBtn) {
+				if (!button.getBackground().equals(Color.RED)) {
+					int index = Arrays.asList(lt1.lottoNumBtn).indexOf(button);
+					URL urlOfScreen = LottoTicket1.class.getClassLoader()
+							.getResource("image/defaultNumber" + " " + "(" + (index + 1) + ")" + ".gif");
+					ImageIcon defaultIcon = new ImageIcon(urlOfScreen);
+					button.setIcon(defaultIcon);
+				}
+			}
+		}
 	}
 }

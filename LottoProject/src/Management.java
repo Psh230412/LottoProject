@@ -10,7 +10,7 @@ public class Management extends JFrame {
 	static JPanel all = new JPanel();
 	static CardLayout card = new CardLayout();
 	TestA testA = new TestA();
-	LottoDrawPage testDraw = new LottoDrawPage();
+	
 	public Management() {
 		setTitle("로또");
 
@@ -19,9 +19,8 @@ public class Management extends JFrame {
 		
 		all.add(new StartPage(), "시작");
 		all.add(testA, "번호 선택");
-		//all.add(new HelpMessage(), "도움말");
 		all.add(new LottoTicket1(testA), "티켓1");
-		all.add(new LottoTicket2(testA,testDraw), "티켓2");
+		all.add(new LottoTicket2(testA), "티켓2");
 		all.add(new LottoTicket3(testA), "티켓3");
 		all.add(new LottoTicket4(testA), "티켓4");
 		all.add(new LottoTicket5(testA), "티켓5");
