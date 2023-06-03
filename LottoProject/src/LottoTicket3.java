@@ -22,6 +22,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 class LottoTicket3 extends JPanel {
+	TestA testA;
 	private boolean isClick = false;
 	private boolean isAuto = false;
 	static List<String> selectedMode = new ArrayList<>();
@@ -193,8 +194,8 @@ class LottoTicket3 extends JPanel {
 		return selectedMode;
 	}
 
-	public LottoTicket3() {
-
+	public LottoTicket3(TestA testA) {
+		this.testA=testA;
 		JPanel oneTicketPanel = new JPanel();
 		oneTicketPanel.setLayout(null);
 		oneTicketPanel.setBackground(Color.BLACK);
@@ -382,6 +383,12 @@ class LottoTicket3 extends JPanel {
 							JOptionPane.YES_NO_OPTION);
 					if (result == JOptionPane.YES_OPTION) {
 						JButton source = (JButton) e.getSource();
+						if(selectedNumbers.size() !=0) {
+							selectedNumbers.clear();
+						}
+						if(selectedMode.size() !=0) {
+							selectedMode.clear();
+						}
 						inputSelectedNumbers();
 						inputSelectedMode();
 						System.out.println(selectedMode);
@@ -396,7 +403,15 @@ class LottoTicket3 extends JPanel {
 						setAuto(false);
 						setClick(false);
 						resetCount();
+						
+						for (int i = 0; i < selectedNumbers.size(); i++) {
+							int selectedNumber = selectedNumbers.get(i);
+							testA.selectC[i + 1].setIcon(new ImageIcon(imageArrAfter[selectedNumber - 1]));
+						}
 
+						setAuto(false);
+						setClick(false);
+						resetCount();
 						
 						
 					

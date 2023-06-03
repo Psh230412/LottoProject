@@ -12,4 +12,7 @@ public class AllRecords {
 	public void setMap(Map<Integer, List<Integer>> lottoNumberStorage) {
 		this.lottoNumberStorage = lottoNumberStorage;
 	}
+	
+	
+	
 }

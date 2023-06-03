@@ -32,6 +32,7 @@ class LottoTicket2 extends JPanel {
 	private boolean[] isButtonClicked = new boolean[45];
 	private boolean isSixSelected = false;
 	TestA testA;
+	LottoDrawPage testDraw;
 
 	public static List<String> getSelectedMode() {
 		return selectedMode;
@@ -212,8 +213,9 @@ class LottoTicket2 extends JPanel {
 		return selectedMode;
 	}
 
-	public LottoTicket2(TestA testA) {
+	public LottoTicket2(TestA testA,LottoDrawPage testDraw) {
 		this.testA = testA;
+		this.testDraw=testDraw;
 		
 		JPanel oneTicketPanel = new JPanel();
 		oneTicketPanel.setLayout(null);
@@ -404,6 +406,15 @@ class LottoTicket2 extends JPanel {
 							JOptionPane.YES_NO_OPTION);
 					if (result == JOptionPane.YES_OPTION) {
 						JButton source = (JButton) e.getSource();
+						
+						if(selectedNumbers.size() !=0) {
+							selectedNumbers.clear();
+						}
+						if(selectedMode.size() !=0) {
+							selectedMode.clear();
+						}
+						
+						
 						inputSelectedNumbers();
 						inputSelectedMode();
 						System.out.println(selectedMode);
@@ -426,6 +437,9 @@ class LottoTicket2 extends JPanel {
 							int selectedNumber = selectedNumbers.get(i);
 							testA.selectB[i + 1].setIcon(new ImageIcon(imageArrAfter[selectedNumber - 1]));
 						}
+						
+						
+						testA.selectB[0].setIcon(new ImageIcon());
 
 						setAuto(false);
 						setClick(false);
