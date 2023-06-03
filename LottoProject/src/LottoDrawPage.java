@@ -1,19 +1,21 @@
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
+import java.awt.Image;
 import java.awt.Label;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Arrays;
-
+import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Random;
 
 import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -74,22 +76,8 @@ class CompareNum {
 }
 
 class MakeList {
-	JLabel[] unNumArr = new JLabel[45];
 	JLabel[] selNumArr = new JLabel[45];
 	JLabel[] screenArr = new JLabel[16];
-	JLabel[] autoArr = new JLabel[3];
-	JLabel[] gradeArr = new JLabel[6];
-
-	// 당첨안된 숫자
-	public JLabel[] createUnNumScreen() {
-		for (int i = 0; i < unNumArr.length; i++) {
-			URL unNumScreen = MakeList.class.getClassLoader()
-					.getResource("image/unNumber" + " " + "(" + (i + 1) + ")" + ".gif");
-			ImageIcon imageIcon = new ImageIcon(unNumScreen);
-			unNumArr[i] = new JLabel(imageIcon);
-		}
-		return unNumArr;
-	}
 
 	// 당첨된 숫자
 	public JLabel[] createSelNumScreen() {
@@ -111,126 +99,84 @@ class MakeList {
 		}
 		return screenArr;
 	}
-
-	// 자동 반자동 수동 배열
-	public JLabel[] createAutoScreen() {
-		for (int i = 0; i < autoArr.length; i++) {
-			URL autoScreen = MakeList.class.getClassLoader().getResource("image4/auto" + (i + 1) + ".gif");
-			ImageIcon imageIcon = new ImageIcon(autoScreen);
-			autoArr[i] = new JLabel(imageIcon);
-		}
-		return autoArr;
-	}
-
-	// 1 ... 낙첨 등수배열
-	public JLabel[] createGradeScreen() {
-		for (int i = 0; i < gradeArr.length; i++) {
-			URL gradeScreen = MakeList.class.getClassLoader().getResource("image4/grade" + (i + 1) + ".gif");
-			ImageIcon imageIcon = new ImageIcon(gradeScreen);
-			gradeArr[i] = new JLabel(imageIcon);
-		}
-		return gradeArr;
-	}
 }
 
-class MyNumLbl extends JLabel {
-	JLabel[] selNumArr = new JLabel[45];
-	JLabel[] unNumArr = new JLabel[45];
-	JLabel[] autoArr = new JLabel[3];
-	JLabel[] gradeArr = new JLabel[6];
-	JLabel[] screenArr = new JLabel[16];
 
-	public void makeMyNumLbl(List<String> selectedMode, List<Integer> selectedNumbers) {
-		// 자동
-		MakeList makeList = new MakeList();
-		JLabel[] autoLbl = makeList.createAutoScreen();
-
-		for (int i = 0; i < autoLbl.length; i++) {
-			autoLbl[i].setBounds(0, 0, 43, 42);
+public class LottoDrawPage extends JPanel {
+	JLabel[] numArrA = makeNumLbl();
+	JLabel[] numArrB = makeNumLbl();
+	JLabel[] numArrC = makeNumLbl();
+	JLabel[] numArrD = makeNumLbl();
+	JLabel[] numArrE = makeNumLbl();
+	
+	// index 6 : 자동, 7 : 등수
+	public JLabel[] makeNumLbl() {
+		JLabel[] numArr = new JLabel[8];
+		for (int i = 0; i < numArr.length; i++) {
+			numArr[i] = new JLabel();
 		}
-		if (!selectedMode.isEmpty()) {
-			String auto = selectedMode.get(0);
-			if (auto.equals("자동")) {
-				add(autoLbl[0]);
-			} else if (auto.equals("반자동")) {
-				add(autoLbl[1]);
-			} else {
-				add(autoLbl[2]);
-			}
-		}
-
-		// 번호
-		List<Integer> randomNumList = LottoRandom.getRandomNum();
-		
-		List<Integer> randomNumListClone = new ArrayList<>();
-		for (int i = 0; i < 6; i++) {
-			randomNumListClone.add(randomNumList.get(i));
-		}
-
-		JLabel[] selNumArr = makeList.createSelNumScreen();
-		JLabel[] unNumArr = makeList.createUnNumScreen();
-
-		int count = 0;
-
-		if (!selectedNumbers.isEmpty()) {
-			for (int i = 0; i < selectedNumbers.size(); i++) {
-				int number = selectedNumbers.get(i);
-				if (randomNumListClone.contains(number)) {
-					selNumArr[number - 1].setBounds(43 + (42 * i), 0, 42, 42);
-					add(selNumArr[number - 1]);
-
-					count++;
-
-				} else {
-					unNumArr[number - 1].setBounds(43 + (42 * i), 0, 42, 42);
-					add(unNumArr[number - 1]);
-				}
-			}
-			if (count == 5) {
-				int bonus = randomNumList.get(6);
-				if (selectedNumbers.contains(bonus)) {
-					int index = selectedNumbers.indexOf(bonus);
-
-					remove(unNumArr[bonus - 1]);
-					selNumArr[bonus - 1].setBounds(43 + (42 * (index)), 0, 42, 42);
-					add(selNumArr[bonus - 1]);
-				}
-			}
-		}
-
-		// 등수
-		CompareNum compareNum = new CompareNum();
-
-		int grade = compareNum.compareNum(selectedNumbers);
-
-		JLabel[] gradeLabel = makeList.createGradeScreen();
-
-		for (int i = 0; i < gradeLabel.length; i++) {
-			gradeLabel[i].setBounds(43 + 252, 0, 45, 42);
-		}
-
-		if (!selectedNumbers.isEmpty()) {
-			if (grade == 1) {
-				add(gradeLabel[0]);
-			} else if (grade == 2) {
-				add(gradeLabel[1]);
-			} else if (grade == 3) {
-				add(gradeLabel[2]);
-			} else if (grade == 4) {
-				add(gradeLabel[3]);
-			} else if (grade == 5) {
-				add(gradeLabel[4]);
-			} else if (grade == 6) {
-				add(gradeLabel[5]);
-			}
-		}
-		setSize(340, 42);
+		return numArr;
 	}
-}
+	
 
-public class LottoDrawPage extends JLabel {
+	
 	public LottoDrawPage() {
-		new LottoRandom();
+		for (int i = 0; i < numArrA.length; i++) {
+			add(numArrA[i]);
+		}
+		numArrA[0].setBounds(43, 285, 42, 42);
+		numArrA[1].setBounds(43+42, 285, 42, 42);
+		numArrA[2].setBounds(43+42+42 , 285, 42, 42);
+		numArrA[3].setBounds(43+42+42+42, 285, 42, 42);
+		numArrA[4].setBounds(43+42+42+42+42, 285, 42, 42);
+		numArrA[5].setBounds(43+42+42+42+42+42, 285, 42, 42);
+		numArrA[6].setBounds(0, 285, 43, 42);
+		numArrA[7].setBounds(43+42+42+42+42+42+42, 285, 45, 42);
+		for (int i = 0; i < numArrB.length; i++) {
+			add(numArrB[i]);
+		}
+		numArrB[0].setBounds(43, 285+42, 42, 42);
+		numArrB[1].setBounds(43+42, 285+42, 42, 42);
+		numArrB[2].setBounds(43+42+42 , 285+42, 42, 42);
+		numArrB[3].setBounds(43+42+42+42, 285+42, 42, 42);
+		numArrB[4].setBounds(43+42+42+42+42, 285+42, 42, 42);
+		numArrB[5].setBounds(43+42+42+42+42+42, 285+42, 42, 42);
+		numArrB[6].setBounds(0, 285+42, 43, 42);
+		numArrB[7].setBounds(43+42+42+42+42+42+42, 285+42, 45, 42);
+		for (int i = 0; i < numArrC.length; i++) {
+			add(numArrC[i]);
+		}
+		numArrC[0].setBounds(43, 285+42+42, 42, 42);
+		numArrC[1].setBounds(43+42, 285+42+42, 42, 42);
+		numArrC[2].setBounds(43+42+42 , 285+42+42, 42, 42);
+		numArrC[3].setBounds(43+42+42+42, 285+42+42, 42, 42);
+		numArrC[4].setBounds(43+42+42+42+42, 285+42+42, 42, 42);
+		numArrC[5].setBounds(43+42+42+42+42+42, 285+42+42, 42, 42);
+		numArrC[6].setBounds(0, 285+42+42, 43, 42);
+		numArrC[7].setBounds(43+42+42+42+42+42+42, 285+42+42, 45, 42);
+		for (int i = 0; i < numArrD.length; i++) {
+			add(numArrD[i]);
+		}
+		numArrD[0].setBounds(43, 285+42+42+42, 42, 42);
+		numArrD[1].setBounds(43+42, 285+42+42+42, 42, 42);
+		numArrD[2].setBounds(43+42+42 , 285+42+42+42, 42, 42);
+		numArrD[3].setBounds(43+42+42+42, 285+42+42+42, 42, 42);
+		numArrD[4].setBounds(43+42+42+42+42, 285+42+42+42, 42, 42);
+		numArrD[5].setBounds(43+42+42+42+42+42, 285+42+42+42, 42, 42);
+		numArrD[6].setBounds(0, 285+42+42+42, 43, 42);
+		numArrD[7].setBounds(43+42+42+42+42+42+42, 285+42+42+42, 45, 42);
+		for (int i = 0; i < numArrE.length; i++) {
+			add(numArrE[i]);
+		}
+		numArrE[0].setBounds(43, 285+42+42+42+42, 42, 42);
+		numArrE[1].setBounds(43+42, 285+42+42+42+42, 42, 42);
+		numArrE[2].setBounds(43+42+42 , 285+42+42+42+42, 42, 42);
+		numArrE[3].setBounds(43+42+42+42, 285+42+42+42+42, 42, 42);
+		numArrE[4].setBounds(43+42+42+42+42, 285+42+42+42+42, 42, 42);
+		numArrE[5].setBounds(43+42+42+42+42+42, 285+42+42+42+42, 42, 42);
+		numArrE[6].setBounds(0, 285+42+42+42+42, 43, 42);
+		numArrE[7].setBounds(43+42+42+42+42+42+42, 285+42+42+42+42, 45, 42);
+
 		
 		MakeList makeList = new MakeList();
 		// 기본 배경
@@ -247,6 +193,7 @@ public class LottoDrawPage extends JLabel {
 
 		// 당첨 번호
 
+		new LottoRandom();
 		List<Integer> randomNumList = LottoRandom.getRandomNum();
 
 		JLabel[] randomLbl = makeList.createSelNumScreen();
@@ -263,65 +210,15 @@ public class LottoDrawPage extends JLabel {
 		JLabel btn = lbl[12];
 		btn.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent e) {
-				Management.card.show(Management.all, "시작");
+//				Management.card.show(Management.all, "시작"); // 아예 새로운 페이지로
+
 			}
 		});
-		
-		// 내 번호 라벨
-		MyNumLbl a = new MyNumLbl();
-		a.makeMyNumLbl(LottoTicket1.selectedMode, LottoTicket1.selectedNumbers);
-		a.setBounds(0, 285, 340, 42);
-		
-		MyNumLbl b = new MyNumLbl();
-		b.makeMyNumLbl(LottoTicket2.selectedMode, LottoTicket2.selectedNumbers);
-		if (LottoTicket1.selectedNumbers.isEmpty()) {
-			b.setBounds(0, 285, 340, 42);
-		} else {
-			b.setBounds(0, 285+42, 340, 42);
-		}
-		
-		MyNumLbl c = new MyNumLbl();
-		c.makeMyNumLbl(LottoTicket3.selectedMode, LottoTicket3.selectedNumbers);
-		int count = 0;
-		if (LottoTicket1.selectedNumbers.isEmpty()) 
-			count++;
-		if (LottoTicket2.selectedNumbers.isEmpty()) 
-			count++;
-		c.setBounds(0, 369-(count*42), 340, 42);
-		
-		MyNumLbl d = new MyNumLbl();
-		d.makeMyNumLbl(LottoTicket4.selectedMode, LottoTicket4.selectedNumbers);
-		count = 0;
-		if (LottoTicket1.selectedNumbers.isEmpty()) 
-			count++;
-		if (LottoTicket2.selectedNumbers.isEmpty()) 
-			count++;
-		if (LottoTicket3.selectedNumbers.isEmpty()) 
-			count++;
-		d.setBounds(0, 411-(count*42), 340, 42);
-		
-		MyNumLbl e = new MyNumLbl();
-		e.makeMyNumLbl(LottoTicket5.selectedMode, LottoTicket5.selectedNumbers);
-		count = 0;
-		if (LottoTicket1.selectedNumbers.isEmpty()) 
-			count++;
-		if (LottoTicket2.selectedNumbers.isEmpty()) 
-			count++;
-		if (LottoTicket3.selectedNumbers.isEmpty()) 
-			count++;
-		if (LottoTicket4.selectedNumbers.isEmpty())
-			count++;
-		e.setBounds(0, 453-(count*42), 340, 42);
-		
-		add(a);
-		add(b);
-		add(c);
-		add(d);
-		add(e);
 
-		
+		setLayout(null);
+		setVisible(true);
 		setPreferredSize(new Dimension(340, 550));
 		setOpaque(true);
-		setBackground(Color.BLACK);
+		setBackground(new Color(10, 4, 52));
 	}
 }

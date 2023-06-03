@@ -32,6 +32,7 @@ class LottoTicket2 extends JPanel {
 	private boolean[] isButtonClicked = new boolean[45];
 	private boolean isSixSelected = false;
 	TestA testA;
+	LottoDrawPage lottoDrawPage;
 
 	public static List<String> getSelectedMode() {
 		return selectedMode;
@@ -88,17 +89,27 @@ class LottoTicket2 extends JPanel {
 	public int getChangeCount() { // 현재 카운트를 가져오는 메서드를 추가합니다
 		return this.changeCount;
 	}
+
+	Image[] gradeImage = new Image[6];
+
+	public Image[] CreateGrade() {
+		for (int i = 0; i < gradeImage.length; i++) {
+			URL urlOfDN = LottoTicket1.class.getClassLoader().getResource("image4/grade" + (i + 1) + ".gif");
+			gradeImage[i] = new ImageIcon(urlOfDN).getImage();
+		}
+		return gradeImage;
+	}
+
 	Image[] ModeImage = new Image[3];
-	
+
 	public Image[] CreateMode() {
 		for (int i = 0; i < ModeImage.length; i++) {
-			URL urlOfDN = LottoTicket1.class.getClassLoader()
-					.getResource("image4/auto" + (i + 1) + ".gif");
+			URL urlOfDN = LottoTicket1.class.getClassLoader().getResource("image4/auto" + (i + 1) + ".gif");
 			ModeImage[i] = new ImageIcon(urlOfDN).getImage();
 		}
 		return ModeImage;
 	}
-	
+
 	// defaultNumber 이미지를 담는 배열
 	Image[] imageArrBefore = new Image[45];
 	// selNumber 이미지를 담는 배열
@@ -222,14 +233,15 @@ class LottoTicket2 extends JPanel {
 		return selectedMode;
 	}
 
-	public LottoTicket2(TestA testA) {
+	public LottoTicket2(TestA testA, LottoDrawPage lottoDrawPage) {
 		this.testA = testA;
-		
+
 		JPanel oneTicketPanel = new JPanel();
 		oneTicketPanel.setLayout(null);
 		oneTicketPanel.setBackground(Color.BLACK);
 		buttonCreate();
 		CreateMode();
+		CreateGrade();
 		JLabel[] labels = CreateScreen();
 		/*
 		 * BtnScreenArr[0] = 확정버튼// BtnScreenArr[1] = 자동버튼 BtnScreenArr[2] = 초기화 버튼
@@ -415,13 +427,7 @@ class LottoTicket2 extends JPanel {
 							JOptionPane.YES_NO_OPTION);
 					if (result == JOptionPane.YES_OPTION) {
 						JButton source = (JButton) e.getSource();
-						
-						
-						
-						
-						 
-						
-						
+
 						inputSelectedNumbers();
 						inputSelectedMode();
 						System.out.println(selectedMode);
@@ -433,28 +439,76 @@ class LottoTicket2 extends JPanel {
 							lottoNumBtn[i].setIcon(new ImageIcon(imageArrBefore[i]));
 							isButtonClicked[i] = false;
 						}
-						
+
 						setAuto(false);
 						setClick(false);
 						resetCount();
-						
+
 						for (int i = 0; i < selectedNumbers.size(); i++) {
 							int selectedNumber = selectedNumbers.get(i);
 							testA.selectB[i + 1].setIcon(new ImageIcon(imageArrAfter[selectedNumber - 1]));
 						}
 						for (int i = 0; i < selectedMode.size(); i++) {
 							String selectMode = selectedMode.get(i);
-							if(selectMode.equals("자동")) {
+							if (selectMode.equals("자동")) {
 								testA.selectB[0].setIcon(new ImageIcon(ModeImage[0]));
-							} else if(selectMode.equals("반자동")) {
+								lottoDrawPage.numArrB[6].setIcon(new ImageIcon(ModeImage[0]));
+							} else if (selectMode.equals("반자동")) {
 								testA.selectB[0].setIcon(new ImageIcon(ModeImage[1]));
+								lottoDrawPage.numArrB[6].setIcon(new ImageIcon(ModeImage[1]));
 							} else {
 								testA.selectB[0].setIcon(new ImageIcon(ModeImage[2]));
+								lottoDrawPage.numArrB[6].setIcon(new ImageIcon(ModeImage[2]));
 							}
 						}
-						setAuto(false);
-						setClick(false);
-						resetCount();
+
+						// 번호
+						List<Integer> randomNumList = LottoRandom.getRandomNum();
+						List<Integer> randomNumListClone = new ArrayList<>();
+						for (int i = 0; i < 6; i++) {
+							randomNumListClone.add(randomNumList.get(i));
+						}
+
+						int count = 0;
+
+						for (int i = 0; i < selectedNumbers.size(); i++) {
+							int number = selectedNumbers.get(i);
+							int index = selectedNumbers.indexOf(number);
+							if (randomNumListClone.contains(number)) {
+								lottoDrawPage.numArrB[index].setIcon(new ImageIcon(imageArrAfter[number - 1]));
+
+								count++;
+							} else {
+								lottoDrawPage.numArrB[index].setIcon(new ImageIcon(imageArrBefore[number - 1]));
+							}
+						}
+						if (count == 5) {
+							int bonus = randomNumList.get(6);
+							if (selectedNumbers.contains(bonus)) {
+								int index = selectedNumbers.indexOf(bonus);
+								lottoDrawPage.numArrB[index].setIcon(new ImageIcon(imageArrAfter[bonus - 1]));
+							}
+						}
+
+						// 등수
+						CompareNum compareNum = new CompareNum();
+
+						int grade = compareNum.compareNum(selectedNumbers);
+
+						if (grade == 1) {
+							lottoDrawPage.numArrB[7].setIcon(new ImageIcon(gradeImage[0]));
+						} else if (grade == 2) {
+							lottoDrawPage.numArrB[7].setIcon(new ImageIcon(gradeImage[1]));
+						} else if (grade == 3) {
+							lottoDrawPage.numArrB[7].setIcon(new ImageIcon(gradeImage[2]));
+						} else if (grade == 4) {
+							lottoDrawPage.numArrB[7].setIcon(new ImageIcon(gradeImage[3]));
+						} else if (grade == 5) {
+							lottoDrawPage.numArrB[7].setIcon(new ImageIcon(gradeImage[4]));
+						} else if (grade == 6) {
+							lottoDrawPage.numArrB[7].setIcon(new ImageIcon(gradeImage[5]));
+						}
+
 						Management.card.show(Management.all, "번호 선택");
 
 					}
