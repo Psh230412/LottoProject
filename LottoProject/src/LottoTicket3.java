@@ -22,7 +22,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 class LottoTicket3 extends JPanel {
-	TestA testA;
+
 	private boolean isClick = false;
 	private boolean isAuto = false;
 	static List<String> selectedMode = new ArrayList<>();
@@ -83,8 +83,7 @@ class LottoTicket3 extends JPanel {
 	
 	public Image[] CreateMode() {
 		for (int i = 0; i < ModeImage.length; i++) {
-			URL urlOfDN = LottoTicket1.class.getClassLoader()
-					.getResource("image4/auto" + (i + 1) + ".gif");
+			URL urlOfDN = LottoTicket1.class.getClassLoader().getResource("image4/auto" + (i + 1) + ".gif");
 			ModeImage[i] = new ImageIcon(urlOfDN).getImage();
 		}
 		return ModeImage;

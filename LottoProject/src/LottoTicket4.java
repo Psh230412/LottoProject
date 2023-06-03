@@ -22,7 +22,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 class LottoTicket4 extends JPanel {
-	TestA testA;
+
 	private boolean isClick = false;
 	private boolean isAuto = false;
 	static List<String> selectedMode = new ArrayList<>();

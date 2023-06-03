@@ -27,7 +27,7 @@ class LottoTicket1 extends JPanel {
 	private static int changeCount = 0;
 	JLabel[] look = new JLabel[10];
 	private boolean[] isButtonClicked = new boolean[45];
-	TestA testA;
+
 	private boolean isSixSelected = false;
 	TestA testA;
 	
@@ -433,10 +433,7 @@ class LottoTicket1 extends JPanel {
 						setClick(false);
 						resetCount();
 						
-					
-						
-						
-						
+
 
 						for (int i = 0; i < selectedNumbers.size(); i++) {
 							int selectedNumber = selectedNumbers.get(i);

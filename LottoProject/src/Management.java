@@ -25,7 +25,7 @@ public class Management extends JFrame {
 		all.add(new LottoTicket4(testA), "티켓4");
 		all.add(new LottoTicket5(testA), "티켓5");
 		all.add(new LotteryBall(),"공튀기기");
-		all.add(testDraw, "당첨 번호");
+		all.add(new LottoDrawPage(), "당첨 번호");
 		
 //		card.show(all, "당첨 번호");
 

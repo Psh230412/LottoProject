@@ -453,6 +453,9 @@ class LottoTicket2 extends JPanel {
 								testA.selectB[0].setIcon(new ImageIcon(ModeImage[2]));
 							}
 						}
+						setAuto(false);
+						setClick(false);
+						resetCount();
 						Management.card.show(Management.all, "번호 선택");
 
 					}
