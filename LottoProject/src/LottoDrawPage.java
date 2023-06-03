@@ -267,6 +267,7 @@ public class LottoDrawPage extends JLabel {
 			}
 		});
 		
+		// 내 번호 라벨
 		MyNumLbl a = new MyNumLbl();
 		a.makeMyNumLbl(LottoTicket1.selectedMode, LottoTicket1.selectedNumbers);
 		a.setBounds(0, 285, 340, 42);

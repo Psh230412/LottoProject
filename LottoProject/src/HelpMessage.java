@@ -15,7 +15,7 @@ class HelpMessage extends JFrame {
 
 		
 		//URL urlOfScreen = LottoTicket1.class.getClassLoader().getResource("image/셀렉트_" + (i + 1) + ".gif");
-		ImageIcon imageIcon = new ImageIcon(urlOfScreen);
+		//ImageIcon imageIcon = new ImageIcon(urlOfScreen);
 		ImageIcon backgroundImage = new ImageIcon("도움말2.jpg");
 		JLabel bg = new JLabel(backgroundImage);
 		bg.setBounds(0, 0, 360, 648);
