@@ -131,10 +131,37 @@ class TestA extends JPanel {
 				}
 			}
 	
-			// 등수
-			CompareNum compareNum = new CompareNum();
+			int grade = 0;
 
-			int grade = compareNum.compareNum(selectedNumbers);
+			switch (count) {
+			
+			case 3:
+				grade = 5;
+				break;
+			case 4:
+				grade = 4;
+				break;
+			case 5:
+				int count2 = 0;
+				for (int i = 0; i < selectedNumbers.size(); i++) {
+					if (selectedNumbers.get(i) == randomNumList.get(6)) {
+						count2++;
+					}
+				}
+				if (count2 == 0) {
+					grade = 3;
+					break;
+				} else {
+					grade = 2;
+					break;
+				}
+			case 6:
+				grade = 1;
+				break;
+			default:
+				grade = 6;
+				break;
+			}
 
 			if (grade == 1) {
 				numArr[7].setIcon(new ImageIcon(gradeImage[0]));
@@ -149,6 +176,7 @@ class TestA extends JPanel {
 			} else if (grade == 6) {
 				numArr[7].setIcon(new ImageIcon(gradeImage[5]));
 			}
+			
 		} else {
 			for (int i = 0; i < numArr.length; i++) {
 				numArr[i].setIcon(new ImageIcon(emptyImage[i]));

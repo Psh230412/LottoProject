@@ -9,7 +9,7 @@ import javax.swing.JPanel;
 public class Management extends JFrame {
 	static JPanel all = new JPanel();
 	static CardLayout card = new CardLayout();
-	LottoDrawPage lottoDrawPage = new LottoDrawPage();
+	LottoDrawPage lottoDrawPage = new LottoDrawPage(this);
 	TestA testA = new TestA(lottoDrawPage);
 	
 	public Management() {
@@ -35,9 +35,14 @@ public class Management extends JFrame {
 		all.setPreferredSize(new Dimension(340, 550));
 		setResizable(false);
 		pack();
+		setLocationRelativeTo(null);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setVisible(true);
-		
+	}
+	
+	public void close() {
+		this.setVisible(false);
+		this.dispose();
 	}
 	
 	
