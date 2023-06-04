@@ -21,62 +21,6 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-// 등수 클래스
-class CompareNum {
-	public int compareNum(List<Integer> selectedNumList) {
-		List<Integer> randomNumList = LottoRandom.getRandomNum();
-
-		int count = 0;
-		int grade = 0;
-
-		if (!selectedNumList.isEmpty()) {
-			for (int i : selectedNumList) {
-				for (int j = 0; j < selectedNumList.size(); j++) {
-					if (i == randomNumList.get(j)) {
-						count++;
-					}
-				}
-			}
-		} else {
-			grade = -1; // 선택 안함
-		}
-
-		switch (count) {
-		case 0:
-			grade = 6; // 낙첨
-			break;
-		case 3:
-			grade = 5;
-			break;
-		case 4:
-			grade = 4;
-			break;
-		case 5:
-			int count2 = 0;
-			for (int i = 0; i < selectedNumList.size(); i++) {
-				if (selectedNumList.get(i) == randomNumList.get(6)) {
-					count2++;
-				}
-			}
-			if (count2 == 0) {
-				grade = 3;
-				break;
-			} else {
-				grade = 2;
-				break;
-			}
-		case 6:
-			grade = 1;
-			break;
-		default:
-			grade = 6;
-			break;
-		}
-		return grade;
-	}
-}
-
-
 public class LottoDrawPage extends JPanel {
 
 	JLabel[] numArrA = makeNumLbl();
@@ -86,6 +30,7 @@ public class LottoDrawPage extends JPanel {
 	JLabel[] numArrE = makeNumLbl();
 	JLabel[] drawNumArr = makeDrawNumLbl();
 	JLabel[] screenArr = new JLabel[16];
+	Management management;
 	
 	
 	// index 6 : 자동, 7 : 등수
@@ -114,7 +59,7 @@ public class LottoDrawPage extends JPanel {
 		return screenArr;
 	}
 	
-	public LottoDrawPage() {
+	public LottoDrawPage(Management management) {
 		// 선택번호 라벨 배열
 		for (int i = 0; i < numArrA.length; i++) {
 			add(numArrA[i]);
@@ -200,6 +145,7 @@ public class LottoDrawPage extends JPanel {
 		JLabel btn = lbl[12];
 		btn.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent e) {
+				management.close();
 				new Management();
 			}
 		});
