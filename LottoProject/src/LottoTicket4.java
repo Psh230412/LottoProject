@@ -25,15 +25,16 @@ class LottoTicket4 extends JPanel {
 
 	private boolean isClick = false;
 	private boolean isAuto = false;
-	static List<String> selectedMode = new ArrayList<>();
-	static List<Integer> selectedNumbers = new ArrayList<>();
+//	static List<String> selectedMode = new ArrayList<>();
+//	static List<Integer> selectedNumbers = new ArrayList<>();
+	static List<String> selectedMode;
+	static List<Integer> selectedNumbers;
 	public JButton[] lottoNumBtn = new JButton[45];;
 	private static int changeCount = 0;
 	JLabel[] look = new JLabel[10];
 	private boolean[] isButtonClicked = new boolean[45];
 	private boolean isSixSelected = false;
 	TestA testA;
-	LottoDrawPage lottoDrawPage;
 
 	public static List<String> getSelectedMode() {
 		return selectedMode;
@@ -89,16 +90,6 @@ class LottoTicket4 extends JPanel {
 
 	public int getChangeCount() { // 현재 카운트를 가져오는 메서드를 추가합니다
 		return this.changeCount;
-	}
-	
-	Image[] gradeImage = new Image[6];
-
-	public Image[] CreateGrade() {
-		for (int i = 0; i < gradeImage.length; i++) {
-			URL urlOfDN = LottoTicket1.class.getClassLoader().getResource("image4/grade" + (i + 1) + ".gif");
-			gradeImage[i] = new ImageIcon(urlOfDN).getImage();
-		}
-		return gradeImage;
 	}
 
 	Image[] ModeImage = new Image[3];
@@ -231,7 +222,9 @@ class LottoTicket4 extends JPanel {
 		return selectedMode;
 	}
 
-	public LottoTicket4(TestA testA, LottoDrawPage lottoDrawPage) {
+	public LottoTicket4(TestA testA) {
+		selectedMode = new ArrayList<>();
+		selectedNumbers = new ArrayList<>();
 		this.testA=testA;
 		JPanel oneTicketPanel = new JPanel();
 		oneTicketPanel.setLayout(null);
@@ -239,7 +232,7 @@ class LottoTicket4 extends JPanel {
 		buttonCreate();
 		JLabel[] labels = CreateScreen();
 		CreateMode();
-		CreateGrade();
+
 		/*
 		 * BtnScreenArr[0] = 확정버튼// BtnScreenArr[1] = 자동버튼 BtnScreenArr[2] = 초기화 버튼
 		 * buttons[0] = 확정버튼 buttons[1] = 자동버튼 buttons[2] = 초기화버튼
@@ -450,63 +443,12 @@ class LottoTicket4 extends JPanel {
 							String selectMode = selectedMode.get(i);
 							if (selectMode.equals("자동")) {
 								testA.selectD[0].setIcon(new ImageIcon(ModeImage[0]));
-								lottoDrawPage.numArrD[6].setIcon(new ImageIcon(ModeImage[0]));
 							} else if (selectMode.equals("반자동")) {
 								testA.selectD[0].setIcon(new ImageIcon(ModeImage[1]));
-								lottoDrawPage.numArrD[6].setIcon(new ImageIcon(ModeImage[1]));
 							} else {
 								testA.selectD[0].setIcon(new ImageIcon(ModeImage[2]));
-								lottoDrawPage.numArrD[6].setIcon(new ImageIcon(ModeImage[2]));
 							}
 						}
-						
-						// 번호
-						List<Integer> randomNumList = LottoRandom.getRandomNum();
-						List<Integer> randomNumListClone = new ArrayList<>();
-						for (int i = 0; i < 6; i++) {
-							randomNumListClone.add(randomNumList.get(i));
-						}
-
-						int count = 0;
-
-						for (int i = 0; i < selectedNumbers.size(); i++) {
-							int number = selectedNumbers.get(i);
-							int index = selectedNumbers.indexOf(number);
-							if (randomNumListClone.contains(number)) {
-								lottoDrawPage.numArrD[index].setIcon(new ImageIcon(imageArrAfter[number - 1]));
-
-								count++;
-							} else {
-								lottoDrawPage.numArrD[index].setIcon(new ImageIcon(imageArrBefore[number - 1]));
-							}
-						}
-						if (count == 5) {
-							int bonus = randomNumList.get(6);
-							if (selectedNumbers.contains(bonus)) {
-								int index = selectedNumbers.indexOf(bonus);
-								lottoDrawPage.numArrD[index].setIcon(new ImageIcon(imageArrAfter[bonus - 1]));
-							}
-						}
-
-						// 등수
-						CompareNum compareNum = new CompareNum();
-
-						int grade = compareNum.compareNum(selectedNumbers);
-
-						if (grade == 1) {
-							lottoDrawPage.numArrD[7].setIcon(new ImageIcon(gradeImage[0]));
-						} else if (grade == 2) {
-							lottoDrawPage.numArrD[7].setIcon(new ImageIcon(gradeImage[1]));
-						} else if (grade == 3) {
-							lottoDrawPage.numArrD[7].setIcon(new ImageIcon(gradeImage[2]));
-						} else if (grade == 4) {
-							lottoDrawPage.numArrD[7].setIcon(new ImageIcon(gradeImage[3]));
-						} else if (grade == 5) {
-							lottoDrawPage.numArrD[7].setIcon(new ImageIcon(gradeImage[4]));
-						} else if (grade == 6) {
-							lottoDrawPage.numArrD[7].setIcon(new ImageIcon(gradeImage[5]));
-						}
-						
 
 						Management.card.show(Management.all, "번호 선택");
 					}

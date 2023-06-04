@@ -1,10 +1,14 @@
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Iterator;
+import java.util.List;
 
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import java.awt.Color;
-
+import java.awt.Image;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import javax.swing.ImageIcon;
@@ -19,6 +23,53 @@ class TestA extends JPanel {
 	JLabel[] selectC = SelectTicket();
 	JLabel[] selectD = SelectTicket();
 	JLabel[] selectE = SelectTicket();
+	LottoDrawPage lottoDrawPage;
+
+	Image[] modeImage = new Image[3];
+	Image[] gradeImage = new Image[6];
+	Image[] emptyImage = new Image[8];
+	Image[] yesImage = new Image[45];
+	Image[] noImage = new Image[45];
+
+	public Image[] createMode() {
+		for (int i = 0; i < modeImage.length; i++) {
+			URL urlOfDN = TestA.class.getClassLoader().getResource("image4/auto" + (i + 1) + ".gif");
+			modeImage[i] = new ImageIcon(urlOfDN).getImage();
+		}
+		return modeImage;
+	}
+	
+	public Image[] createGrade() {
+		for (int i = 0; i < gradeImage.length; i++) {
+			URL urlOfDN = TestA.class.getClassLoader().getResource("image4/grade" + (i + 1) + ".gif");
+			gradeImage[i] = new ImageIcon(urlOfDN).getImage();
+		}
+		return gradeImage;
+	}
+	
+	public Image[] createYes() {
+		for (int i = 0; i < yesImage.length; i++) {
+			URL urlOfDN = TestA.class.getClassLoader().getResource("image/selNumber" + " " + "(" + (i + 1) + ")" + ".gif");
+			yesImage[i] = new ImageIcon(urlOfDN).getImage();
+		}
+		return yesImage;
+	}
+	
+	public Image[] createNo() {
+		for (int i = 0; i < noImage.length; i++) {
+			URL urlOfDN = TestA.class.getClassLoader().getResource("image/unNumber" + " " + "(" + (i + 1) + ")" + ".gif");
+			noImage[i] = new ImageIcon(urlOfDN).getImage();
+		}
+		return noImage;
+	}
+
+	public Image[] createEmpty() {
+		for (int i = 0; i < emptyImage.length; i++) {
+			URL urlOfDN = TestA.class.getClassLoader().getResource("image4/empty" + (i + 1) + ".gif");
+			emptyImage[i] = new ImageIcon(urlOfDN).getImage();
+		}
+		return emptyImage;
+	}
 
 	public JLabel[] CreateMain() {
 		for (int i = 0; i < MainImage.length; i++) {
@@ -38,10 +89,82 @@ class TestA extends JPanel {
 		}
 		return SelectedNum;
 	}
+	
+	public void makeDrawPage(List<String> selectedMode, List<Integer> selectedNumbers, JLabel[] numArr, List<Integer> randomNumList) {
+		if (!selectedNumbers.isEmpty()) {
+			// 자동
+			String selectMode = selectedMode.get(0);
+			if (selectMode.equals("자동")) {
+				numArr[0].setIcon(new ImageIcon(modeImage[0]));
+			} else if (selectMode.equals("반자동")) {
+				numArr[0].setIcon(new ImageIcon(modeImage[1]));
+			} else {
+				numArr[0].setIcon(new ImageIcon(modeImage[2]));
+			}
+			
+			// 번호
+//			List<Integer> randomNumList = LottoRandom.getRandomNum();
+			
+			List<Integer> randomNumListClone = new ArrayList<>();
+			for (int i = 0; i < 6; i++) {
+				randomNumListClone.add(randomNumList.get(i));
+			}
 
-	public TestA() {
+			int count = 0;
+
+			for (int i = 0; i < selectedNumbers.size(); i++) {
+				int number = selectedNumbers.get(i);
+				int index = selectedNumbers.indexOf(number);
+				if (randomNumListClone.contains(number)) {
+					numArr[index + 1].setIcon(new ImageIcon(yesImage[number - 1]));
+
+					count++;
+				} else {
+					numArr[index + 1].setIcon(new ImageIcon(noImage[number - 1]));
+				}
+			}
+			if (count == 5) {
+				int bonus = randomNumList.get(6);
+				if (selectedNumbers.contains(bonus)) {
+					int index = selectedNumbers.indexOf(bonus);
+					numArr[index + 1].setIcon(new ImageIcon(yesImage[bonus - 1]));
+				}
+			}
+	
+			// 등수
+			CompareNum compareNum = new CompareNum();
+
+			int grade = compareNum.compareNum(selectedNumbers);
+
+			if (grade == 1) {
+				numArr[7].setIcon(new ImageIcon(gradeImage[0]));
+			} else if (grade == 2) {
+				numArr[7].setIcon(new ImageIcon(gradeImage[1]));
+			} else if (grade == 3) {
+				numArr[7].setIcon(new ImageIcon(gradeImage[2]));
+			} else if (grade == 4) {
+				numArr[7].setIcon(new ImageIcon(gradeImage[3]));
+			} else if (grade == 5) {
+				numArr[7].setIcon(new ImageIcon(gradeImage[4]));
+			} else if (grade == 6) {
+				numArr[7].setIcon(new ImageIcon(gradeImage[5]));
+			}
+		} else {
+			for (int i = 0; i < numArr.length; i++) {
+				numArr[i].setIcon(new ImageIcon(emptyImage[i]));
+			}
+		}
+	}
+
+	public TestA(LottoDrawPage lottoDrawPage) {
 		JPanel main1 = new JPanel();
 		main1.setBackground(Color.BLACK);
+
+		createMode();
+		createGrade();
+		createEmpty();
+		createYes();
+		createNo();
 
 		for (int i = 0; i < labels.length; i++) {
 			main1.add(labels[i]);
@@ -72,13 +195,13 @@ class TestA extends JPanel {
 		labels[5].addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				if(LottoTicket1.selectedNumbers.size() !=0) {
+				if (LottoTicket1.selectedNumbers.size() != 0) {
 					LottoTicket1.selectedNumbers.clear();
 				}
-				
+
 				if (LottoTicket1.selectedMode.size() != 0) {
 					LottoTicket1.selectedMode.clear();
-					
+
 				}
 				for (int i = 0; i < selectA.length; i++) {
 					URL urlofNm = TestA.class.getClassLoader().getResource("image2/빈슬롯_" + (i + 1) + ".gif");
@@ -101,10 +224,10 @@ class TestA extends JPanel {
 		labels[10].addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				if(LottoTicket2.selectedNumbers.size() !=0) {
+				if (LottoTicket2.selectedNumbers.size() != 0) {
 					LottoTicket2.selectedNumbers.clear();
 				}
-				
+
 				if (LottoTicket2.selectedMode.size() != 0) {
 					LottoTicket2.selectedMode.clear();
 				}
@@ -132,13 +255,13 @@ class TestA extends JPanel {
 		labels[15].addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				if(LottoTicket3.selectedNumbers.size() !=0) {
+				if (LottoTicket3.selectedNumbers.size() != 0) {
 					LottoTicket3.selectedNumbers.clear();
 				}
-				
+
 				if (LottoTicket3.selectedMode.size() != 0) {
 					LottoTicket3.selectedMode.clear();
-					
+
 				}
 				for (int i = 0; i < selectC.length; i++) {
 					URL urlofNm = TestA.class.getClassLoader().getResource("image2/빈슬롯_" + (i + 1) + ".gif");
@@ -159,13 +282,13 @@ class TestA extends JPanel {
 		labels[20].addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				if(LottoTicket4.selectedNumbers.size() !=0) {
+				if (LottoTicket4.selectedNumbers.size() != 0) {
 					LottoTicket4.selectedNumbers.clear();
 				}
-				
+
 				if (LottoTicket4.selectedMode.size() != 0) {
 					LottoTicket4.selectedMode.clear();
-					
+
 				}
 				for (int i = 0; i < selectD.length; i++) {
 					URL urlofNm = TestA.class.getClassLoader().getResource("image2/빈슬롯_" + (i + 1) + ".gif");
@@ -191,13 +314,13 @@ class TestA extends JPanel {
 		labels[25].addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				if(LottoTicket5.selectedNumbers.size() !=0) {
+				if (LottoTicket5.selectedNumbers.size() != 0) {
 					LottoTicket5.selectedNumbers.clear();
 				}
-				
+
 				if (LottoTicket5.selectedMode.size() != 0) {
 					LottoTicket5.selectedMode.clear();
-					
+
 				}
 				for (int i = 0; i < selectE.length; i++) {
 					URL urlofNm = TestA.class.getClassLoader().getResource("image2/빈슬롯_" + (i + 1) + ".gif");
@@ -220,6 +343,7 @@ class TestA extends JPanel {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				Management.card.show(Management.all, "시작");
+
 			}
 		});
 		labels[29].setLocation(38, 515); // D슬롯 밑 2
@@ -229,9 +353,36 @@ class TestA extends JPanel {
 		labels[30].addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				Management.card.show(Management.all, "공튀기기");
+/////////////////				Management.card.show(Management.all, "공튀기기");////////////////////////
+				Management.card.show(Management.all, "당첨 번호");
+				
+				LottoRandom lottoRandom = new LottoRandom();
+				List<Integer> randomNumList = lottoRandom.getRandomNum();
+				
+				List<Integer> randomNumListClone = new ArrayList<>();
+				for (int i = 0; i < 6; i++) {
+					randomNumListClone.add(randomNumList.get(i));
+				}
+				
+				Collections.sort(randomNumListClone);
+				System.out.println(randomNumListClone);
+				System.out.println(randomNumList.get(6));
+
+				for (int i = 0; i < randomNumListClone.size(); i++) {
+					int number = randomNumListClone.get(i);
+					lottoDrawPage.drawNumArr[i].setIcon(new ImageIcon(yesImage[number - 1]));
+				}
+				lottoDrawPage.drawNumArr[6].setIcon(new ImageIcon(yesImage[randomNumList.get(6) - 1]));
+	
+				makeDrawPage(LottoTicket1.selectedMode, LottoTicket1.selectedNumbers, lottoDrawPage.numArrA, randomNumList);
+				makeDrawPage(LottoTicket2.selectedMode, LottoTicket2.selectedNumbers, lottoDrawPage.numArrB, randomNumList);
+				makeDrawPage(LottoTicket3.selectedMode, LottoTicket3.selectedNumbers, lottoDrawPage.numArrC, randomNumList);
+				makeDrawPage(LottoTicket4.selectedMode, LottoTicket4.selectedNumbers, lottoDrawPage.numArrD, randomNumList);
+				makeDrawPage(LottoTicket5.selectedMode, LottoTicket5.selectedNumbers, lottoDrawPage.numArrE, randomNumList);
+				
 			}
 		});
+
 		labels[31].setLocation(23, 533); // 맨 밑에
 		labels[31].setSize(295, 17);
 
@@ -347,7 +498,7 @@ class TestA extends JPanel {
 				@Override
 				public void mouseClicked(MouseEvent e) {
 					if (LottoTicket2.selectedNumbers.size() == 0) {
-					Management.card.show(Management.all, "티켓2");
+						Management.card.show(Management.all, "티켓2");
 					}
 				}
 
@@ -358,7 +509,7 @@ class TestA extends JPanel {
 				@Override
 				public void mouseClicked(MouseEvent e) {
 					if (LottoTicket3.selectedNumbers.size() == 0) {
-					Management.card.show(Management.all, "티켓3");
+						Management.card.show(Management.all, "티켓3");
 					}
 				}
 
@@ -369,7 +520,7 @@ class TestA extends JPanel {
 				@Override
 				public void mouseClicked(MouseEvent e) {
 					if (LottoTicket4.selectedNumbers.size() == 0) {
-					Management.card.show(Management.all, "티켓4");
+						Management.card.show(Management.all, "티켓4");
 					}
 				}
 
@@ -380,7 +531,7 @@ class TestA extends JPanel {
 				@Override
 				public void mouseClicked(MouseEvent e) {
 					if (LottoTicket5.selectedNumbers.size() == 0) {
-					Management.card.show(Management.all, "티켓5");
+						Management.card.show(Management.all, "티켓5");
 					}
 				}
 
