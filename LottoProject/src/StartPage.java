@@ -46,6 +46,7 @@ class StartPage extends JPanel {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				Management.card.show(Management.all, "튜토리얼");
+
 			}
 		});
 		

@@ -7,24 +7,25 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-public class Tutorial1 extends JFrame {
+class Tutorial8 extends JFrame {
 	private JPanel panel;
 	private JLabel label;
 	
-	public Tutorial1() {
+	public Tutorial8() {
 		setTitle("로또 튜토리얼");
-	    panel = new JPanel();
+		JPanel panel = new JPanel();
 		label = new JLabel();
-		ImageIcon icon = new ImageIcon("LottoProject/src/image5/튜토리얼_1.jpg");
+		ImageIcon icon = new ImageIcon("LottoProject/src/image5/튜토리얼_10.jpg");
 		label.setIcon(icon);
 		label.addMouseListener((MouseListener) new MouseAdapter() {
 		@Override
 		public void mouseClicked(MouseEvent e) {
-			new Tutorial2();
+			new StartPage();
 			dispose();
 		}
 		});
-
+		
+		
 		panel.add(label);
 		add(panel);
 		setSize(340, 550);
@@ -32,7 +33,8 @@ public class Tutorial1 extends JFrame {
 		setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 		
 	}
+	
 	public static void main(String[] args) {
-		Tutorial1 t = new Tutorial1();
+		Tutorial8 t = new Tutorial8();
 	}
 }

@@ -26,6 +26,4 @@ class HelpMessage extends JFrame {
 		setVisible(true);
 		setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 	}
-
-	
 }
