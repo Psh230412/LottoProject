@@ -12,12 +12,15 @@ public class Management extends JFrame {
 	LottoDrawPage lottoDrawPage = new LottoDrawPage(this);
 	TestA testA = new TestA(lottoDrawPage);
 	
+	
+	
 	public Management() {
 		setTitle("로또");
 
 		all.setLayout(card);
 		
 		all.add(new StartPage(), "시작");
+		all.add(new Tutorial(), "튜토리얼");
 		all.add(testA, "번호 선택");
 		all.add(new LottoTicket1(testA), "티켓1");
 		all.add(new LottoTicket2(testA), "티켓2");
@@ -30,6 +33,7 @@ public class Management extends JFrame {
 //		card.show(all, "당첨 번호");
 
 		card.show(all, "시작");
+		card.show(all, "튜토리얼");
 		add(all);
 	
 		all.setPreferredSize(new Dimension(340, 550));
