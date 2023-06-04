@@ -34,11 +34,20 @@ class StartPage extends JPanel {
 		labelOfMain[4].setBounds(0, 509, 340, 41);
 		
 		JButton btn = new JButton("로또하러가기");
+		JButton btn2 = new JButton("튜토리얼");
 
 		panel.add(btn);
-
 		panel.setBounds(0, 0, 340, 550);
 		setLayout(null);
+		
+		btn2.setBounds(0, 380, 340, 42);
+		labelOfMain[1].add(btn);
+		labelOfMain[1].addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				Management.card.show(Management.all, "튜토리얼");
+			}
+		});
 		
 		btn.setBounds(0, 421, 340, 42);
 		labelOfMain[2].add(btn);
