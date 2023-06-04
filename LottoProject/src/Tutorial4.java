@@ -43,7 +43,9 @@ class Tutorial4 extends JFrame {
 	    panel.add(b1);
 		add(panel);
 		setSize(340, 550);
-		setVisible(true); 
+		setVisible(true);
+		setResizable(false);
+	//	pack(); 왜 에러 뜸? 
 		setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 	}
 	

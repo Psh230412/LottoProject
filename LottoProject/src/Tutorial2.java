@@ -29,6 +29,8 @@ public class Tutorial2 extends JFrame {
 		add(panel);
 		setSize(340, 550);
 		setVisible(true); 
+		setResizable(false);
+		pack();
 		setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 		
 	}
