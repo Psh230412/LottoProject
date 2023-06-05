@@ -4,6 +4,7 @@ import java.util.Collections;
 import java.util.List;
 
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 import java.awt.Color;
@@ -371,8 +372,74 @@ class TestA extends JPanel {
 		labels[28].addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				Management.card.show(Management.all, "시작");
+				int result = JOptionPane.showConfirmDialog(TestA.this, "시작화면으로 돌아갈시 초기화됩니다", "돌아가기",
+						JOptionPane.YES_NO_OPTION);
+				if (result == JOptionPane.YES_OPTION) {
+					if (LottoTicket1.selectedNumbers.size() != 0) {
+						LottoTicket1.selectedNumbers.clear();
+					}
+					if (LottoTicket1.selectedMode.size() != 0) {
+						LottoTicket1.selectedMode.clear();
+					}
+					for (int i = 0; i < selectA.length; i++) {
+						URL urlofNm = TestA.class.getClassLoader().getResource("image2/빈슬롯_" + (i + 1) + ".gif");
+						ImageIcon imageicon2 = new ImageIcon(urlofNm);
+						selectA[i].setIcon(imageicon2);
+					}
+					if (LottoTicket2.selectedNumbers.size() != 0) {
+						LottoTicket2.selectedNumbers.clear();
+					}
 
+					if (LottoTicket2.selectedMode.size() != 0) {
+						LottoTicket2.selectedMode.clear();
+
+					}
+					for (int i = 0; i < selectB.length; i++) {
+						URL urlofNm = TestA.class.getClassLoader().getResource("image2/빈슬롯_" + (i + 1) + ".gif");
+						ImageIcon imageicon2 = new ImageIcon(urlofNm);
+						selectB[i].setIcon(imageicon2);
+					}
+					if (LottoTicket3.selectedNumbers.size() != 0) {
+						LottoTicket3.selectedNumbers.clear();
+					}
+					if (LottoTicket3.selectedMode.size() != 0) {
+						LottoTicket3.selectedMode.clear();
+					}
+
+					for (int i = 0; i < selectC.length; i++) {
+						URL urlofNm = TestA.class.getClassLoader().getResource("image2/빈슬롯_" + (i + 1) + ".gif");
+						ImageIcon imageicon2 = new ImageIcon(urlofNm);
+						selectC[i].setIcon(imageicon2);
+					}
+					if (LottoTicket4.selectedNumbers.size() != 0) {
+						LottoTicket4.selectedNumbers.clear();
+					}
+
+					if (LottoTicket4.selectedMode.size() != 0) {
+						LottoTicket4.selectedMode.clear();
+
+					}
+					for (int i = 0; i < selectD.length; i++) {
+						URL urlofNm = TestA.class.getClassLoader().getResource("image2/빈슬롯_" + (i + 1) + ".gif");
+						ImageIcon imageicon2 = new ImageIcon(urlofNm);
+						selectD[i].setIcon(imageicon2);
+					}
+					if (LottoTicket5.selectedNumbers.size() != 0) {
+						LottoTicket5.selectedNumbers.clear();
+					}
+
+					if (LottoTicket5.selectedMode.size() != 0) {
+						LottoTicket5.selectedMode.clear();
+
+					}
+					for (int i = 0; i < selectE.length; i++) {
+						URL urlofNm = TestA.class.getClassLoader().getResource("image2/빈슬롯_" + (i + 1) + ".gif");
+						ImageIcon imageicon2 = new ImageIcon(urlofNm);
+						selectE[i].setIcon(imageicon2);
+					}
+
+					Management.card.show(Management.all, "시작");
+				}
 			}
 		});
 		labels[29].setLocation(38, 515); // D슬롯 밑 2

@@ -128,8 +128,22 @@ public class LottoDrawPage extends JPanel {
 		lbl[8].setBounds(0, 121 + 12 + 42 + 67 + 67, 340, 25); // C
 		lbl[9].setBounds(0, 121 + 12 + 42 + 67 + 67 + 67, 340, 25); // D
 		lbl[10].setBounds(0, 121 + 12 + 42 + 67 + 67 + 67 + 67, 340, 25); // E
-		lbl[12].setBounds(118, 121 + 12 + 42 + 67 + 67 + 67 + 67 + 67, 100, 40); // 메인
-		
+		lbl[12].setBounds(118, 121 + 12 + 42 + 67 + 67 + 67 + 67 + 67, 100, 40); // 리스타트
+		lbl[12].addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				URL urlOfScreen = LottoTicket1.class.getClassLoader().getResource("image4/변경될리스타트.gif");
+				ImageIcon defaultIcon = new ImageIcon(urlOfScreen);
+				lbl[12].setIcon(defaultIcon);
+			}
+
+			@Override
+			public void mouseExited(MouseEvent e) {
+				URL urlOfScreen = LottoTicket1.class.getClassLoader().getResource("image4/결과확인13.gif");
+				ImageIcon changeIcon = new ImageIcon(urlOfScreen);
+				lbl[12].setIcon(changeIcon);
+			}
+		});
 		for (int i = 0; i < lbl.length; i++) {
 			add(lbl[i]);
 		}

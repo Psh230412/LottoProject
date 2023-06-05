@@ -12,7 +12,7 @@ public class ResourceSoundPack {
 
    static Clip lottoBallClip;
 
-   static void stratSound() {
+   static void startSound() {
       try {
          URL soundFile = ResourceSoundPack.class.getClassLoader().getResource("soundResourses/start.wav");
          // 사운드 파일 경로 설정
