@@ -13,7 +13,7 @@ public class ResourceSoundPack {
 
 	static Clip lottoBallClip;
 
-<<<<<<< HEAD
+
 	static void stratSound() {
 		try {
 			URL soundFile = ResourceSoundPack.class.getClassLoader().getResource("soundResourses/start.wav"); // 시작
@@ -26,7 +26,7 @@ public class ResourceSoundPack {
 			ex.printStackTrace();
 		}
 	}
-=======
+
    static void startSound() {
       try {
          URL soundFile = ResourceSoundPack.class.getClassLoader().getResource("soundResourses/start.wav");
@@ -39,7 +39,7 @@ public class ResourceSoundPack {
          ex.printStackTrace();
       }
    }
->>>>>>> branch 'master' of https://github.com/Psh230412/LottoProject.git
+
 
 	static void removeSound() {
 		try {//지우기

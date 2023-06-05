@@ -97,7 +97,7 @@ public class LotteryBall extends JPanel implements ActionListener {
 	}
 
 	public LotteryBall() {
-		resourceSoundPack.lottoBallSound();
+		//resourceSoundPack.lottoBallSound();
 		switchPageTimer.setRepeats(false);
 		setLayout(null);
 
