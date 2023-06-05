@@ -28,7 +28,7 @@ class LottoTicket3 extends JPanel {
 	private boolean[] isButtonClicked = new boolean[45];
 	private boolean isSixSelected = false;
 	TestA testA;
-
+	ResourceSoundPack resourceSoundPack2 = new ResourceSoundPack();
 	public static List<String> getSelectedMode() {
 		return selectedMode;
 	}
@@ -342,6 +342,7 @@ class LottoTicket3 extends JPanel {
 		buttons[1].addActionListener(new ActionListener() { // 자동버튼
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				resourceSoundPack2.btnSound();
 				int clickCount = 0;
 				isSixSelected = true;
 				for (JButton button : lottoNumBtn) {
@@ -389,6 +390,7 @@ class LottoTicket3 extends JPanel {
 		buttons[2].addActionListener(new ActionListener() { // 초기화버튼
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				resourceSoundPack2.btnSound();
 				isSixSelected = false;
 				for (JButton button : lottoNumBtn) {
 					button.setBackground(null);
@@ -406,6 +408,7 @@ class LottoTicket3 extends JPanel {
 		buttons[0].addActionListener(new ActionListener() { // 확정버튼
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				resourceSoundPack2.btnSound();
 				if (!(changeCount == 6)) {
 					JOptionPane.showMessageDialog(null, "번호를 6개까지 정하셔야합니다", "입력미달", JOptionPane.WARNING_MESSAGE);
 				} else {
@@ -460,7 +463,7 @@ class LottoTicket3 extends JPanel {
 // 액션 리스너
 class MyListener3 implements ActionListener {
 	private LottoTicket3 lt1;
-
+	ResourceSoundPack resourceSoundPack = new ResourceSoundPack();
 	public MyListener3(LottoTicket3 lt1) {
 		this.lt1 = lt1;
 	}
@@ -474,6 +477,7 @@ class MyListener3 implements ActionListener {
 			source.setBackground(Color.RED);
 			lt1.increaseCount();
 			lt1.ChangeImage(source);
+			resourceSoundPack.numSound();
 			if (lt1.getChangeCount() == 6) {
 				lt1.setSixSelected(true);
 				for (JButton button : lt1.lottoNumBtn) {
@@ -502,6 +506,7 @@ class MyListener3 implements ActionListener {
 			source.setBackground(null);
 			lt1.decreaseCount();
 		}
+		resourceSoundPack.numSound();
 		if (lt1.getChangeCount() < 6) {
 			lt1.setSixSelected(false);
 			for (JButton button : lt1.lottoNumBtn) {

@@ -15,7 +15,7 @@ public class ResourceSoundPack {
 
 	static void stratSound() {
 		try {
-			URL soundFile = ResourceSoundPack.class.getClassLoader().getResource("soundResourses/start.wav");
+			URL soundFile = ResourceSoundPack.class.getClassLoader().getResource("soundResourses/start.wav"); // 시작
 			// 사운드 파일 경로 설정
 			AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(soundFile);
 			Clip clip = AudioSystem.getClip();
@@ -27,7 +27,7 @@ public class ResourceSoundPack {
 	}
 
 	static void removeSound() {
-		try {
+		try {//지우기
 			URL soundFile = ResourceSoundPack.class.getClassLoader().getResource("soundResourses/remove.wav");
 			// // 사운드 파일 경로 설정
 			AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(soundFile);
@@ -40,7 +40,7 @@ public class ResourceSoundPack {
 	}
 
 	static void slotPickSound() {
-		try {
+		try {//슬롯 선택 
 			URL soundFile = ResourceSoundPack.class.getClassLoader().getResource("soundResourses/slotPick.wav");
 			// 사운드 파일 경로 설정
 			AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(soundFile);
@@ -53,7 +53,7 @@ public class ResourceSoundPack {
 	}
 
 	static void btnSound() {
-		try {
+		try {//버튼 누를떄
 			URL soundFile = ResourceSoundPack.class.getClassLoader().getResource("soundResourses/btnPick.wav");
 			// 사운드 파일 경로 설정
 			AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(soundFile);

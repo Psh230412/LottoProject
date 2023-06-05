@@ -442,6 +442,8 @@ class StartPage extends JPanel {
 
 		JPanel panel = new JPanel();
 		panel.setLayout(null);
+		
+		ResourceSoundPack resourceSoundPack = new ResourceSoundPack();
 
 		for (int i = 0; i < 5; i++) {
 			URL urlOfMain = LottoTicket1.class.getClassLoader().getResource("image/메인화면_0" + (i + 1) + ".gif");
@@ -462,6 +464,7 @@ class StartPage extends JPanel {
 
 			@Override
 			public void mouseExited(MouseEvent e) {
+				resourceSoundPack.stratSound();
 				URL urlOfScreen = LottoTicket1.class.getClassLoader().getResource("image/메인화면_02.gif");
 				ImageIcon changeIcon = new ImageIcon(urlOfScreen);
 				labelOfMain[1].setIcon(changeIcon);
@@ -480,6 +483,7 @@ class StartPage extends JPanel {
 
 			@Override
 			public void mouseExited(MouseEvent e) {
+				resourceSoundPack.stratSound();
 				URL urlOfScreen = LottoTicket1.class.getClassLoader().getResource("image/메인화면_03.gif");
 				ImageIcon changeIcon = new ImageIcon(urlOfScreen);
 				labelOfMain[2].setIcon(changeIcon);
@@ -496,6 +500,7 @@ class StartPage extends JPanel {
 
 			@Override
 			public void mouseExited(MouseEvent e) {
+				resourceSoundPack.stratSound();
 				URL urlOfScreen = LottoTicket1.class.getClassLoader().getResource("image/메인화면_04.gif");
 				ImageIcon changeIcon = new ImageIcon(urlOfScreen);
 				labelOfMain[3].setIcon(changeIcon);

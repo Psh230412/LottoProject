@@ -27,7 +27,7 @@ class LottoTicket1 extends JPanel {
 	private static int changeCount = 0;
 	JLabel[] look = new JLabel[10];
 	private boolean[] isButtonClicked = new boolean[45];
-
+	ResourceSoundPack resourceSoundPack2 = new ResourceSoundPack();
 	private boolean isSixSelected = false;
 	TestA testA;
 
@@ -177,6 +177,7 @@ class LottoTicket1 extends JPanel {
 			lottoNumBtn[i].addMouseListener(new MouseAdapter() {
 				@Override
 				public void mouseExited(MouseEvent e) {
+					
 					if (!isButtonClicked[index] && !getIsSixSelected()) {
 						URL urlOfScreen = LottoTicket1.class.getClassLoader()
 								.getResource("image/defaultNumber" + " " + "(" + (index + 1) + ")" + ".gif");
@@ -343,6 +344,7 @@ class LottoTicket1 extends JPanel {
 		buttons[1].addActionListener(new ActionListener() { // 자동버튼
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				resourceSoundPack2.btnSound();
 				int clickCount = 0;
 				isSixSelected = true;
 				for (JButton button : lottoNumBtn) {
@@ -390,6 +392,7 @@ class LottoTicket1 extends JPanel {
 		buttons[2].addActionListener(new ActionListener() { // 초기화버튼
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				resourceSoundPack2.btnSound();
 				isSixSelected = false;
 				for (JButton button : lottoNumBtn) {
 					button.setBackground(null);
@@ -407,6 +410,7 @@ class LottoTicket1 extends JPanel {
 		buttons[0].addActionListener(new ActionListener() { // 확정버튼
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				resourceSoundPack2.btnSound();
 				if (!(changeCount == 6)) {
 					JOptionPane.showMessageDialog(null, "번호를 6개까지 정하셔야합니다", "입력미달", JOptionPane.WARNING_MESSAGE);
 				} else {
@@ -461,12 +465,14 @@ class LottoTicket1 extends JPanel {
 class MyListener implements ActionListener {
 	private LottoTicket1 lt1;
 
+	ResourceSoundPack resourceSoundPack = new ResourceSoundPack();
 	public MyListener(LottoTicket1 lt1) {
 		this.lt1 = lt1;
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
+		
 		JButton source = (JButton) e.getSource();
 		if (lt1.getChangeCount() == 6)
 			lt1.setAuto(false);
@@ -486,8 +492,11 @@ class MyListener implements ActionListener {
 					}
 				}
 			}
-		} else if (!source.getBackground().equals(Color.RED) && lt1.getChangeCount() == 6) {
+			resourceSoundPack.numSound();
+		}
+		else if (!source.getBackground().equals(Color.RED) && lt1.getChangeCount() == 6) {
 		} else if (source.getBackground().equals(Color.RED) && lt1.getChangeCount() == 1 && lt1.isClick() == true) {
+			
 			source.setBackground(null);
 			lt1.decreaseCount();
 			lt1.setAuto(false);
@@ -502,6 +511,7 @@ class MyListener implements ActionListener {
 			source.setBackground(null);
 			lt1.decreaseCount();
 		}
+		resourceSoundPack.numSound();
 		if (lt1.getChangeCount() < 6) {
 			lt1.setSixSelected(false);
 			for (JButton button : lt1.lottoNumBtn) {

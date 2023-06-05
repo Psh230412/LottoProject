@@ -55,6 +55,7 @@ public class LotteryBall extends JPanel implements ActionListener {
 	static final int HEIGHT = 280;
 	private static final int PERIOD = 20;
 	URL[] urlOfLotteryBall = new URL[45];
+	ResourceSoundPack resourceSoundPack = new ResourceSoundPack();
 	static Timer switchPageTimer = new Timer(2200, new ActionListener() {
 		@Override
 		public void actionPerformed(ActionEvent e) {
@@ -96,6 +97,7 @@ public class LotteryBall extends JPanel implements ActionListener {
 	}
 
 	public LotteryBall() {
+		resourceSoundPack.lottoBallSound();
 		switchPageTimer.setRepeats(false);
 		setLayout(null);
 
