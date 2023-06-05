@@ -21,8 +21,6 @@ import javax.swing.JPanel;
 class LottoTicket1 extends JPanel {
 	private boolean isClick = false;
 	private boolean isAuto = false;
-//	static List<String> selectedMode = new ArrayList<>();
-//	static List<Integer> selectedNumbers = new ArrayList<>();
 	static List<String> selectedMode;
 	static List<Integer> selectedNumbers;
 	public JButton[] lottoNumBtn = new JButton[45];;
@@ -32,7 +30,7 @@ class LottoTicket1 extends JPanel {
 
 	private boolean isSixSelected = false;
 	TestA testA;
-	
+
 	public static List<String> getSelectedMode() {
 		return selectedMode;
 	}
@@ -88,7 +86,7 @@ class LottoTicket1 extends JPanel {
 	public int getChangeCount() { // 현재 카운트를 가져오는 메서드를 추가합니다
 		return this.changeCount;
 	}
-	
+
 	Image[] ModeImage = new Image[3];
 
 	public Image[] CreateMode() {
@@ -225,7 +223,7 @@ class LottoTicket1 extends JPanel {
 	public LottoTicket1(TestA testA) {
 		selectedMode = new ArrayList<>();
 		selectedNumbers = new ArrayList<>();
-		this.testA=testA;
+		this.testA = testA;
 		JPanel oneTicketPanel = new JPanel();
 		oneTicketPanel.setLayout(null);
 		oneTicketPanel.setBackground(Color.BLACK);
@@ -381,10 +379,10 @@ class LottoTicket1 extends JPanel {
 				if (yesNo == 6) {
 					isAuto = true;
 				}
-				if (yesNo >= 1 && yesNo <= 5) {
+				if (yesNo >= 1 && yesNo < 5) {
 					isAuto = false;
 				}
-				if (autoCount > 1 && autoCount < 7) {
+				if (autoCount > 1 && autoCount < 7 || clickCount == 5) {
 					isClick = true;
 				}
 			}
@@ -416,12 +414,9 @@ class LottoTicket1 extends JPanel {
 							JOptionPane.YES_NO_OPTION);
 					if (result == JOptionPane.YES_OPTION) {
 						JButton source = (JButton) e.getSource();
-						
-						
+
 						inputSelectedNumbers();
 						inputSelectedMode();
-						System.out.println(selectedMode);
-						System.out.println(selectedNumbers);
 						for (JButton button : lottoNumBtn) {
 							button.setBackground(null);
 						}
@@ -432,8 +427,6 @@ class LottoTicket1 extends JPanel {
 						setAuto(false);
 						setClick(false);
 						resetCount();
-						
-
 
 						for (int i = 0; i < selectedNumbers.size(); i++) {
 							int selectedNumber = selectedNumbers.get(i);
@@ -450,7 +443,7 @@ class LottoTicket1 extends JPanel {
 								testA.selectA[0].setIcon(new ImageIcon(ModeImage[2]));
 							}
 						}
-						
+
 						Management.card.show(Management.all, "번호 선택");
 					}
 				}

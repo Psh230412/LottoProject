@@ -4,11 +4,7 @@ import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
 import java.net.URL;
-import java.util.HashMap;
-import java.util.Map;
 import java.util.Random;
 
 import javax.swing.ImageIcon;
@@ -59,15 +55,12 @@ public class LotteryBall extends JPanel implements ActionListener {
 	static final int HEIGHT = 280;
 	private static final int PERIOD = 30;
 	URL[] urlOfLotteryBall = new URL[45];
-	static Timer switchPageTimer = new Timer(1000, new ActionListener() {
+	static Timer switchPageTimer = new Timer(2200, new ActionListener() {
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			Management.card.show(Management.all, "당첨 번호");
 		}
 	});
-	
-
-
 
 	// private Timer timer;
 
@@ -103,19 +96,20 @@ public class LotteryBall extends JPanel implements ActionListener {
 	}
 
 	public LotteryBall() {
-		switchPageTimer.setRepeats(false); 
+		switchPageTimer.setRepeats(false);
 		setLayout(null);
 
-		setBackground(new Color(255, 0, 0));// 여기 색을 바꾸시면 됩니다.
+		setBackground(new Color(10, 4, 52));
+		;// 여기 색을 바꾸시면 됩니다.
 
 		MyPanel panel = new MyPanel();
-		panel.setBackground(Color.BLACK);
+		panel.setBackground(new Color(10, 4, 52));
 		panel.setOpaque(true);
 		panel.setBounds(31, 142, 279, 280);
 
 		add(panel);
 
-		JLabel[] ani = new JLabel[9];
+		JLabel[] ani = new JLabel[4];
 
 		for (int i = 0; i < ani.length; i++) {
 			URL urlOfAni = LotteryBall.class.getClassLoader().getResource("image/애니메이션_" + (i + 2) + ".gif");
@@ -126,39 +120,21 @@ public class LotteryBall extends JPanel implements ActionListener {
 		ani[0].setBounds(0, 0, 340, 142);
 		ani[1].setBounds(0, 142, 31, 280);
 		ani[2].setBounds(310, 142, 30, 280);
-		ani[3].setBounds(0, 422, 340, 97); // 공 나오는 곳
-		ani[4].setBounds(0, 519, 24, 36);
-		ani[5].setBounds(304, 519, 15, 18); //다음 버튼
-		//testA에서 다음 버튼 누르면 누르는 순간 어레이리스트에 있는 숫자 모두 n회차에 저장하기
-		ani[5].addMouseListener(new MouseAdapter() {
-	         @Override
-	         public void mouseClicked(MouseEvent e) {
-	            Management.card.show(Management.all, "당첨 번호");
-	         }
-	      });
-		ani[6].setBounds(319, 519, 21, 36);
-		ani[7].setBounds(24, 537, 15, 18);
-		ani[8].setBounds(304, 537, 15, 18);
+		ani[3].setBounds(0, 422, 340, 97);
 
 		for (int i = 0; i < ani.length; i++) {
 			add(ani[i]);
 		}
 
 		Timer timer = new Timer(PERIOD, this);
-		
-		
-		
+
 		timer.start();
 
-		
-		
-		
-
 	}
-	
+
 	public static void startAnimation() {
-	      switchPageTimer.start();
-	   }
+		switchPageTimer.start();
+	}
 
 	@Override
 	public void actionPerformed(ActionEvent arg0) {

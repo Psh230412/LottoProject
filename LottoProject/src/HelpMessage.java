@@ -1,29 +1,33 @@
 import java.awt.BorderLayout;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.net.URL;
 
 import javax.swing.ImageIcon;
-import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-class HelpMessage extends JFrame {
-	public HelpMessage() {
-		setSize(375, 685);
+class HelpMessage extends JPanel {
+	JLabel label;
+	   Management management;
 
-		JPanel panel = new JPanel();
-		panel.setLayout(null);
+	   public HelpMessage() { 
+		   
+	      URL urlOfTuto = LottoTicket1.class.getClassLoader().getResource("image/도움말.gif");
+	      ImageIcon imageIcon = new ImageIcon(urlOfTuto);
+	      label = new JLabel(imageIcon);
+	      label.addMouseListener((MouseListener) new MouseAdapter() {
+	         @Override
+	         public void mouseClicked(MouseEvent e) {
+	            Management.card.show(Management.all, "번호 선택");
 
-		
-		//URL urlOfScreen = LottoTicket1.class.getClassLoader().getResource("image/셀렉트_" + (i + 1) + ".gif");
-		//ImageIcon imageIcon = new ImageIcon(urlOfScreen);
-		ImageIcon backgroundImage = new ImageIcon("도움말2.jpg");
-		JLabel bg = new JLabel(backgroundImage);
-		bg.setBounds(0, 0, 360, 648);
+	         }
+	      });
+	      setLayout(new BorderLayout());
+	      add(label);
+	      setBounds(0, 0, 340, 550);
+	      setVisible(true);
 
-		panel.add(bg);
-		add(panel, BorderLayout.CENTER);
-
-		setVisible(true);
-		setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+	   }
 	}
-}

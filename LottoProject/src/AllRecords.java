@@ -1,5 +1,4 @@
 
-import java.awt.Image;
 import java.util.List;
 
 class Records {
@@ -126,14 +125,5 @@ public class AllRecords {
 		}
 	}
 	
-	
-	/*
-	 * public List<Integer> getRecordsNumbers(){
-	 * 
-	 * } public List<String> getRecordsMode(){
-	 * 
-	 * }
-	 */
-
 
 }

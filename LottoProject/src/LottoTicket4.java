@@ -1,22 +1,17 @@
-import java.awt.Button;
 import java.awt.Color;
-import java.awt.Dimension;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
-import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
-import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -25,8 +20,6 @@ class LottoTicket4 extends JPanel {
 
 	private boolean isClick = false;
 	private boolean isAuto = false;
-//	static List<String> selectedMode = new ArrayList<>();
-//	static List<Integer> selectedNumbers = new ArrayList<>();
 	static List<String> selectedMode;
 	static List<Integer> selectedNumbers;
 	public JButton[] lottoNumBtn = new JButton[45];;
@@ -225,7 +218,7 @@ class LottoTicket4 extends JPanel {
 	public LottoTicket4(TestA testA) {
 		selectedMode = new ArrayList<>();
 		selectedNumbers = new ArrayList<>();
-		this.testA=testA;
+		this.testA = testA;
 		JPanel oneTicketPanel = new JPanel();
 		oneTicketPanel.setLayout(null);
 		oneTicketPanel.setBackground(Color.BLACK);
@@ -417,11 +410,9 @@ class LottoTicket4 extends JPanel {
 							JOptionPane.YES_NO_OPTION);
 					if (result == JOptionPane.YES_OPTION) {
 						JButton source = (JButton) e.getSource();
-						
+
 						inputSelectedNumbers();
 						inputSelectedMode();
-						System.out.println(selectedMode);
-						System.out.println(selectedNumbers);
 						for (JButton button : lottoNumBtn) {
 							button.setBackground(null);
 						}
@@ -429,11 +420,11 @@ class LottoTicket4 extends JPanel {
 							lottoNumBtn[i].setIcon(new ImageIcon(imageArrBefore[i]));
 							isButtonClicked[i] = false;
 						}
-						
+
 						setAuto(false);
 						setClick(false);
 						resetCount();
-						
+
 						for (int i = 0; i < selectedNumbers.size(); i++) {
 							int selectedNumber = selectedNumbers.get(i);
 							testA.selectD[i + 1].setIcon(new ImageIcon(imageArrAfter[selectedNumber - 1]));

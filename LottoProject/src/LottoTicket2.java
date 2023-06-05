@@ -1,22 +1,17 @@
-import java.awt.Button;
 import java.awt.Color;
-import java.awt.Dimension;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
-import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
-import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -24,8 +19,6 @@ import javax.swing.JPanel;
 class LottoTicket2 extends JPanel {
 	private boolean isClick = false;
 	private boolean isAuto = false;
-//	static List<String> selectedMode = new ArrayList<>();
-//	static List<Integer> selectedNumbers = new ArrayList<>();
 	static List<String> selectedMode;
 	static List<Integer> selectedNumbers;
 	public JButton[] lottoNumBtn = new JButton[45];;
@@ -422,8 +415,6 @@ class LottoTicket2 extends JPanel {
 
 						inputSelectedNumbers();
 						inputSelectedMode();
-						System.out.println(selectedMode);
-						System.out.println(selectedNumbers);
 						for (JButton button : lottoNumBtn) {
 							button.setBackground(null);
 						}

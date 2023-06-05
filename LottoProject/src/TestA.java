@@ -1,7 +1,6 @@
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Iterator;
 import java.util.List;
 
 import javax.swing.JLabel;
@@ -40,7 +39,7 @@ class TestA extends JPanel {
 		}
 		return modeImage;
 	}
-	
+
 	public Image[] createGrade() {
 		for (int i = 0; i < gradeImage.length; i++) {
 			URL urlOfDN = TestA.class.getClassLoader().getResource("image4/grade" + (i + 1) + ".gif");
@@ -48,18 +47,20 @@ class TestA extends JPanel {
 		}
 		return gradeImage;
 	}
-	
+
 	public Image[] createYes() {
 		for (int i = 0; i < yesImage.length; i++) {
-			URL urlOfDN = TestA.class.getClassLoader().getResource("image/selNumber" + " " + "(" + (i + 1) + ")" + ".gif");
+			URL urlOfDN = TestA.class.getClassLoader()
+					.getResource("image/selNumber" + " " + "(" + (i + 1) + ")" + ".gif");
 			yesImage[i] = new ImageIcon(urlOfDN).getImage();
 		}
 		return yesImage;
 	}
-	
+
 	public Image[] createNo() {
 		for (int i = 0; i < noImage.length; i++) {
-			URL urlOfDN = TestA.class.getClassLoader().getResource("image/unNumber" + " " + "(" + (i + 1) + ")" + ".gif");
+			URL urlOfDN = TestA.class.getClassLoader()
+					.getResource("image/unNumber" + " " + "(" + (i + 1) + ")" + ".gif");
 			noImage[i] = new ImageIcon(urlOfDN).getImage();
 		}
 		return noImage;
@@ -91,8 +92,9 @@ class TestA extends JPanel {
 		}
 		return SelectedNum;
 	}
-	
-	public void makeDrawPage(List<String> selectedMode, List<Integer> selectedNumbers, JLabel[] numArr, List<Integer> randomNumList) {
+
+	public void makeDrawPage(List<String> selectedMode, List<Integer> selectedNumbers, JLabel[] numArr,
+			List<Integer> randomNumList) {
 		if (!selectedNumbers.isEmpty()) {
 			// 자동
 			String selectMode = selectedMode.get(0);
@@ -103,10 +105,7 @@ class TestA extends JPanel {
 			} else {
 				numArr[0].setIcon(new ImageIcon(modeImage[2]));
 			}
-			
-			// 번호
-//			List<Integer> randomNumList = LottoRandom.getRandomNum();
-			
+
 			List<Integer> randomNumListClone = new ArrayList<>();
 			for (int i = 0; i < 6; i++) {
 				randomNumListClone.add(randomNumList.get(i));
@@ -132,11 +131,11 @@ class TestA extends JPanel {
 					numArr[index + 1].setIcon(new ImageIcon(yesImage[bonus - 1]));
 				}
 			}
-	
+
 			int grade = 0;
 
 			switch (count) {
-			
+
 			case 3:
 				grade = 5;
 				break;
@@ -178,17 +177,15 @@ class TestA extends JPanel {
 			} else if (grade == 6) {
 				numArr[7].setIcon(new ImageIcon(gradeImage[5]));
 			}
-			
+
 		} else {
 			for (int i = 0; i < numArr.length; i++) {
 				numArr[i].setIcon(new ImageIcon(emptyImage[i]));
 			}
 		}
 	}
-	
 
-
-	public TestA(LottoDrawPage lottoDrawPage,AllRecords allRecords) {
+	public TestA(LottoDrawPage lottoDrawPage, AllRecords allRecords) {
 		JPanel main1 = new JPanel();
 		main1.setBackground(Color.BLACK);
 
@@ -385,52 +382,48 @@ class TestA extends JPanel {
 		labels[30].addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				
+
 				Management.card.show(Management.all, "당첨 번호");
 				Management.card.show(Management.all, "공튀기기");
 				LotteryBall.startAnimation();
-				
+
 				LottoRandom lottoRandom = new LottoRandom();
 				List<Integer> randomNumList = lottoRandom.getRandomNum();
-				
+
 				List<Integer> randomNumListClone = new ArrayList<>();
-				
+
 				for (int i = 0; i < 6; i++) {
 					randomNumListClone.add(randomNumList.get(i));
 				}
-				
-				
-				
+
 				Collections.sort(randomNumListClone);
-				System.out.println(randomNumListClone);
-				System.out.println(randomNumList.get(6));
-				
+
 				List<Integer> randomNumListOfRecords = new ArrayList<>();
 				randomNumListOfRecords.addAll(randomNumListClone);
 				randomNumListOfRecords.add(randomNumList.get(6));
-				allRecords.push(LottoTicket1.getSelectedNumbers(), LottoTicket2.getSelectedNumbers(), LottoTicket3.getSelectedNumbers(), 
-						LottoTicket4.getSelectedNumbers(), LottoTicket5.getSelectedNumbers(),randomNumListOfRecords,
-						LottoTicket1.selectedMode,LottoTicket2.selectedMode,LottoTicket3.selectedMode,LottoTicket4.selectedMode,
+				allRecords.push(LottoTicket1.getSelectedNumbers(), LottoTicket2.getSelectedNumbers(),
+						LottoTicket3.getSelectedNumbers(), LottoTicket4.getSelectedNumbers(),
+						LottoTicket5.getSelectedNumbers(), randomNumListOfRecords, LottoTicket1.selectedMode,
+						LottoTicket2.selectedMode, LottoTicket3.selectedMode, LottoTicket4.selectedMode,
 						LottoTicket5.selectedMode);
-				allRecords.printList();
-				if(allRecords.getRecords(2)!=null) {
-					
-					System.out.println(allRecords.getRecords(2).turn);
-				}
 
 				for (int i = 0; i < randomNumListClone.size(); i++) {
 					int number = randomNumListClone.get(i);
 					lottoDrawPage.drawNumArr[i].setIcon(new ImageIcon(yesImage[number - 1]));
 				}
 				lottoDrawPage.drawNumArr[6].setIcon(new ImageIcon(yesImage[randomNumList.get(6) - 1]));
-	
-				makeDrawPage(LottoTicket1.selectedMode, LottoTicket1.selectedNumbers, lottoDrawPage.numArrA, randomNumList);
-				makeDrawPage(LottoTicket2.selectedMode, LottoTicket2.selectedNumbers, lottoDrawPage.numArrB, randomNumList);
-				makeDrawPage(LottoTicket3.selectedMode, LottoTicket3.selectedNumbers, lottoDrawPage.numArrC, randomNumList);
-				makeDrawPage(LottoTicket4.selectedMode, LottoTicket4.selectedNumbers, lottoDrawPage.numArrD, randomNumList);
-				makeDrawPage(LottoTicket5.selectedMode, LottoTicket5.selectedNumbers, lottoDrawPage.numArrE, randomNumList);
-				
-				
+
+				makeDrawPage(LottoTicket1.selectedMode, LottoTicket1.selectedNumbers, lottoDrawPage.numArrA,
+						randomNumList);
+				makeDrawPage(LottoTicket2.selectedMode, LottoTicket2.selectedNumbers, lottoDrawPage.numArrB,
+						randomNumList);
+				makeDrawPage(LottoTicket3.selectedMode, LottoTicket3.selectedNumbers, lottoDrawPage.numArrC,
+						randomNumList);
+				makeDrawPage(LottoTicket4.selectedMode, LottoTicket4.selectedNumbers, lottoDrawPage.numArrD,
+						randomNumList);
+				makeDrawPage(LottoTicket5.selectedMode, LottoTicket5.selectedNumbers, lottoDrawPage.numArrE,
+						randomNumList);
+
 			}
 		});
 
