@@ -29,8 +29,8 @@ class LotteryBallView extends JPanel {
 		this.diameter = d;
 		x = (int) (Math.random() * (LotteryBall.WIDTH - d) + 3);
 		y = (int) (Math.random() * (LotteryBall.HEIGHT - d) + 3);
-		xInc = (int) (Math.random() * 5 + 5);
-		yInc = (int) (Math.random() * 5 + 5);
+		xInc = (int) (Math.random() * 7 + 5);
+		yInc = (int) (Math.random() * 7 + 5);
 
 		ball = new ImageIcon(urlOfBall).getImage();
 
@@ -53,7 +53,7 @@ class LotteryBallView extends JPanel {
 public class LotteryBall extends JPanel implements ActionListener {
 	static final int WIDTH = 279;
 	static final int HEIGHT = 280;
-	private static final int PERIOD = 30;
+	private static final int PERIOD = 20;
 	URL[] urlOfLotteryBall = new URL[45];
 	static Timer switchPageTimer = new Timer(2200, new ActionListener() {
 		@Override
