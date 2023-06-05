@@ -22,7 +22,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 public class LottoDrawPage extends JPanel {
-
+	
 	JLabel[] numArrA = makeNumLbl();
 	JLabel[] numArrB = makeNumLbl();
 	JLabel[] numArrC = makeNumLbl();
@@ -128,7 +128,7 @@ public class LottoDrawPage extends JPanel {
 		drawNumArr[5].setBounds(15+(42*5), 133, 42, 42);
 		drawNumArr[6].setBounds(15+(42*6)+17, 133, 42, 42);
 
-		// 기본 배경
+		// 기본 배경 드로우이미지수정
 		JLabel[] lbl = makeScreen();
 		lbl[0].setBounds(0, 0, 340, 121);
 		lbl[2].setBounds(284, 121, 42, 12); // 보너스
