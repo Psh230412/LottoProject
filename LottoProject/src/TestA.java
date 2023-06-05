@@ -31,6 +31,8 @@ class TestA extends JPanel {
 	Image[] yesImage = new Image[45];
 	Image[] noImage = new Image[45];
 
+	AllRecords allrecords;
+
 	public Image[] createMode() {
 		for (int i = 0; i < modeImage.length; i++) {
 			URL urlOfDN = TestA.class.getClassLoader().getResource("image4/auto" + (i + 1) + ".gif");
@@ -183,8 +185,10 @@ class TestA extends JPanel {
 			}
 		}
 	}
+	
 
-	public TestA(LottoDrawPage lottoDrawPage) {
+
+	public TestA(LottoDrawPage lottoDrawPage,AllRecords allRecords) {
 		JPanel main1 = new JPanel();
 		main1.setBackground(Color.BLACK);
 
@@ -381,20 +385,38 @@ class TestA extends JPanel {
 		labels[30].addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-/////////////////				Management.card.show(Management.all, "공튀기기");////////////////////////
+				
 				Management.card.show(Management.all, "당첨 번호");
+				Management.card.show(Management.all, "공튀기기");
+				LotteryBall.startAnimation();
 				
 				LottoRandom lottoRandom = new LottoRandom();
 				List<Integer> randomNumList = lottoRandom.getRandomNum();
 				
 				List<Integer> randomNumListClone = new ArrayList<>();
+				
 				for (int i = 0; i < 6; i++) {
 					randomNumListClone.add(randomNumList.get(i));
 				}
 				
+				
+				
 				Collections.sort(randomNumListClone);
 				System.out.println(randomNumListClone);
 				System.out.println(randomNumList.get(6));
+				
+				List<Integer> randomNumListOfRecords = new ArrayList<>();
+				randomNumListOfRecords.addAll(randomNumListClone);
+				randomNumListOfRecords.add(randomNumList.get(6));
+				allRecords.push(LottoTicket1.getSelectedNumbers(), LottoTicket2.getSelectedNumbers(), LottoTicket3.getSelectedNumbers(), 
+						LottoTicket4.getSelectedNumbers(), LottoTicket5.getSelectedNumbers(),randomNumListOfRecords,
+						LottoTicket1.selectedMode,LottoTicket2.selectedMode,LottoTicket3.selectedMode,LottoTicket4.selectedMode,
+						LottoTicket5.selectedMode);
+				allRecords.printList();
+				if(allRecords.getRecords(2)!=null) {
+					
+					System.out.println(allRecords.getRecords(2).turn);
+				}
 
 				for (int i = 0; i < randomNumListClone.size(); i++) {
 					int number = randomNumListClone.get(i);
@@ -407,6 +429,7 @@ class TestA extends JPanel {
 				makeDrawPage(LottoTicket3.selectedMode, LottoTicket3.selectedNumbers, lottoDrawPage.numArrC, randomNumList);
 				makeDrawPage(LottoTicket4.selectedMode, LottoTicket4.selectedNumbers, lottoDrawPage.numArrD, randomNumList);
 				makeDrawPage(LottoTicket5.selectedMode, LottoTicket5.selectedNumbers, lottoDrawPage.numArrE, randomNumList);
+				
 				
 			}
 		});

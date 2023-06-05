@@ -20,6 +20,7 @@ class Tutorial8 extends JFrame {
 		label.addMouseListener((MouseListener) new MouseAdapter() {
 		@Override
 		public void mouseClicked(MouseEvent e) {
+			
 			new StartPage();
 			dispose();
 		}

@@ -7,7 +7,7 @@ import java.awt.event.ActionListener;
 public class Run extends JFrame {
    
     public static void main(String[] args) {
-    	StartPage s = new StartPage();
+    	//StartPage s = new StartPage();
     }
 }
 

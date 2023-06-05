@@ -9,18 +9,20 @@ import javax.swing.JPanel;
 public class Management extends JFrame {
 	static JPanel all = new JPanel();
 	static CardLayout card = new CardLayout();
+	static AllRecords allRecords = new AllRecords();
 	LottoDrawPage lottoDrawPage = new LottoDrawPage(this);
-	TestA testA = new TestA(lottoDrawPage);
+	TestA testA = new TestA(lottoDrawPage,allRecords);
 	
-	
-	
+	public void close() {
+		this.setVisible(false);
+		this.dispose();
+	}
 	public Management() {
 		setTitle("로또");
 
 		all.setLayout(card);
 		
-		all.add(new StartPage(), "시작");
-//		all.add(new Tutorial1(), "튜토리얼");
+		all.add(new StartPage(allRecords), "시작");
 		all.add(testA, "번호 선택");
 		all.add(new LottoTicket1(testA), "티켓1");
 		all.add(new LottoTicket2(testA), "티켓2");
@@ -33,7 +35,6 @@ public class Management extends JFrame {
 //		card.show(all, "당첨 번호");
 
 		card.show(all, "시작");
-//		card.show(all, "튜토리얼");
 		add(all);
 	
 		all.setPreferredSize(new Dimension(340, 550));
@@ -41,13 +42,11 @@ public class Management extends JFrame {
 		pack();
 		setLocationRelativeTo(null);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
+		setLocationRelativeTo(null);
 		setVisible(true);
 	}
 	
-	public void close() {
-		this.setVisible(false);
-		this.dispose();
-	}
+	
 	
 	
 	public static void main(String[] args) {

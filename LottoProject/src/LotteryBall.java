@@ -4,6 +4,8 @@ import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.net.URL;
 import java.util.HashMap;
 import java.util.Map;
@@ -57,7 +59,12 @@ public class LotteryBall extends JPanel implements ActionListener {
 	static final int HEIGHT = 280;
 	private static final int PERIOD = 30;
 	URL[] urlOfLotteryBall = new URL[45];
-
+	static Timer switchPageTimer = new Timer(1000, new ActionListener() {
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			Management.card.show(Management.all, "당첨 번호");
+		}
+	});
 	
 
 
@@ -96,7 +103,7 @@ public class LotteryBall extends JPanel implements ActionListener {
 	}
 
 	public LotteryBall() {
-
+		switchPageTimer.setRepeats(false); 
 		setLayout(null);
 
 		setBackground(new Color(255, 0, 0));// 여기 색을 바꾸시면 됩니다.
@@ -123,6 +130,12 @@ public class LotteryBall extends JPanel implements ActionListener {
 		ani[4].setBounds(0, 519, 24, 36);
 		ani[5].setBounds(304, 519, 15, 18); //다음 버튼
 		//testA에서 다음 버튼 누르면 누르는 순간 어레이리스트에 있는 숫자 모두 n회차에 저장하기
+		ani[5].addMouseListener(new MouseAdapter() {
+	         @Override
+	         public void mouseClicked(MouseEvent e) {
+	            Management.card.show(Management.all, "당첨 번호");
+	         }
+	      });
 		ani[6].setBounds(319, 519, 21, 36);
 		ani[7].setBounds(24, 537, 15, 18);
 		ani[8].setBounds(304, 537, 15, 18);
@@ -142,6 +155,10 @@ public class LotteryBall extends JPanel implements ActionListener {
 		
 
 	}
+	
+	public static void startAnimation() {
+	      switchPageTimer.start();
+	   }
 
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
