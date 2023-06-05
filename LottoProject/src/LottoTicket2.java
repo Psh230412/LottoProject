@@ -379,10 +379,10 @@ class LottoTicket2 extends JPanel {
 				if (yesNo == 6) {
 					isAuto = true;
 				}
-				if (yesNo >= 1 && yesNo <= 5) {
+				if (yesNo >= 1 && yesNo < 5) {
 					isAuto = false;
 				}
-				if (autoCount > 1 && autoCount < 7) {
+				if (autoCount > 1 && autoCount < 7 || clickCount == 5) {
 					isClick = true;
 				}
 			}
@@ -412,9 +412,7 @@ class LottoTicket2 extends JPanel {
 				if (!(changeCount == 6)) {
 					JOptionPane.showMessageDialog(null, "번호를 6개까지 정하셔야합니다", "입력미달", JOptionPane.WARNING_MESSAGE);
 				} else {
-					int result = JOptionPane.showConfirmDialog(LottoTicket2.this, "번호를 확정하시겠습니까?", "복권번호 확정",
-							JOptionPane.YES_NO_OPTION);
-					if (result == JOptionPane.YES_OPTION) {
+				
 						JButton source = (JButton) e.getSource();
 
 						inputSelectedNumbers();
@@ -451,7 +449,7 @@ class LottoTicket2 extends JPanel {
 					}
 				}
 
-			}
+			
 		});
 
 		oneTicketPanel.setBounds(0, 0, 340, 550);
