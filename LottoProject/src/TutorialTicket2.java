@@ -409,9 +409,6 @@ class TutorialTicket2 extends JPanel {
                          }
                      });
             
-                     inputSelectedNumbers();
-                     System.out.println(selectedMode);
-                     System.out.println(selectedNumbers);
                      for (JButton button : lottoNumBtn) {
                          button.setBackground(null);
                      }
