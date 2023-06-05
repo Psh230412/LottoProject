@@ -20,7 +20,7 @@ public class Tutorial extends JPanel {
 	Management management;
 
 	public Tutorial() {
-		URL urlOfTuto = LottoTicket1.class.getClassLoader().getResource("image5/튜토리얼_1.jpg");
+		URL urlOfTuto = LottoTicket1.class.getClassLoader().getResource("image5/튜토리얼_1.gif");
 		ImageIcon imageIcon = new ImageIcon(urlOfTuto);
 		label = new JLabel(imageIcon);
 		label.addMouseListener((MouseListener) new MouseAdapter() {
@@ -44,7 +44,7 @@ class Tutorial2 extends JPanel {
 	Management management;
 
 	public Tutorial2() {
-		URL urlOfTuto = LottoTicket1.class.getClassLoader().getResource("image5/튜토리얼_2.jpg");
+		URL urlOfTuto = LottoTicket1.class.getClassLoader().getResource("image5/튜토리얼_2.gif");
 		ImageIcon imageIcon = new ImageIcon(urlOfTuto);
 		label = new JLabel(imageIcon);
 		label.addMouseListener((MouseListener) new MouseAdapter() {
@@ -68,7 +68,7 @@ class Tutorial3 extends JPanel {
 	Management management;
 
 	public Tutorial3() {
-		URL urlOfTuto = LottoTicket1.class.getClassLoader().getResource("image5/튜토리얼_3.jpg");
+		URL urlOfTuto = LottoTicket1.class.getClassLoader().getResource("image5/튜토리얼_3.gif");
 		ImageIcon imageIcon = new ImageIcon(urlOfTuto);
 		label = new JLabel(imageIcon);
 		label.setIcon(imageIcon);
@@ -95,7 +95,7 @@ class Tutorial4 extends JPanel {
 	public Tutorial4() {
 
 		// 배경
-		URL urlOfTuto = LottoTicket1.class.getClassLoader().getResource("image5/튜토리얼_4.jpg");
+		URL urlOfTuto = LottoTicket1.class.getClassLoader().getResource("image5/튜토리얼_4.gif");
 		ImageIcon imageIcon = new ImageIcon(urlOfTuto);
 		label = new JLabel(imageIcon);
 		label.setIcon(imageIcon);
@@ -103,7 +103,7 @@ class Tutorial4 extends JPanel {
 
 		// 로또 하러가기 버튼
 		JButton b1 = new JButton();
-		URL urlOfTuto1 = LottoTicket1.class.getClassLoader().getResource("image5/튜토리얼_5.jpg");
+		URL urlOfTuto1 = LottoTicket1.class.getClassLoader().getResource("image5/튜토리얼_5.gif");
 		ImageIcon imageIcon1 = new ImageIcon(urlOfTuto1);
 		b1.setIcon(imageIcon1);
 
@@ -134,7 +134,7 @@ class Tutorial5 extends JPanel {
 	Management management;
 
 	public Tutorial5() {
-		URL urlOfTuto = LottoTicket1.class.getClassLoader().getResource("image5/튜토리얼_6.jpg");
+		URL urlOfTuto = LottoTicket1.class.getClassLoader().getResource("image5/튜토리얼_6.gif");
 		ImageIcon imageIcon = new ImageIcon(urlOfTuto);
 		label = new JLabel(imageIcon);
 		label.setIcon(imageIcon);
@@ -160,7 +160,7 @@ class Tutorial6 extends JPanel {
 	Management management;
 
 	public Tutorial6() {
-		URL urlOfTuto = LottoTicket1.class.getClassLoader().getResource("image5/튜토리얼_7.jpg");
+		URL urlOfTuto = LottoTicket1.class.getClassLoader().getResource("image5/튜토리얼_7.gif");
 		ImageIcon imageIcon = new ImageIcon(urlOfTuto);
 		label = new JLabel(imageIcon);
 		label.setIcon(imageIcon);
@@ -187,14 +187,14 @@ class Tutorial7 extends JPanel {
 
 	public Tutorial7() {
 		// 배경
-		URL urlOfTuto = LottoTicket1.class.getClassLoader().getResource("image5/튜토리얼_8.jpg");
+		URL urlOfTuto = LottoTicket1.class.getClassLoader().getResource("image5/튜토리얼_8.gif");
 		ImageIcon imageIcon = new ImageIcon(urlOfTuto);
 		label = new JLabel(imageIcon);
 		label.setIcon(imageIcon);
 
 		// 빈슬롯 버튼
 		JButton b1 = new JButton();
-		URL urlOfTuto2 = LottoTicket1.class.getClassLoader().getResource("image5/튜토리얼_9.jpg");
+		URL urlOfTuto2 = LottoTicket1.class.getClassLoader().getResource("image5/튜토리얼_9.gif");
 		ImageIcon imageIcon2 = new ImageIcon(urlOfTuto2);
 		b1.setIcon(imageIcon2);
 
@@ -204,13 +204,65 @@ class Tutorial7 extends JPanel {
 		b1.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				Management.card.show(Management.all, "튜토리얼8");
+				Management.card.show(Management.all, "튜토리얼7-1");
 
 			}
 		});
 
 		setLayout(new BorderLayout());
 		add(b1);
+		add(label);
+		setBounds(0, 0, 340, 550);
+		setVisible(true);
+
+	}
+}
+
+//번호선택 설명페이지
+class Tutorial7_1 extends JPanel {
+	JLabel label;
+	Management management;
+
+	public Tutorial7_1() {
+		URL urlOfTuto = LottoTicket1.class.getClassLoader().getResource("image5/튜토리얼_10.gif");
+		ImageIcon imageIcon = new ImageIcon(urlOfTuto);
+		label = new JLabel(imageIcon);
+		label.setIcon(imageIcon);
+
+		label.addMouseListener((MouseListener) new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				Management.card.show(Management.all, "튜토리얼7-2");
+			}
+		});
+
+		setLayout(new BorderLayout());
+		add(label);
+		setBounds(0, 0, 340, 550);
+		setVisible(true);
+
+	}
+}
+
+//번호선택 사용해보세요
+class Tutorial7_2 extends JPanel {
+	JLabel label;
+	Management management;
+
+	public Tutorial7_2() {
+		URL urlOfTuto = LottoTicket1.class.getClassLoader().getResource("image5/튜토리얼_11.gif");
+		ImageIcon imageIcon = new ImageIcon(urlOfTuto);
+		label = new JLabel(imageIcon);
+		label.setIcon(imageIcon);
+
+		label.addMouseListener((MouseListener) new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				Management.card.show(Management.all, "튜토리얼8");
+			}
+		});
+
+		setLayout(new BorderLayout());
 		add(label);
 		setBounds(0, 0, 340, 550);
 		setVisible(true);
@@ -225,7 +277,7 @@ class Tutorial9 extends JPanel {
 
 	public Tutorial9() {
 		// 배경
-		URL urlOfTuto = LottoTicket1.class.getClassLoader().getResource("image5/튜토리얼_1.jpg");
+		URL urlOfTuto = LottoTicket1.class.getClassLoader().getResource("image5/튜토리얼_12.gif");
 		ImageIcon imageIcon = new ImageIcon(urlOfTuto);
 		label = new JLabel(imageIcon);
 		label.setIcon(imageIcon);
@@ -234,7 +286,7 @@ class Tutorial9 extends JPanel {
 		label.addMouseListener((MouseListener) new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				Management.card.show(Management.all, "튜토리얼8");
+				Management.card.show(Management.all, "튜토리얼11");
 			}
 		});
 		setLayout(new BorderLayout());
@@ -252,7 +304,7 @@ class Tutorial10 extends JPanel {
 
 	public Tutorial10() {
 		// 배경
-		URL urlOfTuto = LottoTicket1.class.getClassLoader().getResource("image5/튜토리얼_2.jpg");
+		URL urlOfTuto = LottoTicket1.class.getClassLoader().getResource("image5/튜토리얼_2.gif");
 		ImageIcon imageIcon = new ImageIcon(urlOfTuto);
 		label = new JLabel(imageIcon);
 		label.setIcon(imageIcon);
@@ -265,6 +317,60 @@ class Tutorial10 extends JPanel {
 			}
 		});
 
+		setLayout(new BorderLayout());
+		add(label);
+		setBounds(0, 0, 340, 550);
+		setVisible(true);
+
+	}
+}
+
+//번호 오토로 설정 후 뜨는 안내 화면 (이미지 바꾸기)
+class Tutorial12 extends JPanel {
+	JLabel label;
+	Management management;
+
+	public Tutorial12() {
+		// 배경
+		URL urlOfTuto = LottoTicket1.class.getClassLoader().getResource("image5/튜토리얼_13.gif");
+		ImageIcon imageIcon = new ImageIcon(urlOfTuto);
+		label = new JLabel(imageIcon);
+		label.setIcon(imageIcon);
+
+		// 안내이미지 누르면 다시 Tutorial Ticket으로 돌아감
+		label.addMouseListener((MouseListener) new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				Management.card.show(Management.all, "튜토리얼11");
+			}
+		});
+		setLayout(new BorderLayout());
+		add(label);
+		setBounds(0, 0, 340, 550);
+		setVisible(true);
+
+	}
+}
+
+//번호 오토로 설정 후 뜨는 안내 화면 (이미지 바꾸기)
+class Tutorial13 extends JPanel {
+	JLabel label;
+	Management management;
+
+	public Tutorial13() {
+		// 배경
+		URL urlOfTuto = LottoTicket1.class.getClassLoader().getResource("image5/튜토리얼_14.gif");
+		ImageIcon imageIcon = new ImageIcon(urlOfTuto);
+		label = new JLabel(imageIcon);
+		label.setIcon(imageIcon);
+
+		// 안내이미지 누르면 다시 Tutorial Ticket으로 돌아감
+		label.addMouseListener((MouseListener) new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				Management.card.show(Management.all, "시작");
+			}
+		});
 		setLayout(new BorderLayout());
 		add(label);
 		setBounds(0, 0, 340, 550);

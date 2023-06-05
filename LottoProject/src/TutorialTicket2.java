@@ -392,37 +392,37 @@ class TutorialTicket2 extends JPanel {
       buttons[0].addActionListener(new ActionListener() { // 확정버튼
          @Override
          public void actionPerformed(ActionEvent e) {
-             List<Integer> fixedNumbers = new ArrayList<>(Arrays.asList(1, 2, 3, 4, 5, 7));
-             List<Integer> selectedNumbers = new ArrayList<>();
+             List<Integer> fixedNumbers = new ArrayList<>(Arrays.asList(1, 2, 3, 4, 5, 6));
+             List<Integer> fixedNumbers2 = new ArrayList<>(Arrays.asList(1, 2, 3, 4, 5, 7));
+             selectedNumbers = new ArrayList<>();
              
-                 if (selectedNumbers.containsAll(fixedNumbers)) {
+             inputSelectedNumbers();
+             System.out.println(selectedNumbers.toString());
+             System.out.println(selectedNumbers.containsAll(fixedNumbers));
                      buttons[0].addMouseListener(new MouseAdapter() {
                          @Override
                          public void mouseClicked(MouseEvent e) {
-                             Management.card.show(Management.all, "시작");
+                        	 if (selectedNumbers.containsAll(fixedNumbers)) {
+                             Management.card.show(Management.all, "튜토리얼12");
+                        	 }else if (!(selectedNumbers.containsAll(fixedNumbers))&&selectedNumbers.containsAll(fixedNumbers2)) {
+      							Management.card.show(Management.all, "튜토리얼13");
+      						}
+                        	 
                          }
                      });
-                 } else { 
-                    buttons[0].addMouseListener(new MouseAdapter() {
+                     
+                     buttons[0].addMouseListener(new MouseAdapter() {
+                         @Override
                          public void mouseClicked(MouseEvent e) {
-                             Management.card.show(Management.all, "튜토리얼8");
+                        	
                          }
                      });
-            
-                     for (JButton button : lottoNumBtn) {
-                         button.setBackground(null);
-                     }
-                     for (int i = 0; i < lottoNumBtn.length; i++) {
-                         lottoNumBtn[i].setIcon(new ImageIcon(imageArrBefore[i]));
-                         isButtonClicked[i] = false;
-                     }
-                     setAuto(false);
-                     setClick(false);
-                     resetCount();
+           
+                  
 
-                     Management.card.show(Management.all, "시작");
+                     //Management.card.show(Management.all, "시작");
                  }
-                 }
+                 
              });
 
       oneTicketPanel.setBounds(0, 0, 340, 550);

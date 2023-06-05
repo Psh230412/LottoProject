@@ -30,10 +30,14 @@ public class Management extends JFrame {
 		all.add(new Tutorial5(), "튜토리얼5");
 		all.add(new Tutorial6(), "튜토리얼6");
 		all.add(new Tutorial7(), "튜토리얼7");
+		all.add(new Tutorial7_1(), "튜토리얼7-1");
+		all.add(new Tutorial7_2(), "튜토리얼7-2");
 		all.add(new TutorialTicket(), "튜토리얼8"); // A슬롯 번호(자동)
 		all.add(new Tutorial9(), "튜토리얼9"); // 번호 오토 선택 시 뜨는 안내창
 		all.add(new Tutorial10(), "튜토리얼10"); // 번호 수동 선택 시 뜨는 안내창
 		all.add(new TutorialTicket2(), "튜토리얼11"); // A슬롯 번호(수동) 123457 선택하면 시작페이지로.
+		all.add(new Tutorial12(), "튜토리얼12"); // 번호 수동 선택 시 뜨는 안내창
+		all.add(new Tutorial13(), "튜토리얼13"); // 번호 수동 선택 시 뜨는 안내창
 		all.add(new HelpMessage(), "도움말");
 		all.add(testA, "번호 선택");
 		all.add(new LottoTicket1(testA), "티켓1");

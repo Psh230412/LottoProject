@@ -364,13 +364,18 @@ class TutorialTicket extends JPanel {
       // 1. 자동 선택하고 확정버튼 누르면 자동 안내 페이지로 넘어 감
       buttons[0].addActionListener(new ActionListener() { // 확정버튼
          @Override
+         
          public void actionPerformed(ActionEvent e) {
+        	 if (!(changeCount == 6)) {
+					JOptionPane.showMessageDialog(null, "번호를 6개까지 정하셔야합니다", "입력미달", JOptionPane.WARNING_MESSAGE);
+				} else {
             Management.card.show(Management.all, "튜토리얼9");
+				}
          }
       });
 
       // 2. 초기화 버튼 누르면 수동 안내 페이지로 넘어감 
-      buttons[2].addActionListener(new ActionListener() { // 초기화버튼
+      /*buttons[2].addActionListener(new ActionListener() { // 초기화버튼
          @Override
          public void actionPerformed(ActionEvent e) {
             Management.card.show(Management.all, "튜토리얼10");
@@ -380,7 +385,7 @@ class TutorialTicket extends JPanel {
             add(oneTicketPanel);
 
          }
-      });
+      });*/
       
 
       oneTicketPanel.setBounds(0, 0, 340, 550);
