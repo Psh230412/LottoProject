@@ -53,7 +53,7 @@ class LotteryBallView extends JPanel {
 public class LotteryBall extends JPanel implements ActionListener {
 	static final int WIDTH = 279;
 	static final int HEIGHT = 280;
-	private static final int PERIOD = 30;
+	private static final int PERIOD = 20;
 	URL[] urlOfLotteryBall = new URL[45];
 	static Timer switchPageTimer = new Timer(2200, new ActionListener() {
 		@Override

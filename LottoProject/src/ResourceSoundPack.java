@@ -10,6 +10,7 @@ import javax.sound.sampled.UnsupportedAudioFileException;
 
 public class ResourceSoundPack {
 
+
 	static Clip lottoBallClip;
 
 	static void stratSound() {
@@ -101,5 +102,4 @@ public class ResourceSoundPack {
 		lottoBallClip.stop();
 		lottoBallClip.flush();
 	}
-
 }

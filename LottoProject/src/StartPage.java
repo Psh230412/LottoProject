@@ -451,10 +451,55 @@ class StartPage extends JPanel {
 		}
 
 		labelOfMain[0].setBounds(0, 0, 340, 379);
-		labelOfMain[1].setBounds(0, 379, 340, 42);
-		labelOfMain[2].setBounds(0, 421, 340, 42);
-		labelOfMain[3].setBounds(0, 463, 340, 46);// 스타트 페이지 로또 레코드
+		labelOfMain[1].setBounds(0, 379, 340, 42); // 튜토리얼
+		labelOfMain[1].addMouseListener(new MouseAdapter() {// 자동
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				URL urlOfScreen = LottoTicket1.class.getClassLoader().getResource("image/색이변경될메인화면_02.gif");
+				ImageIcon defaultIcon = new ImageIcon(urlOfScreen);
+				labelOfMain[1].setIcon(defaultIcon);
+			}
+
+			@Override
+			public void mouseExited(MouseEvent e) {
+				URL urlOfScreen = LottoTicket1.class.getClassLoader().getResource("image/메인화면_02.gif");
+				ImageIcon changeIcon = new ImageIcon(urlOfScreen);
+				labelOfMain[1].setIcon(changeIcon);
+			}
+		});
+		
+		
+		labelOfMain[2].setBounds(0, 421, 340, 42); // 로또하기
+		labelOfMain[2].addMouseListener(new MouseAdapter() {// 자동
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				URL urlOfScreen = LottoTicket1.class.getClassLoader().getResource("image/색이변경될메인화면_03.gif");
+				ImageIcon defaultIcon = new ImageIcon(urlOfScreen);
+				labelOfMain[2].setIcon(defaultIcon);
+			}
+
+			@Override
+			public void mouseExited(MouseEvent e) {
+				URL urlOfScreen = LottoTicket1.class.getClassLoader().getResource("image/메인화면_03.gif");
+				ImageIcon changeIcon = new ImageIcon(urlOfScreen);
+				labelOfMain[2].setIcon(changeIcon);
+			}
+		});
+		labelOfMain[3].setBounds(0, 463, 340, 46);// 로또 회차 기록
 		labelOfMain[3].addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				URL urlOfScreen = LottoTicket1.class.getClassLoader().getResource("image/색이변경될메인화면_04.gif");
+				ImageIcon defaultIcon = new ImageIcon(urlOfScreen);
+				labelOfMain[3].setIcon(defaultIcon);
+			}
+
+			@Override
+			public void mouseExited(MouseEvent e) {
+				URL urlOfScreen = LottoTicket1.class.getClassLoader().getResource("image/메인화면_04.gif");
+				ImageIcon changeIcon = new ImageIcon(urlOfScreen);
+				labelOfMain[3].setIcon(changeIcon);
+			}
 			@Override
 			public void mouseClicked(MouseEvent e) {
 
