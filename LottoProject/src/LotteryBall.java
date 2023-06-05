@@ -29,8 +29,8 @@ class LotteryBallView extends JPanel {
 		this.diameter = d;
 		x = (int) (Math.random() * (LotteryBall.WIDTH - d) + 3);
 		y = (int) (Math.random() * (LotteryBall.HEIGHT - d) + 3);
-		xInc = (int) (Math.random() * 5 + 5);
-		yInc = (int) (Math.random() * 5 + 5);
+		xInc = (int) (Math.random() * 7 + 5);
+		yInc = (int) (Math.random() * 7 + 5);
 
 		ball = new ImageIcon(urlOfBall).getImage();
 
