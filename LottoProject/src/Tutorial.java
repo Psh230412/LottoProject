@@ -26,6 +26,7 @@ public class Tutorial extends JPanel {
 		label.addMouseListener((MouseListener) new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
+				ResourceSoundPack.btnSound();
 				Management.card.show(Management.all, "튜토리얼2");
 
 			}
@@ -50,6 +51,7 @@ class Tutorial2 extends JPanel {
 		label.addMouseListener((MouseListener) new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
+				ResourceSoundPack.btnSound();
 				Management.card.show(Management.all, "튜토리얼3");
 			}
 		});
@@ -75,6 +77,7 @@ class Tutorial3 extends JPanel {
 		label.addMouseListener((MouseListener) new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
+				ResourceSoundPack.btnSound();
 				Management.card.show(Management.all, "튜토리얼4");
 			}
 		});
@@ -114,6 +117,7 @@ class Tutorial4 extends JPanel {
 		b1.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				ResourceSoundPack.btnSound();
 				Management.card.show(Management.all, "튜토리얼6");
 
 			}
@@ -142,6 +146,7 @@ class Tutorial5 extends JPanel {
 		label.addMouseListener((MouseListener) new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
+				ResourceSoundPack.btnSound();
 				Management.card.show(Management.all, "튜토리얼6");
 			}
 		});
@@ -168,6 +173,7 @@ class Tutorial6 extends JPanel {
 		label.addMouseListener((MouseListener) new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
+				ResourceSoundPack.btnSound();
 				Management.card.show(Management.all, "튜토리얼7");
 			}
 		});
@@ -204,6 +210,7 @@ class Tutorial7 extends JPanel {
 		b1.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				ResourceSoundPack.slotPickSound();
 				Management.card.show(Management.all, "튜토리얼7-1");
 
 			}
@@ -232,6 +239,7 @@ class Tutorial7_1 extends JPanel {
 		label.addMouseListener((MouseListener) new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
+				ResourceSoundPack.btnSound();
 				Management.card.show(Management.all, "튜토리얼7-2");
 			}
 		});
@@ -341,6 +349,7 @@ class Tutorial12 extends JPanel {
 		label.addMouseListener((MouseListener) new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
+
 				Management.card.show(Management.all, "튜토리얼11");
 			}
 		});
@@ -368,6 +377,7 @@ class Tutorial13 extends JPanel {
 		label.addMouseListener((MouseListener) new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
+
 				Management.card.show(Management.all, "시작");
 			}
 		});

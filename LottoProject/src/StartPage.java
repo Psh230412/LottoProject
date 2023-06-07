@@ -464,7 +464,7 @@ class StartPage extends JPanel {
 
 			@Override
 			public void mouseExited(MouseEvent e) {
-				resourceSoundPack.stratSound();
+				
 				URL urlOfScreen = LottoTicket1.class.getClassLoader().getResource("image/메인화면_02.gif");
 				ImageIcon changeIcon = new ImageIcon(urlOfScreen);
 				labelOfMain[1].setIcon(changeIcon);
@@ -483,7 +483,7 @@ class StartPage extends JPanel {
 
 			@Override
 			public void mouseExited(MouseEvent e) {
-				resourceSoundPack.stratSound();
+	
 				URL urlOfScreen = LottoTicket1.class.getClassLoader().getResource("image/메인화면_03.gif");
 				ImageIcon changeIcon = new ImageIcon(urlOfScreen);
 				labelOfMain[2].setIcon(changeIcon);
@@ -500,7 +500,7 @@ class StartPage extends JPanel {
 
 			@Override
 			public void mouseExited(MouseEvent e) {
-				resourceSoundPack.stratSound();
+;
 				URL urlOfScreen = LottoTicket1.class.getClassLoader().getResource("image/메인화면_04.gif");
 				ImageIcon changeIcon = new ImageIcon(urlOfScreen);
 				labelOfMain[3].setIcon(changeIcon);
@@ -541,7 +541,7 @@ class StartPage extends JPanel {
 
 					}
 				});
-
+				resourceSoundPack.stratSound();
 				newFrame.pack();
 				newFrame.setLocationRelativeTo(null);
 				newFrame.setVisible(true);
@@ -563,6 +563,7 @@ class StartPage extends JPanel {
 		labelOfMain[1].addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
+				resourceSoundPack.stratSound();
 				Management.card.show(Management.all, "튜토리얼");
 
 			}
@@ -573,6 +574,7 @@ class StartPage extends JPanel {
 		labelOfMain[2].addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
+				resourceSoundPack.stratSound();
 				Management.card.show(Management.all, "번호 선택");
 			}
 		});

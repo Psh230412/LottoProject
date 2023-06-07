@@ -256,6 +256,7 @@ class TestA extends JPanel {
 		labels[10].addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
+				
 				resourceSoundPack.removeSound();
 				if (LottoTicket2.selectedNumbers.size() != 0) {
 					LottoTicket2.selectedNumbers.clear();
@@ -456,7 +457,14 @@ class TestA extends JPanel {
 		labels[30].addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
+				if (LottoTicket1.selectedNumbers.size() == 0 && LottoTicket2.selectedNumbers.size() == 0
+		                  && LottoTicket3.selectedNumbers.size() == 0 && LottoTicket4.selectedNumbers.size() == 0
+		                  && LottoTicket5.selectedNumbers.size() == 0) {
+					resourceSoundPack.btnSound();
+		               JOptionPane.showMessageDialog(null, "선택된 티켓이 없습니다.", "선택된 티켓없음", JOptionPane.WARNING_MESSAGE);
+		            } else {
 				resourceSoundPack.btnSound();
+				resourceSoundPack.lottoBallSound();
 				Management.card.show(Management.all, "당첨 번호");
 				Management.card.show(Management.all, "공튀기기");
 				LotteryBall.startAnimation();
@@ -498,6 +506,7 @@ class TestA extends JPanel {
 				makeDrawPage(LottoTicket5.selectedMode, LottoTicket5.selectedNumbers, lottoDrawPage.numArrE,
 						randomNumList);
 
+			}
 			}
 		});
 

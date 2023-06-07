@@ -49,6 +49,8 @@ public class LottoDrawPage extends JPanel {
 	}
 	
 	public LottoDrawPage(Management management) {
+		
+		
 		// 선택번호 라벨 배열
 		for (int i = 0; i < numArrA.length; i++) {
 			add(numArrA[i]);
@@ -153,6 +155,7 @@ public class LottoDrawPage extends JPanel {
 		btn.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent e) {
 				management.close();
+				ResourceSoundPack.stopLoopSound();
 				new Management();
 			}
 		});

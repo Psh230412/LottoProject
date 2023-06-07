@@ -260,6 +260,7 @@ class TutorialTicket extends JPanel {
 
          @Override
          public void mousePressed(MouseEvent e) {
+        	 ResourceSoundPack.btnSound();
             URL urlOfScreen = LottoTicket1.class.getClassLoader().getResource("image/셀렉트_03second.gif");
             ImageIcon changeIcon = new ImageIcon(urlOfScreen);
             buttons[1].setIcon(changeIcon);
@@ -275,6 +276,7 @@ class TutorialTicket extends JPanel {
 
          @Override
          public void mousePressed(MouseEvent e) {
+        	 ResourceSoundPack.btnSound();
             URL urlOfScreen = LottoTicket1.class.getClassLoader().getResource("image/셀렉트_04second.gif");
             ImageIcon changeIcon = new ImageIcon(urlOfScreen);
             buttons[2].setIcon(changeIcon);
@@ -290,6 +292,7 @@ class TutorialTicket extends JPanel {
 
          @Override
          public void mousePressed(MouseEvent e) {
+        	 ResourceSoundPack.btnSound();
             URL urlOfScreen = LottoTicket1.class.getClassLoader().getResource("image/셀렉트_05second.gif");
             ImageIcon changeIcon = new ImageIcon(urlOfScreen);
             buttons[0].setIcon(changeIcon);
@@ -411,6 +414,7 @@ class TutorialTicket extends JPanel {
 class TutorialMyListener implements ActionListener {
    private TutorialTicket lt1;
 
+   ResourceSoundPack resourceSoundPack = new ResourceSoundPack();
    public TutorialMyListener(TutorialTicket lt1) {
       this.lt1 = lt1;
    }
@@ -436,6 +440,7 @@ class TutorialMyListener implements ActionListener {
                }
             }
          }
+         resourceSoundPack.numSound();
       } else if (!source.getBackground().equals(Color.RED) && lt1.getChangeCount() == 6) {
       } else if (source.getBackground().equals(Color.RED) && lt1.getChangeCount() == 1 && lt1.isClick() == true) {
          source.setBackground(null);
@@ -452,6 +457,7 @@ class TutorialMyListener implements ActionListener {
          source.setBackground(null);
          lt1.decreaseCount();
       }
+      resourceSoundPack.numSound();
       if (lt1.getChangeCount() < 6) {
          lt1.setSixSelected(false);
          for (JButton button : lt1.lottoNumBtn) {

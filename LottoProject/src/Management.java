@@ -1,6 +1,14 @@
 import java.awt.CardLayout;
 import java.awt.Dimension;
+import java.io.File;
+import java.io.IOException;
+import java.net.URL;
 
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
@@ -11,6 +19,7 @@ public class Management extends JFrame {
 	LottoDrawPage lottoDrawPage = new LottoDrawPage(this);
 	TestA testA = new TestA(lottoDrawPage, allRecords);
 	StartPage startPage = new StartPage(allRecords);
+	Clip BackgrundSoundClip;
 
 	public void close() {
 		this.setVisible(false);
@@ -18,6 +27,7 @@ public class Management extends JFrame {
 	}
 
 	public Management() {
+		
 		setTitle("로또");
 
 		all.setLayout(card);
@@ -54,13 +64,21 @@ public class Management extends JFrame {
 		all.setPreferredSize(new Dimension(340, 550));
 		setResizable(false);
 		pack();
+		
+		ResourceSoundPack.backgrundsound();
+		
+
 		setLocationRelativeTo(null);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setLocationRelativeTo(null);
 		setVisible(true);
 	}
 
+
+	
+
 	public static void main(String[] args) {
 		new Management();
+		
 	}
 }

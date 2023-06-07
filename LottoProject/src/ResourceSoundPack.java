@@ -12,6 +12,7 @@ public class ResourceSoundPack {
 
 
 	static Clip lottoBallClip;
+	static Clip BackgrundSoundClip;
 
 
 	static void stratSound() {
@@ -99,22 +100,58 @@ public class ResourceSoundPack {
 		try {
 			// URL soundFile =
 			// ResourceSoundPack.class.getClassLoader().getResource("soundResourses/ballSpinning.wav");
-			File soundFile = new File(
-					"C:\\Users\\0onmi\\git\\LottoProject\\LottoProject\\src\\soundResourses\\ballSpinning.wav"); // 사운드
+			URL soundFile = ResourceSoundPack.class.getClassLoader().getResource("soundResourses/ballSpinning.wav");  // 사운드
 																													// 파일
 																													// 경로
 																													// 설정
 			AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(soundFile);
 			lottoBallClip = AudioSystem.getClip();
 			lottoBallClip.open(audioInputStream);
-			lottoBallClip.start();
 		} catch (IOException | UnsupportedAudioFileException | LineUnavailableException ex) {
 			ex.printStackTrace();
 		}
 	}
 
-	static public void stopLoopSound() {
+	static public void stopSound() {
 		lottoBallClip.stop();
 		lottoBallClip.flush();
 	}
+	
+	static public void drowSound() {
+		try {//버튼 누를떄
+			URL soundFile = ResourceSoundPack.class.getClassLoader().getResource("soundResourses/tada-fanfare-a-6313.wav");
+			// 사운드 파일 경로 설정
+			AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(soundFile);
+			Clip clip = AudioSystem.getClip();
+			clip.open(audioInputStream);
+			clip.start();
+		} catch (IOException | UnsupportedAudioFileException | LineUnavailableException ex) {
+			ex.printStackTrace();
+		}
+	}
+	
+	
+	static void backgrundsound() {
+		try {
+			URL soundFile = ResourceSoundPack.class.getClassLoader().getResource("soundResourses/pixel-song-22-72581.wav"); // 배경음 사운드 파일 경로 설정
+            AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(soundFile);
+
+            BackgrundSoundClip = AudioSystem.getClip();
+            BackgrundSoundClip.open(audioInputStream);
+            BackgrundSoundClip.loop(Clip.LOOP_CONTINUOUSLY);
+        } catch (IOException | UnsupportedAudioFileException | LineUnavailableException ex) {
+            ex.printStackTrace();
+        }
+
+		
+	}
+	
+	static public void stopLoopSound() {
+	        BackgrundSoundClip.stop();
+	        BackgrundSoundClip.flush();
+	    }
+	   
+	 public boolean isLoopSoundPlaying() {
+	        return BackgrundSoundClip.isActive();
+	       }
 }

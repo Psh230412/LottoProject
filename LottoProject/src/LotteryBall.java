@@ -59,6 +59,8 @@ public class LotteryBall extends JPanel implements ActionListener {
 	static Timer switchPageTimer = new Timer(2200, new ActionListener() {
 		@Override
 		public void actionPerformed(ActionEvent e) {
+			ResourceSoundPack.drowSound();
+			ResourceSoundPack.stopSound();
 			Management.card.show(Management.all, "당첨 번호");
 		}
 	});
@@ -122,7 +124,7 @@ public class LotteryBall extends JPanel implements ActionListener {
 		ani[0].setBounds(0, 0, 340, 142);
 		ani[1].setBounds(0, 142, 31, 280);
 		ani[2].setBounds(310, 142, 30, 280);
-		ani[3].setBounds(0, 422, 340, 97);
+		ani[3].setBounds(0, 422, 340, 133);
 
 		for (int i = 0; i < ani.length; i++) {
 			add(ani[i]);
