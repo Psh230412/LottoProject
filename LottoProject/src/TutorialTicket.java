@@ -370,6 +370,17 @@ class TutorialTicket extends JPanel {
 					JOptionPane.showMessageDialog(null, "번호를 6개까지 정하셔야합니다", "입력미달", JOptionPane.WARNING_MESSAGE);
 				} else {
             Management.card.show(Management.all, "튜토리얼9");
+            
+			for (JButton button : lottoNumBtn) {
+				button.setBackground(null);
+			}
+			for (int i = 0; i < lottoNumBtn.length; i++) {
+				lottoNumBtn[i].setIcon(new ImageIcon(imageArrBefore[i]));
+				isButtonClicked[i] = false;
+			}
+			setAuto(false);
+			setClick(false);
+			resetCount();
 				}
          }
       });
