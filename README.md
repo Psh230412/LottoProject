@@ -7,7 +7,6 @@
 - :scroll: <a href="#erd">ERD(Entity-Relation Diagram)</a>
 - :family: <a href="#team">팀원 역할 소개</a>
 - :bookmark_tabs: <a href="#function">기능</a>
-- :mag_right: <a href="#fullfill">보완할점</a>
 
 # :books: <a name="outline">개요</a>
 <br>
@@ -32,38 +31,59 @@
 
 # :wrench: <a name="tech">기술 스택</a>
 
-<h4>데이터베이스</h4>
-<div align="left">
-   <img src="https://img.shields.io/badge/mysql-4479A1?style=for-the-badge&logo=mysql&logoColor=white" />
-</div> 
 <h4>언어</h4>
 <div align="left">
     <img src="https://img.shields.io/badge/JAVA-007396?style=for-the-badge&logo=Java&logoColor=white"/>
+   
 </div>
-
-<h4>API</h4>
-
-[![MyGet pre-release](https://img.shields.io/myget/quartznet/vpre/Quartz)](#)
 
 <h4>협업도구</h4>
-<div align="left">
-   <img src="https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=GitHub&logoColor=white" />
-   <img src="https://img.shields.io/badge/FIGMA-F24E1E?style=for-the-badge&logo=figma&logoColor=white" />
+<div align="left">   
+    <img src="https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=GitHub&logoColor=white" />
+    <img src="https://img.shields.io/badge/KakaoTalk-FFCD00?style=flat&logo=kakaotalk&logoColor=white"/>
 </div>
 
-# :scroll: <a name="erd">ERD</a>
+# :scroll: <a name="erd">화면</a>
 
-## 초기 ERD
-<img src="https://github.com/Psh230412/0623Start/assets/110301333/18db84d4-60bd-4e4a-bef4-4cfb32e1143a" width="100%"/>
+## 화면 구성
++ 메인화면
++ 튜토리얼
++ 레코드
 
-## 현재 ERD
-<img src="https://github.com/Psh230412/0623Start/assets/110301333/3490b2b3-f836-43f1-a86f-0598953c6e90" width="100%"/>
+- - - 
 
-### 변경이유
-1. 낙찰/유찰된 물품을 포함한 전체 물품을 관리하는 copy_auction과 </br>
-   경매 진행 중인 물품을 관리하는 auction으로 구분 하여 목적에 맞게 테이블 활용이 용이하도록 함
-2. 낙찰/유찰 여부를 한 테이블로 관리함
+### 메인화면
 
+
+<img src= "https://github.com/Psh230412/LottoProject/assets/130536843/131cc2d8-c92f-4c08-9687-f4b4bcfd70ea"/>
+<img src= "https://github.com/Psh230412/LottoProject/assets/130536843/c964c120-cb71-4c12-a6c2-072ba728c9c4"/>
+<img src= "https://github.com/Psh230412/LottoProject/assets/130536843/b35f71b8-b2f9-4520-b460-a970b9301bdc"/>
+<img src= "https://github.com/Psh230412/LottoProject/assets/130536843/03022c2e-6859-415e-a85c-235c627ad7ba"/>
+<img src= "https://github.com/Psh230412/LottoProject/assets/130536843/cc6682c4-4005-4bf7-820c-12d195e6b45d"/>
+<img src= "https://github.com/Psh230412/LottoProject/assets/130536843/7032ea5a-6862-4f07-a8d8-ae024201c27f"/>
+
+- - -
+### 튜토리얼
+
+
+<img src= "https://github.com/Psh230412/LottoProject/assets/130536843/30fa0d1d-c97f-4b5b-a0d2-e33215d2dfbc"/>
+<img src= "https://github.com/Psh230412/LottoProject/assets/130536843/2c7a8d0a-d963-4d85-b908-beada0ede91b"/>
+<img src= "https://github.com/Psh230412/LottoProject/assets/130536843/f38cc2f6-53de-44a2-a753-14253222f3a1"/>
+<img src= "https://github.com/Psh230412/LottoProject/assets/130536843/f4629c7c-b9ee-4de9-a3cd-7eae426dd136"/>
+<img src= "https://github.com/Psh230412/LottoProject/assets/130536843/46c9a3c1-36b8-465f-a2f8-4ac0362b9b8e"/>
+<img src= "https://github.com/Psh230412/LottoProject/assets/130536843/2e09e364-0fbe-4093-94e7-f6d5d8ab7acc"/>
+<img src= "https://github.com/Psh230412/LottoProject/assets/130536843/0da1034a-d418-47ad-b177-06c6d1684d6e"/>
+<img src= "https://github.com/Psh230412/LottoProject/assets/130536843/1e01f313-b223-4c7b-942d-0dfd6f826f01"/>
+<img src= "https://github.com/Psh230412/LottoProject/assets/130536843/caa7bdba-fcec-4094-8187-4c90b6330296"/>
+<img src= "https://github.com/Psh230412/LottoProject/assets/130536843/ed9cfb13-faaf-4027-ba67-56ea375df2a1"/>
+<img src= "https://github.com/Psh230412/LottoProject/assets/130536843/64dc5551-8e64-4794-a67c-175f09d09cb1"/>
+<img src= "https://github.com/Psh230412/LottoProject/assets/130536843/e5270f88-3eec-4ee6-9f96-3f1b2937d45a"/>
+
+- - -
+### 레코드
+
+
+<img src= "https://github.com/Psh230412/LottoProject/assets/130536843/d4bae590-23b4-4446-8bb3-db262cbbb3ee"/>
 
 # :family: <a name="team">팀원 역할 소개</a>
 <br>
@@ -75,8 +95,3 @@
 # :scroll: <a name="function">기능</a>
 [상세보기](https://github.com/Psh230412/0623Start/blob/master/Presentation.md)
 
-# :mag_right: <a name="#fullfill">보완할점</a>
-### 1. 금액 충전, 결제시스템 추가
-### 2. 입찰한 물품에 상위입찰이 들어오면 기존 입찰자에게 정보제공
-### 3. 낙찰/유찰된 내역 삭제, 유찰물품 재등록
-### 4. 이미 등록한 물품에 대한 정보 수정 기능
