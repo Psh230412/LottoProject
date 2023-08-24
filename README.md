@@ -78,12 +78,14 @@
 <img src= "https://github.com/Psh230412/LottoProject/assets/130536843/ed9cfb13-faaf-4027-ba67-56ea375df2a1"/>
 <img src= "https://github.com/Psh230412/LottoProject/assets/130536843/64dc5551-8e64-4794-a67c-175f09d09cb1"/>
 <img src= "https://github.com/Psh230412/LottoProject/assets/130536843/e5270f88-3eec-4ee6-9f96-3f1b2937d45a"/>
+<img src= "https://github.com/Psh230412/LottoProject/assets/130536843/d4bae590-23b4-4446-8bb3-db262cbbb3ee"/>
 
 - - -
 ### 레코드
 
 
-<img src= "https://github.com/Psh230412/LottoProject/assets/130536843/d4bae590-23b4-4446-8bb3-db262cbbb3ee"/>
+<img src= "https://github.com/Psh230412/LottoProject/assets/130536843/3563a127-5582-4609-8f79-517c8293cf81"/>
+
 
 # :family: <a name="team">팀원 역할 소개</a>
 <br>
