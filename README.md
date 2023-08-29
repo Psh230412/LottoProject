@@ -4,7 +4,6 @@
 
 - :books: <a href="#outline">개요</a>
 - :wrench: <a href="#tech">기술 스택</a>
-- :scroll: <a href="#erd">ERD(Entity-Relation Diagram)</a>
 - :family: <a href="#team">팀원 역할 소개</a>
 - :bookmark_tabs: <a href="#function">기능</a>
 
